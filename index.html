@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<h2>Force-Directed Graph with 100 Nodes, 5 Categories & Search</h2>
+<h2>Network Connections USRN</h2>
 
 <div id="controls">
     <input type="text" id="searchInput" placeholder="Enter node name">
@@ -26,10 +26,10 @@
 <script>
 try {
     // ===== Custom Variables =====
-    const NODE_REPULSION = 150;
+    const NODE_REPULSION = 100;
     const EDGE_LENGTH = [50, 150];
     const CATEGORY_COLORS = ['#5470C6', '#91CC75', '#EE6666', '#FAC858', '#73C0DE'];
-    const NODE_SHAPES = ['circle', 'rect', 'diamond', 'triangle', 'pin', 'arrow'];
+    const NODE_SHAPES = ['rect', 'rect', 'rect', 'rect', 'rect', 'rect'];
 
     // ===== Categories =====
     const categories = [
@@ -107,7 +107,7 @@ try {
             data: nodes,
             links: links,
             categories: categories,
-            lineStyle: { color: 'source', curveness: 0.3 }
+            lineStyle: { color: 'source', curveness: 0 }
         }]
     };
 
