@@ -10,11 +10,6 @@
             padding: 10px;
         }
         
-        h2 {
-            color: #333;
-            margin-top: 0;
-        }
-        
         #main {
             width: 100%;
             height: 600px;
@@ -34,8 +29,6 @@
 </head>
 <body>
 
-<h2>Network Connections USRN</h2>
-
 <div id="main"></div>
 
 <script>
@@ -44,6 +37,7 @@
             // ===== Configuration =====
             const NODE_REPULSION = 100;
             const EDGE_LENGTH = [50, 150];
+            const NODE_SIZE = 15;
             const NODE_SHAPES = ['rect', 'rect', 'rect', 'rect', 'rect', 'rect'];
 
             // ===== Fetch Data from JSON File =====
@@ -66,17 +60,17 @@
                 }
             }));
 
-            // ===== Process Nodes (Half Size) =====
+            // ===== Process Nodes (Uniform Size) =====
             const nodes = data.nodes.map(node => ({
                 name: node.name,
                 category: node.category,
                 symbol: NODE_SHAPES[Math.floor(Math.random() * NODE_SHAPES.length)],
-                symbolSize: node.size * 0.5,
-                value: node.size * 0.5
+                symbolSize: NODE_SIZE,
+                value: NODE_SIZE,
+                location: node.location
             }));
 
             // ===== Create Node Color Map =====
-            // Map each node name to its category color for link coloring
             const nodeColorMap = {};
             nodes.forEach(node => {
                 nodeColorMap[node.name] = data.categories[node.category].color;
@@ -101,7 +95,8 @@
                     formatter: function (params) {
                         if (params.dataType === 'node') {
                             const categoryName = categories[params.data.category]?.name || 'Unknown';
-                            return `<b>${params.data.name}</b><br/>Category: ${categoryName}<br/>Size: ${params.data.symbolSize.toFixed(1)}`;
+                            const location = params.data.location || 'Unknown';
+                            return `<b>${params.data.name}</b><br/>Category: ${categoryName}<br/>Location: ${location}`;
                         } else if (params.dataType === 'edge') {
                             return `Link: ${params.data.source} → ${params.data.target}`;
                         }
