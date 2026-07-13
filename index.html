@@ -66,19 +66,29 @@
                 }
             }));
 
-            // ===== Process Nodes =====
+            // ===== Process Nodes (Half Size) =====
             const nodes = data.nodes.map(node => ({
                 name: node.name,
                 category: node.category,
                 symbol: NODE_SHAPES[Math.floor(Math.random() * NODE_SHAPES.length)],
-                symbolSize: node.size,
-                value: node.size
+                symbolSize: node.size * 0.5,
+                value: node.size * 0.5
             }));
 
-            // ===== Process Links =====
+            // ===== Create Node Color Map =====
+            // Map each node name to its category color for link coloring
+            const nodeColorMap = {};
+            nodes.forEach(node => {
+                nodeColorMap[node.name] = data.categories[node.category].color;
+            });
+
+            // ===== Process Links with Category-Based Colors =====
             const links = data.links.map(link => ({
                 source: link.source,
-                target: link.target
+                target: link.target,
+                lineStyle: {
+                    color: nodeColorMap[link.source]
+                }
             }));
 
             // ===== Initialize Chart =====
@@ -91,7 +101,7 @@
                     formatter: function (params) {
                         if (params.dataType === 'node') {
                             const categoryName = categories[params.data.category]?.name || 'Unknown';
-                            return `<b>${params.data.name}</b><br/>Category: ${categoryName}<br/>Size: ${params.data.symbolSize}`;
+                            return `<b>${params.data.name}</b><br/>Category: ${categoryName}<br/>Size: ${params.data.symbolSize.toFixed(1)}`;
                         } else if (params.dataType === 'edge') {
                             return `Link: ${params.data.source} → ${params.data.target}`;
                         }
@@ -118,7 +128,6 @@
                     links: links,
                     categories: categories,
                     lineStyle: {
-                        color: 'source',
                         curveness: 0
                     }
                 }]
