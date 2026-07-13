@@ -60,28 +60,65 @@
                 }
             }));
 
-            // ===== Process Nodes (Uniform Size) =====
-            const nodes = data.nodes.map(node => ({
-                name: node.name,
-                category: node.category,
-                symbol: NODE_SHAPES[Math.floor(Math.random() * NODE_SHAPES.length)],
-                symbolSize: NODE_SIZE,
-                value: NODE_SIZE,
-                location: node.location
-            }));
+            // ===== Helper: Create Dual-Color Gradient =====
+            function createDualColorSVG(color1, color2) {
+                const svg = `
+                    <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:${color1};stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:${color2};stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="26" height="26" fill="url(#grad)" rx="2"/>
+                    </svg>
+                `;
+                return 'data:image/svg+xml;base64,' + btoa(svg);
+            }
 
-            // ===== Create Node Color Map =====
-            const nodeColorMap = {};
-            nodes.forEach(node => {
-                nodeColorMap[node.name] = data.categories[node.category].color;
+            // ===== Process Nodes with Dual Colors =====
+            const nodes = data.nodes.map(node => {
+                const color1 = data.categories[node.category].color;
+                const color2 = data.categories[node.category2].color;
+                const dualColorImage = createDualColorSVG(color1, color2);
+
+                return {
+                    name: node.name,
+                    category: node.category,
+                    category2: node.category2,
+                    symbol: 'image://' + dualColorImage,
+                    symbolSize: NODE_SIZE,
+                    value: NODE_SIZE,
+                    location: node.location,
+                    color1: color1,
+                    color2: color2
+                };
             });
 
-            // ===== Process Links with Category-Based Colors =====
-            const links = data.links.map(link => ({
+            // ===== Create Node Map for Easy Lookup =====
+            const nodeMap = {};
+            nodes.forEach(node => {
+                nodeMap[node.name] = node;
+            });
+
+            // ===== Filter Links: Only Keep Those with Shared Categories =====
+            const links = data.links.filter(link => {
+                const sourceNode = nodeMap[link.source];
+                const targetNode = nodeMap[link.target];
+                
+                if (!sourceNode || !targetNode) return false;
+                
+                // Check if nodes share at least one category
+                const sourceCategories = [sourceNode.category, sourceNode.category2];
+                const targetCategories = [targetNode.category, targetNode.category2];
+                
+                const hasSharedCategory = sourceCategories.some(cat => targetCategories.includes(cat));
+                return hasSharedCategory;
+            }).map(link => ({
                 source: link.source,
                 target: link.target,
                 lineStyle: {
-                    color: nodeColorMap[link.source]
+                    color: nodeMap[link.source].color1
                 }
             }));
 
@@ -94,9 +131,10 @@
                     trigger: 'item',
                     formatter: function (params) {
                         if (params.dataType === 'node') {
-                            const categoryName = categories[params.data.category]?.name || 'Unknown';
+                            const categoryName1 = categories[params.data.category]?.name || 'Unknown';
+                            const categoryName2 = categories[params.data.category2]?.name || 'Unknown';
                             const location = params.data.location || 'Unknown';
-                            return `<b>${params.data.name}</b><br/>Category: ${categoryName}<br/>Location: ${location}`;
+                            return `<b>${params.data.name}</b><br/>Categories: ${categoryName1} & ${categoryName2}<br/>Location: ${location}`;
                         } else if (params.dataType === 'edge') {
                             return `Link: ${params.data.source} → ${params.data.target}`;
                         }
