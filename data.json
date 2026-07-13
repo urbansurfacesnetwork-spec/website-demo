@@ -32,7 +32,7 @@
     }
   ],
   "nodes": [
-    {"id": 1, "name": "Node 1", "category": 0, "category2": 1, "location": "New York, USA"},
+    {"id": 1, "name": "Sabina Andron", "category": 0, "category2": 1, "location": "Melbourne, Australia"},
     {"id": 2, "name": "Node 2", "category": 1, "category2": 2, "location": "London, UK"},
     {"id": 3, "name": "Node 3", "category": 2, "category2": 3, "location": "Berlin, Germany"},
     {"id": 4, "name": "Node 4", "category": 3, "category2": 4, "location": "Paris, France"},
@@ -135,9 +135,9 @@
   ],
   "links": [
     {"source": "Node 1", "target": "Node 15"},
-    {"source": "Node 2", "target": "Node 28"},
-    {"source": "Node 3", "target": "Node 42"},
-    {"source": "Node 4", "target": "Node 55"},
+    {"source": "Node 1", "target": "Node 28"},
+    {"source": "Node 1", "target": "Node 42"},
+    {"source": "Node 1", "target": "Node 55"},
     {"source": "Node 5", "target": "Node 68"},
     {"source": "Node 6", "target": "Node 12"},
     {"source": "Node 7", "target": "Node 33"},
