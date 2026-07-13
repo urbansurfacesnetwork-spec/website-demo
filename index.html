@@ -38,7 +38,6 @@
             const NODE_REPULSION = 100;
             const EDGE_LENGTH = [50, 150];
             const NODE_SIZE = 15;
-            const NODE_SHAPES = ['rect', 'rect', 'rect', 'rect', 'rect', 'rect'];
 
             // ===== Fetch Data from JSON File =====
             const response = await fetch('data.json');
@@ -60,38 +59,25 @@
                 }
             }));
 
-            // ===== Helper: Create Dual-Color Gradient =====
-            function createDualColorSVG(color1, color2) {
-                const svg = `
-                    <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:${color1};stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:${color2};stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect x="2" y="2" width="26" height="26" fill="url(#grad)" rx="2"/>
-                    </svg>
-                `;
-                return 'data:image/svg+xml;base64,' + btoa(svg);
-            }
-
-            // ===== Process Nodes with Dual Colors =====
+            // ===== Process Nodes with Dual Categories =====
             const nodes = data.nodes.map(node => {
                 const color1 = data.categories[node.category].color;
                 const color2 = data.categories[node.category2].color;
-                const dualColorImage = createDualColorSVG(color1, color2);
 
                 return {
                     name: node.name,
                     category: node.category,
                     category2: node.category2,
-                    symbol: 'image://' + dualColorImage,
                     symbolSize: NODE_SIZE,
                     value: NODE_SIZE,
                     location: node.location,
                     color1: color1,
-                    color2: color2
+                    color2: color2,
+                    itemStyle: {
+                        color: color1,
+                        borderColor: color2,
+                        borderWidth: 2
+                    }
                 };
             });
 
