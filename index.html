@@ -1,151 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ECharts Force Graph - 100 Nodes, 5 Categories, Hover Info</title>
-<style>
-    body { font-family: Arial, sans-serif; }
-    #main { width: 100%; height: 600px; margin-top: 10px; }
-    #controls { margin-bottom: 10px; }
-    input[type="text"] { padding: 5px; width: 200px; }
-    button { padding: 5px 10px; }
-</style>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <meta charset="UTF-8">
+    <title>ECharts Force Graph - Network Connections USRN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+        
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        #main {
+            width: 100%;
+            height: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .error {
+            color: #d32f2f;
+            padding: 15px;
+            background-color: #ffebee;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 </head>
 <body>
 
 <h2>Network Connections USRN</h2>
 
-<div id="controls">
-    <input type="text" id="searchInput" placeholder="Enter node name">
-    <button onclick="searchNode()">Search</button>
-</div>
-
 <div id="main"></div>
 
 <script>
-try {
-    // ===== Custom Variables =====
-    const NODE_REPULSION = 100;
-    const EDGE_LENGTH = [50, 150];
-    const CATEGORY_COLORS = ['#5470C6', '#91CC75', '#EE6666', '#FAC858', '#73C0DE'];
-    const NODE_SHAPES = ['rect', 'rect', 'rect', 'rect', 'rect', 'rect'];
+    (async function () {
+        try {
+            // ===== Configuration =====
+            const NODE_REPULSION = 100;
+            const EDGE_LENGTH = [50, 150];
+            const NODE_SHAPES = ['rect', 'rect', 'rect', 'rect', 'rect', 'rect'];
 
-    // ===== Categories =====
-    const categories = [
-        { name: 'Group A', itemStyle: { color: CATEGORY_COLORS[0] } },
-        { name: 'Group B', itemStyle: { color: CATEGORY_COLORS[1] } },
-        { name: 'Group C', itemStyle: { color: CATEGORY_COLORS[2] } },
-        { name: 'Group D', itemStyle: { color: CATEGORY_COLORS[3] } },
-        { name: 'Group E', itemStyle: { color: CATEGORY_COLORS[4] } }
-    ];
-
-    // ===== Generate 100 Named Nodes =====
-    const nodes = [];
-    for (let i = 1; i <= 100; i++) {
-        const categoryIndex = Math.floor(Math.random() * categories.length);
-        const size = Math.floor(Math.random() * 30) + 20; // 20–50
-        nodes.push({
-            name: `Node ${i} - ${categories[categoryIndex].name}`,
-            category: categoryIndex,
-            symbol: NODE_SHAPES[Math.floor(Math.random() * NODE_SHAPES.length)],
-            symbolSize: size,
-            value: size, // store size for tooltip
-            tooltip: {
-                formatter: () => {
-                    return `
-                        <b>${nodes[i-1].name}</b><br/>
-                        Category: ${categories[categoryIndex].name}<br/>
-                        Size: ${size}
-                    `;
-                }
+            // ===== Fetch Data from JSON File =====
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data.json: ${response.statusText}`);
             }
-        });
-    }
+            const data = await response.json();
 
-    // ===== Generate Random Links =====
-    const links = [];
-    for (let i = 0; i < 150; i++) {
-        const sourceIndex = Math.floor(Math.random() * nodes.length);
-        let targetIndex = Math.floor(Math.random() * nodes.length);
-        while (targetIndex === sourceIndex) {
-            targetIndex = Math.floor(Math.random() * nodes.length);
-        }
-        links.push({
-            source: nodes[sourceIndex].name,
-            target: nodes[targetIndex].name
-        });
-    }
-
-    // ===== Chart Init =====
-    const chartDom = document.getElementById('main');
-    const myChart = echarts.init(chartDom);
-
-    const option = {
-        tooltip: {
-            trigger: 'item',
-            formatter: function (params) {
-                if (params.dataType === 'node') {
-                    return `
-                        <b>${params.data.name}</b><br/>
-                        Category: ${categories[params.data.category].name}<br/>
-                        Size: ${params.data.symbolSize}
-                    `;
-                } else if (params.dataType === 'edge') {
-                    return `Link: ${params.data.source} → ${params.data.target}`;
-                }
-                return '';
+            // ===== Validate Data Structure =====
+            if (!Array.isArray(data.categories) || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
+                throw new Error('Invalid data structure: missing categories, nodes, or links');
             }
-        },
-        legend: [{ data: categories.map(c => c.name) }],
-        series: [{
-            type: 'graph',
-            layout: 'force',
-            roam: true,
-            label: { show: true, position: 'right', fontSize: 10 },
-            force: { repulsion: NODE_REPULSION, edgeLength: EDGE_LENGTH },
-            data: nodes,
-            links: links,
-            categories: categories,
-            lineStyle: { color: 'source', curveness: 0 }
-        }]
-    };
 
-    myChart.setOption(option);
+            // ===== Process Categories =====
+            const categories = data.categories.map(category => ({
+                name: category.name,
+                itemStyle: {
+                    color: category.color
+                }
+            }));
 
-    // ===== Search Function =====
-    window.searchNode = function () {
-        const query = document.getElementById('searchInput').value.trim();
-        if (!query) return;
+            // ===== Process Nodes =====
+            const nodes = data.nodes.map(node => ({
+                name: node.name,
+                category: node.category,
+                symbol: NODE_SHAPES[Math.floor(Math.random() * NODE_SHAPES.length)],
+                symbolSize: node.size,
+                value: node.size
+            }));
 
-        const nodeIndex = nodes.findIndex(n => n.name.toLowerCase() === query.toLowerCase());
-        if (nodeIndex === -1) {
-            alert('Node not found!');
-            return;
+            // ===== Process Links =====
+            const links = data.links.map(link => ({
+                source: link.source,
+                target: link.target
+            }));
+
+            // ===== Initialize Chart =====
+            const chartDom = document.getElementById('main');
+            const myChart = echarts.init(chartDom);
+
+            const option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params) {
+                        if (params.dataType === 'node') {
+                            const categoryName = categories[params.data.category]?.name || 'Unknown';
+                            return `<b>${params.data.name}</b><br/>Category: ${categoryName}<br/>Size: ${params.data.symbolSize}`;
+                        } else if (params.dataType === 'edge') {
+                            return `Link: ${params.data.source} → ${params.data.target}`;
+                        }
+                        return '';
+                    }
+                },
+                legend: [{
+                    data: categories.map(c => c.name)
+                }],
+                series: [{
+                    type: 'graph',
+                    layout: 'force',
+                    roam: true,
+                    label: {
+                        show: true,
+                        position: 'right',
+                        fontSize: 10
+                    },
+                    force: {
+                        repulsion: NODE_REPULSION,
+                        edgeLength: EDGE_LENGTH
+                    },
+                    data: nodes,
+                    links: links,
+                    categories: categories,
+                    lineStyle: {
+                        color: 'source',
+                        curveness: 0
+                    }
+                }]
+            };
+
+            // ===== Set Chart Option =====
+            myChart.setOption(option);
+
+            // ===== Handle Window Resize =====
+            window.addEventListener('resize', () => {
+                myChart.resize();
+            });
+
+        } catch (err) {
+            console.error('Chart initialization failed:', err);
+            const mainDiv = document.getElementById('main');
+            mainDiv.innerHTML = `<div class="error"><strong>Error:</strong> ${err.message}</div>`;
+            mainDiv.style.height = 'auto';
         }
-
-        // Highlight the node
-        myChart.dispatchAction({
-            type: 'highlight',
-            seriesIndex: 0,
-            dataIndex: nodeIndex
-        });
-
-        // Focus on the node
-        myChart.dispatchAction({
-            type: 'focusNodeAdjacency',
-            seriesIndex: 0,
-            dataIndex: nodeIndex
-        });
-    };
-
-    // Resize on window change
-    window.addEventListener('resize', () => myChart.resize());
-
-} catch (err) {
-    console.error("Chart initialization failed:", err);
-    document.getElementById('main').innerHTML = "<p>Failed to load chart.</p>";
-}
+    })();
 </script>
 
 </body>
