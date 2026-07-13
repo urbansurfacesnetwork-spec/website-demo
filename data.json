@@ -32,606 +32,106 @@
     }
   ],
   "nodes": [
-    {
-      "id": 1,
-      "name": "Node 1",
-      "category": 0,
-      "location": "New York, USA"
-    },
-    {
-      "id": 2,
-      "name": "Node 2",
-      "category": 1,
-      "location": "London, UK"
-    },
-    {
-      "id": 3,
-      "name": "Node 3",
-      "category": 2,
-      "location": "Berlin, Germany"
-    },
-    {
-      "id": 4,
-      "name": "Node 4",
-      "category": 3,
-      "location": "Paris, France"
-    },
-    {
-      "id": 5,
-      "name": "Node 5",
-      "category": 4,
-      "location": "Tokyo, Japan"
-    },
-    {
-      "id": 6,
-      "name": "Node 6",
-      "category": 5,
-      "location": "Sydney, Australia"
-    },
-    {
-      "id": 7,
-      "name": "Node 7",
-      "category": 0,
-      "location": "Toronto, Canada"
-    },
-    {
-      "id": 8,
-      "name": "Node 8",
-      "category": 1,
-      "location": "Singapore, Singapore"
-    },
-    {
-      "id": 9,
-      "name": "Node 9",
-      "category": 2,
-      "location": "Hong Kong, China"
-    },
-    {
-      "id": 10,
-      "name": "Node 10",
-      "category": 3,
-      "location": "Mumbai, India"
-    },
-    {
-      "id": 11,
-      "name": "Node 11",
-      "category": 4,
-      "location": "São Paulo, Brazil"
-    },
-    {
-      "id": 12,
-      "name": "Node 12",
-      "category": 5,
-      "location": "Cape Town, South Africa"
-    },
-    {
-      "id": 13,
-      "name": "Node 13",
-      "category": 0,
-      "location": "Amsterdam, Netherlands"
-    },
-    {
-      "id": 14,
-      "name": "Node 14",
-      "category": 1,
-      "location": "Stockholm, Sweden"
-    },
-    {
-      "id": 15,
-      "name": "Node 15",
-      "category": 2,
-      "location": "Vienna, Austria"
-    },
-    {
-      "id": 16,
-      "name": "Node 16",
-      "category": 3,
-      "location": "Barcelona, Spain"
-    },
-    {
-      "id": 17,
-      "name": "Node 17",
-      "category": 4,
-      "location": "Istanbul, Turkey"
-    },
-    {
-      "id": 18,
-      "name": "Node 18",
-      "category": 5,
-      "location": "Bangkok, Thailand"
-    },
-    {
-      "id": 19,
-      "name": "Node 19",
-      "category": 0,
-      "location": "Dubai, UAE"
-    },
-    {
-      "id": 20,
-      "name": "Node 20",
-      "category": 1,
-      "location": "Mexico City, Mexico"
-    },
-    {
-      "id": 21,
-      "name": "Node 21",
-      "category": 2,
-      "location": "Seoul, South Korea"
-    },
-    {
-      "id": 22,
-      "name": "Node 22",
-      "category": 3,
-      "location": "Milan, Italy"
-    },
-    {
-      "id": 23,
-      "name": "Node 23",
-      "category": 4,
-      "location": "Geneva, Switzerland"
-    },
-    {
-      "id": 24,
-      "name": "Node 24",
-      "category": 5,
-      "location": "Vancouver, Canada"
-    },
-    {
-      "id": 25,
-      "name": "Node 25",
-      "category": 0,
-      "location": "Los Angeles, USA"
-    },
-    {
-      "id": 26,
-      "name": "Node 26",
-      "category": 1,
-      "location": "San Francisco, USA"
-    },
-    {
-      "id": 27,
-      "name": "Node 27",
-      "category": 2,
-      "location": "Chicago, USA"
-    },
-    {
-      "id": 28,
-      "name": "Node 28",
-      "category": 3,
-      "location": "Boston, USA"
-    },
-    {
-      "id": 29,
-      "name": "Node 29",
-      "category": 4,
-      "location": "Washington DC, USA"
-    },
-    {
-      "id": 30,
-      "name": "Node 30",
-      "category": 5,
-      "location": "Seattle, USA"
-    },
-    {
-      "id": 31,
-      "name": "Node 31",
-      "category": 0,
-      "location": "Dublin, Ireland"
-    },
-    {
-      "id": 32,
-      "name": "Node 32",
-      "category": 1,
-      "location": "Copenhagen, Denmark"
-    },
-    {
-      "id": 33,
-      "name": "Node 33",
-      "category": 2,
-      "location": "Oslo, Norway"
-    },
-    {
-      "id": 34,
-      "name": "Node 34",
-      "category": 3,
-      "location": "Helsinki, Finland"
-    },
-    {
-      "id": 35,
-      "name": "Node 35",
-      "category": 4,
-      "location": "Lisbon, Portugal"
-    },
-    {
-      "id": 36,
-      "name": "Node 36",
-      "category": 5,
-      "location": "Athens, Greece"
-    },
-    {
-      "id": 37,
-      "name": "Node 37",
-      "category": 0,
-      "location": "Prague, Czech Republic"
-    },
-    {
-      "id": 38,
-      "name": "Node 38",
-      "category": 1,
-      "location": "Warsaw, Poland"
-    },
-    {
-      "id": 39,
-      "name": "Node 39",
-      "category": 2,
-      "location": "Budapest, Hungary"
-    },
-    {
-      "id": 40,
-      "name": "Node 40",
-      "category": 3,
-      "location": "Bucharest, Romania"
-    },
-    {
-      "id": 41,
-      "name": "Node 41",
-      "category": 4,
-      "location": "Sofia, Bulgaria"
-    },
-    {
-      "id": 42,
-      "name": "Node 42",
-      "category": 5,
-      "location": "Zagreb, Croatia"
-    },
-    {
-      "id": 43,
-      "name": "Node 43",
-      "category": 0,
-      "location": "Moscow, Russia"
-    },
-    {
-      "id": 44,
-      "name": "Node 44",
-      "category": 1,
-      "location": "Saint Petersburg, Russia"
-    },
-    {
-      "id": 45,
-      "name": "Node 45",
-      "category": 2,
-      "location": "Kiev, Ukraine"
-    },
-    {
-      "id": 46,
-      "name": "Node 46",
-      "category": 3,
-      "location": "Bucharest, Romania"
-    },
-    {
-      "id": 47,
-      "name": "Node 47",
-      "category": 4,
-      "location": "Belgrade, Serbia"
-    },
-    {
-      "id": 48,
-      "name": "Node 48",
-      "category": 5,
-      "location": "Sofia, Bulgaria"
-    },
-    {
-      "id": 49,
-      "name": "Node 49",
-      "category": 0,
-      "location": "Cairo, Egypt"
-    },
-    {
-      "id": 50,
-      "name": "Node 50",
-      "category": 1,
-      "location": "Lagos, Nigeria"
-    },
-    {
-      "id": 51,
-      "name": "Node 51",
-      "category": 2,
-      "location": "Johannesburg, South Africa"
-    },
-    {
-      "id": 52,
-      "name": "Node 52",
-      "category": 3,
-      "location": "Nairobi, Kenya"
-    },
-    {
-      "id": 53,
-      "name": "Node 53",
-      "category": 4,
-      "location": "Accra, Ghana"
-    },
-    {
-      "id": 54,
-      "name": "Node 54",
-      "category": 5,
-      "location": "Dakar, Senegal"
-    },
-    {
-      "id": 55,
-      "name": "Node 55",
-      "category": 0,
-      "location": "Delhi, India"
-    },
-    {
-      "id": 56,
-      "name": "Node 56",
-      "category": 1,
-      "location": "Bangalore, India"
-    },
-    {
-      "id": 57,
-      "name": "Node 57",
-      "category": 2,
-      "location": "Manila, Philippines"
-    },
-    {
-      "id": 58,
-      "name": "Node 58",
-      "category": 3,
-      "location": "Jakarta, Indonesia"
-    },
-    {
-      "id": 59,
-      "name": "Node 59",
-      "category": 4,
-      "location": "Kuala Lumpur, Malaysia"
-    },
-    {
-      "id": 60,
-      "name": "Node 60",
-      "category": 5,
-      "location": "Ho Chi Minh City, Vietnam"
-    },
-    {
-      "id": 61,
-      "name": "Node 61",
-      "category": 0,
-      "location": "Shanghai, China"
-    },
-    {
-      "id": 62,
-      "name": "Node 62",
-      "category": 1,
-      "location": "Beijing, China"
-    },
-    {
-      "id": 63,
-      "name": "Node 63",
-      "category": 2,
-      "location": "Guangzhou, China"
-    },
-    {
-      "id": 64,
-      "name": "Node 64",
-      "category": 3,
-      "location": "Osaka, Japan"
-    },
-    {
-      "id": 65,
-      "name": "Node 65",
-      "category": 4,
-      "location": "Melbourne, Australia"
-    },
-    {
-      "id": 66,
-      "name": "Node 66",
-      "category": 5,
-      "location": "Auckland, New Zealand"
-    },
-    {
-      "id": 67,
-      "name": "Node 67",
-      "category": 0,
-      "location": "Wellington, New Zealand"
-    },
-    {
-      "id": 68,
-      "name": "Node 68",
-      "category": 1,
-      "location": "Brisbane, Australia"
-    },
-    {
-      "id": 69,
-      "name": "Node 69",
-      "category": 2,
-      "location": "Perth, Australia"
-    },
-    {
-      "id": 70,
-      "name": "Node 70",
-      "category": 3,
-      "location": "Adelaide, Australia"
-    },
-    {
-      "id": 71,
-      "name": "Node 71",
-      "category": 4,
-      "location": "Hobart, Australia"
-    },
-    {
-      "id": 72,
-      "name": "Node 72",
-      "category": 5,
-      "location": "Canberra, Australia"
-    },
-    {
-      "id": 73,
-      "name": "Node 73",
-      "category": 0,
-      "location": "Buenos Aires, Argentina"
-    },
-    {
-      "id": 74,
-      "name": "Node 74",
-      "category": 1,
-      "location": "Rio de Janeiro, Brazil"
-    },
-    {
-      "id": 75,
-      "name": "Node 75",
-      "category": 2,
-      "location": "Santiago, Chile"
-    },
-    {
-      "id": 76,
-      "name": "Node 76",
-      "category": 3,
-      "location": "Bogotá, Colombia"
-    },
-    {
-      "id": 77,
-      "name": "Node 77",
-      "category": 4,
-      "location": "Lima, Peru"
-    },
-    {
-      "id": 78,
-      "name": "Node 78",
-      "category": 5,
-      "location": "Caracas, Venezuela"
-    },
-    {
-      "id": 79,
-      "name": "Node 79",
-      "category": 0,
-      "location": "Havana, Cuba"
-    },
-    {
-      "id": 80,
-      "name": "Node 80",
-      "category": 1,
-      "location": "San Juan, Puerto Rico"
-    },
-    {
-      "id": 81,
-      "name": "Node 81",
-      "category": 2,
-      "location": "Port of Spain, Trinidad and Tobago"
-    },
-    {
-      "id": 82,
-      "name": "Node 82",
-      "category": 3,
-      "location": "Kingston, Jamaica"
-    },
-    {
-      "id": 83,
-      "name": "Node 83",
-      "category": 4,
-      "location": "Nassau, Bahamas"
-    },
-    {
-      "id": 84,
-      "name": "Node 84",
-      "category": 5,
-      "location": "Bridgetown, Barbados"
-    },
-    {
-      "id": 85,
-      "name": "Node 85",
-      "category": 0,
-      "location": "Guatemala City, Guatemala"
-    },
-    {
-      "id": 86,
-      "name": "Node 86",
-      "category": 1,
-      "location": "San Salvador, El Salvador"
-    },
-    {
-      "id": 87,
-      "name": "Node 87",
-      "category": 2,
-      "location": "Tegucigalpa, Honduras"
-    },
-    {
-      "id": 88,
-      "name": "Node 88",
-      "category": 3,
-      "location": "Managua, Nicaragua"
-    },
-    {
-      "id": 89,
-      "name": "Node 89",
-      "category": 4,
-      "location": "San José, Costa Rica"
-    },
-    {
-      "id": 90,
-      "name": "Node 90",
-      "category": 5,
-      "location": "Panama City, Panama"
-    },
-    {
-      "id": 91,
-      "name": "Node 91",
-      "category": 0,
-      "location": "Kingston, Jamaica"
-    },
-    {
-      "id": 92,
-      "name": "Node 92",
-      "category": 1,
-      "location": "Montego Bay, Jamaica"
-    },
-    {
-      "id": 93,
-      "name": "Node 93",
-      "category": 2,
-      "location": "Nassau, Bahamas"
-    },
-    {
-      "id": 94,
-      "name": "Node 94",
-      "category": 3,
-      "location": "Freeport, Bahamas"
-    },
-    {
-      "id": 95,
-      "name": "Node 95",
-      "category": 4,
-      "location": "Bridgetown, Barbados"
-    },
-    {
-      "id": 96,
-      "name": "Node 96",
-      "category": 5,
-      "location": "Castries, Saint Lucia"
-    },
-    {
-      "id": 97,
-      "name": "Node 97",
-      "category": 0,
-      "location": "St. John's, Antigua and Barbuda"
-    },
-    {
-      "id": 98,
-      "name": "Node 98",
-      "category": 1,
-      "location": "Roseau, Dominica"
-    },
-    {
-      "id": 99,
-      "name": "Node 99",
-      "category": 2,
-      "location": "Basseterre, Saint Kitts and Nevis"
-    },
-    {
-      "id": 100,
-      "name": "Node 100",
-      "category": 3,
-      "location": "Plymouth, Montserrat"
-    }
+    {"id": 1, "name": "Node 1", "category": 0, "category2": 1, "location": "New York, USA"},
+    {"id": 2, "name": "Node 2", "category": 1, "category2": 2, "location": "London, UK"},
+    {"id": 3, "name": "Node 3", "category": 2, "category2": 3, "location": "Berlin, Germany"},
+    {"id": 4, "name": "Node 4", "category": 3, "category2": 4, "location": "Paris, France"},
+    {"id": 5, "name": "Node 5", "category": 4, "category2": 5, "location": "Tokyo, Japan"},
+    {"id": 6, "name": "Node 6", "category": 5, "category2": 0, "location": "Sydney, Australia"},
+    {"id": 7, "name": "Node 7", "category": 0, "category2": 2, "location": "Toronto, Canada"},
+    {"id": 8, "name": "Node 8", "category": 1, "category2": 3, "location": "Singapore, Singapore"},
+    {"id": 9, "name": "Node 9", "category": 2, "category2": 4, "location": "Hong Kong, China"},
+    {"id": 10, "name": "Node 10", "category": 3, "category2": 5, "location": "Mumbai, India"},
+    {"id": 11, "name": "Node 11", "category": 4, "category2": 0, "location": "São Paulo, Brazil"},
+    {"id": 12, "name": "Node 12", "category": 5, "category2": 1, "location": "Cape Town, South Africa"},
+    {"id": 13, "name": "Node 13", "category": 0, "category2": 3, "location": "Amsterdam, Netherlands"},
+    {"id": 14, "name": "Node 14", "category": 1, "category2": 4, "location": "Stockholm, Sweden"},
+    {"id": 15, "name": "Node 15", "category": 2, "category2": 5, "location": "Vienna, Austria"},
+    {"id": 16, "name": "Node 16", "category": 3, "category2": 0, "location": "Barcelona, Spain"},
+    {"id": 17, "name": "Node 17", "category": 4, "category2": 1, "location": "Istanbul, Turkey"},
+    {"id": 18, "name": "Node 18", "category": 5, "category2": 2, "location": "Bangkok, Thailand"},
+    {"id": 19, "name": "Node 19", "category": 0, "category2": 4, "location": "Dubai, UAE"},
+    {"id": 20, "name": "Node 20", "category": 1, "category2": 5, "location": "Mexico City, Mexico"},
+    {"id": 21, "name": "Node 21", "category": 2, "category2": 0, "location": "Seoul, South Korea"},
+    {"id": 22, "name": "Node 22", "category": 3, "category2": 1, "location": "Milan, Italy"},
+    {"id": 23, "name": "Node 23", "category": 4, "category2": 2, "location": "Geneva, Switzerland"},
+    {"id": 24, "name": "Node 24", "category": 5, "category2": 3, "location": "Vancouver, Canada"},
+    {"id": 25, "name": "Node 25", "category": 0, "category2": 5, "location": "Los Angeles, USA"},
+    {"id": 26, "name": "Node 26", "category": 1, "category2": 0, "location": "San Francisco, USA"},
+    {"id": 27, "name": "Node 27", "category": 2, "category2": 1, "location": "Chicago, USA"},
+    {"id": 28, "name": "Node 28", "category": 3, "category2": 2, "location": "Boston, USA"},
+    {"id": 29, "name": "Node 29", "category": 4, "category2": 3, "location": "Washington DC, USA"},
+    {"id": 30, "name": "Node 30", "category": 5, "category2": 4, "location": "Seattle, USA"},
+    {"id": 31, "name": "Node 31", "category": 0, "category2": 1, "location": "Dublin, Ireland"},
+    {"id": 32, "name": "Node 32", "category": 1, "category2": 2, "location": "Copenhagen, Denmark"},
+    {"id": 33, "name": "Node 33", "category": 2, "category2": 3, "location": "Oslo, Norway"},
+    {"id": 34, "name": "Node 34", "category": 3, "category2": 4, "location": "Helsinki, Finland"},
+    {"id": 35, "name": "Node 35", "category": 4, "category2": 5, "location": "Lisbon, Portugal"},
+    {"id": 36, "name": "Node 36", "category": 5, "category2": 0, "location": "Athens, Greece"},
+    {"id": 37, "name": "Node 37", "category": 0, "category2": 2, "location": "Prague, Czech Republic"},
+    {"id": 38, "name": "Node 38", "category": 1, "category2": 3, "location": "Warsaw, Poland"},
+    {"id": 39, "name": "Node 39", "category": 2, "category2": 4, "location": "Budapest, Hungary"},
+    {"id": 40, "name": "Node 40", "category": 3, "category2": 5, "location": "Bucharest, Romania"},
+    {"id": 41, "name": "Node 41", "category": 4, "category2": 0, "location": "Sofia, Bulgaria"},
+    {"id": 42, "name": "Node 42", "category": 5, "category2": 1, "location": "Zagreb, Croatia"},
+    {"id": 43, "name": "Node 43", "category": 0, "category2": 3, "location": "Moscow, Russia"},
+    {"id": 44, "name": "Node 44", "category": 1, "category2": 4, "location": "Saint Petersburg, Russia"},
+    {"id": 45, "name": "Node 45", "category": 2, "category2": 5, "location": "Kiev, Ukraine"},
+    {"id": 46, "name": "Node 46", "category": 3, "category2": 0, "location": "Bucharest, Romania"},
+    {"id": 47, "name": "Node 47", "category": 4, "category2": 1, "location": "Belgrade, Serbia"},
+    {"id": 48, "name": "Node 48", "category": 5, "category2": 2, "location": "Sofia, Bulgaria"},
+    {"id": 49, "name": "Node 49", "category": 0, "category2": 4, "location": "Cairo, Egypt"},
+    {"id": 50, "name": "Node 50", "category": 1, "category2": 5, "location": "Lagos, Nigeria"},
+    {"id": 51, "name": "Node 51", "category": 2, "category2": 0, "location": "Johannesburg, South Africa"},
+    {"id": 52, "name": "Node 52", "category": 3, "category2": 1, "location": "Nairobi, Kenya"},
+    {"id": 53, "name": "Node 53", "category": 4, "category2": 2, "location": "Accra, Ghana"},
+    {"id": 54, "name": "Node 54", "category": 5, "category2": 3, "location": "Dakar, Senegal"},
+    {"id": 55, "name": "Node 55", "category": 0, "category2": 5, "location": "Delhi, India"},
+    {"id": 56, "name": "Node 56", "category": 1, "category2": 0, "location": "Bangalore, India"},
+    {"id": 57, "name": "Node 57", "category": 2, "category2": 1, "location": "Manila, Philippines"},
+    {"id": 58, "name": "Node 58", "category": 3, "category2": 2, "location": "Jakarta, Indonesia"},
+    {"id": 59, "name": "Node 59", "category": 4, "category2": 3, "location": "Kuala Lumpur, Malaysia"},
+    {"id": 60, "name": "Node 60", "category": 5, "category2": 4, "location": "Ho Chi Minh City, Vietnam"},
+    {"id": 61, "name": "Node 61", "category": 0, "category2": 1, "location": "Shanghai, China"},
+    {"id": 62, "name": "Node 62", "category": 1, "category2": 2, "location": "Beijing, China"},
+    {"id": 63, "name": "Node 63", "category": 2, "category2": 3, "location": "Guangzhou, China"},
+    {"id": 64, "name": "Node 64", "category": 3, "category2": 4, "location": "Osaka, Japan"},
+    {"id": 65, "name": "Node 65", "category": 4, "category2": 5, "location": "Melbourne, Australia"},
+    {"id": 66, "name": "Node 66", "category": 5, "category2": 0, "location": "Auckland, New Zealand"},
+    {"id": 67, "name": "Node 67", "category": 0, "category2": 2, "location": "Wellington, New Zealand"},
+    {"id": 68, "name": "Node 68", "category": 1, "category2": 3, "location": "Brisbane, Australia"},
+    {"id": 69, "name": "Node 69", "category": 2, "category2": 4, "location": "Perth, Australia"},
+    {"id": 70, "name": "Node 70", "category": 3, "category2": 5, "location": "Adelaide, Australia"},
+    {"id": 71, "name": "Node 71", "category": 4, "category2": 0, "location": "Hobart, Australia"},
+    {"id": 72, "name": "Node 72", "category": 5, "category2": 1, "location": "Canberra, Australia"},
+    {"id": 73, "name": "Node 73", "category": 0, "category2": 3, "location": "Buenos Aires, Argentina"},
+    {"id": 74, "name": "Node 74", "category": 1, "category2": 4, "location": "Rio de Janeiro, Brazil"},
+    {"id": 75, "name": "Node 75", "category": 2, "category2": 5, "location": "Santiago, Chile"},
+    {"id": 76, "name": "Node 76", "category": 3, "category2": 0, "location": "Bogotá, Colombia"},
+    {"id": 77, "name": "Node 77", "category": 4, "category2": 1, "location": "Lima, Peru"},
+    {"id": 78, "name": "Node 78", "category": 5, "category2": 2, "location": "Caracas, Venezuela"},
+    {"id": 79, "name": "Node 79", "category": 0, "category2": 4, "location": "Havana, Cuba"},
+    {"id": 80, "name": "Node 80", "category": 1, "category2": 5, "location": "San Juan, Puerto Rico"},
+    {"id": 81, "name": "Node 81", "category": 2, "category2": 0, "location": "Port of Spain, Trinidad and Tobago"},
+    {"id": 82, "name": "Node 82", "category": 3, "category2": 1, "location": "Kingston, Jamaica"},
+    {"id": 83, "name": "Node 83", "category": 4, "category2": 2, "location": "Nassau, Bahamas"},
+    {"id": 84, "name": "Node 84", "category": 5, "category2": 3, "location": "Bridgetown, Barbados"},
+    {"id": 85, "name": "Node 85", "category": 0, "category2": 5, "location": "Guatemala City, Guatemala"},
+    {"id": 86, "name": "Node 86", "category": 1, "category2": 0, "location": "San Salvador, El Salvador"},
+    {"id": 87, "name": "Node 87", "category": 2, "category2": 1, "location": "Tegucigalpa, Honduras"},
+    {"id": 88, "name": "Node 88", "category": 3, "category2": 2, "location": "Managua, Nicaragua"},
+    {"id": 89, "name": "Node 89", "category": 4, "category2": 3, "location": "San José, Costa Rica"},
+    {"id": 90, "name": "Node 90", "category": 5, "category2": 4, "location": "Panama City, Panama"},
+    {"id": 91, "name": "Node 91", "category": 0, "category2": 1, "location": "Kingston, Jamaica"},
+    {"id": 92, "name": "Node 92", "category": 1, "category2": 2, "location": "Montego Bay, Jamaica"},
+    {"id": 93, "name": "Node 93", "category": 2, "category2": 3, "location": "Nassau, Bahamas"},
+    {"id": 94, "name": "Node 94", "category": 3, "category2": 4, "location": "Freeport, Bahamas"},
+    {"id": 95, "name": "Node 95", "category": 4, "category2": 5, "location": "Bridgetown, Barbados"},
+    {"id": 96, "name": "Node 96", "category": 5, "category2": 0, "location": "Castries, Saint Lucia"},
+    {"id": 97, "name": "Node 97", "category": 0, "category2": 2, "location": "St. John's, Antigua and Barbuda"},
+    {"id": 98, "name": "Node 98", "category": 1, "category2": 3, "location": "Roseau, Dominica"},
+    {"id": 99, "name": "Node 99", "category": 2, "category2": 4, "location": "Basseterre, Saint Kitts and Nevis"},
+    {"id": 100, "name": "Node 100", "category": 3, "category2": 5, "location": "Plymouth, Montserrat"}
   ],
   "links": [
     {"source": "Node 1", "target": "Node 15"},
