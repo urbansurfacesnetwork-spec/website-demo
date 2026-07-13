@@ -1,0 +1,733 @@
+{
+  "categories": [
+    {
+      "id": 0,
+      "name": "Group A",
+      "color": "#1f77b4"
+    },
+    {
+      "id": 1,
+      "name": "Group B",
+      "color": "#2ca02c"
+    },
+    {
+      "id": 2,
+      "name": "Group C",
+      "color": "#1f77b4"
+    },
+    {
+      "id": 3,
+      "name": "Group D",
+      "color": "#2ca02c"
+    },
+    {
+      "id": 4,
+      "name": "Group E",
+      "color": "#1f77b4"
+    }
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "name": "Node 1",
+      "category": 0,
+      "size": 25
+    },
+    {
+      "id": 2,
+      "name": "Node 2",
+      "category": 1,
+      "size": 30
+    },
+    {
+      "id": 3,
+      "name": "Node 3",
+      "category": 2,
+      "size": 22
+    },
+    {
+      "id": 4,
+      "name": "Node 4",
+      "category": 3,
+      "size": 28
+    },
+    {
+      "id": 5,
+      "name": "Node 5",
+      "category": 4,
+      "size": 26
+    },
+    {
+      "id": 6,
+      "name": "Node 6",
+      "category": 0,
+      "size": 24
+    },
+    {
+      "id": 7,
+      "name": "Node 7",
+      "category": 1,
+      "size": 29
+    },
+    {
+      "id": 8,
+      "name": "Node 8",
+      "category": 2,
+      "size": 23
+    },
+    {
+      "id": 9,
+      "name": "Node 9",
+      "category": 3,
+      "size": 27
+    },
+    {
+      "id": 10,
+      "name": "Node 10",
+      "category": 4,
+      "size": 25
+    },
+    {
+      "id": 11,
+      "name": "Node 11",
+      "category": 0,
+      "size": 26
+    },
+    {
+      "id": 12,
+      "name": "Node 12",
+      "category": 1,
+      "size": 31
+    },
+    {
+      "id": 13,
+      "name": "Node 13",
+      "category": 2,
+      "size": 21
+    },
+    {
+      "id": 14,
+      "name": "Node 14",
+      "category": 3,
+      "size": 28
+    },
+    {
+      "id": 15,
+      "name": "Node 15",
+      "category": 4,
+      "size": 24
+    },
+    {
+      "id": 16,
+      "name": "Node 16",
+      "category": 0,
+      "size": 27
+    },
+    {
+      "id": 17,
+      "name": "Node 17",
+      "category": 1,
+      "size": 30
+    },
+    {
+      "id": 18,
+      "name": "Node 18",
+      "category": 2,
+      "size": 25
+    },
+    {
+      "id": 19,
+      "name": "Node 19",
+      "category": 3,
+      "size": 26
+    },
+    {
+      "id": 20,
+      "name": "Node 20",
+      "category": 4,
+      "size": 28
+    },
+    {
+      "id": 21,
+      "name": "Node 21",
+      "category": 0,
+      "size": 23
+    },
+    {
+      "id": 22,
+      "name": "Node 22",
+      "category": 1,
+      "size": 32
+    },
+    {
+      "id": 23,
+      "name": "Node 23",
+      "category": 2,
+      "size": 24
+    },
+    {
+      "id": 24,
+      "name": "Node 24",
+      "category": 3,
+      "size": 29
+    },
+    {
+      "id": 25,
+      "name": "Node 25",
+      "category": 4,
+      "size": 27
+    },
+    {
+      "id": 26,
+      "name": "Node 26",
+      "category": 0,
+      "size": 26
+    },
+    {
+      "id": 27,
+      "name": "Node 27",
+      "category": 1,
+      "size": 31
+    },
+    {
+      "id": 28,
+      "name": "Node 28",
+      "category": 2,
+      "size": 22
+    },
+    {
+      "id": 29,
+      "name": "Node 29",
+      "category": 3,
+      "size": 25
+    },
+    {
+      "id": 30,
+      "name": "Node 30",
+      "category": 4,
+      "size": 28
+    },
+    {
+      "id": 31,
+      "name": "Node 31",
+      "category": 0,
+      "size": 24
+    },
+    {
+      "id": 32,
+      "name": "Node 32",
+      "category": 1,
+      "size": 30
+    },
+    {
+      "id": 33,
+      "name": "Node 33",
+      "category": 2,
+      "size": 26
+    },
+    {
+      "id": 34,
+      "name": "Node 34",
+      "category": 3,
+      "size": 27
+    },
+    {
+      "id": 35,
+      "name": "Node 35",
+      "category": 4,
+      "size": 25
+    },
+    {
+      "id": 36,
+      "name": "Node 36",
+      "category": 0,
+      "size": 28
+    },
+    {
+      "id": 37,
+      "name": "Node 37",
+      "category": 1,
+      "size": 29
+    },
+    {
+      "id": 38,
+      "name": "Node 38",
+      "category": 2,
+      "size": 23
+    },
+    {
+      "id": 39,
+      "name": "Node 39",
+      "category": 3,
+      "size": 26
+    },
+    {
+      "id": 40,
+      "name": "Node 40",
+      "category": 4,
+      "size": 30
+    },
+    {
+      "id": 41,
+      "name": "Node 41",
+      "category": 0,
+      "size": 25
+    },
+    {
+      "id": 42,
+      "name": "Node 42",
+      "category": 1,
+      "size": 32
+    },
+    {
+      "id": 43,
+      "name": "Node 43",
+      "category": 2,
+      "size": 24
+    },
+    {
+      "id": 44,
+      "name": "Node 44",
+      "category": 3,
+      "size": 28
+    },
+    {
+      "id": 45,
+      "name": "Node 45",
+      "category": 4,
+      "size": 26
+    },
+    {
+      "id": 46,
+      "name": "Node 46",
+      "category": 0,
+      "size": 27
+    },
+    {
+      "id": 47,
+      "name": "Node 47",
+      "category": 1,
+      "size": 31
+    },
+    {
+      "id": 48,
+      "name": "Node 48",
+      "category": 2,
+      "size": 22
+    },
+    {
+      "id": 49,
+      "name": "Node 49",
+      "category": 3,
+      "size": 25
+    },
+    {
+      "id": 50,
+      "name": "Node 50",
+      "category": 4,
+      "size": 29
+    },
+    {
+      "id": 51,
+      "name": "Node 51",
+      "category": 0,
+      "size": 26
+    },
+    {
+      "id": 52,
+      "name": "Node 52",
+      "category": 1,
+      "size": 30
+    },
+    {
+      "id": 53,
+      "name": "Node 53",
+      "category": 2,
+      "size": 23
+    },
+    {
+      "id": 54,
+      "name": "Node 54",
+      "category": 3,
+      "size": 27
+    },
+    {
+      "id": 55,
+      "name": "Node 55",
+      "category": 4,
+      "size": 25
+    },
+    {
+      "id": 56,
+      "name": "Node 56",
+      "category": 0,
+      "size": 28
+    },
+    {
+      "id": 57,
+      "name": "Node 57",
+      "category": 1,
+      "size": 31
+    },
+    {
+      "id": 58,
+      "name": "Node 58",
+      "category": 2,
+      "size": 24
+    },
+    {
+      "id": 59,
+      "name": "Node 59",
+      "category": 3,
+      "size": 26
+    },
+    {
+      "id": 60,
+      "name": "Node 60",
+      "category": 4,
+      "size": 30
+    },
+    {
+      "id": 61,
+      "name": "Node 61",
+      "category": 0,
+      "size": 25
+    },
+    {
+      "id": 62,
+      "name": "Node 62",
+      "category": 1,
+      "size": 32
+    },
+    {
+      "id": 63,
+      "name": "Node 63",
+      "category": 2,
+      "size": 22
+    },
+    {
+      "id": 64,
+      "name": "Node 64",
+      "category": 3,
+      "size": 28
+    },
+    {
+      "id": 65,
+      "name": "Node 65",
+      "category": 4,
+      "size": 26
+    },
+    {
+      "id": 66,
+      "name": "Node 66",
+      "category": 0,
+      "size": 27
+    },
+    {
+      "id": 67,
+      "name": "Node 67",
+      "category": 1,
+      "size": 29
+    },
+    {
+      "id": 68,
+      "name": "Node 68",
+      "category": 2,
+      "size": 23
+    },
+    {
+      "id": 69,
+      "name": "Node 69",
+      "category": 3,
+      "size": 25
+    },
+    {
+      "id": 70,
+      "name": "Node 70",
+      "category": 4,
+      "size": 30
+    },
+    {
+      "id": 71,
+      "name": "Node 71",
+      "category": 0,
+      "size": 26
+    },
+    {
+      "id": 72,
+      "name": "Node 72",
+      "category": 1,
+      "size": 31
+    },
+    {
+      "id": 73,
+      "name": "Node 73",
+      "category": 2,
+      "size": 24
+    },
+    {
+      "id": 74,
+      "name": "Node 74",
+      "category": 3,
+      "size": 27
+    },
+    {
+      "id": 75,
+      "name": "Node 75",
+      "category": 4,
+      "size": 25
+    },
+    {
+      "id": 76,
+      "name": "Node 76",
+      "category": 0,
+      "size": 28
+    },
+    {
+      "id": 77,
+      "name": "Node 77",
+      "category": 1,
+      "size": 32
+    },
+    {
+      "id": 78,
+      "name": "Node 78",
+      "category": 2,
+      "size": 22
+    },
+    {
+      "id": 79,
+      "name": "Node 79",
+      "category": 3,
+      "size": 26
+    },
+    {
+      "id": 80,
+      "name": "Node 80",
+      "category": 4,
+      "size": 29
+    },
+    {
+      "id": 81,
+      "name": "Node 81",
+      "category": 0,
+      "size": 25
+    },
+    {
+      "id": 82,
+      "name": "Node 82",
+      "category": 1,
+      "size": 30
+    },
+    {
+      "id": 83,
+      "name": "Node 83",
+      "category": 2,
+      "size": 23
+    },
+    {
+      "id": 84,
+      "name": "Node 84",
+      "category": 3,
+      "size": 28
+    },
+    {
+      "id": 85,
+      "name": "Node 85",
+      "category": 4,
+      "size": 26
+    },
+    {
+      "id": 86,
+      "name": "Node 86",
+      "category": 0,
+      "size": 27
+    },
+    {
+      "id": 87,
+      "name": "Node 87",
+      "category": 1,
+      "size": 31
+    },
+    {
+      "id": 88,
+      "name": "Node 88",
+      "category": 2,
+      "size": 24
+    },
+    {
+      "id": 89,
+      "name": "Node 89",
+      "category": 3,
+      "size": 25
+    },
+    {
+      "id": 90,
+      "name": "Node 90",
+      "category": 4,
+      "size": 30
+    },
+    {
+      "id": 91,
+      "name": "Node 91",
+      "category": 0,
+      "size": 26
+    },
+    {
+      "id": 92,
+      "name": "Node 92",
+      "category": 1,
+      "size": 32
+    },
+    {
+      "id": 93,
+      "name": "Node 93",
+      "category": 2,
+      "size": 22
+    },
+    {
+      "id": 94,
+      "name": "Node 94",
+      "category": 3,
+      "size": 27
+    },
+    {
+      "id": 95,
+      "name": "Node 95",
+      "category": 4,
+      "size": 25
+    },
+    {
+      "id": 96,
+      "name": "Node 96",
+      "category": 0,
+      "size": 28
+    },
+    {
+      "id": 97,
+      "name": "Node 97",
+      "category": 1,
+      "size": 29
+    },
+    {
+      "id": 98,
+      "name": "Node 98",
+      "category": 2,
+      "size": 23
+    },
+    {
+      "id": 99,
+      "name": "Node 99",
+      "category": 3,
+      "size": 26
+    },
+    {
+      "id": 100,
+      "name": "Node 100",
+      "category": 4,
+      "size": 30
+    }
+  ],
+  "links": [
+    {"source": "Node 1", "target": "Node 15"},
+    {"source": "Node 2", "target": "Node 28"},
+    {"source": "Node 3", "target": "Node 42"},
+    {"source": "Node 4", "target": "Node 55"},
+    {"source": "Node 5", "target": "Node 68"},
+    {"source": "Node 6", "target": "Node 12"},
+    {"source": "Node 7", "target": "Node 33"},
+    {"source": "Node 8", "target": "Node 47"},
+    {"source": "Node 9", "target": "Node 61"},
+    {"source": "Node 10", "target": "Node 79"},
+    {"source": "Node 11", "target": "Node 23"},
+    {"source": "Node 12", "target": "Node 45"},
+    {"source": "Node 13", "target": "Node 58"},
+    {"source": "Node 14", "target": "Node 71"},
+    {"source": "Node 15", "target": "Node 89"},
+    {"source": "Node 16", "target": "Node 31"},
+    {"source": "Node 17", "target": "Node 52"},
+    {"source": "Node 18", "target": "Node 64"},
+    {"source": "Node 19", "target": "Node 77"},
+    {"source": "Node 20", "target": "Node 8"},
+    {"source": "Node 21", "target": "Node 37"},
+    {"source": "Node 22", "target": "Node 59"},
+    {"source": "Node 23", "target": "Node 73"},
+    {"source": "Node 24", "target": "Node 14"},
+    {"source": "Node 25", "target": "Node 41"},
+    {"source": "Node 26", "target": "Node 54"},
+    {"source": "Node 27", "target": "Node 67"},
+    {"source": "Node 28", "target": "Node 91"},
+    {"source": "Node 29", "target": "Node 19"},
+    {"source": "Node 30", "target": "Node 44"},
+    {"source": "Node 31", "target": "Node 56"},
+    {"source": "Node 32", "target": "Node 82"},
+    {"source": "Node 33", "target": "Node 6"},
+    {"source": "Node 34", "target": "Node 38"},
+    {"source": "Node 35", "target": "Node 72"},
+    {"source": "Node 36", "target": "Node 21"},
+    {"source": "Node 37", "target": "Node 48"},
+    {"source": "Node 38", "target": "Node 87"},
+    {"source": "Node 39", "target": "Node 26"},
+    {"source": "Node 40", "target": "Node 63"},
+    {"source": "Node 41", "target": "Node 74"},
+    {"source": "Node 42", "target": "Node 11"},
+    {"source": "Node 43", "target": "Node 39"},
+    {"source": "Node 44", "target": "Node 76"},
+    {"source": "Node 45", "target": "Node 9"},
+    {"source": "Node 46", "target": "Node 62"},
+    {"source": "Node 47", "target": "Node 25"},
+    {"source": "Node 48", "target": "Node 51"},
+    {"source": "Node 49", "target": "Node 85"},
+    {"source": "Node 50", "target": "Node 17"},
+    {"source": "Node 51", "target": "Node 68"},
+    {"source": "Node 52", "target": "Node 32"},
+    {"source": "Node 53", "target": "Node 77"},
+    {"source": "Node 54", "target": "Node 24"},
+    {"source": "Node 55", "target": "Node 50"},
+    {"source": "Node 56", "target": "Node 84"},
+    {"source": "Node 57", "target": "Node 36"},
+    {"source": "Node 58", "target": "Node 69"},
+    {"source": "Node 59", "target": "Node 13"},
+    {"source": "Node 60", "target": "Node 46"},
+    {"source": "Node 61", "target": "Node 88"},
+    {"source": "Node 62", "target": "Node 29"},
+    {"source": "Node 63", "target": "Node 75"},
+    {"source": "Node 64", "target": "Node 53"},
+    {"source": "Node 65", "target": "Node 4"},
+    {"source": "Node 66", "target": "Node 67"},
+    {"source": "Node 67", "target": "Node 18"},
+    {"source": "Node 68", "target": "Node 92"},
+    {"source": "Node 69", "target": "Node 35"},
+    {"source": "Node 70", "target": "Node 49"},
+    {"source": "Node 71", "target": "Node 22"},
+    {"source": "Node 72", "target": "Node 57"},
+    {"source": "Node 73", "target": "Node 40"},
+    {"source": "Node 74", "target": "Node 16"},
+    {"source": "Node 75", "target": "Node 83"},
+    {"source": "Node 76", "target": "Node 27"},
+    {"source": "Node 77", "target": "Node 60"},
+    {"source": "Node 78", "target": "Node 70"},
+    {"source": "Node 79", "target": "Node 43"},
+    {"source": "Node 80", "target": "Node 2"},
+    {"source": "Node 81", "target": "Node 65"},
+    {"source": "Node 82", "target": "Node 34"},
+    {"source": "Node 83", "target": "Node 80"},
+    {"source": "Node 84", "target": "Node 30"},
+    {"source": "Node 85", "target": "Node 97"},
+    {"source": "Node 86", "target": "Node 20"},
+    {"source": "Node 87", "target": "Node 5"},
+    {"source": "Node 88", "target": "Node 66"},
+    {"source": "Node 89", "target": "Node 47"},
+    {"source": "Node 90", "target": "Node 3"},
+    {"source": "Node 91", "target": "Node 58"},
+    {"source": "Node 92", "target": "Node 10"},
+    {"source": "Node 93", "target": "Node 81"},
+    {"source": "Node 94", "target": "Node 100"},
+    {"source": "Node 95", "target": "Node 64"},
+    {"source": "Node 96", "target": "Node 7"},
+    {"source": "Node 97", "target": "Node 86"},
+    {"source": "Node 98", "target": "Node 37"},
+    {"source": "Node 99", "target": "Node 52"},
+    {"source": "Node 100", "target": "Node 69"}
+  ]
+}
