@@ -1,0 +1,4154 @@
+{
+  "categories": [
+    {
+      "id": 0,
+      "name": "Materiality",
+      "color": "#1f77b4"
+    },
+    {
+      "id": 1,
+      "name": "Economy",
+      "color": "#2ca02c"
+    },
+    {
+      "id": 2,
+      "name": "Governance",
+      "color": "#0d47a1"
+    },
+    {
+      "id": 3,
+      "name": "Communication",
+      "color": "#1b5e20"
+    },
+    {
+      "id": 4,
+      "name": "Labour",
+      "color": "#283593"
+    },
+    {
+      "id": 5,
+      "name": "Ecology",
+      "color": "#00695c"
+    }
+  ],
+  "nodes": [
+    {
+      "id": 1,
+      "name": "Adam Hudec",
+      "category": 2,
+      "category2": 3,
+      "discipline": "Sociology",
+      "research_focus": "epidermitecture, biopatina on surfaces",
+      "grouping_theme": "Governance",
+      "location": "Buenos Aires, Argentina",
+      "type": "person"
+    },
+    {
+      "id": 2,
+      "name": "Adam Jaworski",
+      "category": 5,
+      "category2": 1,
+      "discipline": "Architecture",
+      "research_focus": "Semiotic landscapes",
+      "grouping_theme": "Ecology",
+      "location": "Abuja, Nigeria",
+      "type": "person"
+    },
+    {
+      "id": 3,
+      "name": "Adrian Burnham",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Design",
+      "research_focus": "Billposters",
+      "grouping_theme": "Economy",
+      "location": "Tokyo, Japan",
+      "type": "person"
+    },
+    {
+      "id": 4,
+      "name": "Adrian Tanner",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Studies",
+      "research_focus": "gender and transport",
+      "grouping_theme": "Materiality",
+      "location": "Ottawa, Canada",
+      "type": "person"
+    },
+    {
+      "id": 5,
+      "name": "Agampodi Nirwadya Nirikshani Mendis Gunasekara",
+      "category": 3,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "Historic graffiti, photography",
+      "grouping_theme": "Communication",
+      "location": "Brasília, Brazil",
+      "type": "person"
+    },
+    {
+      "id": 6,
+      "name": "Aila Bandagi",
+      "category": 4,
+      "category2": 1,
+      "discipline": "Urban Planning",
+      "research_focus": "urban graphics",
+      "grouping_theme": "Labour",
+      "location": "Canberra, Australia",
+      "type": "person"
+    },
+    {
+      "id": 7,
+      "name": "Alex Hale",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Environmental Science",
+      "research_focus": "graffiti, street art, public space, urban governance",
+      "grouping_theme": "Governance",
+      "location": "Nairobi, Kenya",
+      "type": "person"
+    },
+    {
+      "id": 8,
+      "name": "Alex Ioannou",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Landscape Architecture",
+      "research_focus": "Territorology/ Sociology of walls",
+      "grouping_theme": "Ecology",
+      "location": "Paris, France",
+      "type": "person"
+    },
+    {
+      "id": 9,
+      "name": "Aline Rahbany",
+      "category": 1,
+      "category2": 2,
+      "discipline": "Civil Engineering",
+      "research_focus": "ambiances and materials",
+      "grouping_theme": "Economy",
+      "location": "New Delhi, India",
+      "type": "person"
+    },
+    {
+      "id": 10,
+      "name": "Alison Barnes",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "urban graphics",
+      "grouping_theme": "Materiality",
+      "location": "Mexico City, Mexico",
+      "type": "person"
+    },
+    {
+      "id": 11,
+      "name": "Alison Young",
+      "category": 3,
+      "category2": 2,
+      "discipline": "Urban Design",
+      "research_focus": "graffiti, street art, public space, urban governance",
+      "grouping_theme": "Communication",
+      "location": "Seoul, South Korea",
+      "type": "person"
+    },
+    {
+      "id": 12,
+      "name": "Alyxone/ ISIT/ Michael McGrath",
+      "category": 4,
+      "category2": 2,
+      "discipline": "Transportation Engineering",
+      "research_focus": "participatory art, resource distribution in cities",
+      "grouping_theme": "Labour",
+      "location": "Rome, Italy",
+      "type": "person"
+    },
+    {
+      "id": 13,
+      "name": "Andrea Mubi Brighenti",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Public Policy",
+      "research_focus": "advertising, consumption and space",
+      "grouping_theme": "Governance",
+      "location": "Cairo, Egypt",
+      "type": "person"
+    },
+    {
+      "id": 14,
+      "name": "Angela Glindemann (Ange)",
+      "category": 5,
+      "category2": 3,
+      "discipline": "Environmental Planning",
+      "research_focus": "design and materiality",
+      "grouping_theme": "Ecology",
+      "location": "Madrid, Spain",
+      "type": "person"
+    },
+    {
+      "id": 15,
+      "name": "Anika Sharmila Shoshe",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Urban Ecology",
+      "research_focus": "15",
+      "grouping_theme": "Economy",
+      "location": "Bangkok, Thailand",
+      "type": "person"
+    },
+    {
+      "id": 16,
+      "name": "Anna Francis",
+      "category": 0,
+      "category2": 5,
+      "discipline": "City Management",
+      "research_focus": "16",
+      "grouping_theme": "Materiality",
+      "location": "Berlin, Germany",
+      "type": "person"
+    },
+    {
+      "id": 17,
+      "name": "Anna von Arnim-Rosenthal",
+      "category": 3,
+      "category2": 4,
+      "discipline": "Sociology",
+      "research_focus": "17",
+      "grouping_theme": "Communication",
+      "location": "Ankara, Turkey",
+      "type": "person"
+    },
+    {
+      "id": 18,
+      "name": "Anne Cronin",
+      "category": 4,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "18",
+      "grouping_theme": "Labour",
+      "location": "London, United Kingdom",
+      "type": "person"
+    },
+    {
+      "id": 19,
+      "name": "Anneke Coppoolse",
+      "category": 2,
+      "category2": 3,
+      "discipline": "Urban Infrastructure",
+      "research_focus": "19",
+      "grouping_theme": "Governance",
+      "location": "Bogotá, Colombia",
+      "type": "person"
+    },
+    {
+      "id": 20,
+      "name": "Anuradha Chatterjee",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Urban Planning",
+      "research_focus": "20",
+      "grouping_theme": "Ecology",
+      "location": "Lima, Peru",
+      "type": "person"
+    },
+    {
+      "id": 21,
+      "name": "Asees Prab",
+      "category": 1,
+      "category2": 4,
+      "discipline": "Environmental Psychology",
+      "research_focus": "21",
+      "grouping_theme": "Economy",
+      "location": "Moscow, Russia",
+      "type": "person"
+    },
+    {
+      "id": 22,
+      "name": "Ash Alam",
+      "category": 0,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "22",
+      "grouping_theme": "Materiality",
+      "location": "Riyadh, Saudi Arabia",
+      "type": "person"
+    },
+    {
+      "id": 23,
+      "name": "Ayisha Saniya Ambalavan",
+      "category": 3,
+      "category2": 2,
+      "discipline": "Urban Development",
+      "research_focus": "23",
+      "grouping_theme": "Communication",
+      "location": "Pretoria, South Africa",
+      "type": "person"
+    },
+    {
+      "id": 24,
+      "name": "Billy Potts",
+      "category": 4,
+      "category2": 3,
+      "discipline": "Cultural Studies",
+      "research_focus": "24",
+      "grouping_theme": "Labour",
+      "location": "Jakarta, Indonesia",
+      "type": "person"
+    },
+    {
+      "id": 25,
+      "name": "Caitlin Bruce",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "25",
+      "grouping_theme": "Governance",
+      "location": "Santiago, Chile",
+      "type": "person"
+    },
+    {
+      "id": 26,
+      "name": "Cameron McAuliffe",
+      "category": 5,
+      "category2": 1,
+      "discipline": "Urban Geography",
+      "research_focus": "26",
+      "grouping_theme": "Ecology",
+      "location": "Athens, Greece",
+      "type": "person"
+    },
+    {
+      "id": 27,
+      "name": "Carol El Farraji",
+      "category": 1,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "27",
+      "grouping_theme": "Economy",
+      "location": "Hanoi, Vietnam",
+      "type": "person"
+    },
+    {
+      "id": 28,
+      "name": "Caroline Kyi",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Resilience",
+      "research_focus": "28",
+      "grouping_theme": "Materiality",
+      "location": "Kyiv, Ukraine",
+      "type": "person"
+    },
+    {
+      "id": 29,
+      "name": "Carrie Benjamin",
+      "category": 3,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "29",
+      "grouping_theme": "Communication",
+      "location": "Kuala Lumpur, Malaysia",
+      "type": "person"
+    },
+    {
+      "id": 30,
+      "name": "CC Williams",
+      "category": 4,
+      "category2": 5,
+      "discipline": "Urban Policy",
+      "research_focus": "30",
+      "grouping_theme": "Labour",
+      "location": "Wellington, New Zealand",
+      "type": "person"
+    },
+    {
+      "id": 31,
+      "name": "Cecilia Brazioli",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "31",
+      "grouping_theme": "Governance",
+      "location": "Islamabad, Pakistan",
+      "type": "person"
+    },
+    {
+      "id": 32,
+      "name": "Ceren Cekmez",
+      "category": 5,
+      "category2": 0,
+      "discipline": "Urban Sustainability",
+      "research_focus": "32",
+      "grouping_theme": "Ecology",
+      "location": "Lisbon, Portugal",
+      "type": "person"
+    },
+    {
+      "id": 33,
+      "name": "Chandra Morrison",
+      "category": 1,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "33",
+      "grouping_theme": "Economy",
+      "location": "Rabat, Morocco",
+      "type": "person"
+    },
+    {
+      "id": 34,
+      "name": "Charlotte Lin",
+      "category": 2,
+      "category2": 1,
+      "discipline": "Urban Law",
+      "research_focus": "34",
+      "grouping_theme": "Governance",
+      "location": "Prague, Czech Republic",
+      "type": "person"
+    },
+    {
+      "id": 35,
+      "name": "Chayakorn Kumchoke",
+      "category": 5,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "35",
+      "grouping_theme": "Ecology",
+      "location": "Addis Ababa, Ethiopia",
+      "type": "person"
+    },
+    {
+      "id": 36,
+      "name": "Cheng Chen",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Urban Transportation",
+      "research_focus": "36",
+      "grouping_theme": "Economy",
+      "location": "Dhaka, Bangladesh",
+      "type": "person"
+    },
+    {
+      "id": 37,
+      "name": "Chris Boyko",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "37",
+      "grouping_theme": "Materiality",
+      "location": "Caracas, Venezuela",
+      "type": "person"
+    },
+    {
+      "id": 38,
+      "name": "Chris Parkinson",
+      "category": 3,
+      "category2": 5,
+      "discipline": "Urban Environment",
+      "research_focus": "38",
+      "grouping_theme": "Communication",
+      "location": "Bern, Switzerland",
+      "type": "person"
+    },
+    {
+      "id": 39,
+      "name": "Christina Vasilopuolou",
+      "category": 4,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "39",
+      "grouping_theme": "Labour",
+      "location": "Warsaw, Poland",
+      "type": "person"
+    },
+    {
+      "id": 40,
+      "name": "Christoph Lueder",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Urban Green Spaces",
+      "research_focus": "40",
+      "grouping_theme": "Governance",
+      "location": "Tehran, Iran",
+      "type": "person"
+    },
+    {
+      "id": 41,
+      "name": "Churong Hao",
+      "category": 5,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "41",
+      "grouping_theme": "Ecology",
+      "location": "Manila, Philippines",
+      "type": "person"
+    },
+    {
+      "id": 42,
+      "name": "Constantinos Diamantis",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Urban Water Management",
+      "research_focus": "42",
+      "grouping_theme": "Economy",
+      "location": "Vienna, Austria",
+      "type": "person"
+    },
+    {
+      "id": 43,
+      "name": "Cristian Simonetti",
+      "category": 0,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "43",
+      "grouping_theme": "Materiality",
+      "location": "Havana, Cuba",
+      "type": "person"
+    },
+    {
+      "id": 44,
+      "name": "Dan Johnston",
+      "category": 3,
+      "category2": 5,
+      "discipline": "Urban Regeneration",
+      "research_focus": "44",
+      "grouping_theme": "Communication",
+      "location": "Helsinki, Finland",
+      "type": "person"
+    },
+    {
+      "id": 45,
+      "name": "David Karlander",
+      "category": 4,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "45",
+      "grouping_theme": "Labour",
+      "location": "Copenhagen, Denmark",
+      "type": "person"
+    },
+    {
+      "id": 46,
+      "name": "David Littlefield",
+      "category": 2,
+      "category2": 1,
+      "discipline": "Urban Data Science",
+      "research_focus": "46",
+      "grouping_theme": "Governance",
+      "location": "Singapore (city-state), Singapore",
+      "type": "person"
+    },
+    {
+      "id": 47,
+      "name": "David Pontille",
+      "category": 5,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "47",
+      "grouping_theme": "Ecology",
+      "location": "Beirut, Lebanon",
+      "type": "person"
+    },
+    {
+      "id": 48,
+      "name": "Diana Lolici",
+      "category": 1,
+      "category2": 2,
+      "discipline": "Urban Housing",
+      "research_focus": "48",
+      "grouping_theme": "Economy",
+      "location": "Budapest, Hungary",
+      "type": "person"
+    },
+    {
+      "id": 49,
+      "name": "Dina Yunis",
+      "category": 0,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "49",
+      "grouping_theme": "Materiality",
+      "location": "Amman, Jordan",
+      "type": "person"
+    },
+    {
+      "id": 50,
+      "name": "Doron Altaratz",
+      "category": 3,
+      "category2": 1,
+      "discipline": "Urban Land Use",
+      "research_focus": "50",
+      "grouping_theme": "Communication",
+      "location": "Sri Jayawardenepura Kotte, Sri Lanka",
+      "type": "person"
+    },
+    {
+      "id": 51,
+      "name": "Edmond Drenogllava",
+      "category": 4,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "51",
+      "grouping_theme": "Labour",
+      "location": "Sucre (constitutional), La Paz (administrative), Bolivia",
+      "type": "person"
+    },
+    {
+      "id": 52,
+      "name": "Eduardo de la Fuente",
+      "category": 2,
+      "category2": 5,
+      "discipline": "Urban Security",
+      "research_focus": "52",
+      "grouping_theme": "Governance",
+      "location": "Quito, Ecuador",
+      "type": "person"
+    },
+    {
+      "id": 53,
+      "name": "Efrîn Özyeti?",
+      "category": 5,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "53",
+      "grouping_theme": "Ecology",
+      "location": "Ndjamena, Cameroon",
+      "type": "person"
+    },
+    {
+      "id": 54,
+      "name": "Elijah Agwaru Anomet",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Crime Studies",
+      "research_focus": "54",
+      "grouping_theme": "Governance",
+      "location": "Yaoundé, Ghana",
+      "type": "person"
+    },
+    {
+      "id": 55,
+      "name": "Eliza Demian Patrascu",
+      "category": 5,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "55",
+      "grouping_theme": "Ecology",
+      "location": "Accra, Nepal",
+      "type": "person"
+    },
+    {
+      "id": 56,
+      "name": "Emina Zejnilovi?",
+      "category": 1,
+      "category2": 4,
+      "discipline": "Urban Public Spaces",
+      "research_focus": "56",
+      "grouping_theme": "Economy",
+      "location": "Kathmandu, Sudan",
+      "type": "person"
+    },
+    {
+      "id": 57,
+      "name": "Emma Arnold",
+      "category": 0,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "57",
+      "grouping_theme": "Materiality",
+      "location": "Asunción, Oman",
+      "type": "person"
+    },
+    {
+      "id": 58,
+      "name": "Enrico Bonadio",
+      "category": 3,
+      "category2": 1,
+      "discipline": "Urban Community",
+      "research_focus": "58",
+      "grouping_theme": "Communication",
+      "location": "Montevideo, Kuwait",
+      "type": "person"
+    },
+    {
+      "id": 59,
+      "name": "Erna Husukic",
+      "category": 4,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "59",
+      "grouping_theme": "Labour",
+      "location": "Bamako, Honduras",
+      "type": "person"
+    },
+    {
+      "id": 60,
+      "name": "Esther Kiruba Jebakumar Clifford",
+      "category": 2,
+      "category2": 5,
+      "discipline": "Urban Economy",
+      "research_focus": "60",
+      "grouping_theme": "Governance",
+      "location": "Harare, Paraguay",
+      "type": "person"
+    },
+    {
+      "id": 61,
+      "name": "Eynat Mendelson Shwartz",
+      "category": 5,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "61",
+      "grouping_theme": "Ecology",
+      "location": "Kigali, Uruguay",
+      "type": "person"
+    },
+    {
+      "id": 62,
+      "name": "Francesca Bragaglia",
+      "category": 1,
+      "category2": 3,
+      "discipline": "Urban Climate",
+      "research_focus": "62",
+      "grouping_theme": "Economy",
+      "location": "Naypyidaw, Mali",
+      "type": "person"
+    },
+    {
+      "id": 63,
+      "name": "Friederike Landau-Donnelly",
+      "category": 0,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "63",
+      "grouping_theme": "Materiality",
+      "location": "Ulaanbaatar, Zimbabwe",
+      "type": "person"
+    },
+    {
+      "id": 64,
+      "name": "Gabriel Araújo Velasco",
+      "category": 3,
+      "category2": 0,
+      "discipline": "Urban Waste Management",
+      "research_focus": "64",
+      "grouping_theme": "Communication",
+      "location": "Vientiane, Rwanda",
+      "type": "person"
+    },
+    {
+      "id": 65,
+      "name": "Gerda Wielander",
+      "category": 4,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "65",
+      "grouping_theme": "Labour",
+      "location": "Pristina, Myanmar",
+      "type": "person"
+    },
+    {
+      "id": 66,
+      "name": "Giuliana Bruno",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Urban Energy",
+      "research_focus": "66",
+      "grouping_theme": "Governance",
+      "location": "Tbilisi, Mongolia",
+      "type": "person"
+    },
+    {
+      "id": 67,
+      "name": "Grace Ong Yan",
+      "category": 5,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "67",
+      "grouping_theme": "Ecology",
+      "location": "Bujumbura (note: Bujumbura was the former capital, now Gitega), Laos",
+      "type": "person"
+    },
+    {
+      "id": 68,
+      "name": "Greg Ireland",
+      "category": 1,
+      "category2": 4,
+      "discipline": "Urban Mobility",
+      "research_focus": "68",
+      "grouping_theme": "Economy",
+      "location": "Managua, Kosovo",
+      "type": "person"
+    },
+    {
+      "id": 69,
+      "name": "Hannah Awcock",
+      "category": 0,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "69",
+      "grouping_theme": "Materiality",
+      "location": "San José, Georgia",
+      "type": "person"
+    },
+    {
+      "id": 70,
+      "name": "Hans Leo Maes",
+      "category": 3,
+      "category2": 0,
+      "discipline": "Urban Social Innovation",
+      "research_focus": "70",
+      "grouping_theme": "Communication",
+      "location": "Panama City, Burundi",
+      "type": "person"
+    },
+    {
+      "id": 71,
+      "name": "Hazel Cowie",
+      "category": 4,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "71",
+      "grouping_theme": "Labour",
+      "location": "San Salvador, Nicaragua",
+      "type": "person"
+    },
+    {
+      "id": 72,
+      "name": "Helen Kruger",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Surface Studies",
+      "research_focus": "72",
+      "grouping_theme": "Governance",
+      "location": "Belmopan, Costa Rica",
+      "type": "person"
+    },
+    {
+      "id": 73,
+      "name": "Iain White",
+      "category": 5,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "73",
+      "grouping_theme": "Ecology",
+      "location": "Nassau, Panama",
+      "type": "person"
+    },
+    {
+      "id": 74,
+      "name": "Ianthi Papadema",
+      "category": 2,
+      "category2": 1,
+      "discipline": "Urban Resilience",
+      "research_focus": "74",
+      "grouping_theme": "Governance",
+      "location": "Bridgetown, El Salvador",
+      "type": "person"
+    },
+    {
+      "id": 75,
+      "name": "Ingrid Halland",
+      "category": 5,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "75",
+      "grouping_theme": "Ecology",
+      "location": "Castries, Belize",
+      "type": "person"
+    },
+    {
+      "id": 76,
+      "name": "Jack Wu",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Urban Green Infrastructure",
+      "research_focus": "76",
+      "grouping_theme": "Economy",
+      "location": "Roseau, Bahamas",
+      "type": "person"
+    },
+    {
+      "id": 77,
+      "name": "Jacob Kimvall",
+      "category": 0,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "77",
+      "grouping_theme": "Materiality",
+      "location": "Saint John's, Barbados",
+      "type": "person"
+    },
+    {
+      "id": 78,
+      "name": "Jakob Oredsson",
+      "category": 3,
+      "category2": 0,
+      "discipline": "Urban Development",
+      "research_focus": "78",
+      "grouping_theme": "Communication",
+      "location": "Basseterre, Saint Lucia",
+      "type": "person"
+    },
+    {
+      "id": 79,
+      "name": "Jane Bennett",
+      "category": 4,
+      "category2": 1,
+      "discipline": "Urban Transportation",
+      "research_focus": "79",
+      "grouping_theme": "Labour",
+      "location": "Port of Spain, Dominica",
+      "type": "person"
+    },
+    {
+      "id": 80,
+      "name": "Janine Campbell",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "80",
+      "grouping_theme": "Governance",
+      "location": "Oranjestad, Grenada",
+      "type": "person"
+    },
+    {
+      "id": 81,
+      "name": "Jazoo Yang",
+      "category": 5,
+      "category2": 3,
+      "discipline": "Urban Environment",
+      "research_focus": "81",
+      "grouping_theme": "Ecology",
+      "location": "Willemstad, Saint Vincent and the Grenadines",
+      "type": "person"
+    },
+    {
+      "id": 82,
+      "name": "Jeewon Jung",
+      "category": 1,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "82",
+      "grouping_theme": "Economy",
+      "location": "Apia, Antigua and Barbuda",
+      "type": "person"
+    },
+    {
+      "id": 83,
+      "name": "Joana Sousa Ribeiro",
+      "category": 0,
+      "category2": 1,
+      "discipline": "Urban Green Spaces",
+      "research_focus": "83",
+      "grouping_theme": "Materiality",
+      "location": "Suva, Saint Kitts and Nevis",
+      "type": "person"
+    },
+    {
+      "id": 84,
+      "name": "Joanne Choueiri",
+      "category": 3,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "84",
+      "grouping_theme": "Communication",
+      "location": "Nuku'alofa, Trinidad and Tobago",
+      "type": "person"
+    },
+    {
+      "id": 85,
+      "name": "Joel Lim Du Bois",
+      "category": 4,
+      "category2": 1,
+      "discipline": "Urban Water Management",
+      "research_focus": "85",
+      "grouping_theme": "Labour",
+      "location": "Port Moresby, Aruba",
+      "type": "person"
+    },
+    {
+      "id": 86,
+      "name": "Joseph Heathcott",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "86",
+      "grouping_theme": "Governance",
+      "location": "Palikir, Curacao",
+      "type": "person"
+    },
+    {
+      "id": 87,
+      "name": "Joumana Ibrahim",
+      "category": 5,
+      "category2": 0,
+      "discipline": "Urban Regeneration",
+      "research_focus": "87",
+      "grouping_theme": "Ecology",
+      "location": "Nauru (no official capital, but Yaren District functions as the de facto capital), Samoa",
+      "type": "person"
+    },
+    {
+      "id": 88,
+      "name": "Juan Carlos Guerrero-Hernandez",
+      "category": 1,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "88",
+      "grouping_theme": "Economy",
+      "location": "Funafuti, Fiji",
+      "type": "person"
+    },
+    {
+      "id": 89,
+      "name": "Julia Tulke",
+      "category": 0,
+      "category2": 5,
+      "discipline": "Urban Data Science",
+      "research_focus": "89",
+      "grouping_theme": "Materiality",
+      "location": "Majuro, Tonga",
+      "type": "person"
+    },
+    {
+      "id": 90,
+      "name": "Kathryn Ewing",
+      "category": 3,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "90",
+      "grouping_theme": "Communication",
+      "location": "Tarawa, Vanuatu",
+      "type": "person"
+    },
+    {
+      "id": 91,
+      "name": "Katya Assaf Zakharov",
+      "category": 4,
+      "category2": 3,
+      "discipline": "Urban Housing",
+      "research_focus": "91",
+      "grouping_theme": "Labour",
+      "location": "South Tarawa, Solomon Islands",
+      "type": "person"
+    },
+    {
+      "id": 92,
+      "name": "Kel Glaister",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "92",
+      "grouping_theme": "Governance",
+      "location": "Tashkent, Palau",
+      "type": "person"
+    },
+    {
+      "id": 93,
+      "name": "Kevin Muldoon-Smith",
+      "category": 5,
+      "category2": 0,
+      "discipline": "Urban Land Use",
+      "research_focus": "93",
+      "grouping_theme": "Ecology",
+      "location": "Bishkek, Micronesia",
+      "type": "person"
+    },
+    {
+      "id": 94,
+      "name": "Krystal Kehoe",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "94",
+      "grouping_theme": "Economy",
+      "location": "Dushanbe, Nauru",
+      "type": "person"
+    },
+    {
+      "id": 95,
+      "name": "Kurt Iveson",
+      "category": 0,
+      "category2": 5,
+      "discipline": "Urban Security",
+      "research_focus": "95",
+      "grouping_theme": "Materiality",
+      "location": "Dushanbe, Tuvalu",
+      "type": "person"
+    },
+    {
+      "id": 96,
+      "name": "Kyle Magee",
+      "category": 3,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "96",
+      "grouping_theme": "Communication",
+      "location": "Asmara, Marshall Islands",
+      "type": "person"
+    },
+    {
+      "id": 97,
+      "name": "Laima Nomeikaite",
+      "category": 4,
+      "category2": 2,
+      "discipline": "Urban Crime Studies",
+      "research_focus": "97",
+      "grouping_theme": "Labour",
+      "location": "Djibouti City, Kiribati",
+      "type": "person"
+    },
+    {
+      "id": 98,
+      "name": "Laura Szyman",
+      "category": 2,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "98",
+      "grouping_theme": "Governance",
+      "location": "Hargeisa (self-declared, not universally recognized), Timor-Leste",
+      "type": "person"
+    },
+    {
+      "id": 99,
+      "name": "Laure Pressac",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Urban Public Spaces",
+      "research_focus": "99",
+      "grouping_theme": "Ecology",
+      "location": "Mogadishu, Brunei",
+      "type": "person"
+    },
+    {
+      "id": 100,
+      "name": "lesley pleasant",
+      "category": 1,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "100",
+      "grouping_theme": "Economy",
+      "location": "Asmara, Cambodia",
+      "type": "person"
+    },
+    {
+      "id": 101,
+      "name": "Liao Xiaochang Cynthia",
+      "category": 0,
+      "category2": 4,
+      "discipline": "Urban Community",
+      "research_focus": "101",
+      "grouping_theme": "Materiality",
+      "location": "Nuakchott, Bhutan",
+      "type": "person"
+    },
+    {
+      "id": 102,
+      "name": "Linda Matthews",
+      "category": 3,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "102",
+      "grouping_theme": "Communication",
+      "location": "Niamey, Maldives",
+      "type": "person"
+    },
+    {
+      "id": 103,
+      "name": "Liz Oakley Brown",
+      "category": 4,
+      "category2": 0,
+      "discipline": "Urban Economy",
+      "research_focus": "103",
+      "grouping_theme": "Labour",
+      "location": "Ouagadougou, Macau",
+      "type": "person"
+    },
+    {
+      "id": 104,
+      "name": "Lorenzo Servi",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "104",
+      "grouping_theme": "Governance",
+      "location": "Porto-Novo, North Korea",
+      "type": "person"
+    },
+    {
+      "id": 105,
+      "name": "Lotte Hoek",
+      "category": 5,
+      "category2": 3,
+      "discipline": "Urban Climate",
+      "research_focus": "105",
+      "grouping_theme": "Ecology",
+      "location": "Lomé, Taiwan",
+      "type": "person"
+    },
+    {
+      "id": 106,
+      "name": "Lucy Finchett Maddock",
+      "category": 1,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "106",
+      "grouping_theme": "Economy",
+      "location": "Libreville, Yemen",
+      "type": "person"
+    },
+    {
+      "id": 107,
+      "name": "Lucy Irvine",
+      "category": 0,
+      "category2": 2,
+      "discipline": "Urban Waste Management",
+      "research_focus": "107",
+      "grouping_theme": "Materiality",
+      "location": "Malabo (official), Ciudad de la Paz (planned), United Arab Emirates",
+      "type": "person"
+    },
+    {
+      "id": 108,
+      "name": "Manuel Garcia-Ruiz",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "108",
+      "grouping_theme": "Governance",
+      "location": "São Tomé, Qatar",
+      "type": "person"
+    },
+    {
+      "id": 109,
+      "name": "Margarethe Kusenbach",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Urban Energy",
+      "research_focus": "109",
+      "grouping_theme": "Ecology",
+      "location": "Bangui, Bahrain",
+      "type": "person"
+    },
+    {
+      "id": 110,
+      "name": "Maria Chatzidakis",
+      "category": 1,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "110",
+      "grouping_theme": "Economy",
+      "location": "Juba, Armenia",
+      "type": "person"
+    },
+    {
+      "id": 111,
+      "name": "Maria Noriega",
+      "category": 0,
+      "category2": 4,
+      "discipline": "Urban Mobility",
+      "research_focus": "111",
+      "grouping_theme": "Materiality",
+      "location": "Kinshasa, Azerbaijan",
+      "type": "person"
+    },
+    {
+      "id": 112,
+      "name": "Maria Pinto-Coelho",
+      "category": 3,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "112",
+      "grouping_theme": "Communication",
+      "location": "Brazzaville, Kazakhstan",
+      "type": "person"
+    },
+    {
+      "id": 113,
+      "name": "Marine Tanguy",
+      "category": 4,
+      "category2": 3,
+      "discipline": "Urban Social Innovation",
+      "research_focus": "113",
+      "grouping_theme": "Labour",
+      "location": "Banjul, Uzbekistan",
+      "type": "person"
+    },
+    {
+      "id": 114,
+      "name": "Martin Abbott",
+      "category": 2,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "114",
+      "grouping_theme": "Governance",
+      "location": "Conakry, Turkmenistan",
+      "type": "person"
+    },
+    {
+      "id": 115,
+      "name": "Maryia Rusak",
+      "category": 5,
+      "category2": 0,
+      "discipline": "Urban Surface Studies",
+      "research_focus": "115",
+      "grouping_theme": "Ecology",
+      "location": "Monrovia, Tajikistan",
+      "type": "person"
+    },
+    {
+      "id": 116,
+      "name": "Megan Hicks",
+      "category": 1,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "116",
+      "grouping_theme": "Economy",
+      "location": "Freetown, Kyrgyzstan",
+      "type": "person"
+    },
+    {
+      "id": 117,
+      "name": "Melissa Smith",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Resilience",
+      "research_focus": "117",
+      "grouping_theme": "Materiality",
+      "location": "Yamoussoukro, Laos",
+      "type": "person"
+    },
+    {
+      "id": 118,
+      "name": "Meng Hsuan-Lee",
+      "category": 3,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "118",
+      "grouping_theme": "Communication",
+      "location": "Bamako, Liechtenstein",
+      "type": "person"
+    },
+    {
+      "id": 119,
+      "name": "Mersida Ndrevataj",
+      "category": 4,
+      "category2": 2,
+      "discipline": "Urban Transportation",
+      "research_focus": "119",
+      "grouping_theme": "Labour",
+      "location": "Ouagadougou, Luxembourg",
+      "type": "person"
+    },
+    {
+      "id": 120,
+      "name": "Mia Gaia Trentin",
+      "category": 2,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "120",
+      "grouping_theme": "Governance",
+      "location": "N'Djamena, Malawi",
+      "type": "person"
+    },
+    {
+      "id": 121,
+      "name": "Michael King",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Urban Environment",
+      "research_focus": "121",
+      "grouping_theme": "Ecology",
+      "location": "Khartoum, Mozambique",
+      "type": "person"
+    },
+    {
+      "id": 122,
+      "name": "Michael Stonham",
+      "category": 1,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "122",
+      "grouping_theme": "Economy",
+      "location": "Juba, Zambia",
+      "type": "person"
+    },
+    {
+      "id": 123,
+      "name": "Mirame Elsayed",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Green Spaces",
+      "research_focus": "123",
+      "grouping_theme": "Materiality",
+      "location": "Asmara, Lesotho",
+      "type": "person"
+    },
+    {
+      "id": 124,
+      "name": "Mischa Kuball",
+      "category": 3,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "124",
+      "grouping_theme": "Communication",
+      "location": "Djibouti City, Swaziland",
+      "type": "person"
+    },
+    {
+      "id": 125,
+      "name": "Miti Kinaawola",
+      "category": 4,
+      "category2": 3,
+      "discipline": "Urban Water Management",
+      "research_focus": "125",
+      "grouping_theme": "Labour",
+      "location": "Mogadishu, Madagascar",
+      "type": "person"
+    },
+    {
+      "id": 126,
+      "name": "Moral Masuoka",
+      "category": 2,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "126",
+      "grouping_theme": "Governance",
+      "location": "Nairobi, Malta",
+      "type": "person"
+    },
+    {
+      "id": 127,
+      "name": "Myra Abubakar",
+      "category": 5,
+      "category2": 1,
+      "discipline": "Urban Regeneration",
+      "research_focus": "127",
+      "grouping_theme": "Ecology",
+      "location": "Kigali, San Marino",
+      "type": "person"
+    },
+    {
+      "id": 128,
+      "name": "Myrto Tsilimpounidi",
+      "category": 1,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "128",
+      "grouping_theme": "Economy",
+      "location": "Bujumbura (Gitega), Andorra",
+      "type": "person"
+    },
+    {
+      "id": 129,
+      "name": "Nada Genova",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Data Science",
+      "research_focus": "129",
+      "grouping_theme": "Governance",
+      "location": "Dodoma (official), Dar es Salaam (former), Monaco",
+      "type": "person"
+    },
+    {
+      "id": 130,
+      "name": "NAEEM IMTAYAZ",
+      "category": 5,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "130",
+      "grouping_theme": "Ecology",
+      "location": "Harare, Liechtenstein",
+      "type": "person"
+    },
+    {
+      "id": 131,
+      "name": "Natalie Bauer",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Urban Housing",
+      "research_focus": "131",
+      "grouping_theme": "Economy",
+      "location": "Lusaka, Vatican City",
+      "type": "person"
+    },
+    {
+      "id": 132,
+      "name": "Nataly Arevalo",
+      "category": 0,
+      "category2": 4,
+      "discipline": "Urban Sociology",
+      "research_focus": "132",
+      "grouping_theme": "Materiality",
+      "location": "Lilongwe, Seychelles",
+      "type": "person"
+    },
+    {
+      "id": 133,
+      "name": "Nazanin Moghaddam",
+      "category": 3,
+      "category2": 0,
+      "discipline": "Urban Land Use",
+      "research_focus": "133",
+      "grouping_theme": "Communication",
+      "location": "Windhoek, Comoros",
+      "type": "person"
+    },
+    {
+      "id": 134,
+      "name": "Nazanin Tabrizi",
+      "category": 4,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "134",
+      "grouping_theme": "Labour",
+      "location": "Gaborone, Djibouti",
+      "type": "person"
+    },
+    {
+      "id": 135,
+      "name": "Nian Paul",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Urban Security",
+      "research_focus": "135",
+      "grouping_theme": "Governance",
+      "location": "Mbabane, Eritrea",
+      "type": "person"
+    },
+    {
+      "id": 136,
+      "name": "Olivia Barr",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "136",
+      "grouping_theme": "Ecology",
+      "location": "Maseru, Somalia",
+      "type": "person"
+    },
+    {
+      "id": 137,
+      "name": "Pamudu Tennakoon",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Urban Crime Studies",
+      "research_focus": "137",
+      "grouping_theme": "Economy",
+      "location": "Gaborone, Eritrea",
+      "type": "person"
+    },
+    {
+      "id": 138,
+      "name": "Panagiotis Ferentinos",
+      "category": 0,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "138",
+      "grouping_theme": "Materiality",
+      "location": "Khartoum, Djibouti",
+      "type": "person"
+    },
+    {
+      "id": 139,
+      "name": "Panagiotis Lianos",
+      "category": 3,
+      "category2": 0,
+      "discipline": "Urban Public Spaces",
+      "research_focus": "139",
+      "grouping_theme": "Communication",
+      "location": "Juba, Mauritania",
+      "type": "person"
+    },
+    {
+      "id": 140,
+      "name": "Panos Leventis",
+      "category": 4,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "140",
+      "grouping_theme": "Labour",
+      "location": "Asmara, Chad",
+      "type": "person"
+    },
+    {
+      "id": 141,
+      "name": "Paola Mezzadri",
+      "category": 2,
+      "category2": 5,
+      "discipline": "Urban Community",
+      "research_focus": "141",
+      "grouping_theme": "Governance",
+      "location": "Djibouti City, Niger",
+      "type": "person"
+    },
+    {
+      "id": 142,
+      "name": "Patrizia Mello",
+      "category": 5,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "142",
+      "grouping_theme": "Ecology",
+      "location": "Mogadishu, Mali",
+      "type": "person"
+    },
+    {
+      "id": 143,
+      "name": "Peta Carlin",
+      "category": 1,
+      "category2": 4,
+      "discipline": "Urban Economy",
+      "research_focus": "143",
+      "grouping_theme": "Economy",
+      "location": "Nairobi, Burkina Faso",
+      "type": "person"
+    },
+    {
+      "id": 144,
+      "name": "Peter Bengtsen",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "144",
+      "grouping_theme": "Materiality",
+      "location": "Kigali, Benin",
+      "type": "person"
+    },
+    {
+      "id": 145,
+      "name": "Peter Sealy",
+      "category": 3,
+      "category2": 0,
+      "discipline": "Urban Climate",
+      "research_focus": "145",
+      "grouping_theme": "Communication",
+      "location": "Bujumbura (Gitega), Togo",
+      "type": "person"
+    },
+    {
+      "id": 146,
+      "name": "Petr Vasat",
+      "category": 4,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "146",
+      "grouping_theme": "Labour",
+      "location": "Dodoma (official), Dar es Salaam (former), Gabon",
+      "type": "person"
+    },
+    {
+      "id": 147,
+      "name": "Pierre-Edourad Weill",
+      "category": 2,
+      "category2": 4,
+      "discipline": "Urban Waste Management",
+      "research_focus": "147",
+      "grouping_theme": "Governance",
+      "location": "Harare, Equatorial Guinea",
+      "type": "person"
+    },
+    {
+      "id": 148,
+      "name": "Priyanka Mehra",
+      "category": 5,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "148",
+      "grouping_theme": "Ecology",
+      "location": "Lusaka, São Tomé and Príncipe",
+      "type": "person"
+    },
+    {
+      "id": 149,
+      "name": "Rafael Schacter",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Energy",
+      "research_focus": "149",
+      "grouping_theme": "Governance",
+      "location": "Lilongwe, Central African Republic",
+      "type": "person"
+    },
+    {
+      "id": 150,
+      "name": "Rafsana Hossain",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "150",
+      "grouping_theme": "Ecology",
+      "location": "Windhoek, South Sudan",
+      "type": "person"
+    },
+    {
+      "id": 151,
+      "name": "Ratandeep Yadav",
+      "category": 1,
+      "category2": 3,
+      "discipline": "Urban Mobility",
+      "research_focus": "151",
+      "grouping_theme": "Economy",
+      "location": "Gaborone, Democratic Republic of the Congo",
+      "type": "person"
+    },
+    {
+      "id": 152,
+      "name": "Rawan Shalaldeh",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "152",
+      "grouping_theme": "Materiality",
+      "location": "Mbabane, Republic of the Congo",
+      "type": "person"
+    },
+    {
+      "id": 153,
+      "name": "Ray Lucas",
+      "category": 3,
+      "category2": 2,
+      "discipline": "Urban Social Innovation",
+      "research_focus": "153",
+      "grouping_theme": "Communication",
+      "location": "Maseru, Gambia",
+      "type": "person"
+    },
+    {
+      "id": 154,
+      "name": "Rebecca Coleman",
+      "category": 4,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "154",
+      "grouping_theme": "Labour",
+      "location": "Gaborone, Guinea-B Guinea",
+      "type": "person"
+    },
+    {
+      "id": 155,
+      "name": "Richard Barnard",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Surface Studies",
+      "research_focus": "155",
+      "grouping_theme": "Governance",
+      "location": "Khartoum, Liberia",
+      "type": "person"
+    },
+    {
+      "id": 156,
+      "name": "Richard Muller",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "156",
+      "grouping_theme": "Ecology",
+      "location": "Juba, Sierra Leone",
+      "type": "person"
+    },
+    {
+      "id": 157,
+      "name": "Rik Fisher",
+      "category": 1,
+      "category2": 0,
+      "discipline": "Urban Resilience",
+      "research_focus": "157",
+      "grouping_theme": "Economy",
+      "location": "Asmara, Côte d'Ivoire",
+      "type": "person"
+    },
+    {
+      "id": 158,
+      "name": "Robert Harland",
+      "category": 0,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "158",
+      "grouping_theme": "Materiality",
+      "location": "Djibouti City, Guinea",
+      "type": "person"
+    },
+    {
+      "id": 159,
+      "name": "Ronald Kramer",
+      "category": 3,
+      "category2": 5,
+      "discipline": "Urban Transportation",
+      "research_focus": "159",
+      "grouping_theme": "Communication",
+      "location": "Mogadishu, Senegal",
+      "type": "person"
+    },
+    {
+      "id": 160,
+      "name": "Roya Rahmanian",
+      "category": 4,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "160",
+      "grouping_theme": "Labour",
+      "location": "Nairobi, Mali",
+      "type": "person"
+    },
+    {
+      "id": 161,
+      "name": "Ruth Dalton",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Environment",
+      "research_focus": "161",
+      "grouping_theme": "Governance",
+      "location": "Kigali, Burkina Faso",
+      "type": "person"
+    },
+    {
+      "id": 162,
+      "name": "Samuel Holleran",
+      "category": 5,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "162",
+      "grouping_theme": "Ecology",
+      "location": "Bujumbura (Gitega), Niger",
+      "type": "person"
+    },
+    {
+      "id": 163,
+      "name": "Sarah Hunter",
+      "category": 1,
+      "category2": 3,
+      "discipline": "Urban Green Spaces",
+      "research_focus": "163",
+      "grouping_theme": "Economy",
+      "location": "Dodoma (official), Dar es Salaam (former), Chad",
+      "type": "person"
+    },
+    {
+      "id": 164,
+      "name": "Scarlett Cibilich",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "164",
+      "grouping_theme": "Materiality",
+      "location": "Harare, Sudan",
+      "type": "person"
+    },
+    {
+      "id": 165,
+      "name": "Shankarjyoti Saikia",
+      "category": 3,
+      "category2": 4,
+      "discipline": "Urban Water Management",
+      "research_focus": "165",
+      "grouping_theme": "Communication",
+      "location": "Lusaka, South Sudan",
+      "type": "person"
+    },
+    {
+      "id": 166,
+      "name": "Shone Trinsh + Edward Snajdr",
+      "category": 4,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "166",
+      "grouping_theme": "Labour",
+      "location": "Lilongwe, Eritrea",
+      "type": "person"
+    },
+    {
+      "id": 167,
+      "name": "Shruti Hussain",
+      "category": 2,
+      "category2": 5,
+      "discipline": "Urban Regeneration",
+      "research_focus": "167",
+      "grouping_theme": "Governance",
+      "location": "Windhoek, Djibouti",
+      "type": "person"
+    },
+    {
+      "id": 168,
+      "name": "Shruti Mehta",
+      "category": 5,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "168",
+      "grouping_theme": "Ecology",
+      "location": "Gaborone, Ethiopia",
+      "type": "person"
+    },
+    {
+      "id": 169,
+      "name": "Simon Marvin",
+      "category": 1,
+      "category2": 2,
+      "discipline": "Urban Data Science",
+      "research_focus": "169",
+      "grouping_theme": "Economy",
+      "location": "Mbabane, Somalia",
+      "type": "person"
+    },
+    {
+      "id": 170,
+      "name": "Sneha Annavarapu",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "170",
+      "grouping_theme": "Materiality",
+      "location": "Maseru, Kenya",
+      "type": "person"
+    },
+    {
+      "id": 171,
+      "name": "Sofia Adrienne Cacatian Onday",
+      "category": 3,
+      "category2": 4,
+      "discipline": "Urban Housing",
+      "research_focus": "171",
+      "grouping_theme": "Communication",
+      "location": "Gaborone, Uganda",
+      "type": "person"
+    },
+    {
+      "id": 172,
+      "name": "Sprya Sharma",
+      "category": 4,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "172",
+      "grouping_theme": "Labour",
+      "location": "Khartoum, Rwanda",
+      "type": "person"
+    },
+    {
+      "id": 173,
+      "name": "Stanislav Roudavski",
+      "category": 2,
+      "category2": 1,
+      "discipline": "Urban Land Use",
+      "research_focus": "173",
+      "grouping_theme": "Governance",
+      "location": "Juba, Burundi",
+      "type": "person"
+    },
+    {
+      "id": 174,
+      "name": "Stefano Bloch",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "174",
+      "grouping_theme": "Governance",
+      "location": "Asmara, Tanzania",
+      "type": "person"
+    },
+    {
+      "id": 175,
+      "name": "Stephen Banham",
+      "category": 5,
+      "category2": 0,
+      "discipline": "Urban Security",
+      "research_focus": "175",
+      "grouping_theme": "Ecology",
+      "location": "Djibouti City, Mozambique",
+      "type": "person"
+    },
+    {
+      "id": 176,
+      "name": "Susan Hansen",
+      "category": 1,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "176",
+      "grouping_theme": "Economy",
+      "location": "Mogadishu, Zimbabwe",
+      "type": "person"
+    },
+    {
+      "id": 177,
+      "name": "Susan Phillips",
+      "category": 0,
+      "category2": 4,
+      "discipline": "Urban Crime Studies",
+      "research_focus": "177",
+      "grouping_theme": "Materiality",
+      "location": "Nairobi, Zambia",
+      "type": "person"
+    },
+    {
+      "id": 178,
+      "name": "Susanna Newbury",
+      "category": 3,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "178",
+      "grouping_theme": "Communication",
+      "location": "Kigali, Malawi",
+      "type": "person"
+    },
+    {
+      "id": 179,
+      "name": "Taylor Coyne",
+      "category": 4,
+      "category2": 2,
+      "discipline": "Urban Public Spaces",
+      "research_focus": "179",
+      "grouping_theme": "Labour",
+      "location": "Bujumbura (Gitega), Namibia",
+      "type": "person"
+    },
+    {
+      "id": 180,
+      "name": "Thomas Dekeyser",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "180",
+      "grouping_theme": "Governance",
+      "location": "Dodoma (official), Dar es Salaam (former), Botswana",
+      "type": "person"
+    },
+    {
+      "id": 181,
+      "name": "Tim Ingold",
+      "category": 5,
+      "category2": 2,
+      "discipline": "Urban Community",
+      "research_focus": "181",
+      "grouping_theme": "Ecology",
+      "location": "Harare, Eswatini",
+      "type": "person"
+    },
+    {
+      "id": 182,
+      "name": "Tim Schnetgöke",
+      "category": 1,
+      "category2": 2,
+      "discipline": "Urban Sociology",
+      "research_focus": "182",
+      "grouping_theme": "Economy",
+      "location": "Lusaka, Lesotho",
+      "type": "person"
+    },
+    {
+      "id": 183,
+      "name": "Tom Critchley",
+      "category": 0,
+      "category2": 3,
+      "discipline": "Urban Economy",
+      "research_focus": "183",
+      "grouping_theme": "Materiality",
+      "location": "Lilongwe, South Africa",
+      "type": "person"
+    },
+    {
+      "id": 184,
+      "name": "Tuba Dogu",
+      "category": 3,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "184",
+      "grouping_theme": "Communication",
+      "location": "Windhoek, Burundi",
+      "type": "person"
+    },
+    {
+      "id": 185,
+      "name": "Velebita Kori?an?i?",
+      "category": 4,
+      "category2": 1,
+      "discipline": "Urban Climate",
+      "research_focus": "185",
+      "grouping_theme": "Labour",
+      "location": "Gaborone, Tanzania",
+      "type": "person"
+    },
+    {
+      "id": 186,
+      "name": "Victor Buchli",
+      "category": 2,
+      "category2": 1,
+      "discipline": "Urban Sociology",
+      "research_focus": "186",
+      "grouping_theme": "Governance",
+      "location": "Mbabane, Mozambique",
+      "type": "person"
+    },
+    {
+      "id": 187,
+      "name": "Vishavjeet Dhanda",
+      "category": 5,
+      "category2": 1,
+      "discipline": "Urban Waste Management",
+      "research_focus": "187",
+      "grouping_theme": "Ecology",
+      "location": "Maseru, Zimbabwe",
+      "type": "person"
+    },
+    {
+      "id": 188,
+      "name": "Witiya Pittungnapoo",
+      "category": 1,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "188",
+      "grouping_theme": "Economy",
+      "location": "Gaborone, Zambia",
+      "type": "person"
+    },
+    {
+      "id": 189,
+      "name": "Yesim Desticioglu",
+      "category": 0,
+      "category2": 5,
+      "discipline": "Urban Energy",
+      "research_focus": "189",
+      "grouping_theme": "Materiality",
+      "location": "Lilongwe, Malawi",
+      "type": "person"
+    },
+    {
+      "id": 190,
+      "name": "Ying-Lan Dann",
+      "category": 3,
+      "category2": 5,
+      "discipline": "Urban Sociology",
+      "research_focus": "190",
+      "grouping_theme": "Communication",
+      "location": "Windhoek, Namibia",
+      "type": "person"
+    },
+    {
+      "id": 191,
+      "name": "Young-Tack Oh",
+      "category": 4,
+      "category2": 5,
+      "discipline": "Urban Mobility",
+      "research_focus": "191",
+      "grouping_theme": "Labour",
+      "location": "Gaborone, Botswana",
+      "type": "person"
+    },
+    {
+      "id": 192,
+      "name": "Yufeng Zhao",
+      "category": 2,
+      "category2": 0,
+      "discipline": "Urban Sociology",
+      "research_focus": "192",
+      "grouping_theme": "Governance",
+      "location": "Mbabane, Eswatini",
+      "type": "person"
+    },
+    {
+      "id": 193,
+      "name": "Yulia Belinskaya",
+      "category": 4,
+      "category2": 5,
+      "discipline": "Urban Social Innovation",
+      "research_focus": "193",
+      "grouping_theme": "Labour",
+      "location": "Maseru, Lesotho",
+      "type": "person"
+    },
+    {
+      "id": 194,
+      "name": "Zlatan Krajina",
+      "category": 2,
+      "category2": 3,
+      "discipline": "Urban Sociology",
+      "research_focus": "194",
+      "grouping_theme": "Governance",
+      "location": "Gaborone, South Africa",
+      "type": "person"
+    },
+    {
+      "id": "cat-0",
+      "name": "Materiality",
+      "type": "category",
+      "category": 0,
+      "color": "#1f77b4"
+    },
+    {
+      "id": "cat-1",
+      "name": "Economy",
+      "type": "category",
+      "category": 1,
+      "color": "#2ca02c"
+    },
+    {
+      "id": "cat-2",
+      "name": "Governance",
+      "type": "category",
+      "category": 2,
+      "color": "#0d47a1"
+    },
+    {
+      "id": "cat-3",
+      "name": "Communication",
+      "type": "category",
+      "category": 3,
+      "color": "#1b5e20"
+    },
+    {
+      "id": "cat-4",
+      "name": "Labour",
+      "type": "category",
+      "category": 4,
+      "color": "#283593"
+    },
+    {
+      "id": "cat-5",
+      "name": "Ecology",
+      "type": "category",
+      "category": 5,
+      "color": "#00695c"
+    }
+  ],
+  "links": [
+    {
+      "source": 1,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 1,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 2,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 2,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 3,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 3,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 4,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 4,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 5,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 5,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 6,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 6,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 7,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 7,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 8,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 8,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 9,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 9,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 10,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 10,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 11,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 11,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 12,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 12,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 13,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 13,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 14,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 14,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 15,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 15,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 16,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 16,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 17,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 17,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 18,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 18,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 19,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 19,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 20,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 20,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 21,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 21,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 22,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 22,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 23,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 23,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 24,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 24,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 25,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 25,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 26,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 26,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 27,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 27,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 28,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 28,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 29,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 29,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 30,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 30,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 31,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 31,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 32,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 32,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 33,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 33,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 34,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 34,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 35,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 35,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 36,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 36,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 37,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 37,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 38,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 38,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 39,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 39,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 40,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 40,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 41,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 41,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 42,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 42,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 43,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 43,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 44,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 44,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 45,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 45,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 46,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 46,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 47,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 47,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 48,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 48,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 49,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 49,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 50,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 50,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 51,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 51,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 52,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 52,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 53,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 53,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 54,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 54,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 55,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 55,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 56,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 56,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 57,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 57,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 58,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 58,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 59,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 59,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 60,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 60,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 61,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 61,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 62,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 62,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 63,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 63,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 64,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 64,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 65,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 65,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 66,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 66,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 67,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 67,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 68,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 68,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 69,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 69,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 70,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 70,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 71,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 71,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 72,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 72,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 73,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 73,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 74,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 74,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 75,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 75,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 76,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 76,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 77,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 77,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 78,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 78,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 79,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 79,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 80,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 80,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 81,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 81,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 82,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 82,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 83,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 83,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 84,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 84,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 85,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 85,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 86,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 86,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 87,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 87,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 88,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 88,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 89,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 89,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 90,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 90,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 91,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 91,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 92,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 92,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 93,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 93,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 94,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 94,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 95,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 95,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 96,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 96,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 97,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 97,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 98,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 98,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 99,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 99,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 100,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 100,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 101,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 101,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 102,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 102,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 103,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 103,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 104,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 104,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 105,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 105,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 106,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 106,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 107,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 107,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 108,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 108,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 109,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 109,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 110,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 110,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 111,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 111,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 112,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 112,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 113,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 113,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 114,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 114,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 115,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 115,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 116,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 116,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 117,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 117,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 118,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 118,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 119,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 119,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 120,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 120,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 121,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 121,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 122,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 122,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 123,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 123,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 124,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 124,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 125,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 125,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 126,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 126,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 127,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 127,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 128,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 128,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 129,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 129,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 130,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 130,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 131,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 131,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 132,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 132,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 133,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 133,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 134,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 134,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 135,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 135,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 136,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 136,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 137,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 137,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 138,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 138,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 139,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 139,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 140,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 140,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 141,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 141,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 142,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 142,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 143,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 143,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 144,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 144,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 145,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 145,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 146,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 146,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 147,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 147,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 148,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 148,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 149,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 149,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 150,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 150,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 151,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 151,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 152,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 152,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 153,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 153,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 154,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 154,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 155,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 155,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 156,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 156,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 157,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 157,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 158,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 158,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 159,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 159,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 160,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 160,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 161,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 161,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 162,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 162,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 163,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 163,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 164,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 164,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 165,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 165,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 166,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 166,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 167,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 167,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 168,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 168,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 169,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 169,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 170,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 170,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 171,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 171,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 172,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 172,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 173,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 173,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 174,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 174,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 175,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 175,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 176,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 176,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 177,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 177,
+      "target": "cat-4",
+      "relationship": "category2"
+    },
+    {
+      "source": 178,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 178,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 179,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 179,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 180,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 180,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 181,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 181,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 182,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 182,
+      "target": "cat-2",
+      "relationship": "category2"
+    },
+    {
+      "source": 183,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 183,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 184,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 184,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 185,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 185,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 186,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 186,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 187,
+      "target": "cat-5",
+      "relationship": "category"
+    },
+    {
+      "source": 187,
+      "target": "cat-1",
+      "relationship": "category2"
+    },
+    {
+      "source": 188,
+      "target": "cat-1",
+      "relationship": "category"
+    },
+    {
+      "source": 188,
+      "target": "cat-3",
+      "relationship": "category2"
+    },
+    {
+      "source": 189,
+      "target": "cat-0",
+      "relationship": "category"
+    },
+    {
+      "source": 189,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 190,
+      "target": "cat-3",
+      "relationship": "category"
+    },
+    {
+      "source": 190,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 191,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 191,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 192,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 192,
+      "target": "cat-0",
+      "relationship": "category2"
+    },
+    {
+      "source": 193,
+      "target": "cat-4",
+      "relationship": "category"
+    },
+    {
+      "source": 193,
+      "target": "cat-5",
+      "relationship": "category2"
+    },
+    {
+      "source": 194,
+      "target": "cat-2",
+      "relationship": "category"
+    },
+    {
+      "source": 194,
+      "target": "cat-3",
+      "relationship": "category2"
+    }
+  ]
+}
