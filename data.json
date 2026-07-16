@@ -33,7 +33,7 @@
   ],
   "nodes": [
     {"id": 1, "name": "Sabina Andron", "category": 0, "category2": 1, "location": "Melbourne, Australia"},
-    {"id": 2, "name": "Node 2", "category": 1, "category2": 2, "location": "London, UK","discipline": "Sociology"},
+    {"id": 2, "name": "Enzo Hamilton", "category": 1, "category2": 2, "location": "London, UK","discipline": "Sociology"},
     {"id": 3, "name": "Node 3", "category": 2, "category2": 3, "location": "Berlin, Germany"},
     {"id": 4, "name": "Node 4", "category": 3, "category2": 4, "location": "Paris, France"},
     {"id": 5, "name": "Node 5", "category": 4, "category2": 5, "location": "Tokyo, Japan"},
