@@ -107,7 +107,7 @@
 <div id="data-source-note" class="placeholder">⏳ Loading data…</div>
 <div id="error-msg"></div>
 <div id="map-container"></div>
-<div id="data-summary" role="region" aria-labelledby="data-summary-heading">
+<div id="data-summary" role="region" aria-labelledby="data-summary-heading" aria-live="polite">
     <h2 id="data-summary-heading">Map Data Summary</h2>
     <div id="data-summary-content">Loading summary…</div>
 </div>
@@ -285,27 +285,6 @@
         return typeof value === 'string' && value.trim() ? value.trim() : fallback;
     }
 
-    /**
-     * Extract and validate [longitude, latitude] coordinates from a map item.
-     * Accepts either `value` or `coords` arrays and returns null when invalid.
-     */
-    function extractCoords(item) {
-        let coords = null;
-
-        if (Array.isArray(item?.value)) {
-            coords = item.value;
-        } else if (Array.isArray(item?.coords)) {
-            coords = item.coords;
-        }
-
-        if (!Array.isArray(coords) || coords.length < 2) return null;
-
-        const [longitude, latitude] = coords;
-        return Number.isFinite(longitude) && Number.isFinite(latitude)
-            ? [longitude, latitude]
-            : null;
-    }
-
     function renderSummary(nodes, resolvedCount, unknownCount, usedPlaceholder) {
         const heading = document.getElementById('data-summary-heading');
         const content = document.getElementById('data-summary-content');
@@ -328,11 +307,8 @@
         heading.textContent = `Researchers from ${DATA_FILE_LABEL}`;
 
         const summary = document.createElement('p');
-        summary.textContent = `Loaded ${nodes.length} researchers. ${resolvedCount} ${
-            pluralize(resolvedCount, 'researcher has', 'researchers have')
-        } map coordinates and ${unknownCount} ${
-            pluralize(unknownCount, 'entry is', 'entries are')
-        } missing or using an unmapped location.`;
+        summary.textContent = `Loaded ${nodes.length} ${pluralize(nodes.length, 'researcher', 'researchers')}. ` +
+            `${resolvedCount} with coordinates, ${unknownCount} without.`;
         content.appendChild(summary);
 
         const list = document.createElement('ul');
@@ -453,17 +429,12 @@
         const MAX_SYMBOL_SIZE = 20;
         const SIZE_SCALE_FACTOR = 4;
 
-        const seriesData = (Array.isArray(mapItems) ? mapItems : []).flatMap(item => {
-            const coords = extractCoords(item);
-            if (!coords) return [];
-
-            return [{
-                name: item.name,
-                // value[0..1] = [lon, lat]; value[2] = weight (1 per researcher, used for symbol size)
-                value: [...coords, 1],
-                city: item.city,
-            }];
-        });
+        const seriesData = (Array.isArray(mapItems) ? mapItems : []).map(item => ({
+            name: item.name,
+            // value[0..1] = [lon, lat]; value[2] = weight (1 per researcher, used for symbol size)
+            value: [...item.value, 1],
+            city: item.city,
+        }));
 
         const option = {
             backgroundColor: '#f0f4f8',
@@ -589,7 +560,7 @@
             renderSummary(nodes, items.length, unknownCount, false);
         } else {
             // No data source worked — use placeholder
-            mapItems = PLACEHOLDER_DATA;
+            mapItems = PLACEHOLDER_DATA.map(item => ({ ...item, value: item.coords }));
             isPlaceholder = true;
             showNote('⚠️ Placeholder data — could not load data.json', 'placeholder');
             renderSummary([], 0, 0, true);
