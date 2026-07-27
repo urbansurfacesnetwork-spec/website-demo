@@ -46,6 +46,36 @@
             background-color: white;
         }
 
+        #data-summary {
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            background-color: white;
+        }
+
+        #data-summary h2 {
+            margin: 0 0 8px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        #data-summary p {
+            margin: 0 0 12px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        #data-summary ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        #data-summary li {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
         .nav-links {
             margin-top: 16px;
             font-size: 14px;
@@ -77,6 +107,10 @@
 <div id="data-source-note" class="placeholder">⏳ Loading data…</div>
 <div id="error-msg"></div>
 <div id="map-container"></div>
+<div id="data-summary" role="region" aria-labelledby="data-summary-heading" aria-live="polite">
+    <h2 id="data-summary-heading">Map Data Summary</h2>
+    <div id="data-summary-content">Loading summary…</div>
+</div>
 
 <div class="nav-links">
     <a href="index.html">← Back to Network Graph</a>
@@ -224,6 +258,8 @@
     const REMOTE_DATA_URL =
         'https://raw.githubusercontent.com/urbansurfacesnetwork-spec/urbansurfaces/main/data.json';
     const LOCAL_DATA_URL = 'data.json';
+    const DATA_FILE_LABEL = 'data.json';
+    const PREVIEW_ITEM_LIMIT = 10;
 
     // ── Helpers ──────────────────────────────────────────────────────────────
     function showNote(text, type) {
@@ -238,32 +274,102 @@
         el.textContent = text;
     }
 
+    function pluralize(count, singular, plural) {
+        return count === 1 ? singular : plural;
+    }
+
+    /**
+     * Return a trimmed string field, or a fallback when the value is missing.
+     */
+    function sanitizeField(value, fallback) {
+        return typeof value === 'string' && value.trim() ? value.trim() : fallback;
+    }
+
+    function renderSummary(nodes, resolvedCount, unknownCount, usedPlaceholder) {
+        const heading = document.getElementById('data-summary-heading');
+        const content = document.getElementById('data-summary-content');
+        content.innerHTML = '';
+
+        if (!Array.isArray(nodes) || nodes.length === 0) {
+            heading.textContent = usedPlaceholder ? 'Map fallback' : `Researchers from ${DATA_FILE_LABEL}`;
+            const message = document.createElement('p');
+            message.textContent = usedPlaceholder
+                ? `Showing placeholder locations because ${DATA_FILE_LABEL} could not be loaded.`
+                : 'No researcher records were available.';
+            content.appendChild(message);
+            return;
+        }
+
+        const remainingCount = nodes.length > PREVIEW_ITEM_LIMIT
+            ? nodes.length - PREVIEW_ITEM_LIMIT
+            : 0;
+
+        heading.textContent = `Researchers from ${DATA_FILE_LABEL}`;
+
+        const summary = document.createElement('p');
+        summary.textContent = `Loaded ${nodes.length} ${pluralize(nodes.length, 'researcher', 'researchers')}. ` +
+            `${resolvedCount} with coordinates, ${unknownCount} without.`;
+        content.appendChild(summary);
+
+        const list = document.createElement('ul');
+        nodes.slice(0, PREVIEW_ITEM_LIMIT).forEach(node => {
+            const item = document.createElement('li');
+            const name = document.createElement('strong');
+            name.textContent = sanitizeField(node?.name, 'Unnamed researcher');
+            item.appendChild(name);
+            item.appendChild(
+                document.createTextNode(
+                    ` — ${sanitizeField(node?.booklet, 'No booklet listed')}; ` +
+                    `location: ${sanitizeField(node?.location, 'Unknown')}`
+                )
+            );
+            list.appendChild(item);
+        });
+        content.appendChild(list);
+
+        if (remainingCount > 0) {
+            const remainder = document.createElement('p');
+            remainder.textContent = `Plus ${remainingCount} more researchers in ${DATA_FILE_LABEL}.`;
+            content.appendChild(remainder);
+        }
+    }
+
     /**
      * Convert a location string from the data into [lon, lat] or null.
      * Tries the CITY_COORDS lookup after normalising the string.
      */
     function resolveCoords(location) {
-        if (!location || location.toLowerCase() === 'unknown') return null;
+        if (typeof location !== 'string') return null;
+
+        const trimmed = location.trim();
+        if (!trimmed || trimmed.toLowerCase() === 'unknown') return null;
 
         // If the field already looks like "lat,lon" numeric pair, parse it.
         // Expected format: "lat, lon" where lat is in [-90, 90] and lon is in [-180, 180].
-        const numPair = location.match(/^(-?\d+\.?\d*)\s*[,;]\s*(-?\d+\.?\d*)$/);
+        const numPair = trimmed.match(/^(-?\d+\.?\d*)\s*[,;]\s*(-?\d+\.?\d*)$/);
         if (numPair) {
-            const a = parseFloat(numPair[1]);
-            const b = parseFloat(numPair[2]);
+            const lat = parseFloat(numPair[1]);
+            const lon = parseFloat(numPair[2]);
             // Validate ranges before assuming [lat, lon] → convert to [lon, lat]
-            if (Math.abs(a) <= 90 && Math.abs(b) <= 180) return [b, a];
+            if (
+                Number.isFinite(lat) &&
+                Number.isFinite(lon) &&
+                Math.abs(lat) <= 90 &&
+                Math.abs(lon) <= 180
+            ) {
+                return [lon, lat];
+            }
             // Invalid coordinate range — skip rather than guess
             return null;
         }
 
-        const key = location.trim().toLowerCase();
-        if (CITY_COORDS[key]) return CITY_COORDS[key];
+        const lowerKey = trimmed.toLowerCase();
+        if (CITY_COORDS[lowerKey]) return CITY_COORDS[lowerKey];
 
         // Partial match: location string starts with the city key (minimum 4 chars
         // to avoid spurious matches like "new" → "newcastle").
         for (const [cityKey, coords] of Object.entries(CITY_COORDS)) {
-            if (cityKey.length >= 4 && key.startsWith(cityKey)) return coords;
+            if (cityKey.length >= 4 && lowerKey.startsWith(cityKey)) return coords;
         }
         return null;
     }
@@ -275,10 +381,16 @@
     function buildMapItems(nodes) {
         const items = [];
         let unknownCount = 0;
-        for (const node of nodes) {
-            const coords = resolveCoords(node.location);
+        for (const node of Array.isArray(nodes) ? nodes : []) {
+            const name = typeof node?.name === 'string' && node.name.trim()
+                ? node.name.trim()
+                : 'Unnamed researcher';
+            const city = typeof node?.location === 'string' && node.location.trim()
+                ? node.location.trim()
+                : 'Unknown';
+            const coords = resolveCoords(node?.location);
             if (coords) {
-                items.push({ name: node.name, city: node.location, value: coords });
+                items.push({ name, city, value: coords });
             } else {
                 unknownCount++;
             }
@@ -317,7 +429,7 @@
         const MAX_SYMBOL_SIZE = 20;
         const SIZE_SCALE_FACTOR = 4;
 
-        const seriesData = mapItems.map(item => ({
+        const seriesData = (Array.isArray(mapItems) ? mapItems : []).map(item => ({
             name: item.name,
             // value[0..1] = [lon, lat]; value[2] = weight (1 per researcher, used for symbol size)
             value: [...item.value, 1],
@@ -431,33 +543,27 @@
         let mapItems;
         let isPlaceholder = false;
 
-        if (nodes) {
+        if (Array.isArray(nodes) && nodes.length > 0) {
             const { items, unknownCount } = buildMapItems(nodes);
-            if (items.length > 0) {
-                mapItems = items;
-                const total = nodes.length;
-                const srcLabel = dataSource === 'remote'
-                    ? '🌐 Live data (remote data.json)'
-                    : '📂 Live data (local data.json)';
-                showNote(
-                    `${srcLabel} — ${items.length} researchers mapped` +
-                    (unknownCount > 0 ? `, ${unknownCount} with unknown location` : ''),
-                    'live'
-                );
-            } else {
-                // All locations unknown — use placeholder
-                mapItems = PLACEHOLDER_DATA;
-                isPlaceholder = true;
-                showNote(
-                    '⚠️ Placeholder data — all researcher locations are "Unknown" in data.json',
-                    'placeholder'
-                );
-            }
+            mapItems = items;
+            const srcLabel = dataSource === 'remote'
+                ? '🌐 Live data (remote data.json)'
+                : '📂 Live data (local data.json)';
+            const noteType = items.length > 0 ? 'live' : 'placeholder';
+            showNote(
+                items.length > 0
+                    ? `${srcLabel} — ${items.length} researchers mapped` +
+                        (unknownCount > 0 ? `, ${unknownCount} with unknown location` : '')
+                    : `${srcLabel} — loaded ${nodes.length} researchers, but none have usable map coordinates`,
+                noteType
+            );
+            renderSummary(nodes, items.length, unknownCount, false);
         } else {
             // No data source worked — use placeholder
-            mapItems = PLACEHOLDER_DATA;
+            mapItems = PLACEHOLDER_DATA.map(item => ({ ...item, value: item.coords }));
             isPlaceholder = true;
             showNote('⚠️ Placeholder data — could not load data.json', 'placeholder');
+            renderSummary([], 0, 0, true);
         }
 
         await initChart(mapItems, isPlaceholder);
