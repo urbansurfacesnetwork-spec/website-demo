@@ -247,7 +247,7 @@
 
         // If the field already looks like "lat,lon" numeric pair, parse it.
         // Expected format: "lat, lon" where lat is in [-90, 90] and lon is in [-180, 180].
-        const numPair = location.match(/^(-?[\d.]+)\s*[,;]\s*(-?[\d.]+)$/);
+        const numPair = location.match(/^(-?\d+\.?\d*)\s*[,;]\s*(-?\d+\.?\d*)$/);
         if (numPair) {
             const a = parseFloat(numPair[1]);
             const b = parseFloat(numPair[2]);
@@ -260,9 +260,10 @@
         const key = location.trim().toLowerCase();
         if (CITY_COORDS[key]) return CITY_COORDS[key];
 
-        // Partial match: if any key is contained in the location string
+        // Partial match: location string starts with the city key (minimum 4 chars
+        // to avoid spurious matches like "new" → "newcastle").
         for (const [cityKey, coords] of Object.entries(CITY_COORDS)) {
-            if (key.includes(cityKey) || cityKey.includes(key)) return coords;
+            if (cityKey.length >= 4 && key.startsWith(cityKey)) return coords;
         }
         return null;
     }
@@ -311,8 +312,14 @@
 
         const chart = echarts.init(document.getElementById('map-container'));
 
+        // Symbol sizing constants
+        const MIN_SYMBOL_SIZE = 8;
+        const MAX_SYMBOL_SIZE = 20;
+        const SIZE_SCALE_FACTOR = 4;
+
         const seriesData = mapItems.map(item => ({
             name: item.name,
+            // value[0..1] = [lon, lat]; value[2] = weight (1 per researcher, used for symbol size)
             value: [...item.value, 1],
             city: item.city,
         }));
@@ -358,7 +365,7 @@
                     type: 'effectScatter',
                     coordinateSystem: 'geo',
                     data: seriesData,
-                    symbolSize: val => Math.max(8, Math.min(20, 8 + val[2] * 4)),
+                    symbolSize: val => Math.max(MIN_SYMBOL_SIZE, Math.min(MAX_SYMBOL_SIZE, MIN_SYMBOL_SIZE + val[2] * SIZE_SCALE_FACTOR)),
                     showEffectOn: 'render',
                     rippleEffect: {
                         brushType: 'stroke',
