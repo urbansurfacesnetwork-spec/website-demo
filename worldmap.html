@@ -137,7 +137,6 @@
         "cairo":           [ 31.2357,  30.0444],
         "istanbul":        [ 28.9784,  41.0082],
         "moscow":          [ 37.6173,  55.7558],
-        "beijing":         [116.4074,  39.9042],
         "santiago":        [-70.6693, -33.4489],
         "buenos aires":    [-58.3816, -34.6037],
         "sao paulo":       [-46.6333, -23.5505],
@@ -207,7 +206,7 @@
         "sarajevo":        [ 18.4131,  43.8563],
         "skopje":          [ 21.4361,  41.9981],
         "tirana":          [ 19.8189,  41.3317],
-        "reykjavik":       [-21.9426,  64.1466],
+        "reykjavik":       [-21.9426,  64.1466]
     };
 
     // Placeholder dataset – 5 world cities with mock researcher names.
@@ -246,14 +245,16 @@
     function resolveCoords(location) {
         if (!location || location.toLowerCase() === 'unknown') return null;
 
-        // If the field already looks like "lat,lon" or "[lon,lat]" parse it.
-        const numPair = location.match(/(-?[\d.]+)\s*[,;]\s*(-?[\d.]+)/);
+        // If the field already looks like "lat,lon" numeric pair, parse it.
+        // Expected format: "lat, lon" where lat is in [-90, 90] and lon is in [-180, 180].
+        const numPair = location.match(/^(-?[\d.]+)\s*[,;]\s*(-?[\d.]+)$/);
         if (numPair) {
             const a = parseFloat(numPair[1]);
             const b = parseFloat(numPair[2]);
-            // Heuristic: assume [lat, lon] order if |a| <= 90 and |b| <= 180
-            if (Math.abs(a) <= 90 && Math.abs(b) <= 180) return [b, a]; // → [lon, lat]
-            return [a, b];
+            // Validate ranges before assuming [lat, lon] → convert to [lon, lat]
+            if (Math.abs(a) <= 90 && Math.abs(b) <= 180) return [b, a];
+            // Invalid coordinate range — skip rather than guess
+            return null;
         }
 
         const key = location.trim().toLowerCase();
@@ -293,7 +294,9 @@
 
     // ── ECharts initialisation ───────────────────────────────────────────────
     async function initChart(mapItems, isPlaceholder) {
-        // Load world GeoJSON and register map
+        // Load world GeoJSON and register map.
+        // The world.json file is pure GeoJSON data (not ECharts code), so using
+        // the echarts@4 package path on jsDelivr is safe with any ECharts version.
         let worldJson;
         try {
             const resp = await fetch(
