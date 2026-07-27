@@ -107,7 +107,10 @@
 <div id="data-source-note" class="placeholder">⏳ Loading data…</div>
 <div id="error-msg"></div>
 <div id="map-container"></div>
-<div id="data-summary" role="region" aria-label="Map data summary"></div>
+<div id="data-summary" role="region" aria-labelledby="data-summary-heading">
+    <h2 id="data-summary-heading">Map data summary</h2>
+    <div id="data-summary-content">Loading summary…</div>
+</div>
 
 <div class="nav-links">
     <a href="index.html">← Back to Network Graph</a>
@@ -304,12 +307,14 @@
     }
 
     function renderSummary(nodes, resolvedCount, unknownCount, usedPlaceholder) {
-        const el = document.getElementById('data-summary');
+        const heading = document.getElementById('data-summary-heading');
+        const content = document.getElementById('data-summary-content');
 
         if (!Array.isArray(nodes) || nodes.length === 0) {
-            el.innerHTML = usedPlaceholder
-                ? `<h2>Map fallback</h2><p>Showing placeholder locations because <code>${DATA_FILE_LABEL}</code> could not be loaded.</p>`
-                : `<h2>Researchers from ${DATA_FILE_LABEL}</h2><p>No researcher records were available.</p>`;
+            heading.textContent = usedPlaceholder ? 'Map fallback' : `Researchers from ${DATA_FILE_LABEL}`;
+            content.innerHTML = usedPlaceholder
+                ? `<p>Showing placeholder locations because <code>${DATA_FILE_LABEL}</code> could not be loaded.</p>`
+                : '<p>No researcher records were available.</p>';
             return;
         }
 
@@ -340,8 +345,8 @@
             ? `<p>Plus ${remainingCount} more researchers in <code>${DATA_FILE_LABEL}</code>.</p>`
             : '';
 
-        el.innerHTML = `
-            <h2>Researchers from ${DATA_FILE_LABEL}</h2>
+        heading.textContent = `Researchers from ${DATA_FILE_LABEL}`;
+        content.innerHTML = `
             <p>
                 Loaded ${nodes.length} researchers. ${resolvedCount}
                 ${pluralize(resolvedCount, 'researcher has', 'researchers have')}
@@ -367,11 +372,11 @@
         // Expected format: "lat, lon" where lat is in [-90, 90] and lon is in [-180, 180].
         const numPair = trimmed.match(/^(-?\d+\.?\d*)\s*[,;]\s*(-?\d+\.?\d*)$/);
         if (numPair) {
-            const parsedLat = parseFloat(numPair[1]);
-            const parsedLon = parseFloat(numPair[2]);
+            const parsedFirstCoordinate = parseFloat(numPair[1]);
+            const parsedSecondCoordinate = parseFloat(numPair[2]);
             // Validate ranges before assuming [lat, lon] → convert to [lon, lat]
-            if (Math.abs(parsedLat) <= 90 && Math.abs(parsedLon) <= 180) {
-                return [parsedLon, parsedLat];
+            if (Math.abs(parsedFirstCoordinate) <= 90 && Math.abs(parsedSecondCoordinate) <= 180) {
+                return [parsedSecondCoordinate, parsedFirstCoordinate];
             }
             // Invalid coordinate range — skip rather than guess
             return null;
@@ -448,14 +453,10 @@
             if (!coords) return [];
 
             return [{
-                name: typeof item?.name === 'string' && item.name.trim()
-                    ? item.name.trim()
-                    : 'Unnamed researcher',
+                name: item.name,
                 // value[0..1] = [lon, lat]; value[2] = weight (1 per researcher, used for symbol size)
                 value: [...coords, 1],
-                city: typeof item?.city === 'string' && item.city.trim()
-                    ? item.city.trim()
-                    : 'Unknown',
+                city: item.city,
             }];
         });
 
