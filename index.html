@@ -16,7 +16,7 @@
             height: 600px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            background-color: white;
+            background-color: transparent;
             margin-bottom: 30px;
         }
         
@@ -31,10 +31,10 @@
         /* Table Section Styles */
         .table-section {
             margin-top: 40px;
-            background-color: white;
+            background-color: transparent;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: none;
         }
         
         .table-section h2 {
@@ -103,14 +103,22 @@
         #resetBtn:hover {
             background-color: #da190b;
         }
-        
-        #exportBtn {
-            background-color: #4CAF50;
+
+        #seeOnMapBtn {
+            background-color: #1f77b4;
             color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
         }
-        
-        #exportBtn:hover {
-            background-color: #45a049;
+
+        #seeOnMapBtn:hover {
+            background-color: #0d47a1;
         }
         
         .results-info {
@@ -123,12 +131,14 @@
             overflow-x: auto;
             border: 1px solid #ddd;
             border-radius: 4px;
+            background-color: transparent;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 14px;
+            background-color: transparent;
         }
         
         thead {
@@ -163,14 +173,15 @@
         
         tbody tr {
             transition: background-color 0.2s;
+            background-color: rgba(255, 255, 255, 0.65);
         }
         
         tbody tr:hover {
-            background-color: #f9f9f9;
+            background-color: rgba(249, 249, 249, 0.9);
         }
         
         tbody tr:nth-child(even) {
-            background-color: #fafafa;
+            background-color: rgba(250, 250, 250, 0.65);
         }
         
         .category-badge {
@@ -182,23 +193,6 @@
             font-weight: bold;
             margin-right: 5px;
             margin-bottom: 3px;
-        }
-        
-        .definition-cell {
-            max-width: 300px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-style: italic;
-            color: #555;
-        }
-        
-        .definition-cell:hover {
-            white-space: normal;
-            overflow: visible;
-            background-color: #fff9e6;
-            position: relative;
-            z-index: 10;
         }
         
         .events-cell {
@@ -280,10 +274,17 @@
                 <option value="5">Ecology</option>
             </select>
         </div>
+
+        <div class="control-group">
+            <label for="locationFilter">Filter by Region:</label>
+            <select id="locationFilter">
+                <option value="">All Regions</option>
+            </select>
+        </div>
         
         <div class="button-group">
             <button id="resetBtn">Reset Filters</button>
-            <button id="exportBtn">Export as CSV</button>
+            <a id="seeOnMapBtn" href="#" target="_blank" rel="noopener noreferrer">See on Map</a>
         </div>
     </div>
     
@@ -298,7 +299,7 @@
                     <th class="sortable">Name</th>
                     <th>Categories</th>
                     <th>Booklet</th>
-                    <th class="sortable">Definition</th>
+                    <th class="sortable">Location</th>
                     <th>Events</th>
                 </tr>
             </thead>
@@ -322,7 +323,6 @@
     let currentPage = 1;
     const rowsPerPage = 20;
     let myChart = null;
-    let chartsData = null;
     
     const categoryNames = {
         0: 'Materiality',
@@ -358,7 +358,6 @@
             // Store raw data for table
             allData = data.nodes;
             filteredData = [...allData];
-            chartsData = data;
 
             // Initialize both chart and table
             initChart(data);
@@ -436,6 +435,7 @@
         myChart = echarts.init(chartDom);
 
         const option = {
+            backgroundColor: 'transparent',
             tooltip: {
                 trigger: 'item',
                 formatter: function (params) {
@@ -499,16 +499,35 @@
 
     // ===== Table Functions =====
     function initTable() {
+        populateLocationFilter();
         renderTable();
         setupEventListeners();
+    }
+
+    function populateLocationFilter() {
+        const locationFilter = document.getElementById('locationFilter');
+        const uniqueRegions = Array.from(
+            new Set(
+                allData
+                    .map(person => (person.location || 'Unknown').toString().trim())
+                    .filter(region => region.length > 0)
+            )
+        ).sort((a, b) => a.localeCompare(b));
+
+        uniqueRegions.forEach(region => {
+            const option = document.createElement('option');
+            option.value = region;
+            option.textContent = region;
+            locationFilter.appendChild(option);
+        });
     }
 
     function setupEventListeners() {
         document.getElementById('searchInput').addEventListener('input', applyFilters);
         document.getElementById('bookletFilter').addEventListener('change', applyFilters);
         document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('locationFilter').addEventListener('change', applyFilters);
         document.getElementById('resetBtn').addEventListener('click', resetFilters);
-        document.getElementById('exportBtn').addEventListener('click', exportToCSV);
 
         // Sortable headers
         document.querySelectorAll('th.sortable').forEach(header => {
@@ -524,6 +543,7 @@
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
         const bookletFilter = document.getElementById('bookletFilter').value;
         const categoryFilter = document.getElementById('categoryFilter').value;
+        const locationFilter = document.getElementById('locationFilter').value;
 
         filteredData = allData.filter(person => {
             const matchesSearch = person.name.toLowerCase().includes(searchTerm);
@@ -536,7 +556,10 @@
                 person.category.toString() === categoryFilter || 
                 person.category2.toString() === categoryFilter;
 
-            return matchesSearch && matchesBooklet && matchesCategory;
+            const personRegion = (person.location || 'Unknown').toString().trim();
+            const matchesRegion = !locationFilter || personRegion === locationFilter;
+
+            return matchesSearch && matchesBooklet && matchesCategory && matchesRegion;
         });
 
         renderTable();
@@ -544,11 +567,11 @@
 
     function sortTable(column) {
         const isName = column === 'Name';
-        const isDefinition = column === 'Definition';
+        const isLocation = column === 'Location';
 
         filteredData.sort((a, b) => {
-            let aVal = isName ? a.name : isDefinition ? (a.definition || '') : '';
-            let bVal = isName ? b.name : isDefinition ? (b.definition || '') : '';
+            let aVal = isName ? a.name : isLocation ? (a.location || 'Unknown') : '';
+            let bVal = isName ? b.name : isLocation ? (b.location || 'Unknown') : '';
             
             return aVal.localeCompare(bVal);
         });
@@ -582,7 +605,7 @@
                     </span>
                 </td>
                 <td>${person.booklet || '—'}</td>
-                <td class="definition-cell" title="${person.definition || ''}">${person.definition ? person.definition.substring(0, 60) + '...' : '—'}</td>
+                <td>${person.location || 'Unknown'}</td>
                 <td class="events-cell">${person.events && person.events.length > 0 ? person.events.length + ' event(s)' : '—'}</td>
             </tr>
         `).join('');
@@ -618,33 +641,10 @@
         document.getElementById('searchInput').value = '';
         document.getElementById('bookletFilter').value = '';
         document.getElementById('categoryFilter').value = '';
+        document.getElementById('locationFilter').value = '';
         currentPage = 1;
         filteredData = [...allData];
         renderTable();
-    }
-
-    function exportToCSV() {
-        let csv = 'Name,Category 1,Category 2,Booklet,Definition,Events\n';
-        
-        filteredData.forEach(person => {
-            const cat1 = categoryNames[person.category];
-            const cat2 = categoryNames[person.category2];
-            const booklet = person.booklet ? `"${person.booklet}"` : '';
-            const definition = person.definition ? `"${person.definition.replace(/"/g, '""')}"` : '';
-            const events = person.events ? `"${person.events.join('; ')}"` : '';
-            
-            csv += `"${person.name}",${cat1},${cat2},${booklet},${definition},${events}\n`;
-        });
-
-        const blob = new Blob([csv], { type: 'text/csv' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `usrn-participants-${new Date().toISOString().slice(0,10)}.csv`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
     }
 
     // ===== Start =====
