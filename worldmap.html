@@ -243,11 +243,11 @@
     // Placeholder dataset – 5 world cities with mock researcher names.
     // ⚠️ PLACEHOLDER — replace with real researcher data.
     const PLACEHOLDER_DATA = [
-        { name: "Researcher A (placeholder)", city: "London",    value: CITY_COORDS["london"]    },
-        { name: "Researcher B (placeholder)", city: "New York",  value: CITY_COORDS["new york"]  },
-        { name: "Researcher C (placeholder)", city: "Tokyo",     value: CITY_COORDS["tokyo"]     },
-        { name: "Researcher D (placeholder)", city: "Melbourne", value: CITY_COORDS["melbourne"] },
-        { name: "Researcher E (placeholder)", city: "Berlin",    value: CITY_COORDS["berlin"]    },
+        { name: "Researcher A (placeholder)", city: "London",    coords: CITY_COORDS["london"]    },
+        { name: "Researcher B (placeholder)", city: "New York",  coords: CITY_COORDS["new york"]  },
+        { name: "Researcher C (placeholder)", city: "Tokyo",     coords: CITY_COORDS["tokyo"]     },
+        { name: "Researcher D (placeholder)", city: "Melbourne", coords: CITY_COORDS["melbourne"] },
+        { name: "Researcher E (placeholder)", city: "Berlin",    coords: CITY_COORDS["berlin"]    },
     ];
 
     // ── Remote data.json URL ─────────────────────────────────────────────────
@@ -297,8 +297,10 @@
 
         if (!Array.isArray(coords) || coords.length < 2) return null;
 
-        const [lon, lat] = coords;
-        return Number.isFinite(lon) && Number.isFinite(lat) ? [lon, lat] : null;
+        const [longitude, latitude] = coords;
+        return Number.isFinite(longitude) && Number.isFinite(latitude)
+            ? [longitude, latitude]
+            : null;
     }
 
     function renderSummary(nodes, resolvedCount, unknownCount, usedPlaceholder) {
@@ -331,7 +333,9 @@
             return `<li><strong>${name}</strong> — ${booklet}; location: ${location}</li>`;
         }).join('');
 
-        const remainingCount = Math.max(nodes.length - PREVIEW_ITEM_LIMIT, 0);
+        const remainingCount = nodes.length > PREVIEW_ITEM_LIMIT
+            ? nodes.length - PREVIEW_ITEM_LIMIT
+            : 0;
         const remainingText = remainingCount > 0
             ? `<p>Plus ${remainingCount} more researchers in <code>${DATA_FILE_LABEL}</code>.</p>`
             : '';
