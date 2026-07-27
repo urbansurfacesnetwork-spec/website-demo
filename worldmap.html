@@ -107,7 +107,7 @@
 <div id="data-source-note" class="placeholder">⏳ Loading data…</div>
 <div id="error-msg"></div>
 <div id="map-container"></div>
-<div id="data-summary" role="region" aria-labelledby="data-summary-heading"></div>
+<div id="data-summary" role="region" aria-label="Map data summary"></div>
 
 <div class="nav-links">
     <a href="index.html">← Back to Network Graph</a>
@@ -287,11 +287,13 @@
     }
 
     function extractCoords(item) {
-        const coords = Array.isArray(item?.value)
-            ? item.value
-            : Array.isArray(item?.coords)
-                ? item.coords
-                : null;
+        let coords = null;
+
+        if (Array.isArray(item?.value)) {
+            coords = item.value;
+        } else if (Array.isArray(item?.coords)) {
+            coords = item.coords;
+        }
 
         if (!Array.isArray(coords) || coords.length < 2) return null;
 
@@ -299,13 +301,13 @@
         return Number.isFinite(lon) && Number.isFinite(lat) ? [lon, lat] : null;
     }
 
-    function renderSummary(nodes, mappedCount, unknownCount, usedPlaceholder) {
+    function renderSummary(nodes, resolvedCount, unknownCount, usedPlaceholder) {
         const el = document.getElementById('data-summary');
 
         if (!Array.isArray(nodes) || nodes.length === 0) {
             el.innerHTML = usedPlaceholder
-                ? `<h2 id="data-summary-heading">Map fallback</h2><p>Showing placeholder locations because <code>${DATA_FILE_LABEL}</code> could not be loaded.</p>`
-                : `<h2 id="data-summary-heading">Researchers from ${DATA_FILE_LABEL}</h2><p>No researcher records were available.</p>`;
+                ? `<h2>Map fallback</h2><p>Showing placeholder locations because <code>${DATA_FILE_LABEL}</code> could not be loaded.</p>`
+                : `<h2>Researchers from ${DATA_FILE_LABEL}</h2><p>No researcher records were available.</p>`;
             return;
         }
 
@@ -335,9 +337,9 @@
             : '';
 
         el.innerHTML = `
-            <h2 id="data-summary-heading">Researchers from ${DATA_FILE_LABEL}</h2>
+            <h2>Researchers from ${DATA_FILE_LABEL}</h2>
             <p>
-                Loaded ${nodes.length} researchers. ${mappedCount} ${pluralize(mappedCount, 'has', 'have')}
+                Loaded ${nodes.length} researchers. ${resolvedCount} ${pluralize(resolvedCount, 'has', 'have')}
                 map coordinates and ${unknownCount} ${pluralize(unknownCount, 'entry is', 'entries are')}
                 missing or using an unmapped location.
             </p>
@@ -360,11 +362,11 @@
         // Expected format: "lat, lon" where lat is in [-90, 90] and lon is in [-180, 180].
         const numPair = trimmed.match(/^(-?\d+\.?\d*)\s*[,;]\s*(-?\d+\.?\d*)$/);
         if (numPair) {
-            const parsedLat = parseFloat(numPair[1]);
-            const parsedLon = parseFloat(numPair[2]);
+            const parsedFirstValue = parseFloat(numPair[1]);
+            const parsedSecondValue = parseFloat(numPair[2]);
             // Validate ranges before assuming [lat, lon] → convert to [lon, lat]
-            if (Math.abs(parsedLat) <= 90 && Math.abs(parsedLon) <= 180) {
-                return [parsedLon, parsedLat];
+            if (Math.abs(parsedFirstValue) <= 90 && Math.abs(parsedSecondValue) <= 180) {
+                return [parsedSecondValue, parsedFirstValue];
             }
             // Invalid coordinate range — skip rather than guess
             return null;
