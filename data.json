@@ -45,7 +45,7 @@
     {"id": 11, "name": "Aline Rahbany", "category": 4, "category2": 0, "location": "São Paulo, Brazil"},
     {"id": 12, "name": "Alison Barnes", "category": 5, "category2": 1, "location": "Cape Town, South Africa"},
     {"id": 13, "name": "Alison Young", "category": 0, "category2": 3, "location": "Amsterdam, Netherlands"},
-    {"id": 14, "name": "Alyxone/ ISIT/ Michael McGrath", "category": 1, "category2": 4, "location": "Stockholm, Sweden"},
+    {"id": 14, "name": "Alyxone/ ISIT", "category": 1, "category2": 4, "location": "Stockholm, Sweden"},
     {"id": 15, "name": "Node 15", "category": 2, "category2": 5, "location": "Vienna, Austria"},
     {"id": 16, "name": "Node 16", "category": 3, "category2": 0, "location": "Barcelona, Spain"},
     {"id": 17, "name": "Node 17", "category": 4, "category2": 1, "location": "Istanbul, Turkey"},
