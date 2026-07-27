@@ -339,7 +339,8 @@
         el.innerHTML = `
             <h2>Researchers from ${DATA_FILE_LABEL}</h2>
             <p>
-                Loaded ${nodes.length} researchers. ${resolvedCount} ${pluralize(resolvedCount, 'has', 'have')}
+                Loaded ${nodes.length} researchers. ${resolvedCount}
+                ${pluralize(resolvedCount, 'researcher has', 'researchers have')}
                 map coordinates and ${unknownCount} ${pluralize(unknownCount, 'entry is', 'entries are')}
                 missing or using an unmapped location.
             </p>
@@ -362,23 +363,23 @@
         // Expected format: "lat, lon" where lat is in [-90, 90] and lon is in [-180, 180].
         const numPair = trimmed.match(/^(-?\d+\.?\d*)\s*[,;]\s*(-?\d+\.?\d*)$/);
         if (numPair) {
-            const parsedFirstValue = parseFloat(numPair[1]);
-            const parsedSecondValue = parseFloat(numPair[2]);
+            const parsedLat = parseFloat(numPair[1]);
+            const parsedLon = parseFloat(numPair[2]);
             // Validate ranges before assuming [lat, lon] → convert to [lon, lat]
-            if (Math.abs(parsedFirstValue) <= 90 && Math.abs(parsedSecondValue) <= 180) {
-                return [parsedSecondValue, parsedFirstValue];
+            if (Math.abs(parsedLat) <= 90 && Math.abs(parsedLon) <= 180) {
+                return [parsedLon, parsedLat];
             }
             // Invalid coordinate range — skip rather than guess
             return null;
         }
 
-        const key = trimmed.toLowerCase();
-        if (CITY_COORDS[key]) return CITY_COORDS[key];
+        const lowerKey = trimmed.toLowerCase();
+        if (CITY_COORDS[lowerKey]) return CITY_COORDS[lowerKey];
 
         // Partial match: location string starts with the city key (minimum 4 chars
         // to avoid spurious matches like "new" → "newcastle").
         for (const [cityKey, coords] of Object.entries(CITY_COORDS)) {
-            if (cityKey.length >= 4 && key.startsWith(cityKey)) return coords;
+            if (cityKey.length >= 4 && lowerKey.startsWith(cityKey)) return coords;
         }
         return null;
     }
