@@ -108,7 +108,7 @@
 <div id="error-msg"></div>
 <div id="map-container"></div>
 <div id="data-summary" role="region" aria-labelledby="data-summary-heading">
-    <h2 id="data-summary-heading">Map data summary</h2>
+    <h2 id="data-summary-heading">Map Data Summary</h2>
     <div id="data-summary-content">Loading summary…</div>
 </div>
 
@@ -278,10 +278,17 @@
         return count === 1 ? singular : plural;
     }
 
+    /**
+     * Return a trimmed string field, or a fallback when the value is missing.
+     */
     function sanitizeField(value, fallback) {
         return typeof value === 'string' && value.trim() ? value.trim() : fallback;
     }
 
+    /**
+     * Extract and validate [longitude, latitude] coordinates from a map item.
+     * Accepts either `value` or `coords` arrays and returns null when invalid.
+     */
     function extractCoords(item) {
         let coords = null;
 
@@ -321,12 +328,11 @@
         heading.textContent = `Researchers from ${DATA_FILE_LABEL}`;
 
         const summary = document.createElement('p');
-        summary.textContent =
-            `Loaded ${nodes.length} researchers. ${resolvedCount} ` +
-            `${pluralize(resolvedCount, 'researcher has', 'researchers have')} ` +
-            `map coordinates and ${unknownCount} ` +
-            `${pluralize(unknownCount, 'entry is', 'entries are')} ` +
-            'missing or using an unmapped location.';
+        summary.textContent = `Loaded ${nodes.length} researchers. ${resolvedCount} ${
+            pluralize(resolvedCount, 'researcher has', 'researchers have')
+        } map coordinates and ${unknownCount} ${
+            pluralize(unknownCount, 'entry is', 'entries are')
+        } missing or using an unmapped location.`;
         content.appendChild(summary);
 
         const list = document.createElement('ul');
