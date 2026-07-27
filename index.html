@@ -405,9 +405,31 @@
             };
         });
 
+        // Add category hub nodes
+        const categoryHubNodes = data.categories.map((category, index) => ({
+            name: `Category: ${category.name}`,
+            category: index,
+            category2: index,
+            symbol: 'circle',
+            symbolSize: 36,
+            value: 36,
+            isCategoryHub: true,
+            itemStyle: {
+                color: category.color,
+                borderColor: '#fff',
+                borderWidth: 3
+            },
+            label: {
+                show: true,
+                fontWeight: 'bold'
+            }
+        }));
+
+        const graphNodes = [...nodes, ...categoryHubNodes];
+
         // Create node map
         const nodeMap = {};
-        nodes.forEach(node => {
+        graphNodes.forEach(node => {
             nodeMap[node.name] = node;
         });
 
@@ -430,6 +452,31 @@
             }
         }));
 
+        // Add person-to-category links
+        const categoryLinks = nodes.flatMap(node => {
+            const links = [{
+                source: node.name,
+                target: `Category: ${categories[node.category].name}`,
+                lineStyle: {
+                    color: categoryColors[node.category]
+                }
+            }];
+
+            if (node.category2 !== node.category) {
+                links.push({
+                    source: node.name,
+                    target: `Category: ${categories[node.category2].name}`,
+                    lineStyle: {
+                        color: categoryColors[node.category2]
+                    }
+                });
+            }
+
+            return links;
+        });
+
+        const allLinks = [...links, ...categoryLinks];
+
         // Initialize chart
         const chartDom = document.getElementById('main');
         myChart = echarts.init(chartDom);
@@ -440,6 +487,9 @@
                 trigger: 'item',
                 formatter: function (params) {
                     if (params.dataType === 'node') {
+                        if (params.data.isCategoryHub) {
+                            return `<b>${params.data.name.replace('Category: ', '')}</b><br/>Category hub`;
+                        }
                         const categoryName1 = categories[params.data.category]?.name || 'Unknown';
                         const categoryName2 = categories[params.data.category2]?.name || 'Unknown';
                         const location = params.data.location || 'Unknown';
@@ -481,8 +531,8 @@
                     repulsion: 100,
                     edgeLength: [50, 150]
                 },
-                data: nodes,
-                links: links,
+                data: graphNodes,
+                links: allLinks,
                 categories: categories,
                 lineStyle: {
                     curveness: 0
