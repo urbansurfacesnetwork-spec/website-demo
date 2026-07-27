@@ -107,7 +107,7 @@
 <div id="data-source-note" class="placeholder">⏳ Loading data…</div>
 <div id="error-msg"></div>
 <div id="map-container"></div>
-<div id="data-summary" role="region" aria-labelledby="data-summary-heading">
+<div id="data-summary" role="region" aria-labelledby="data-summary-heading" aria-label="Researcher data summary">
     <h2 id="data-summary-heading">Map data summary</h2>
     <div id="data-summary-content">Loading summary…</div>
 </div>
@@ -281,8 +281,7 @@
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#39;')
-            .replace(/`/g, '&#96;')
-            .replace(/\//g, '&#47;');
+            .replace(/`/g, '&#96;');
     }
 
     function pluralize(count, singular, plural) {
@@ -372,11 +371,16 @@
         // Expected format: "lat, lon" where lat is in [-90, 90] and lon is in [-180, 180].
         const numPair = trimmed.match(/^(-?\d+\.?\d*)\s*[,;]\s*(-?\d+\.?\d*)$/);
         if (numPair) {
-            const parsedFirstCoordinate = parseFloat(numPair[1]);
-            const parsedSecondCoordinate = parseFloat(numPair[2]);
+            const lat = parseFloat(numPair[1]);
+            const lon = parseFloat(numPair[2]);
             // Validate ranges before assuming [lat, lon] → convert to [lon, lat]
-            if (Math.abs(parsedFirstCoordinate) <= 90 && Math.abs(parsedSecondCoordinate) <= 180) {
-                return [parsedSecondCoordinate, parsedFirstCoordinate];
+            if (
+                Number.isFinite(lat) &&
+                Number.isFinite(lon) &&
+                Math.abs(lat) <= 90 &&
+                Math.abs(lon) <= 180
+            ) {
+                return [lon, lat];
             }
             // Invalid coordinate range — skip rather than guess
             return null;
