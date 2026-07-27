@@ -8,6 +8,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 10px;
+            background-color: #f5f5f5;
         }
         
         #main {
@@ -15,6 +16,8 @@
             height: 600px;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            margin-bottom: 30px;
         }
         
         .error {
@@ -24,6 +27,217 @@
             border-radius: 4px;
             margin-bottom: 15px;
         }
+        
+        /* Table Section Styles */
+        .table-section {
+            margin-top: 40px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .table-section h2 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 3px solid #1f77b4;
+            padding-bottom: 10px;
+        }
+        
+        .controls-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-end;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .control-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .control-group input,
+        .control-group select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            min-width: 180px;
+        }
+        
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: #1f77b4;
+            box-shadow: 0 0 5px rgba(31, 119, 180, 0.3);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #resetBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        #resetBtn:hover {
+            background-color: #da190b;
+        }
+        
+        #exportBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        #exportBtn:hover {
+            background-color: #45a049;
+        }
+        
+        .results-info {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        thead {
+            background-color: #1f77b4;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #0d47a1;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        th:hover {
+            background-color: #0d47a1;
+        }
+        
+        th.sortable::after {
+            content: " ⇅";
+            opacity: 0.5;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tbody tr {
+            transition: background-color 0.2s;
+        }
+        
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 3px;
+        }
+        
+        .definition-cell {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .definition-cell:hover {
+            white-space: normal;
+            overflow: visible;
+            background-color: #fff9e6;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .events-cell {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .pagination button {
+            padding: 6px 10px;
+            background-color: #e0e0e0;
+            color: #333;
+            border: 1px solid #999;
+        }
+        
+        .pagination button.active {
+            background-color: #1f77b4;
+            color: white;
+            border-color: #0d47a1;
+        }
+        
+        .pagination button:hover {
+            background-color: #1f77b4;
+            color: white;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 </head>
@@ -31,164 +245,410 @@
 
 <div id="main"></div>
 
-<script>
-    (async function () {
-        try {
-            // ===== Configuration =====
-            const NODE_REPULSION = 100;
-            const EDGE_LENGTH = [50, 150];
-            const NODE_SIZE = 15;
+<div class="table-section">
+    <h2>Find USRN Participants & Interviewees</h2>
+    
+    <div class="controls-container">
+        <div class="control-group">
+            <label for="searchInput">Search by Name:</label>
+            <input type="text" id="searchInput" placeholder="e.g., Sabina Andron">
+        </div>
+        
+        <div class="control-group">
+            <label for="bookletFilter">Filter by Booklet:</label>
+            <select id="bookletFilter">
+                <option value="">All Booklets</option>
+                <option value="Vol. 1">Vol. 1</option>
+                <option value="Vol. 2">Vol. 2</option>
+                <option value="Vol. 3">Vol. 3</option>
+                <option value="Vol. 4">Vol. 4</option>
+                <option value="Vol. 5">Vol. 5</option>
+                <option value="Vol. 6">Vol. 6</option>
+                <option value="null">No Booklet (Events Only)</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="categoryFilter">Filter by Category:</label>
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="0">Materiality</option>
+                <option value="1">Economy</option>
+                <option value="2">Governance</option>
+                <option value="3">Communication</option>
+                <option value="4">Labour</option>
+                <option value="5">Ecology</option>
+            </select>
+        </div>
+        
+        <div class="button-group">
+            <button id="resetBtn">Reset Filters</button>
+            <button id="exportBtn">Export as CSV</button>
+        </div>
+    </div>
+    
+    <div class="results-info">
+        <span id="resultCount">Loading...</span>
+    </div>
+    
+    <div class="table-container">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th class="sortable">Name</th>
+                    <th>Categories</th>
+                    <th>Booklet</th>
+                    <th class="sortable">Definition</th>
+                    <th>Events</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr><td colspan="5" class="no-results">Loading data...</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="pagination" id="pagination"></div>
+</div>
 
-            // ===== Fetch Data from JSON File =====
+<br>
+<a href="about.html">About</a>
+<br>
+
+<script>
+    let allData = [];
+    let filteredData = [];
+    let currentPage = 1;
+    const rowsPerPage = 20;
+    let myChart = null;
+    let chartsData = null;
+    
+    const categoryNames = {
+        0: 'Materiality',
+        1: 'Economy',
+        2: 'Governance',
+        3: 'Communication',
+        4: 'Labour',
+        5: 'Ecology'
+    };
+    const categoryColors = {
+        0: '#1f77b4',
+        1: '#2ca02c',
+        2: '#0d47a1',
+        3: '#1b5e20',
+        4: '#283593',
+        5: '#00695c'
+    };
+
+    // ===== Initialize =====
+    async function init() {
+        try {
+            // Fetch data
             const response = await fetch('data.json');
             if (!response.ok) {
                 throw new Error(`Failed to fetch data.json: ${response.statusText}`);
             }
             const data = await response.json();
 
-            // ===== Validate Data Structure =====
             if (!Array.isArray(data.categories) || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
                 throw new Error('Invalid data structure: missing categories, nodes, or links');
             }
 
-            // ===== Process Categories =====
-            const categories = data.categories.map(category => ({
-                name: category.name,
-                itemStyle: {
-                    color: category.color
-                }
-            }));
+            // Store raw data for table
+            allData = data.nodes;
+            filteredData = [...allData];
+            chartsData = data;
 
-            // ===== Process Nodes with Dual Categories =====
-            const nodes = data.nodes.map(node => {
-                const color1 = data.categories[node.category].color;
-                const color2 = data.categories[node.category2].color;
-
-                return {
-                    name: node.name,
-                    category: node.category,
-                    category2: node.category2,
-                    symbol: 'rect',
-                    symbolSize: NODE_SIZE,
-                    value: NODE_SIZE,
-                    location: node.location,
-                    booklet: node.booklet,
-                    definition: node.definition,
-                    events: node.events,
-                    color1: color1,
-                    color2: color2,
-                    itemStyle: {
-                        color: color1,
-                        borderColor: color2,
-                        borderWidth: 2
-                    }
-                };
-            });
-
-            // ===== Create Node Map for Easy Lookup =====
-            const nodeMap = {};
-            nodes.forEach(node => {
-                nodeMap[node.name] = node;
-            });
-
-            // ===== Filter Links: Only Keep Those with Shared Categories =====
-            const links = data.links.filter(link => {
-                const sourceNode = nodeMap[link.source];
-                const targetNode = nodeMap[link.target];
-                
-                if (!sourceNode || !targetNode) return false;
-                
-                // Check if nodes share at least one category
-                const sourceCategories = [sourceNode.category, sourceNode.category2];
-                const targetCategories = [targetNode.category, targetNode.category2];
-                
-                const hasSharedCategory = sourceCategories.some(cat => targetCategories.includes(cat));
-                return hasSharedCategory;
-            }).map(link => ({
-                source: link.source,
-                target: link.target,
-                lineStyle: {
-                    color: nodeMap[link.source].color1
-                }
-            }));
-
-            // ===== Initialize Chart =====
-            const chartDom = document.getElementById('main');
-            const myChart = echarts.init(chartDom);
-
-            const option = {
-                tooltip: {
-                    trigger: 'item',
-                    formatter: function (params) {
-                        if (params.dataType === 'node') {
-                            const categoryName1 = categories[params.data.category]?.name || 'Unknown';
-                            const categoryName2 = categories[params.data.category2]?.name || 'Unknown';
-                            const location = params.data.location || 'Unknown';
-                            const booklet = params.data.booklet || 'N/A';
-                            const eventsText = params.data.events && params.data.events.length > 0 
-                                ? params.data.events.join(', ') 
-                                : 'None';
-                            
-                            let tooltip = `<b>${params.data.name}</b><br/>`;
-                            tooltip += `Categories: ${categoryName1} & ${categoryName2}<br/>`;
-                            tooltip += `Location: ${location}<br/>`;
-                            tooltip += `Booklet: ${booklet}<br/>`;
-                            tooltip += `Events: ${eventsText}`;
-                            
-                            if (params.data.definition) {
-                                tooltip += `<br/><br/><i>"${params.data.definition.substring(0, 100)}..."</i>`;
-                            }
-                            
-                            return tooltip;
-                        } else if (params.dataType === 'edge') {
-                            return `Link: ${params.data.source} → ${params.data.target}`;
-                        }
-                        return '';
-                    }
-                },
-                legend: [{
-                    data: categories.map(c => c.name)
-                }],
-                series: [{
-                    type: 'graph',
-                    layout: 'force',
-                    roam: true,
-                    label: {
-                        show: true,
-                        position: 'right',
-                        fontSize: 10
-                    },
-                    force: {
-                        repulsion: NODE_REPULSION,
-                        edgeLength: EDGE_LENGTH
-                    },
-                    data: nodes,
-                    links: links,
-                    categories: categories,
-                    lineStyle: {
-                        curveness: 0
-                    }
-                }]
-            };
-
-            // ===== Set Chart Option =====
-            myChart.setOption(option);
-
-            // ===== Handle Window Resize =====
-            window.addEventListener('resize', () => {
-                myChart.resize();
-            });
+            // Initialize both chart and table
+            initChart(data);
+            initTable();
 
         } catch (err) {
-            console.error('Chart initialization failed:', err);
+            console.error('Initialization failed:', err);
             const mainDiv = document.getElementById('main');
             mainDiv.innerHTML = `<div class="error"><strong>Error:</strong> ${err.message}</div>`;
             mainDiv.style.height = 'auto';
         }
-    })();
+    }
+
+    // ===== Initialize ECharts =====
+    function initChart(data) {
+        // Process categories
+        const categories = data.categories.map(category => ({
+            name: category.name,
+            itemStyle: { color: category.color }
+        }));
+
+        // Process nodes
+        const nodes = data.nodes.map(node => {
+            const color1 = data.categories[node.category].color;
+            const color2 = data.categories[node.category2].color;
+
+            return {
+                name: node.name,
+                category: node.category,
+                category2: node.category2,
+                symbol: 'rect',
+                symbolSize: 15,
+                value: 15,
+                location: node.location,
+                booklet: node.booklet,
+                definition: node.definition,
+                events: node.events,
+                color1: color1,
+                color2: color2,
+                itemStyle: {
+                    color: color1,
+                    borderColor: color2,
+                    borderWidth: 2
+                }
+            };
+        });
+
+        // Create node map
+        const nodeMap = {};
+        nodes.forEach(node => {
+            nodeMap[node.name] = node;
+        });
+
+        // Filter links
+        const links = data.links.filter(link => {
+            const sourceNode = nodeMap[link.source];
+            const targetNode = nodeMap[link.target];
+            
+            if (!sourceNode || !targetNode) return false;
+            
+            const sourceCategories = [sourceNode.category, sourceNode.category2];
+            const targetCategories = [targetNode.category, targetNode.category2];
+            
+            return sourceCategories.some(cat => targetCategories.includes(cat));
+        }).map(link => ({
+            source: link.source,
+            target: link.target,
+            lineStyle: {
+                color: nodeMap[link.source].color1
+            }
+        }));
+
+        // Initialize chart
+        const chartDom = document.getElementById('main');
+        myChart = echarts.init(chartDom);
+
+        const option = {
+            tooltip: {
+                trigger: 'item',
+                formatter: function (params) {
+                    if (params.dataType === 'node') {
+                        const categoryName1 = categories[params.data.category]?.name || 'Unknown';
+                        const categoryName2 = categories[params.data.category2]?.name || 'Unknown';
+                        const location = params.data.location || 'Unknown';
+                        const booklet = params.data.booklet || 'N/A';
+                        const eventsText = params.data.events && params.data.events.length > 0 
+                            ? params.data.events.join(', ') 
+                            : 'None';
+                        
+                        let tooltip = `<b>${params.data.name}</b><br/>`;
+                        tooltip += `Categories: ${categoryName1} & ${categoryName2}<br/>`;
+                        tooltip += `Location: ${location}<br/>`;
+                        tooltip += `Booklet: ${booklet}<br/>`;
+                        tooltip += `Events: ${eventsText}`;
+                        
+                        if (params.data.definition) {
+                            tooltip += `<br/><br/><i>"${params.data.definition.substring(0, 100)}..."</i>`;
+                        }
+                        
+                        return tooltip;
+                    } else if (params.dataType === 'edge') {
+                        return `Link: ${params.data.source} → ${params.data.target}`;
+                    }
+                    return '';
+                }
+            },
+            legend: [{
+                data: categories.map(c => c.name)
+            }],
+            series: [{
+                type: 'graph',
+                layout: 'force',
+                roam: true,
+                label: {
+                    show: true,
+                    position: 'right',
+                    fontSize: 10
+                },
+                force: {
+                    repulsion: 100,
+                    edgeLength: [50, 150]
+                },
+                data: nodes,
+                links: links,
+                categories: categories,
+                lineStyle: {
+                    curveness: 0
+                }
+            }]
+        };
+
+        myChart.setOption(option);
+
+        window.addEventListener('resize', () => {
+            if (myChart) myChart.resize();
+        });
+    }
+
+    // ===== Table Functions =====
+    function initTable() {
+        renderTable();
+        setupEventListeners();
+    }
+
+    function setupEventListeners() {
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.getElementById('bookletFilter').addEventListener('change', applyFilters);
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('resetBtn').addEventListener('click', resetFilters);
+        document.getElementById('exportBtn').addEventListener('click', exportToCSV);
+
+        // Sortable headers
+        document.querySelectorAll('th.sortable').forEach(header => {
+            header.addEventListener('click', function() {
+                const column = this.textContent.trim();
+                sortTable(column);
+            });
+        });
+    }
+
+    function applyFilters() {
+        currentPage = 1;
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const bookletFilter = document.getElementById('bookletFilter').value;
+        const categoryFilter = document.getElementById('categoryFilter').value;
+
+        filteredData = allData.filter(person => {
+            const matchesSearch = person.name.toLowerCase().includes(searchTerm);
+            
+            const matchesBooklet = !bookletFilter || 
+                (bookletFilter === 'null' ? person.booklet === null : 
+                 person.booklet && person.booklet.includes(bookletFilter));
+            
+            const matchesCategory = !categoryFilter || 
+                person.category.toString() === categoryFilter || 
+                person.category2.toString() === categoryFilter;
+
+            return matchesSearch && matchesBooklet && matchesCategory;
+        });
+
+        renderTable();
+    }
+
+    function sortTable(column) {
+        const isName = column === 'Name';
+        const isDefinition = column === 'Definition';
+
+        filteredData.sort((a, b) => {
+            let aVal = isName ? a.name : isDefinition ? (a.definition || '') : '';
+            let bVal = isName ? b.name : isDefinition ? (b.definition || '') : '';
+            
+            return aVal.localeCompare(bVal);
+        });
+
+        currentPage = 1;
+        renderTable();
+    }
+
+    function renderTable() {
+        const tbody = document.getElementById('tableBody');
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const pageData = filteredData.slice(start, end);
+
+        if (pageData.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" class="no-results">No results found. Try adjusting your filters.</td></tr>';
+            document.getElementById('resultCount').textContent = `0 results`;
+            document.getElementById('pagination').innerHTML = '';
+            return;
+        }
+
+        tbody.innerHTML = pageData.map(person => `
+            <tr>
+                <td><strong>${person.name}</strong></td>
+                <td>
+                    <span class="category-badge" style="background-color: ${categoryColors[person.category]}">
+                        ${categoryNames[person.category]}
+                    </span>
+                    <span class="category-badge" style="background-color: ${categoryColors[person.category2]}">
+                        ${categoryNames[person.category2]}
+                    </span>
+                </td>
+                <td>${person.booklet || '—'}</td>
+                <td class="definition-cell" title="${person.definition || ''}">${person.definition ? person.definition.substring(0, 60) + '...' : '—'}</td>
+                <td class="events-cell">${person.events && person.events.length > 0 ? person.events.length + ' event(s)' : '—'}</td>
+            </tr>
+        `).join('');
+
+        document.getElementById('resultCount').textContent = `Showing ${start + 1}–${Math.min(end, filteredData.length)} of ${filteredData.length} results`;
+        renderPagination();
+    }
+
+    function renderPagination() {
+        const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+        const paginationDiv = document.getElementById('pagination');
+
+        if (totalPages <= 1) {
+            paginationDiv.innerHTML = '';
+            return;
+        }
+
+        let html = '';
+        
+        for (let i = 1; i <= totalPages; i++) {
+            html += `<button class="${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+        }
+
+        paginationDiv.innerHTML = html;
+    }
+
+    function goToPage(page) {
+        currentPage = page;
+        renderTable();
+    }
+
+    function resetFilters() {
+        document.getElementById('searchInput').value = '';
+        document.getElementById('bookletFilter').value = '';
+        document.getElementById('categoryFilter').value = '';
+        currentPage = 1;
+        filteredData = [...allData];
+        renderTable();
+    }
+
+    function exportToCSV() {
+        let csv = 'Name,Category 1,Category 2,Booklet,Definition,Events\n';
+        
+        filteredData.forEach(person => {
+            const cat1 = categoryNames[person.category];
+            const cat2 = categoryNames[person.category2];
+            const booklet = person.booklet ? `"${person.booklet}"` : '';
+            const definition = person.definition ? `"${person.definition.replace(/"/g, '""')}"` : '';
+            const events = person.events ? `"${person.events.join('; ')}"` : '';
+            
+            csv += `"${person.name}",${cat1},${cat2},${booklet},${definition},${events}\n`;
+        });
+
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `usrn-participants-${new Date().toISOString().slice(0,10)}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    }
+
+    // ===== Start =====
+    init();
 </script>
-<br>
-<a href="about.html">About</a>
-<br>
+
 </body>
 </html>
