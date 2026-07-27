@@ -107,7 +107,7 @@
 <div id="data-source-note" class="placeholder">⏳ Loading data…</div>
 <div id="error-msg"></div>
 <div id="map-container"></div>
-<div id="data-summary" role="region" aria-labelledby="data-summary-heading" aria-label="Researcher data summary">
+<div id="data-summary" role="region" aria-labelledby="data-summary-heading">
     <h2 id="data-summary-heading">Map data summary</h2>
     <div id="data-summary-content">Loading summary…</div>
 </div>
@@ -274,18 +274,12 @@
         el.textContent = text;
     }
 
-    function escapeHtml(value) {
-        return String(value ?? '')
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#39;')
-            .replace(/`/g, '&#96;');
-    }
-
     function pluralize(count, singular, plural) {
         return count === 1 ? singular : plural;
+    }
+
+    function sanitizeField(value, fallback) {
+        return typeof value === 'string' && value.trim() ? value.trim() : fallback;
     }
 
     function extractCoords(item) {
@@ -308,53 +302,54 @@
     function renderSummary(nodes, resolvedCount, unknownCount, usedPlaceholder) {
         const heading = document.getElementById('data-summary-heading');
         const content = document.getElementById('data-summary-content');
+        content.innerHTML = '';
 
         if (!Array.isArray(nodes) || nodes.length === 0) {
             heading.textContent = usedPlaceholder ? 'Map fallback' : `Researchers from ${DATA_FILE_LABEL}`;
-            content.innerHTML = usedPlaceholder
-                ? `<p>Showing placeholder locations because <code>${DATA_FILE_LABEL}</code> could not be loaded.</p>`
-                : '<p>No researcher records were available.</p>';
+            const message = document.createElement('p');
+            message.textContent = usedPlaceholder
+                ? `Showing placeholder locations because ${DATA_FILE_LABEL} could not be loaded.`
+                : 'No researcher records were available.';
+            content.appendChild(message);
             return;
         }
-
-        const previewItems = nodes.slice(0, PREVIEW_ITEM_LIMIT).map(node => {
-            const name = escapeHtml(
-                typeof node?.name === 'string' && node.name.trim()
-                    ? node.name.trim()
-                    : 'Unnamed researcher'
-            );
-            const booklet = escapeHtml(
-                typeof node?.booklet === 'string' && node.booklet.trim()
-                    ? node.booklet.trim()
-                    : 'No booklet listed'
-            );
-            const location = escapeHtml(
-                typeof node?.location === 'string' && node.location.trim()
-                    ? node.location.trim()
-                    : 'Unknown'
-            );
-
-            return `<li><strong>${name}</strong> — ${booklet}; location: ${location}</li>`;
-        }).join('');
 
         const remainingCount = nodes.length > PREVIEW_ITEM_LIMIT
             ? nodes.length - PREVIEW_ITEM_LIMIT
             : 0;
-        const remainingText = remainingCount > 0
-            ? `<p>Plus ${remainingCount} more researchers in <code>${DATA_FILE_LABEL}</code>.</p>`
-            : '';
 
         heading.textContent = `Researchers from ${DATA_FILE_LABEL}`;
-        content.innerHTML = `
-            <p>
-                Loaded ${nodes.length} researchers. ${resolvedCount}
-                ${pluralize(resolvedCount, 'researcher has', 'researchers have')}
-                map coordinates and ${unknownCount} ${pluralize(unknownCount, 'entry is', 'entries are')}
-                missing or using an unmapped location.
-            </p>
-            <ul>${previewItems}</ul>
-            ${remainingText}
-        `;
+
+        const summary = document.createElement('p');
+        summary.textContent =
+            `Loaded ${nodes.length} researchers. ${resolvedCount} ` +
+            `${pluralize(resolvedCount, 'researcher has', 'researchers have')} ` +
+            `map coordinates and ${unknownCount} ` +
+            `${pluralize(unknownCount, 'entry is', 'entries are')} ` +
+            'missing or using an unmapped location.';
+        content.appendChild(summary);
+
+        const list = document.createElement('ul');
+        nodes.slice(0, PREVIEW_ITEM_LIMIT).forEach(node => {
+            const item = document.createElement('li');
+            const name = document.createElement('strong');
+            name.textContent = sanitizeField(node?.name, 'Unnamed researcher');
+            item.appendChild(name);
+            item.appendChild(
+                document.createTextNode(
+                    ` — ${sanitizeField(node?.booklet, 'No booklet listed')}; ` +
+                    `location: ${sanitizeField(node?.location, 'Unknown')}`
+                )
+            );
+            list.appendChild(item);
+        });
+        content.appendChild(list);
+
+        if (remainingCount > 0) {
+            const remainder = document.createElement('p');
+            remainder.textContent = `Plus ${remainingCount} more researchers in ${DATA_FILE_LABEL}.`;
+            content.appendChild(remainder);
+        }
     }
 
     /**
