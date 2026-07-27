@@ -35,7 +35,7 @@
     (async function () {
         try {
             // ===== Configuration =====
-            const NODE_REPULSION = 50;
+            const NODE_REPULSION = 100;
             const EDGE_LENGTH = [50, 150];
             const NODE_SIZE = 15;
 
@@ -72,12 +72,15 @@
                     symbolSize: NODE_SIZE,
                     value: NODE_SIZE,
                     location: node.location,
+                    booklet: node.booklet,
+                    definition: node.definition,
+                    events: node.events,
                     color1: color1,
                     color2: color2,
                     itemStyle: {
                         color: color1,
                         borderColor: color2,
-                        borderWidth: 5
+                        borderWidth: 2
                     }
                 };
             });
@@ -121,7 +124,22 @@
                             const categoryName1 = categories[params.data.category]?.name || 'Unknown';
                             const categoryName2 = categories[params.data.category2]?.name || 'Unknown';
                             const location = params.data.location || 'Unknown';
-                            return `<b>${params.data.name}</b><br/>Categories: ${categoryName1} & ${categoryName2}<br/>Location: ${location}`;
+                            const booklet = params.data.booklet || 'N/A';
+                            const eventsText = params.data.events && params.data.events.length > 0 
+                                ? params.data.events.join(', ') 
+                                : 'None';
+                            
+                            let tooltip = `<b>${params.data.name}</b><br/>`;
+                            tooltip += `Categories: ${categoryName1} & ${categoryName2}<br/>`;
+                            tooltip += `Location: ${location}<br/>`;
+                            tooltip += `Booklet: ${booklet}<br/>`;
+                            tooltip += `Events: ${eventsText}`;
+                            
+                            if (params.data.definition) {
+                                tooltip += `<br/><br/><i>"${params.data.definition.substring(0, 100)}..."</i>`;
+                            }
+                            
+                            return tooltip;
                         } else if (params.dataType === 'edge') {
                             return `Link: ${params.data.source} → ${params.data.target}`;
                         }
