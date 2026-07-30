@@ -312,11 +312,6 @@
     <div class="pagination" id="pagination"></div>
 </div>
 
-<br>
-<a href="worldmap.html">🌍 Researcher World Map</a> |
-<a href="about.html">About</a>
-<br>
-
 <script>
     let allData = [];
     let filteredData = [];
@@ -407,7 +402,7 @@
 
         // Add category hub nodes
         const categoryHubNodes = data.categories.map((category, index) => ({
-            name: `Category: ${category.name}`,
+            name: `${category.name}`,
             category: index,
             category2: index,
             symbol: 'circle',
@@ -417,7 +412,7 @@
             itemStyle: {
                 color: category.color,
                 borderColor: '#fff',
-                borderWidth: 3
+                borderWidth: 0
             },
             label: {
                 show: true,
