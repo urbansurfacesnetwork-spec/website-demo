@@ -324,6 +324,7 @@
         4: '#72ddf7',
         5: '#00695c'
     };
+    const DEFAULT_EDGE_COLOR = '#9aa0a6';
 
     // ===== Initialize =====
     async function init() {
@@ -365,8 +366,8 @@
 
         // Process nodes
         const nodes = data.nodes.map(node => {
-            const color1 = data.categories[node.category].color;
-            const color2 = data.categories[node.category2].color;
+            const color1 = categoryColors[node.category];
+            const color2 = categoryColors[node.category2];
 
             return {
                 name: node.name,
@@ -391,7 +392,7 @@
 
         // Add category hub nodes
         const categoryHubNodes = data.categories.map((category, index) => ({
-            name: `${category.name}`,
+            name: `Category: ${category.name}`,
             category: index,
             category2: index,
             symbol: 'circle',
@@ -399,7 +400,7 @@
             value: 36,
             isCategoryHub: true,
             itemStyle: {
-                color: category.color,
+                color: categoryColors[index],
                 borderColor: '#fff',
                 borderWidth: 0
             },
@@ -423,16 +424,14 @@
             const targetNode = nodeMap[link.target];
             
             if (!sourceNode || !targetNode) return false;
-            
-            const sourceCategories = [sourceNode.category, sourceNode.category2];
-            const targetCategories = [targetNode.category, targetNode.category2];
-            
-            return sourceCategories.some(cat => targetCategories.includes(cat));
+
+            return true;
         }).map(link => ({
             source: link.source,
             target: link.target,
             lineStyle: {
-                color: nodeMap[link.source].color1
+                color: nodeMap[link.source]?.color1 || DEFAULT_EDGE_COLOR,
+                width: 1.5
             }
         }));
 
@@ -442,7 +441,8 @@
                 source: node.name,
                 target: `Category: ${categories[node.category].name}`,
                 lineStyle: {
-                    color: categoryColors[node.category]
+                    color: categoryColors[node.category],
+                    width: 1.5
                 }
             }];
 
@@ -451,7 +451,8 @@
                     source: node.name,
                     target: `Category: ${categories[node.category2].name}`,
                     lineStyle: {
-                        color: categoryColors[node.category2]
+                        color: categoryColors[node.category2],
+                        width: 1.5
                     }
                 });
             }
@@ -519,7 +520,8 @@
                 links: allLinks,
                 categories: categories,
                 lineStyle: {
-                    curveness: 0
+                    curveness: 0,
+                    opacity: 0.85
                 }
             }]
         };
