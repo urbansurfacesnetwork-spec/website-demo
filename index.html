@@ -426,14 +426,17 @@
             if (!sourceNode || !targetNode) return false;
 
             return true;
-        }).map(link => ({
-            source: link.source,
-            target: link.target,
-            lineStyle: {
-                color: nodeMap[link.source]?.color1 || DEFAULT_EDGE_COLOR,
-                width: 1.5
-            }
-        }));
+        }).map(link => {
+            const sourceNode = nodeMap[link.source];
+            return {
+                source: link.source,
+                target: link.target,
+                lineStyle: {
+                    color: sourceNode.color1 || DEFAULT_EDGE_COLOR,
+                    width: 1.5
+                }
+            };
+        });
 
         // Add person-to-category links
         const categoryLinks = nodes.flatMap(node => {
