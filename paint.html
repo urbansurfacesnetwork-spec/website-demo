@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint - USRN</title>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('custom-font.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'CustomFont', Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+
+        #toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+            background: #fff;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #toolbar label {
+            font-size: 13px;
+            color: #333;
+        }
+
+        #toolbar input[type="range"] {
+            width: 90px;
+            cursor: pointer;
+        }
+
+        #toolbar input[type="color"] {
+            width: 36px;
+            height: 28px;
+            padding: 0;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .tool-btn {
+            padding: 5px 12px;
+            font-family: 'CustomFont', Arial, sans-serif;
+            font-size: 13px;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .tool-btn:hover {
+            background: #ddd;
+        }
+
+        .tool-btn.active {
+            background: #1f77b4;
+            color: #fff;
+            border-color: #1f77b4;
+        }
+
+        .tool-btn:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        #canvas-wrapper {
+            position: relative;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-image:
+                linear-gradient(45deg, #ccc 25%, transparent 25%),
+                linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ccc 75%),
+                linear-gradient(-45deg, transparent 75%, #ccc 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+            background-color: #fff;
+        }
+
+        #drawCanvas {
+            display: block;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Paint</h1>
+
+<div id="toolbar">
+    <button class="tool-btn active" id="btnBrush">Brush</button>
+    <button class="tool-btn" id="btnEraser">Eraser</button>
+
+    <label>Size&nbsp;<input type="range" id="brushSize" min="1" max="60" value="8"></label>
+    <span id="sizeDisplay" style="font-size:13px;min-width:24px;">8</span>
+
+    <label>Color&nbsp;<input type="color" id="colorPicker" value="#000000"></label>
+
+    <button class="tool-btn" id="btnUndo" disabled>Undo</button>
+    <button class="tool-btn" id="btnRedo" disabled>Redo</button>
+
+    <button class="tool-btn" id="btnClear">Clear</button>
+
+    <a href="index.html" style="margin-left:auto;font-size:13px;color:#1f77b4;">← Back</a>
+</div>
+
+<div id="canvas-wrapper">
+    <canvas id="drawCanvas" width="900" height="600"></canvas>
+</div>
+
+<script>
+(function () {
+    const canvas = document.getElementById('drawCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Tools
+    let tool = 'brush';
+    let painting = false;
+    let lastX = 0, lastY = 0;
+    let brushSize = 8;
+    let color = '#000000';
+
+    // History for undo/redo
+    const MAX_HISTORY = 40;
+    let history = [];
+    let historyIndex = -1;
+
+    function saveSnapshot() {
+        // Trim redo stack
+        history = history.slice(0, historyIndex + 1);
+        history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        if (history.length > MAX_HISTORY) {
+            history.shift();
+        }
+        historyIndex = history.length - 1;
+        updateHistoryButtons();
+    }
+
+    function updateHistoryButtons() {
+        document.getElementById('btnUndo').disabled = historyIndex <= 0;
+        document.getElementById('btnRedo').disabled = historyIndex >= history.length - 1;
+    }
+
+    // Save initial blank state
+    saveSnapshot();
+
+    // Brush size
+    const sizeSlider = document.getElementById('brushSize');
+    const sizeDisplay = document.getElementById('sizeDisplay');
+    sizeSlider.addEventListener('input', function () {
+        brushSize = parseInt(this.value, 10);
+        sizeDisplay.textContent = brushSize;
+    });
+
+    // Color
+    const colorPicker = document.getElementById('colorPicker');
+    colorPicker.addEventListener('input', function () {
+        color = this.value;
+        if (tool === 'eraser') switchTool('brush');
+    });
+
+    // Tool buttons
+    document.getElementById('btnBrush').addEventListener('click', () => switchTool('brush'));
+    document.getElementById('btnEraser').addEventListener('click', () => switchTool('eraser'));
+
+    function switchTool(t) {
+        tool = t;
+        document.getElementById('btnBrush').classList.toggle('active', t === 'brush');
+        document.getElementById('btnEraser').classList.toggle('active', t === 'eraser');
+        canvas.style.cursor = t === 'eraser' ? 'cell' : 'crosshair';
+    }
+
+    // Undo / Redo
+    document.getElementById('btnUndo').addEventListener('click', function () {
+        if (historyIndex > 0) {
+            historyIndex--;
+            ctx.putImageData(history[historyIndex], 0, 0);
+            updateHistoryButtons();
+        }
+    });
+
+    document.getElementById('btnRedo').addEventListener('click', function () {
+        if (historyIndex < history.length - 1) {
+            historyIndex++;
+            ctx.putImageData(history[historyIndex], 0, 0);
+            updateHistoryButtons();
+        }
+    });
+
+    // Clear
+    document.getElementById('btnClear').addEventListener('click', function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        saveSnapshot();
+    });
+
+    // Drawing
+    function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const src = e.touches ? e.touches[0] : e;
+        return {
+            x: src.clientX - rect.left,
+            y: src.clientY - rect.top
+        };
+    }
+
+    function startDraw(e) {
+        e.preventDefault();
+        painting = true;
+        const pos = getPos(e);
+        lastX = pos.x;
+        lastY = pos.y;
+        // Draw a dot for clicks/taps without movement
+        draw(e);
+    }
+
+    function draw(e) {
+        if (!painting) return;
+        e.preventDefault();
+        const pos = getPos(e);
+
+        ctx.save();
+        ctx.lineWidth = brushSize;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        if (tool === 'eraser') {
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.strokeStyle = 'rgba(0,0,0,1)';
+        } else {
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.strokeStyle = color;
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+
+        ctx.restore();
+
+        lastX = pos.x;
+        lastY = pos.y;
+    }
+
+    function stopDraw(e) {
+        if (!painting) return;
+        painting = false;
+        saveSnapshot();
+    }
+
+    // Mouse
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDraw);
+    canvas.addEventListener('mouseleave', stopDraw);
+
+    // Touch
+    canvas.addEventListener('touchstart', startDraw, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', stopDraw);
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key === 'z') {
+            document.getElementById('btnUndo').click();
+        } else if ((e.ctrlKey || e.metaKey) && ((e.shiftKey && e.key === 'z') || e.key === 'y')) {
+            document.getElementById('btnRedo').click();
+        }
+    });
+}());
+</script>
+
+</body>
+</html>
