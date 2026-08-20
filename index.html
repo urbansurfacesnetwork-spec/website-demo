@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <title>ECharts Force Graph - Network Connections USRN</title>
     <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('custom-font.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'CustomFont', Arial, sans-serif;
             margin: 0;
             padding: 10px;
             background-color: #f5f5f5;
@@ -104,23 +111,6 @@
             background-color: #da190b;
         }
 
-        #seeOnMapBtn {
-            background-color: #1f77b4;
-            color: white;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        #seeOnMapBtn:hover {
-            background-color: #0d47a1;
-        }
-        
         .results-info {
             margin-bottom: 15px;
             color: #666;
@@ -284,7 +274,6 @@
         
         <div class="button-group">
             <button id="resetBtn">Reset Filters</button>
-            <a id="seeOnMapBtn" href="#" target="_blank" rel="noopener noreferrer">See on Map</a>
         </div>
     </div>
     
