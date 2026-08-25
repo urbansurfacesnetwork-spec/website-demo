@@ -90,12 +90,12 @@
         }
 
         #resetBtn {
-            background-color: #f44336;
+            background-color: #9775FD;
             color: white;
         }
 
         #resetBtn:hover {
-            background-color: #da190b;
+            background-color: #7c5ce0;
         }
 
         .results-info {
@@ -119,8 +119,8 @@
         }
 
         thead {
-            background-color: #1f77b4;
-            color: transparent;
+            background-color: #9775FD;
+            color: white;
             position: sticky;
             top: 0;
         }
@@ -135,7 +135,7 @@
         }
 
         th:hover {
-            background-color: #0d47a1;
+            background-color: #7c5ce0;
         }
 
         th.sortable::after {
@@ -226,19 +226,15 @@
 </head>
 <body>
 
-<a href="index.html" class="back-link">← Back to Network Map</a>
-
 <div class="table-section">
     <h2>Find USRN Participants &amp; Interviewees</h2>
 
     <div class="controls-container">
         <div class="control-group">
-            <label for="searchInput">Search by Name:</label>
             <input type="text" id="searchInput" placeholder="e.g., Sabina Andron">
         </div>
 
         <div class="control-group">
-            <label for="bookletFilter">Filter by Booklet:</label>
             <select id="bookletFilter">
                 <option value="">All Booklets</option>
                 <option value="Vol. 1">Vol. 1</option>
@@ -252,7 +248,6 @@
         </div>
 
         <div class="control-group">
-            <label for="categoryFilter">Filter by Category:</label>
             <select id="categoryFilter">
                 <option value="">All Categories</option>
                 <option value="0">Materiality</option>
@@ -265,7 +260,6 @@
         </div>
 
         <div class="control-group">
-            <label for="locationFilter">Filter by Region:</label>
             <select id="locationFilter">
                 <option value="">All Regions</option>
             </select>

@@ -54,33 +54,59 @@
             if (!response.ok) throw new Error(`Failed to fetch data.json: ${response.statusText}`);
             const data = await response.json();
 
-            // Collect unique booklet names (ignoring null and compound entries)
+            // Collect unique booklet names
             const bookletSet = new Set();
             data.nodes.forEach(node => {
                 if (node.booklet) {
-                    // Handle nodes with multiple booklets like "Vol. 2, Vol. 3"
                     node.booklet.split(',').map(b => b.trim()).forEach(b => bookletSet.add(b));
                 }
             });
 
             const booklets = Array.from(bookletSet).sort();
 
-            const nodes = booklets.map(booklet => ({
+            // Output (booklet) nodes
+            const outputNodes = booklets.map(booklet => ({
                 name: booklet,
                 symbol: 'circle',
                 symbolSize: 50,
                 itemStyle: {
                     color: bookletColors[booklet] || DEFAULT_COLOR,
-                    borderColor: '#fff',
                     borderWidth: 0
                 },
                 label: {
                     show: true,
                     fontFamily: 'CustomFont, sans-serif',
                     fontWeight: 'bold',
-                    color: '#191919'
+                    color: '#ffffff'
                 }
             }));
+
+            // Person nodes — one per person in data.nodes
+            const personNodes = data.nodes.map(person => ({
+                name: person.name,
+                symbol: 'circle',
+                symbolSize: 20,
+                itemStyle: {
+                    color: '#9aa0a6',
+                    borderWidth: 0
+                },
+                label: {
+                    show: true,
+                    fontFamily: 'CustomFont, sans-serif',
+                    fontSize: 10,
+                    color: '#ffffff'
+                }
+            }));
+
+            // Links: connect each person to their booklet(s)
+            const links = [];
+            data.nodes.forEach(person => {
+                if (person.booklet) {
+                    person.booklet.split(',').map(b => b.trim()).forEach(booklet => {
+                        links.push({ source: person.name, target: booklet });
+                    });
+                }
+            });
 
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
@@ -91,27 +117,38 @@
                     trigger: 'item',
                     formatter: function (params) {
                         if (params.dataType === 'node') {
-                            const count = data.nodes.filter(n => n.booklet && n.booklet.includes(params.data.name)).length;
-                            return `<b>${params.data.name}</b><br/>Contributors: ${count}`;
+                            const isBooklet = bookletSet.has(params.data.name);
+                            if (isBooklet) {
+                                const count = data.nodes.filter(n => n.booklet && n.booklet.includes(params.data.name)).length;
+                                return `<b>${params.data.name}</b><br/>Contributors: ${count}`;
+                            }
+                            return `<b>${params.data.name}</b>`;
                         }
                         return '';
                     }
                 },
                 series: [{
                     type: 'graph',
-                    layout: 'circular',
+                    layout: 'force',
                     roam: true,
+                    force: {
+                        repulsion: 120,
+                        gravity: 0.1,
+                        edgeLength: 80
+                    },
                     label: {
                         show: true,
                         position: 'inside',
                         fontSize: 12,
                         fontFamily: 'CustomFont, sans-serif',
-                        color: '#191919'
+                        color: '#ffffff'
                     },
-                    data: nodes,
-                    links: [],
+                    data: [...outputNodes, ...personNodes],
+                    links: links,
                     lineStyle: {
-                        opacity: 0
+                        color: '#ffffff',
+                        opacity: 0.3,
+                        width: 1
                     }
                 }]
             };
