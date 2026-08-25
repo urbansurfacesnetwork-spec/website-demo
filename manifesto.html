@@ -26,35 +26,6 @@
             background-color: transparent;
         }
 
-        #descriptions {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .desc-card {
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 8px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.04);
-        }
-
-        .desc-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 14px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #ffffff;
-        }
-
-        .desc-card p {
-            margin: 0;
-            font-size: 13px;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.75);
-        }
-
         .error {
             color: #ff6b6b;
             padding: 0px;
@@ -66,7 +37,6 @@
 <body>
 
 <div id="main"></div>
-<div id="descriptions"></div>
 
 <script>
     const categoryColors = {
@@ -88,11 +58,14 @@
             const myChart = echarts.init(chartDom);
 
             const CENTER_NODE = 'Urban Surfaces';
+            const descriptionByName = Object.fromEntries(
+                data.categories.map(category => [category.name, category.description || ''])
+            );
 
             const categoryNodes = data.categories.map((category, index) => ({
                 name: category.name,
-                symbol: 'roundRect',
-                symbolSize: 70,
+                symbol: 'rect',
+                symbolSize: [105, 105],
                 itemStyle: {
                     color: categoryColors[index],
                     borderWidth: 0
@@ -107,10 +80,11 @@
 
             const centralNode = {
                 name: CENTER_NODE,
-                symbol: 'roundRect',
+                symbol: 'rect',
                 symbolSize: 90,
                 itemStyle: {
-                    color: '#9775FD',
+                    color: 'transparent',
+                    borderColor: 'transparent',
                     borderWidth: 0
                 },
                 label: {
@@ -138,7 +112,11 @@
                     trigger: 'item',
                     formatter: function (params) {
                         if (params.dataType === 'node') {
-                            return `<b>${params.data.name}</b>`;
+                            if (params.data.name === CENTER_NODE) {
+                                return `<b>${params.data.name}</b>`;
+                            }
+                            const description = descriptionByName[params.data.name];
+                            return `<b>${params.data.name}</b>${description ? `<br>${description}` : ''}`;
                         }
                         return '';
                     }
@@ -167,16 +145,6 @@
 
             myChart.setOption(option);
             window.addEventListener('resize', () => myChart.resize());
-
-            // Populate description cards from data.json
-            const descriptionsDiv = document.getElementById('descriptions');
-            data.categories.forEach((category, index) => {
-                const card = document.createElement('div');
-                card.className = 'desc-card';
-                const dot = `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${categoryColors[index]};margin-right:8px;vertical-align:middle;"></span>`;
-                card.innerHTML = `<h3>${dot}${category.name}</h3><p>${category.description || ''}</p>`;
-                descriptionsDiv.appendChild(card);
-            });
 
         } catch (err) {
             console.error('Initialization failed:', err);
