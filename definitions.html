@@ -41,6 +41,15 @@
 <div id="main"></div>
 
 <script>
+    function escapeHtml(value) {
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
     function wrapText(text, maxCharsPerLine = 56) {
         if (!text) return '';
         const words = text.trim().split(/\s+/);
@@ -96,9 +105,10 @@
                     formatter: (params) => {
                         const item = params.data || {};
                         if (item.labelType === 'definition') {
-                            return `<b>Definition</b><br>${item.fullDefinition || item.name}`;
+                            const definitionText = escapeHtml(item.fullDefinition || item.name || '');
+                            return `<b>Definition</b><br>${definitionText}`;
                         }
-                        return `<b>${item.name || ''}</b>`;
+                        return `<b>${escapeHtml(item.name || '')}</b>`;
                     }
                 },
                 series: [
@@ -149,7 +159,8 @@
             window.addEventListener('resize', () => chart.resize());
         } catch (error) {
             const mainDiv = document.getElementById('main');
-            mainDiv.innerHTML = `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            mainDiv.textContent = `Error: ${error.message}`;
+            mainDiv.className = 'error';
             console.error(error);
         }
     }
