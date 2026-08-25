@@ -58,10 +58,6 @@
             const myChart = echarts.init(chartDom);
 
             const CENTER_NODE = 'Urban Surfaces';
-            const descriptionByName = Object.fromEntries(
-                data.categories.map(category => [category.name, category.description || ''])
-            );
-
             const categoryNodes = data.categories.map((category, index) => ({
                 name: category.name,
                 symbol: 'rect',
@@ -125,8 +121,7 @@
                             if (params.data.name === CENTER_NODE) {
                                 return `<b>${params.data.name}</b>`;
                             }
-                            const description = descriptionByName[params.data.name];
-                            return `<b>${params.data.name}</b>${description ? `<br>${description}` : ''}`;
+                            return `<b>${params.data.name}</b>`;
                         }
                         return '';
                     }
