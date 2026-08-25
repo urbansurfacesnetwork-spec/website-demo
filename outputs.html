@@ -39,12 +39,12 @@
 
 <script>
     const bookletColors = {
-        'Vol. 1': '#f5e6ba',
-        'Vol. 2': '#acf2c9',
-        'Vol. 3': '#fdc5f5',
-        'Vol. 4': '#8093f1',
-        'Vol. 5': '#72ddf7',
-        'Vol. 6': '#00695c'
+        'Vol. 1': '#9D7488',
+        'Vol. 2': '#B68E5D',
+        'Vol. 3': '#85A8A7',
+        'Vol. 4': '#81794D',
+        'Vol. 5': '#5C6349',
+        'Vol. 6': '#7F4343'
     };
     const DEFAULT_COLOR = '#9aa0a6';
 
@@ -81,32 +81,38 @@
                 }
             }));
 
-            // Person nodes — one per person in data.nodes
-            const personNodes = data.nodes.map(person => ({
-                name: person.name,
-                symbol: 'circle',
-                symbolSize: 20,
-                itemStyle: {
-                    color: '#9aa0a6',
-                    borderWidth: 0
-                },
-                label: {
-                    show: true,
-                    fontFamily: 'CustomFont, sans-serif',
-                    fontSize: 10,
-                    color: '#ffffff'
-                }
-            }));
-
             // Links: connect each person to their booklet(s)
             const links = [];
+            const connectedPersonNames = new Set();
             data.nodes.forEach(person => {
                 if (person.booklet) {
                     person.booklet.split(',').map(b => b.trim()).forEach(booklet => {
-                        links.push({ source: person.name, target: booklet });
+                        if (bookletSet.has(booklet)) {
+                            links.push({ source: person.name, target: booklet });
+                            connectedPersonNames.add(person.name);
+                        }
                     });
                 }
             });
+
+            // Person nodes — only people connected to at least one booklet
+            const personNodes = data.nodes
+                .filter(person => connectedPersonNames.has(person.name))
+                .map(person => ({
+                    name: person.name,
+                    symbol: 'circle',
+                    symbolSize: 20,
+                    itemStyle: {
+                        color: '#9aa0a6',
+                        borderWidth: 0
+                    },
+                    label: {
+                        show: true,
+                        fontFamily: 'CustomFont, sans-serif',
+                        fontSize: 10,
+                        color: '#ffffff'
+                    }
+                }));
 
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
