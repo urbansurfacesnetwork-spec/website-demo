@@ -82,9 +82,9 @@
     // ===== Initialize ECharts =====
     function initChart(data) {
         // Process categories
-        const categories = data.categories.map(category => ({
+        const categories = data.categories.map((category, index) => ({
             name: category.name,
-            itemStyle: { color: category.color }
+            itemStyle: { color: categoryColors[index] }
         }));
 
         // Process nodes

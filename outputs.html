@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Outputs - USRN</title>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fractul.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'CustomFont', sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #191919;
+            color: #e0e0e0;
+        }
+
+        #main {
+            width: 100%;
+            height: 800px;
+            background-color: transparent;
+        }
+
+        .error {
+            color: #ff6b6b;
+            padding: 0px;
+            background-color: transparent;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body>
+
+<div id="main"></div>
+
+<script>
+    const bookletColors = {
+        'Vol. 1': '#f5e6ba',
+        'Vol. 2': '#acf2c9',
+        'Vol. 3': '#fdc5f5',
+        'Vol. 4': '#8093f1',
+        'Vol. 5': '#72ddf7',
+        'Vol. 6': '#00695c'
+    };
+    const DEFAULT_COLOR = '#9aa0a6';
+
+    async function init() {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) throw new Error(`Failed to fetch data.json: ${response.statusText}`);
+            const data = await response.json();
+
+            // Collect unique booklet names (ignoring null and compound entries)
+            const bookletSet = new Set();
+            data.nodes.forEach(node => {
+                if (node.booklet) {
+                    // Handle nodes with multiple booklets like "Vol. 2, Vol. 3"
+                    node.booklet.split(',').map(b => b.trim()).forEach(b => bookletSet.add(b));
+                }
+            });
+
+            const booklets = Array.from(bookletSet).sort();
+
+            const nodes = booklets.map(booklet => ({
+                name: booklet,
+                symbol: 'circle',
+                symbolSize: 50,
+                itemStyle: {
+                    color: bookletColors[booklet] || DEFAULT_COLOR,
+                    borderColor: '#fff',
+                    borderWidth: 0
+                },
+                label: {
+                    show: true,
+                    fontFamily: 'CustomFont, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#191919'
+                }
+            }));
+
+            const chartDom = document.getElementById('main');
+            const myChart = echarts.init(chartDom);
+
+            const option = {
+                backgroundColor: 'transparent',
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params) {
+                        if (params.dataType === 'node') {
+                            const count = data.nodes.filter(n => n.booklet && n.booklet.includes(params.data.name)).length;
+                            return `<b>${params.data.name}</b><br/>Contributors: ${count}`;
+                        }
+                        return '';
+                    }
+                },
+                series: [{
+                    type: 'graph',
+                    layout: 'circular',
+                    roam: true,
+                    label: {
+                        show: true,
+                        position: 'inside',
+                        fontSize: 12,
+                        fontFamily: 'CustomFont, sans-serif',
+                        color: '#191919'
+                    },
+                    data: nodes,
+                    links: [],
+                    lineStyle: {
+                        opacity: 0
+                    }
+                }]
+            };
+
+            myChart.setOption(option);
+            window.addEventListener('resize', () => myChart.resize());
+        } catch (err) {
+            console.error('Initialization failed:', err);
+            const mainDiv = document.getElementById('main');
+            mainDiv.innerHTML = `<div class="error"><strong>Error:</strong> ${err.message}</div>`;
+            mainDiv.style.height = 'auto';
+        }
+    }
+
+    init();
+</script>
+
+</body>
+</html>
