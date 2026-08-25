@@ -71,6 +71,7 @@
     }
 
     async function init() {
+        let chart = null;
         try {
             const response = await fetch('data.json');
             if (!response.ok) {
@@ -97,7 +98,7 @@
                 }))
             };
 
-            const chart = echarts.init(document.getElementById('main'));
+            chart = echarts.init(document.getElementById('main'));
             const option = {
                 backgroundColor: '#121212',
                 tooltip: {
@@ -130,9 +131,9 @@
                         },
                         roam: true,
                         label: {
-                            position: 'left',
+                            position: 'right',
                             verticalAlign: 'middle',
-                            align: 'right',
+                            align: 'left',
                             fontSize: 10,
                             color: '#d7d7d7',
                             fontFamily: 'CustomFont, sans-serif'
@@ -158,6 +159,9 @@
             chart.setOption(option);
             window.addEventListener('resize', () => chart.resize());
         } catch (error) {
+            if (chart && !chart.isDisposed()) {
+                chart.dispose();
+            }
             const mainDiv = document.getElementById('main');
             mainDiv.textContent = `Error: ${error.message}`;
             mainDiv.className = 'error';
