@@ -6,13 +6,13 @@
     <style>
         @font-face {
             font-family: 'CustomFont';
-            src: url('fractul.ttf') format('ttf');
+            src: url('fractul.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
 
         body {
-            font-family: 'CustomFont';
+            font-family: 'CustomFont', sans-serif;
             margin: 0;
             padding: 10px;
             background-color: #f5f5f5;
@@ -35,192 +35,20 @@
             margin-bottom: 15px;
         }
         
-        /* Table Section Styles */
-        .table-section {
-            margin-top: 40px;
-            background-color: transparent;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: none;
-        }
-        
-        .table-section h2 {
-            margin-top: 0;
-            color: #333;
-            border-bottom: 3px solid #1f77b4;
-            padding-bottom: 10px;
-        }
-        
-        .controls-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
-            align-items: flex-end;
-        }
-        
-        .control-group {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .control-group label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-            font-size: 14px;
-        }
-        
-        .control-group input,
-        .control-group select {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            min-width: 180px;
-        }
-        
-        .control-group input:focus,
-        .control-group select:focus {
-            outline: none;
-            border-color: #1f77b4;
-            box-shadow: 0 0 5px rgba(31, 119, 180, 0.3);
-        }
-        
-        .button-group {
-            display: flex;
-            gap: 10px;
-        }
-        
-        button {
+        .table-link {
+            display: inline-block;
+            margin-top: 20px;
             padding: 8px 16px;
-            border: none;
+            background-color: #1f77b4;
+            color: white;
+            text-decoration: none;
             border-radius: 4px;
             font-size: 14px;
             font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        #resetBtn {
-            background-color: #f44336;
-            color: white;
-        }
-        
-        #resetBtn:hover {
-            background-color: #da190b;
         }
 
-        .results-info {
-            margin-bottom: 15px;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            border: 0px solid #ddd;
-            border-radius: 0px;
-            background-color: transparent;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 10px;
-            background-color: transparent;
-        }
-        
-        thead {
-            background-color: #1f77b4;
-            color: transparent;
-            position: sticky;
-            top: 0;
-        }
-        
-        th {
-            padding: 12px;
-            text-align: left;
-            font-weight: bold;
-            border-bottom: 2px solid #0d47a1;
-            cursor: pointer;
-            user-select: none;
-        }
-        
-        th:hover {
+        .table-link:hover {
             background-color: #0d47a1;
-        }
-        
-        th.sortable::after {
-            content: " ⇅";
-            opacity: 0.5;
-        }
-        
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        tbody tr {
-            transition: background-color 0.2s;
-            background-color: rgba(255, 255, 255, 0.65);
-        }
-        
-        tbody tr:hover {
-            background-color: rgba(249, 249, 249, 0.9);
-        }
-        
-        tbody tr:nth-child(even) {
-            background-color: rgba(250, 250, 250, 0.65);
-        }
-        
-        .category-badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            margin-right: 5px;
-            margin-bottom: 3px;
-        }
-        
-        .events-cell {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .no-results {
-            text-align: center;
-            padding: 30px;
-            color: #999;
-            font-size: 16px;
-        }
-        
-        .pagination {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            flex-wrap: wrap;
-        }
-        
-        .pagination button {
-            padding: 6px 10px;
-            background-color: #e0e0e0;
-            color: #333;
-            border: 1px solid #999;
-        }
-        
-        .pagination button.active {
-            background-color: #1f77b4;
-            color: white;
-            border-color: #0d47a1;
-        }
-        
-        .pagination button:hover {
-            background-color: #1f77b4;
-            color: white;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
@@ -229,93 +57,10 @@
 
 <div id="main"></div>
 
-<div class="table-section">
-    <h2>Find USRN Participants & Interviewees</h2>
-    
-    <div class="controls-container">
-        <div class="control-group">
-            <label for="searchInput">Search by Name:</label>
-            <input type="text" id="searchInput" placeholder="e.g., Sabina Andron">
-        </div>
-        
-        <div class="control-group">
-            <label for="bookletFilter">Filter by Booklet:</label>
-            <select id="bookletFilter">
-                <option value="">All Booklets</option>
-                <option value="Vol. 1">Vol. 1</option>
-                <option value="Vol. 2">Vol. 2</option>
-                <option value="Vol. 3">Vol. 3</option>
-                <option value="Vol. 4">Vol. 4</option>
-                <option value="Vol. 5">Vol. 5</option>
-                <option value="Vol. 6">Vol. 6</option>
-                <option value="null">No Booklet (Events Only)</option>
-            </select>
-        </div>
-        
-        <div class="control-group">
-            <label for="categoryFilter">Filter by Category:</label>
-            <select id="categoryFilter">
-                <option value="">All Categories</option>
-                <option value="0">Materiality</option>
-                <option value="1">Economy</option>
-                <option value="2">Governance</option>
-                <option value="3">Communication</option>
-                <option value="4">Labour</option>
-                <option value="5">Ecology</option>
-            </select>
-        </div>
-
-        <div class="control-group">
-            <label for="locationFilter">Filter by Region:</label>
-            <select id="locationFilter">
-                <option value="">All Regions</option>
-            </select>
-        </div>
-        
-        <div class="button-group">
-            <button id="resetBtn">Reset Filters</button>
-        </div>
-    </div>
-    
-    <div class="results-info">
-        <span id="resultCount">Loading...</span>
-    </div>
-    
-    <div class="table-container">
-        <table id="dataTable">
-            <thead>
-                <tr>
-                    <th class="sortable">Name</th>
-                    <th>Categories</th>
-                    <th>Booklet</th>
-                    <th class="sortable">Location</th>
-                    <th>Events</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <tr><td colspan="5" class="no-results">Loading data...</td></tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="pagination" id="pagination"></div>
-</div>
+<a href="table.html" class="table-link">View USRN Participants &amp; Interviewees Table</a>
 
 <script>
-    let allData = [];
-    let filteredData = [];
-    let currentPage = 1;
-    const rowsPerPage = 20;
     let myChart = null;
-    
-    const categoryNames = {
-        0: 'Materiality',
-        1: 'Economy',
-        2: 'Governance',
-        3: 'Communication',
-        4: 'Labour',
-        5: 'Ecology'
-    };
     const categoryColors = {
         0: '#f5e6ba',
         1: '#acf2c9',
@@ -340,13 +85,8 @@
                 throw new Error('Invalid data structure: missing categories, nodes, or links');
             }
 
-            // Store raw data for table
-            allData = data.nodes;
-            filteredData = [...allData];
-
-            // Initialize both chart and table
+            // Initialize chart
             initChart(data);
-            initTable();
 
         } catch (err) {
             console.error('Initialization failed:', err);
@@ -534,156 +274,6 @@
         window.addEventListener('resize', () => {
             if (myChart) myChart.resize();
         });
-    }
-
-    // ===== Table Functions =====
-    function initTable() {
-        populateLocationFilter();
-        renderTable();
-        setupEventListeners();
-    }
-
-    function populateLocationFilter() {
-        const locationFilter = document.getElementById('locationFilter');
-        const uniqueRegions = Array.from(
-            new Set(
-                allData
-                    .map(person => (person.location || 'Unknown').toString().trim())
-                    .filter(region => region.length > 0)
-            )
-        ).sort((a, b) => a.localeCompare(b));
-
-        uniqueRegions.forEach(region => {
-            const option = document.createElement('option');
-            option.value = region;
-            option.textContent = region;
-            locationFilter.appendChild(option);
-        });
-    }
-
-    function setupEventListeners() {
-        document.getElementById('searchInput').addEventListener('input', applyFilters);
-        document.getElementById('bookletFilter').addEventListener('change', applyFilters);
-        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
-        document.getElementById('locationFilter').addEventListener('change', applyFilters);
-        document.getElementById('resetBtn').addEventListener('click', resetFilters);
-
-        // Sortable headers
-        document.querySelectorAll('th.sortable').forEach(header => {
-            header.addEventListener('click', function() {
-                const column = this.textContent.trim();
-                sortTable(column);
-            });
-        });
-    }
-
-    function applyFilters() {
-        currentPage = 1;
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        const bookletFilter = document.getElementById('bookletFilter').value;
-        const categoryFilter = document.getElementById('categoryFilter').value;
-        const locationFilter = document.getElementById('locationFilter').value;
-
-        filteredData = allData.filter(person => {
-            const matchesSearch = person.name.toLowerCase().includes(searchTerm);
-            
-            const matchesBooklet = !bookletFilter || 
-                (bookletFilter === 'null' ? person.booklet === null : 
-                 person.booklet && person.booklet.includes(bookletFilter));
-            
-            const matchesCategory = !categoryFilter || 
-                person.category.toString() === categoryFilter || 
-                person.category2.toString() === categoryFilter;
-
-            const personRegion = (person.location || 'Unknown').toString().trim();
-            const matchesRegion = !locationFilter || personRegion === locationFilter;
-
-            return matchesSearch && matchesBooklet && matchesCategory && matchesRegion;
-        });
-
-        renderTable();
-    }
-
-    function sortTable(column) {
-        const isName = column === 'Name';
-        const isLocation = column === 'Location';
-
-        filteredData.sort((a, b) => {
-            let aVal = isName ? a.name : isLocation ? (a.location || 'Unknown') : '';
-            let bVal = isName ? b.name : isLocation ? (b.location || 'Unknown') : '';
-            
-            return aVal.localeCompare(bVal);
-        });
-
-        currentPage = 1;
-        renderTable();
-    }
-
-    function renderTable() {
-        const tbody = document.getElementById('tableBody');
-        const start = (currentPage - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-        const pageData = filteredData.slice(start, end);
-
-        if (pageData.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="5" class="no-results">No results found. Try adjusting your filters.</td></tr>';
-            document.getElementById('resultCount').textContent = `0 results`;
-            document.getElementById('pagination').innerHTML = '';
-            return;
-        }
-
-        tbody.innerHTML = pageData.map(person => `
-            <tr>
-                <td><strong>${person.name}</strong></td>
-                <td>
-                    <span class="category-badge" style="background-color: ${categoryColors[person.category]}">
-                        ${categoryNames[person.category]}
-                    </span>
-                    <span class="category-badge" style="background-color: ${categoryColors[person.category2]}">
-                        ${categoryNames[person.category2]}
-                    </span>
-                </td>
-                <td>${person.booklet || '—'}</td>
-                <td>${person.location || 'Unknown'}</td>
-                <td class="events-cell">${person.events && person.events.length > 0 ? person.events.length + ' event(s)' : '—'}</td>
-            </tr>
-        `).join('');
-
-        document.getElementById('resultCount').textContent = `Showing ${start + 1}–${Math.min(end, filteredData.length)} of ${filteredData.length} results`;
-        renderPagination();
-    }
-
-    function renderPagination() {
-        const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-        const paginationDiv = document.getElementById('pagination');
-
-        if (totalPages <= 1) {
-            paginationDiv.innerHTML = '';
-            return;
-        }
-
-        let html = '';
-        
-        for (let i = 1; i <= totalPages; i++) {
-            html += `<button class="${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
-        }
-
-        paginationDiv.innerHTML = html;
-    }
-
-    function goToPage(page) {
-        currentPage = page;
-        renderTable();
-    }
-
-    function resetFilters() {
-        document.getElementById('searchInput').value = '';
-        document.getElementById('bookletFilter').value = '';
-        document.getElementById('categoryFilter').value = '';
-        document.getElementById('locationFilter').value = '';
-        currentPage = 1;
-        filteredData = [...allData];
-        renderTable();
     }
 
     // ===== Start =====
