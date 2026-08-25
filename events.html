@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events Network USRN</title>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fractul.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'CustomFont', sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #191919;
+            color: #e0e0e0;
+        }
+
+        #main {
+            width: 100%;
+            height: 900px;
+            background-color: transparent;
+        }
+
+        .error {
+            color: #ff6b6b;
+            padding: 0px;
+            background-color: transparent;
+            border-radius: 0px;
+            margin-bottom: 15px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body>
+
+<div id="main"></div>
+
+<script>
+    let myChart = null;
+
+    const EVENT_COLOR = '#fdc5f5';
+    const PERSON_COLOR = '#acf2c9';
+    const EDGE_COLOR = '#9aa0a6';
+
+    async function init() {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data.json: ${response.statusText}`);
+            }
+            const data = await response.json();
+
+            if (!Array.isArray(data.nodes)) {
+                throw new Error('Invalid data structure: missing nodes');
+            }
+
+            initChart(data);
+        } catch (err) {
+            console.error('Initialization failed:', err);
+            const mainDiv = document.getElementById('main');
+            mainDiv.innerHTML = `<div class="error"><strong>Error:</strong> ${err.message}</div>`;
+            mainDiv.style.height = 'auto';
+        }
+    }
+
+    function initChart(data) {
+        // Collect all unique events and map each event to the people involved
+        const eventPeopleMap = {};
+        data.nodes.forEach(node => {
+            (node.events || []).forEach(eventName => {
+                if (!eventPeopleMap[eventName]) {
+                    eventPeopleMap[eventName] = [];
+                }
+                eventPeopleMap[eventName].push(node.name);
+            });
+        });
+
+        const eventNames = Object.keys(eventPeopleMap).sort();
+        const numEvents = eventNames.length;
+
+        // Position event nodes evenly around a circle
+        const cx = 0, cy = 0, radius = 350;
+        const eventNodes = eventNames.map((name, i) => {
+            const angle = (2 * Math.PI * i) / numEvents - Math.PI / 2;
+            return {
+                id: `event::${name}`,
+                name: name,
+                isEvent: true,
+                x: cx + radius * Math.cos(angle),
+                y: cy + radius * Math.sin(angle),
+                symbolSize: 28,
+                symbol: 'circle',
+                itemStyle: {
+                    color: EVENT_COLOR,
+                    borderColor: '#fff',
+                    borderWidth: 1.5
+                },
+                label: {
+                    show: true,
+                    position: 'outside',
+                    fontSize: 10,
+                    fontFamily: 'CustomFont, sans-serif',
+                    color: '#e0e0e0',
+                    formatter: function (params) {
+                        // Wrap long event names
+                        const words = params.data.name.split(' ');
+                        const lines = [];
+                        let line = '';
+                        words.forEach(w => {
+                            if ((line + ' ' + w).trim().length > 22) {
+                                lines.push(line.trim());
+                                line = w;
+                            } else {
+                                line = (line + ' ' + w).trim();
+                            }
+                        });
+                        if (line) lines.push(line);
+                        return lines.join('\n');
+                    }
+                },
+                fixed: true
+            };
+        });
+
+        // Collect all people involved in at least one event
+        const involvedPeople = new Set();
+        eventNames.forEach(ev => {
+            eventPeopleMap[ev].forEach(p => involvedPeople.add(p));
+        });
+
+        // Build person nodes — placed by force layout (not fixed)
+        const personNodeMap = {};
+        data.nodes.forEach(node => {
+            if (involvedPeople.has(node.name)) {
+                personNodeMap[node.name] = {
+                    id: `person::${node.name}`,
+                    name: node.name,
+                    isPerson: true,
+                    personData: node,
+                    symbolSize: 14,
+                    symbol: 'rect',
+                    itemStyle: {
+                        color: PERSON_COLOR,
+                        borderColor: '#888',
+                        borderWidth: 1
+                    },
+                    label: {
+                        show: true,
+                        position: 'right',
+                        fontSize: 9,
+                        fontFamily: 'CustomFont, sans-serif',
+                        color: '#e0e0e0'
+                    }
+                };
+            }
+        });
+
+        const personNodes = Object.values(personNodeMap);
+        const allNodes = [...eventNodes, ...personNodes];
+
+        // Build edges: event → person for each participation
+        const links = [];
+        eventNames.forEach(eventName => {
+            eventPeopleMap[eventName].forEach(personName => {
+                links.push({
+                    source: `event::${eventName}`,
+                    target: `person::${personName}`,
+                    lineStyle: {
+                        color: EVENT_COLOR,
+                        width: 1.2,
+                        opacity: 0.6
+                    }
+                });
+            });
+        });
+
+        const chartDom = document.getElementById('main');
+        myChart = echarts.init(chartDom);
+
+        const option = {
+            backgroundColor: 'transparent',
+            tooltip: {
+                trigger: 'item',
+                formatter: function (params) {
+                    if (params.dataType === 'node') {
+                        if (params.data.isEvent) {
+                            const people = eventPeopleMap[params.data.name] || [];
+                            return `<b>${params.data.name}</b><br/>Participants (${people.length}):<br/>` +
+                                people.join('<br/>');
+                        }
+                        if (params.data.isPerson) {
+                            const node = params.data.personData;
+                            const evList = (node.events || []).join('<br/>') || 'None';
+                            return `<b>${node.name}</b><br/>Location: ${node.location || 'Unknown'}<br/>Events:<br/>${evList}`;
+                        }
+                    } else if (params.dataType === 'edge') {
+                        return `${params.data.source.replace('event::', '').replace('person::', '')} ↔ ${params.data.target.replace('event::', '').replace('person::', '')}`;
+                    }
+                    return '';
+                }
+            },
+            series: [{
+                type: 'graph',
+                layout: 'force',
+                roam: true,
+                coordinateSystem: undefined,
+                force: {
+                    repulsion: 120,
+                    edgeLength: [60, 160],
+                    gravity: 0.05
+                },
+                label: {
+                    show: true
+                },
+                data: allNodes,
+                links: links,
+                lineStyle: {
+                    curveness: 0.1,
+                    opacity: 0.7
+                },
+                emphasis: {
+                    focus: 'adjacency',
+                    lineStyle: {
+                        width: 3
+                    }
+                }
+            }]
+        };
+
+        myChart.setOption(option);
+
+        window.addEventListener('resize', () => {
+            if (myChart) myChart.resize();
+        });
+    }
+
+    init();
+</script>
+
+</body>
+</html>
