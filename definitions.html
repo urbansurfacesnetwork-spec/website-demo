@@ -41,6 +41,7 @@
 <div id="main"></div>
 
 <script>
+    let chartInstance = null;
     let resizeHandler = null;
 
     function escapeHtml(value) {
@@ -73,6 +74,15 @@
     }
 
     async function init() {
+        if (resizeHandler) {
+            window.removeEventListener('resize', resizeHandler);
+            resizeHandler = null;
+        }
+        if (chartInstance && !chartInstance.isDisposed()) {
+            chartInstance.dispose();
+            chartInstance = null;
+        }
+
         let chart = null;
         try {
             const response = await fetch('data.json');
@@ -101,6 +111,7 @@
             };
 
             chart = echarts.init(document.getElementById('main'));
+            chartInstance = chart;
             const option = {
                 backgroundColor: '#121212',
                 tooltip: {
@@ -108,7 +119,7 @@
                     formatter: (params) => {
                         const item = params.data || {};
                         if (item.labelType === 'definition') {
-                            const definitionText = escapeHtml(item.fullDefinition || item.name || '');
+                            const definitionText = escapeHtml(item.fullDefinition || '');
                             return `<b>Definition</b><br>${definitionText}`;
                         }
                         return `<b>${escapeHtml(item.name || '')}</b>`;
@@ -168,6 +179,7 @@
             if (chart && !chart.isDisposed()) {
                 chart.dispose();
             }
+            chartInstance = null;
             const mainDiv = document.getElementById('main');
             const errorMessage = error && error.message ? error.message : String(error);
             mainDiv.textContent = `Error: ${errorMessage}`;
