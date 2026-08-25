@@ -238,9 +238,10 @@
 
         myChart.setOption(option);
 
-        window.addEventListener('resize', () => {
+        const resizeObserver = new ResizeObserver(() => {
             if (myChart) myChart.resize();
         });
+        resizeObserver.observe(chartDom);
     }
 
     init();
