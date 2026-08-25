@@ -41,6 +41,8 @@
 <div id="main"></div>
 
 <script>
+    let resizeHandler = null;
+
     function escapeHtml(value) {
         return String(value)
             .replace(/&/g, '&amp;')
@@ -157,13 +159,18 @@
             };
 
             chart.setOption(option);
-            window.addEventListener('resize', () => chart.resize());
+            if (resizeHandler) {
+                window.removeEventListener('resize', resizeHandler);
+            }
+            resizeHandler = () => chart.resize();
+            window.addEventListener('resize', resizeHandler);
         } catch (error) {
             if (chart && !chart.isDisposed()) {
                 chart.dispose();
             }
             const mainDiv = document.getElementById('main');
-            mainDiv.textContent = `Error: ${error.message}`;
+            const errorMessage = error && error.message ? error.message : String(error);
+            mainDiv.textContent = `Error: ${errorMessage}`;
             mainDiv.className = 'error';
             console.error(error);
         }
