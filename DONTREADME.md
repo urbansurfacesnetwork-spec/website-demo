@@ -1,4 +1,14 @@
 
-Good on you urban surfacer, you've found the secret message on the website, now you're hear, perhaps you'll be interested in a deeper rabbithole>>>
+Good on you urban surfacer, you've found the secret message !
 
-What is a lost form?
+Now that you're here, perhaps you'll be interested in a deeper rabbithole>
+
+ally.guides.define (w3w)
+10.02.2022
+
+
+
+
+
+
+
