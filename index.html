@@ -15,7 +15,8 @@
             font-family: 'CustomFont', sans-serif;
             margin: 0;
             padding: 10px;
-            background-color: #f5f5f5;
+            background-color: #191919;
+            color: #e0e0e0;
         }
         
         #main {
@@ -28,27 +29,11 @@
         }
         
         .error {
-            color: #d32f2f;
+            color: #ff6b6b;
             padding: 0px;
-            background-color: #f5f5f5;
+            background-color: transparent;
             border-radius: 0px;
             margin-bottom: 15px;
-        }
-        
-        .table-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 16px;
-            background-color: #1f77b4;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .table-link:hover {
-            background-color: #0d47a1;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
@@ -56,8 +41,6 @@
 <body>
 
 <div id="main"></div>
-
-<a href="table.html" class="table-link">View USRN Participants &amp; Interviewees Table</a>
 
 <script>
     let myChart = null;
@@ -244,7 +227,8 @@
                 }
             },
             legend: [{
-                data: categories.map(c => c.name)
+                data: categories.map(c => c.name),
+                textStyle: { color: '#e0e0e0', fontFamily: 'CustomFont, sans-serif' }
             }],
             series: [{
                 type: 'graph',
@@ -253,7 +237,9 @@
                 label: {
                     show: true,
                     position: 'right',
-                    fontSize: 10
+                    fontSize: 10,
+                    fontFamily: 'CustomFont, sans-serif',
+                    color: '#e0e0e0'
                 },
                 force: {
                     repulsion: 100,
