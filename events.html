@@ -23,8 +23,7 @@
 
         #main {
             width: 100%;
-            max-width: 800px;
-            height: 800px;
+            height: 100vh;
             background-color: transparent;
         }
 
@@ -182,7 +181,10 @@
         });
 
         const chartDom = document.getElementById('main');
-        myChart = echarts.init(chartDom);
+        myChart = echarts.init(chartDom, null, {
+            width: chartDom.clientWidth,
+            height: chartDom.clientHeight
+        });
 
         const option = {
             backgroundColor: 'transparent',
@@ -236,9 +238,10 @@
 
         myChart.setOption(option);
 
-        window.addEventListener('resize', () => {
+        const resizeObserver = new ResizeObserver(() => {
             if (myChart) myChart.resize();
         });
+        resizeObserver.observe(chartDom);
     }
 
     init();
