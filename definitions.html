@@ -170,9 +170,6 @@
             };
 
             chart.setOption(option);
-            if (resizeHandler) {
-                window.removeEventListener('resize', resizeHandler);
-            }
             resizeHandler = () => chart.resize();
             window.addEventListener('resize', resizeHandler);
         } catch (error) {
