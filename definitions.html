@@ -115,15 +115,7 @@
             const option = {
                 backgroundColor: '#121212',
                 tooltip: {
-                    trigger: 'item',
-                    formatter: (params) => {
-                        const item = params.data || {};
-                        if (item.labelType === 'definition') {
-                            const definitionText = escapeHtml(item.fullDefinition || '');
-                            return `<b>Definition</b><br>${definitionText}`;
-                        }
-                        return `<b>${escapeHtml(item.name || '')}</b>`;
-                    }
+                    show: false
                 },
                 series: [
                     {
