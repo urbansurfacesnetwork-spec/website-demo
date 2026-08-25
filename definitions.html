@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Surface Definitions</title>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fractul.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'CustomFont', sans-serif;
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        #main {
+            width: 100%;
+            height: 100vh;
+            background: #121212;
+        }
+
+        .error {
+            color: #ff6b6b;
+            padding: 16px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body>
+<div id="main"></div>
+
+<script>
+    function wrapText(text, maxCharsPerLine = 56) {
+        if (!text) return '';
+        const words = text.trim().split(/\s+/);
+        const lines = [];
+        let currentLine = '';
+
+        words.forEach((word) => {
+            const candidate = currentLine ? `${currentLine} ${word}` : word;
+            if (candidate.length <= maxCharsPerLine) {
+                currentLine = candidate;
+            } else {
+                if (currentLine) lines.push(currentLine);
+                currentLine = word;
+            }
+        });
+
+        if (currentLine) lines.push(currentLine);
+        return lines.join('\n');
+    }
+
+    async function init() {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data.json: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            const peopleWithDefinitions = (data.nodes || [])
+                .filter((node) => node && typeof node.name === 'string' && node.definition && String(node.definition).trim())
+                .sort((a, b) => a.name.localeCompare(b.name));
+
+            const treeData = {
+                name: 'Urban Surface Definitions',
+                children: peopleWithDefinitions.map((person) => ({
+                    name: person.name,
+                    labelType: 'person',
+                    children: [
+                        {
+                            name: wrapText(person.definition, 56),
+                            fullDefinition: person.definition,
+                            labelType: 'definition'
+                        }
+                    ]
+                }))
+            };
+
+            const chart = echarts.init(document.getElementById('main'));
+            const option = {
+                backgroundColor: '#121212',
+                tooltip: {
+                    trigger: 'item',
+                    formatter: (params) => {
+                        const item = params.data || {};
+                        if (item.labelType === 'definition') {
+                            return `<b>Definition</b><br>${item.fullDefinition || item.name}`;
+                        }
+                        return `<b>${item.name || ''}</b>`;
+                    }
+                },
+                series: [
+                    {
+                        type: 'tree',
+                        data: [treeData],
+                        top: '4%',
+                        left: '5%',
+                        bottom: '4%',
+                        right: '36%',
+                        orient: 'LR',
+                        symbol: 'roundRect',
+                        symbolSize: [10, 10],
+                        expandAndCollapse: false,
+                        initialTreeDepth: -1,
+                        lineStyle: {
+                            color: '#4a4a4a',
+                            width: 1
+                        },
+                        roam: true,
+                        label: {
+                            position: 'left',
+                            verticalAlign: 'middle',
+                            align: 'right',
+                            fontSize: 10,
+                            color: '#d7d7d7',
+                            fontFamily: 'CustomFont, sans-serif'
+                        },
+                        leaves: {
+                            label: {
+                                position: 'right',
+                                verticalAlign: 'middle',
+                                align: 'left',
+                                fontSize: 9,
+                                lineHeight: 12,
+                                color: '#bdbdbd',
+                                fontFamily: 'CustomFont, sans-serif'
+                            }
+                        },
+                        emphasis: {
+                            focus: 'descendant'
+                        }
+                    }
+                ]
+            };
+
+            chart.setOption(option);
+            window.addEventListener('resize', () => chart.resize());
+        } catch (error) {
+            const mainDiv = document.getElementById('main');
+            mainDiv.innerHTML = `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            console.error(error);
+        }
+    }
+
+    init();
+</script>
+</body>
+</html>
