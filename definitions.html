@@ -177,6 +177,7 @@
                 chart.dispose();
             }
             chartInstance = null;
+            resizeHandler = null;
             const mainDiv = document.getElementById('main');
             const errorMessage = error && error.message ? error.message : String(error);
             mainDiv.textContent = `Error: ${errorMessage}`;
