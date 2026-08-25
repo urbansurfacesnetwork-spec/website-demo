@@ -99,20 +99,20 @@
             const personNodes = data.nodes
                 .filter(person => connectedPersonNames.has(person.name))
                 .map(person => ({
-                name: person.name,
-                symbol: 'circle',
-                symbolSize: 20,
-                itemStyle: {
-                    color: '#9aa0a6',
-                    borderWidth: 0
-                },
-                label: {
-                    show: true,
-                    fontFamily: 'CustomFont, sans-serif',
-                    fontSize: 10,
-                    color: '#ffffff'
-                }
-            }));
+                    name: person.name,
+                    symbol: 'circle',
+                    symbolSize: 20,
+                    itemStyle: {
+                        color: '#9aa0a6',
+                        borderWidth: 0
+                    },
+                    label: {
+                        show: true,
+                        fontFamily: 'CustomFont, sans-serif',
+                        fontSize: 10,
+                        color: '#ffffff'
+                    }
+                }));
 
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
