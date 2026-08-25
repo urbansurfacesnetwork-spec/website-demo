@@ -85,7 +85,7 @@
         const numEvents = eventNames.length;
 
         // Position event nodes evenly around a circle
-        const cx = 300 + 500, cy = 300 + 500, radius = 175;
+        const cx = 800, cy = 800, radius = 175;
         const eventNodes = eventNames.map((name, i) => {
             const angle = (2 * Math.PI * i) / numEvents - Math.PI / 2;
             return {
@@ -153,7 +153,7 @@
                     label: {
                         show: true,
                         position: 'right',
-                        fontSize: 4.5,
+                        fontSize: 5,
                         fontFamily: 'CustomFont, sans-serif',
                         color: '#e0e0e0'
                     }
