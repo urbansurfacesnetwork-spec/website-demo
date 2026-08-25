@@ -78,15 +78,6 @@
         5: '#00695c'
     };
 
-    const categoryDescriptions = {
-        'Materiality': 'Urban surfaces are physical. Every material choice — concrete, glass, timber, paint — carries embodied energy, a lifespan, and a cultural signal. Materiality asks us to consider what cities are made of, and what those choices mean for durability, identity, and environmental impact over time.',
-        'Economy': 'The economics of urban surfaces govern who builds, who maintains, and who benefits. From public procurement to private development, financial flows shape what gets built and what decays. Economy examines value beyond cost — the social returns of well-maintained, equitable, and beautiful public surfaces.',
-        'Governance': 'Who decides what urban surfaces look like? Governance maps the rules, institutions, and authorities that regulate public space. Planning codes, maintenance contracts, and community rights all intersect here. Good governance ensures surfaces reflect collective values rather than narrow interests or bureaucratic inertia.',
-        'Communication': 'Surfaces speak. Signage, murals, texture, and colour communicate identity, ownership, and invitation. Communication explores how urban surfaces transmit meaning — from wayfinding to political expression — and how communities can reclaim the visual language of their streets and public spaces.',
-        'Labour': 'Urban surfaces require constant human effort to build, clean, repair, and renew. Labour recognises the workers who sustain our cities — often invisible, often precarious. Valuing their expertise and ensuring fair conditions is central to any serious commitment to high-quality, resilient urban environments.',
-        'Ecology': 'Every surface is an ecological actor. Pavements affect drainage; green roofs support biodiversity; heat-absorbing materials raise temperatures. Ecology reframes urban surfaces as part of living systems, asking how material choices can support climate resilience, reduce pollution, and make space for non-human life.'
-    };
-
     async function init() {
         try {
             const response = await fetch('data.json');
@@ -96,14 +87,15 @@
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
 
-            const nodes = data.categories.map((category, index) => ({
+            const CENTER_NODE = 'Urban Surfaces';
+
+            const categoryNodes = data.categories.map((category, index) => ({
                 name: category.name,
-                symbol: 'circle',
-                symbolSize: 60,
+                symbol: 'roundRect',
+                symbolSize: 70,
                 itemStyle: {
                     color: categoryColors[index],
-                    borderColor: '#ffffff',
-                    borderWidth: 2
+                    borderWidth: 0
                 },
                 label: {
                     show: true,
@@ -113,13 +105,32 @@
                 }
             }));
 
-            // Build full mesh: connect every node to every other node
-            const links = [];
-            for (let i = 0; i < nodes.length; i++) {
-                for (let j = i + 1; j < nodes.length; j++) {
-                    links.push({ source: nodes[i].name, target: nodes[j].name });
-                }
-            }
+            const centralNode = {
+                name: CENTER_NODE,
+                symbol: 'roundRect',
+                symbolSize: 90,
+                itemStyle: {
+                    color: '#9775FD',
+                    borderWidth: 0
+                },
+                label: {
+                    show: true,
+                    fontFamily: 'CustomFont, sans-serif',
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                    fontSize: 14
+                },
+                x: 0,
+                y: 0
+            };
+
+            const nodes = [...categoryNodes, centralNode];
+
+            // Connect all six category nodes to the central node
+            const links = data.categories.map(category => ({
+                source: category.name,
+                target: CENTER_NODE
+            }));
 
             const option = {
                 backgroundColor: 'transparent',
@@ -148,7 +159,8 @@
                     lineStyle: {
                         color: '#ffffff',
                         opacity: 0.3,
-                        width: 1
+                        width: 1,
+                        curveness: 0.3
                     }
                 }]
             };
@@ -156,13 +168,13 @@
             myChart.setOption(option);
             window.addEventListener('resize', () => myChart.resize());
 
-            // Populate description cards
+            // Populate description cards from data.json
             const descriptionsDiv = document.getElementById('descriptions');
             data.categories.forEach((category, index) => {
                 const card = document.createElement('div');
                 card.className = 'desc-card';
                 const dot = `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${categoryColors[index]};margin-right:8px;vertical-align:middle;"></span>`;
-                card.innerHTML = `<h3>${dot}${category.name}</h3><p>${categoryDescriptions[category.name] || ''}</p>`;
+                card.innerHTML = `<h3>${dot}${category.name}</h3><p>${category.description || ''}</p>`;
                 descriptionsDiv.appendChild(card);
             });
 
