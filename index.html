@@ -196,6 +196,7 @@
             backgroundColor: 'transparent',
             tooltip: {
                 trigger: 'item',
+                extraCssText: 'max-width: 300px; white-space: normal; word-wrap: break-word;',
                 formatter: function (params) {
                     if (params.dataType === 'node') {
                         if (params.data.isCategoryHub) {
@@ -214,10 +215,6 @@
                         tooltip += `Location: ${location}<br/>`;
                         tooltip += `Booklet: ${booklet}<br/>`;
                         tooltip += `Events: ${eventsText}`;
-                        
-                        if (params.data.definition) {
-                            tooltip += `<br/><br/><i>"${params.data.definition.substring(0, 100)}..."</i>`;
-                        }
                         
                         return tooltip;
                     } else if (params.dataType === 'edge') {

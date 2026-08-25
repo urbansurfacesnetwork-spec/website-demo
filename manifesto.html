@@ -106,6 +106,16 @@
                 target: CENTER_NODE
             }));
 
+            // Connect each category to every other category
+            for (let i = 0; i < data.categories.length; i++) {
+                for (let j = i + 1; j < data.categories.length; j++) {
+                    links.push({
+                        source: data.categories[i].name,
+                        target: data.categories[j].name
+                    });
+                }
+            }
+
             const option = {
                 backgroundColor: 'transparent',
                 tooltip: {
