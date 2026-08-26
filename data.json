@@ -10,7 +10,7 @@
             "id": 1,
             "name": "Economy",
             "color": "#2ca02c",
-            "description": "The economics of urban surfaces govern who builds, who maintains, and who benefits. From public procurement to private development, financial flows shape what gets built and what decays. Economy examines value beyond cost \u2014 the social returns of well-maintained, equitable, and beautiful public surfaces."
+            "description": "The economics of urban surfaces govern who builds, who maintains, and who benefits. From public procurement to private development, financial flows shape what gets built and what decays. Economy examines value beyond cost — the social returns of well-maintained, equitable, and beautiful public surfaces."
         },
         {
             "id": 2,
@@ -22,13 +22,13 @@
             "id": 3,
             "name": "Communication",
             "color": "#1b5e20",
-            "description": "Surfaces speak. Signage, murals, texture, and colour communicate identity, ownership, and invitation. Communication explores how urban surfaces transmit meaning \u2014 from wayfinding to political expression \u2014 and how communities can reclaim the visual language of their streets and public spaces."
+            "description": "Surfaces speak. Signage, murals, texture, and colour communicate identity, ownership, and invitation. Communication explores how urban surfaces transmit meaning — from wayfinding to political expression — and how communities can reclaim the visual language of their streets and public spaces."
         },
         {
             "id": 4,
             "name": "Labour",
             "color": "#283593",
-            "description": "Urban surfaces require constant human effort to build, clean, repair, and renew. Labour recognises the workers who sustain our cities \u2014 often invisible, often precarious. Valuing their expertise and ensuring fair conditions is central to any serious commitment to high-quality, resilient urban environments."
+            "description": "Urban surfaces require constant human effort to build, clean, repair, and renew. Labour recognises the workers who sustain our cities — often invisible, often precarious. Valuing their expertise and ensuring fair conditions is central to any serious commitment to high-quality, resilient urban environments."
         },
         {
             "id": 5,
@@ -64,7 +64,7 @@
         },
         {
             "id": 3,
-            "name": "Tim Schnetg\u00f6ke",
+            "name": "Tim Schnetgöke",
             "category": 0,
             "category2": 1,
             "location": "Unknown",
@@ -79,7 +79,7 @@
             "category2": 1,
             "location": "Unknown",
             "booklet": "Vol. 1",
-            "definition": "Urban Surfaces are material graphic archives where inhabitation\u2014and, therefore, contestation\u2014is inscribed. Surfaces are multivocal, multitemporal structures where, often opposing, agents meet to express opinions, exercise rights and negotiate power.",
+            "definition": "Urban Surfaces are material graphic archives where inhabitation—and, therefore, contestation—is inscribed. Surfaces are multivocal, multitemporal structures where, often opposing, agents meet to express opinions, exercise rights and negotiate power.",
             "events": [
                 "Graffiti Research Workshop (3-4 Dec 2025)"
             ]
@@ -101,7 +101,7 @@
             "category2": 1,
             "location": "Vienna",
             "booklet": "Vol. 1",
-            "definition": "I like to think of surfaces as convergence space: it's a place where stuff \u2013 both material and semiotic \u2013 comes and meets from multiple directions. It is a meeting of styles, a clash often. And it surfaces to the extent that it happens in the visible.",
+            "definition": "I like to think of surfaces as convergence space: it's a place where stuff – both material and semiotic – comes and meets from multiple directions. It is a meeting of styles, a clash often. And it surfaces to the extent that it happens in the visible.",
             "events": []
         },
         {
@@ -224,7 +224,7 @@
         },
         {
             "id": 18,
-            "name": "Cristi\u00e1n Simonetti",
+            "name": "Cristián Simonetti",
             "category": 0,
             "category2": 1,
             "location": "Unknown",
@@ -281,7 +281,7 @@
             "category2": 1,
             "location": "Unknown",
             "booklet": "Vol. 2, Vol. 3",
-            "definition": "In 2017, Rebecca Coleman and I argued that 'The surface is \u2026potentially manifold and politically contingent' (2017: 6). By taking up and developing our earlier point, I define urban surfaces as parts of the physical environment dependent on scale, semiotics and social justice i.e. what's visible, what's communicable, and who matters?",
+            "definition": "In 2017, Rebecca Coleman and I argued that 'The surface is …potentially manifold and politically contingent' (2017: 6). By taking up and developing our earlier point, I define urban surfaces as parts of the physical environment dependent on scale, semiotics and social justice i.e. what's visible, what's communicable, and who matters?",
             "events": []
         },
         {
@@ -495,7 +495,7 @@
         },
         {
             "id": 44,
-            "name": "Pierre-\u00c9douard Weill",
+            "name": "Pierre-Édouard Weill",
             "category": 0,
             "category2": 1,
             "location": "Unknown",
@@ -564,7 +564,7 @@
             "category2": 1,
             "location": "Unknown",
             "booklet": "Vol. 5",
-            "definition": "In my research, urban surfaces encompass all skatepark elements\u2014concrete, steel, timber structures, signage, boundary zones, and surrounding trees. These surfaces serve dual functions: providing physical skating terrain and operating as canvases where users inscribe cultural traces.",
+            "definition": "In my research, urban surfaces encompass all skatepark elements—concrete, steel, timber structures, signage, boundary zones, and surrounding trees. These surfaces serve dual functions: providing physical skating terrain and operating as canvases where users inscribe cultural traces.",
             "events": []
         },
         {
@@ -599,7 +599,7 @@
         },
         {
             "id": 54,
-            "name": "Richard M\u00fcller",
+            "name": "Richard Müller",
             "category": 0,
             "category2": 1,
             "location": "Unknown",
@@ -727,12 +727,12 @@
         },
         {
             "id": 66,
-            "name": "Petr Va\u0161\u00e1t",
+            "name": "Petr Vašát",
             "category": 0,
             "category2": 1,
             "location": "Unknown",
             "booklet": "Vol. 6",
-            "definition": "Drawing on the case of macromurals, urban surfaces are a heterogeneous, uneven ensemble of material planes\u2014walls, fa\u00e7ades, roofs\u2014and other built or natural textures that become temporarily homogenised through painting, maintenance, or infrastructural intervention into cohesive visual patterns visible from a great distance.",
+            "definition": "Drawing on the case of macromurals, urban surfaces are a heterogeneous, uneven ensemble of material planes—walls, façades, roofs—and other built or natural textures that become temporarily homogenised through painting, maintenance, or infrastructural intervention into cohesive visual patterns visible from a great distance.",
             "events": []
         },
         {
@@ -757,7 +757,7 @@
         },
         {
             "id": 69,
-            "name": "Emina Zejnilovi\u0107",
+            "name": "Emina Zejnilović",
             "category": 0,
             "category2": 1,
             "location": "Unknown",
@@ -838,7 +838,7 @@
         },
         {
             "id": 76,
-            "name": "Efr\u00een \u00d6zyeti\u015f",
+            "name": "Efrîn Özyetiş",
             "category": 0,
             "category2": 5,
             "location": "Unknown",
@@ -1234,7 +1234,7 @@
         },
         {
             "id": 109,
-            "name": "Gabriel Ara\u00fajo Velasco",
+            "name": "Gabriel Araújo Velasco",
             "category": 0,
             "category2": 1,
             "location": "Unknown",
@@ -1270,7 +1270,7 @@
         },
         {
             "id": 112,
-            "name": "Ye\u015fim Desticio\u011flu",
+            "name": "Yeşim Desticioğlu",
             "category": 5,
             "category2": 1,
             "location": "Unknown",
@@ -1330,7 +1330,7 @@
         },
         {
             "id": 117,
-            "name": "In\u00eas Valle",
+            "name": "Inês Valle",
             "category": 3,
             "category2": 1,
             "location": "Unknown",
@@ -1354,7 +1354,7 @@
         },
         {
             "id": 119,
-            "name": "Frederico C\u00e2mara",
+            "name": "Frederico Câmara",
             "category": 3,
             "category2": 1,
             "location": "Unknown",
@@ -1390,7 +1390,7 @@
         },
         {
             "id": 122,
-            "name": "Danae Santib\u00e1\u00f1ez",
+            "name": "Danae Santibáñez",
             "category": 2,
             "category2": 3,
             "location": "Unknown",
@@ -1452,7 +1452,7 @@
         },
         {
             "source": "Katya Assaf-Zakharov",
-            "target": "Tim Schnetg\u00f6ke"
+            "target": "Tim Schnetgöke"
         },
         {
             "source": "Peter Bengtsen",
@@ -1479,7 +1479,7 @@
             "target": "Susanna Newbury"
         },
         {
-            "source": "Cristi\u00e1n Simonetti",
+            "source": "Cristián Simonetti",
             "target": "Myrto Tsilimpounidi"
         },
         {
@@ -1527,7 +1527,7 @@
             "target": "Lorenzo 'SERRAGLIA' Servi"
         },
         {
-            "source": "Pierre-\u00c9douard Weill",
+            "source": "Pierre-Édouard Weill",
             "target": "Chris Boyko"
         },
         {
@@ -1547,7 +1547,7 @@
             "target": "Diana-Raisa Lolici"
         },
         {
-            "source": "Richard M\u00fcller",
+            "source": "Richard Müller",
             "target": "Jazoo Yang"
         },
         {
@@ -1571,12 +1571,120 @@
             "target": "Moral Masuoka"
         },
         {
-            "source": "Petr Va\u0161\u00e1t",
+            "source": "Petr Vašát",
             "target": "Iain White"
         },
         {
             "source": "Erna Husukic",
-            "target": "Emina Zejnilovi\u0107"
+            "target": "Emina Zejnilović"
+        }
+    ],
+    "themes": [
+        {
+            "id": "t1",
+            "phrase": "Sites of Political Contestation"
+        },
+        {
+            "id": "t2",
+            "phrase": "Cultural Memory"
+        },
+        {
+            "id": "t3",
+            "phrase": "Urban Skin"
+        },
+        {
+            "id": "t4",
+            "phrase": "Material Inscription"
+        }
+    ],
+    "theme_links": [
+        {
+            "researcher": "Anneke Coppoolse",
+            "theme": "Sites of Political Contestation"
+        },
+        {
+            "researcher": "Nian Paul",
+            "theme": "Sites of Political Contestation"
+        },
+        {
+            "researcher": "Diana-Raisa Lolici",
+            "theme": "Sites of Political Contestation"
+        },
+        {
+            "researcher": "Dina Yunis",
+            "theme": "Sites of Political Contestation"
+        },
+        {
+            "researcher": "Gerda Wielander",
+            "theme": "Cultural Memory"
+        },
+        {
+            "researcher": "Mia Gaia Trentin",
+            "theme": "Cultural Memory"
+        },
+        {
+            "researcher": "Taylor Coyne",
+            "theme": "Cultural Memory"
+        },
+        {
+            "researcher": "Jazoo Yang",
+            "theme": "Cultural Memory"
+        },
+        {
+            "researcher": "Dina Yunis",
+            "theme": "Cultural Memory"
+        },
+        {
+            "researcher": "Erna Husukic",
+            "theme": "Cultural Memory"
+        },
+        {
+            "researcher": "Emina Zejnilović",
+            "theme": "Cultural Memory"
+        },
+        {
+            "researcher": "Maria Chatzidakis",
+            "theme": "Urban Skin"
+        },
+        {
+            "researcher": "Eduardo de la Fuente",
+            "theme": "Urban Skin"
+        },
+        {
+            "researcher": "Sneha Annavarapu",
+            "theme": "Urban Skin"
+        },
+        {
+            "researcher": "Taylor Coyne",
+            "theme": "Urban Skin"
+        },
+        {
+            "researcher": "Konstantinos Avramidis",
+            "theme": "Material Inscription"
+        },
+        {
+            "researcher": "Chris Boyko",
+            "theme": "Material Inscription"
+        },
+        {
+            "researcher": "Ruth Dalton",
+            "theme": "Material Inscription"
+        },
+        {
+            "researcher": "Kevin Muldoon-Smith",
+            "theme": "Material Inscription"
+        },
+        {
+            "researcher": "Susan Hansen",
+            "theme": "Material Inscription"
+        },
+        {
+            "researcher": "Dan Johnston",
+            "theme": "Material Inscription"
+        },
+        {
+            "researcher": "Alison Barnes",
+            "theme": "Material Inscription"
         }
     ]
 }
