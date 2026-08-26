@@ -91,7 +91,7 @@
         const numEvents = eventNames.length;
 
         // Position event nodes evenly around a circle
-        const cx = 700 * SCALE_FACTOR, cy = 0, radius = 175 * SCALE_FACTOR;
+        const cx = 700 * SCALE_FACTOR - 100, cy = 100, radius = 175 * SCALE_FACTOR;
         const eventNodes = eventNames.map((name, i) => {
             const angle = (2 * Math.PI * i) / numEvents - Math.PI / 2;
             return {
