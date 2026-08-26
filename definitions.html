@@ -19,14 +19,14 @@
         body {
             margin: 0;
             font-family: 'CustomFont', sans-serif;
-            background: #121212;
+            background: #191919;
             color: #e0e0e0;
         }
 
         #main {
             width: 100%;
             height: 100vh;
-            background: #121212;
+            background: #191919;
         }
 
         .error {
@@ -96,7 +96,7 @@
                 .sort((a, b) => a.name.localeCompare(b.name));
 
             const treeData = {
-                name: 'Urban Surface Definitions',
+                name: 'Definitions of Urban Surfaces',
                 children: peopleWithDefinitions.map((person) => ({
                     name: person.name,
                     labelType: 'person',
@@ -113,7 +113,7 @@
             chart = echarts.init(document.getElementById('main'));
             chartInstance = chart;
             const option = {
-                backgroundColor: '#121212',
+                backgroundColor: '#191919',
                 tooltip: {
                     show: false
                 },
