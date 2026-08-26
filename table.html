@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USRN Participants & Interviewees</title>
     <style>
         @font-face {
@@ -222,6 +223,95 @@
             text-decoration: underline;
             color: #7ec0f5;
         }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+
+            .table-section {
+                padding: 10px;
+            }
+
+            .table-section h2 {
+                font-size: 16px;
+            }
+
+            .controls-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .control-group input,
+            .control-group select {
+                min-width: unset;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .button-group {
+                width: 100%;
+            }
+
+            .button-group button {
+                width: 100%;
+            }
+
+            /* Card-style rows on mobile */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody tr {
+                margin-bottom: 12px;
+                border: 1px solid #444;
+                border-radius: 6px;
+                padding: 10px;
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+
+            tbody tr:nth-child(even) {
+                background-color: rgba(255, 255, 255, 0.08);
+            }
+
+            td {
+                padding: 4px 8px;
+                border-bottom: none;
+                font-size: 13px;
+                display: flex;
+                align-items: flex-start;
+                gap: 6px;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #9775FD;
+                min-width: 80px;
+                flex-shrink: 0;
+                font-size: 11px;
+                text-transform: uppercase;
+                padding-top: 2px;
+            }
+
+            .category-badge {
+                font-size: 11px;
+                padding: 3px 6px;
+            }
+
+            .results-info {
+                font-size: 13px;
+            }
+
+            .pagination button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -431,8 +521,8 @@
 
         tbody.innerHTML = pageData.map(person => `
             <tr>
-                <td><strong>${person.name}</strong></td>
-                <td>
+                <td data-label="Name"><strong>${person.name}</strong></td>
+                <td data-label="Categories">
                     <span class="category-badge" style="background-color: ${categoryColors[person.category]}">
                         ${categoryNames[person.category]}
                     </span>
@@ -440,9 +530,9 @@
                         ${categoryNames[person.category2]}
                     </span>
                 </td>
-                <td>${person.booklet || '—'}</td>
-                <td>${person.location || 'Unknown'}</td>
-                <td class="events-cell">${person.events && person.events.length > 0 ? person.events.length + ' event(s)' : '—'}</td>
+                <td data-label="Booklet">${person.booklet || '—'}</td>
+                <td data-label="Location">${person.location || 'Unknown'}</td>
+                <td data-label="Events" class="events-cell">${person.events && person.events.length > 0 ? person.events.length + ' event(s)' : '—'}</td>
             </tr>
         `).join('');
 
