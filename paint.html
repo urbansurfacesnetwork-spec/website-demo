@@ -91,17 +91,18 @@
             border: none;
             border-radius: 0;
             background-image: url('canvas-background.png');
-            background-size: cover;
+            background-size: 100% 100%;
             background-color: transparent;
-            width: 100%;
+            width: 1280px;
+            height: 2072px;
         }
 
         #drawCanvas {
             display: block;
             cursor: crosshair;
             background: transparent;
-            width: 100%;
-            height: auto;
+            width: 1280px;
+            height: 2072px;
             border-radius: 0;
             border: none;
         }
@@ -110,11 +111,12 @@
 <body>
 
 <div id="toolbar">
-    <button class="tool-btn active" id="btnBrush">Brush</button>
+    <button class="tool-btn active" id="btnBrush">Marker</button>
     <button class="tool-btn" id="btnEraser">Eraser</button>
     <button class="tool-btn" id="btnBuff">Buff</button>
     <button class="tool-btn" id="btnSticker">Sticker</button>
     <button class="tool-btn" id="btnPasteUp">Paste-Up</button>
+    <button class="tool-btn" id="btnAdvertise">Advertise</button>
 
     <label>Size&nbsp;<input type="range" id="brushSize" min="1" max="60" value="8"></label>
     <span id="sizeDisplay" style="font-size:13px;min-width:24px;">8</span>
@@ -128,7 +130,7 @@
 </div>
 
 <div id="canvas-wrapper">
-    <canvas id="drawCanvas" width="900" height="600"></canvas>
+    <canvas id="drawCanvas" width="1280" height="2072"></canvas>
 </div>
 
 <script>
@@ -148,6 +150,13 @@
     stickerImg.src = 'sticker.png';
     const pasteUpImg = new Image();
     pasteUpImg.src = 'pasteup.png';
+
+    // Advert images (135×181 each)
+    const ADVERT_W = 135, ADVERT_H = 181;
+    const advertImgs = ['advert-02.png', 'advert-03.png', 'advert-04.png'].map(src => {
+        const img = new Image(); img.src = src; return img;
+    });
+    let advertIndex = 0;
 
     // History for undo/redo
     const MAX_HISTORY = 40;
@@ -187,7 +196,7 @@
     });
 
     // All tool button ids
-    const toolBtns = ['btnBrush', 'btnEraser', 'btnBuff', 'btnSticker', 'btnPasteUp'];
+    const toolBtns = ['btnBrush', 'btnEraser', 'btnBuff', 'btnSticker', 'btnPasteUp', 'btnAdvertise'];
 
     function switchTool(t) {
         tool = t;
@@ -195,7 +204,7 @@
             const btn = document.getElementById(id);
             btn.classList.remove('active', 'active-buff');
         });
-        const activeId = { brush: 'btnBrush', eraser: 'btnEraser', buff: 'btnBuff', sticker: 'btnSticker', pasteup: 'btnPasteUp' }[t];
+        const activeId = { brush: 'btnBrush', eraser: 'btnEraser', buff: 'btnBuff', sticker: 'btnSticker', pasteup: 'btnPasteUp', advertise: 'btnAdvertise' }[t];
         if (activeId) {
             document.getElementById(activeId).classList.add(t === 'buff' ? 'active-buff' : 'active');
         }
@@ -204,12 +213,23 @@
         const colorLabel = document.getElementById('colorPickerLabel');
         colorLabel.style.display = (t === 'buff') ? 'none' : '';
 
+        // Show/hide size slider based on tool
+        const sizeLabel = sizeSlider.parentElement;
+        const sizeDisp = document.getElementById('sizeDisplay');
+        if (t === 'pasteup' || t === 'advertise') {
+            sizeLabel.style.display = 'none';
+            sizeDisp.style.display = 'none';
+        } else {
+            sizeLabel.style.display = '';
+            sizeDisp.style.display = '';
+        }
+
         if (t === 'buff') {
             color = '#6b4b3e';
             colorPicker.value = '#6b4b3e';
         }
 
-        const cursorMap = { eraser: 'cell', sticker: 'copy', pasteup: 'copy' };
+        const cursorMap = { eraser: 'cell', sticker: 'copy', pasteup: 'copy', advertise: 'copy' };
         canvas.style.cursor = cursorMap[t] || 'crosshair';
     }
 
@@ -218,6 +238,7 @@
     document.getElementById('btnBuff').addEventListener('click', () => switchTool('buff'));
     document.getElementById('btnSticker').addEventListener('click', () => switchTool('sticker'));
     document.getElementById('btnPasteUp').addEventListener('click', () => switchTool('pasteup'));
+    document.getElementById('btnAdvertise').addEventListener('click', () => switchTool('advertise'));
 
     // Undo / Redo
     document.getElementById('btnUndo').addEventListener('click', function () {
@@ -262,9 +283,25 @@
         ctx.restore();
     }
 
+    function stampPasteUp(x, y) {
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(pasteUpImg, x - ADVERT_W / 2, y - ADVERT_H / 2, ADVERT_W, ADVERT_H);
+        ctx.restore();
+    }
+
+    function stampAdvert(x, y) {
+        const img = advertImgs[advertIndex % advertImgs.length];
+        advertIndex++;
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(img, x - ADVERT_W / 2, y - ADVERT_H / 2, ADVERT_W, ADVERT_H);
+        ctx.restore();
+    }
+
     function drawBuff(x, y) {
         // Spray-paint style: scatter dots in a circle around the point
-        const density = 30;
+        const density = 80;
         const radius = brushSize * 1.5;
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
@@ -299,7 +336,9 @@
         if (tool === 'sticker') {
             stampImage(stickerImg, pos.x, pos.y);
         } else if (tool === 'pasteup') {
-            stampImage(pasteUpImg, pos.x, pos.y);
+            stampPasteUp(pos.x, pos.y);
+        } else if (tool === 'advertise') {
+            stampAdvert(pos.x, pos.y);
         } else if (tool === 'buff') {
             drawBuff(pos.x, pos.y);
         } else {
