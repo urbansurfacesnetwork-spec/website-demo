@@ -13,10 +13,11 @@
 
         body {
             font-family: 'CustomFont', sans-serif;
+            font-size: 21px;
             margin: 0;
             padding: 20px;
-            background-color: #191919;
-            color: #ffffff;
+            background-color: #1a0033;
+            color: #e8d5ff;
             box-sizing: border-box;
         }
 
@@ -27,7 +28,7 @@
         }
 
         .error {
-            color: #ff6b6b;
+            color: #cc66ff;
             padding: 0px;
             background-color: transparent;
         }
@@ -40,12 +41,12 @@
 
 <script>
     const categoryColors = {
-        0: '#f5e6ba',
-        1: '#acf2c9',
-        2: '#fdc5f5',
-        3: '#8093f1',
-        4: '#72ddf7',
-        5: '#00695c'
+        0: '#9b59b6',
+        1: '#7d3c98',
+        2: '#a569bd',
+        3: '#6c3483',
+        4: '#c39bd3',
+        5: '#4a235a'
     };
 
     function hexToRgba(hex, alpha) {
@@ -72,14 +73,14 @@
                 symbol: 'rect',
                 symbolSize: [52.5, 52.5],
                 itemStyle: {
-                    color: hexToRgba(categoryColors[index], 0.5),
+                    color: hexToRgba(categoryColors[index], 1),
                     borderWidth: 0
                 },
                 label: {
                     show: true,
                     fontFamily: 'CustomFont, sans-serif',
                     fontWeight: 'bold',
-                    color: '#ffffff'
+                    color: '#e8d5ff'
                 }
             }));
 
@@ -96,8 +97,8 @@
                     show: true,
                     fontFamily: 'CustomFont, sans-serif',
                     fontWeight: 'bold',
-                    color: '#ffffff',
-                    fontSize: 7
+                    color: '#e8d5ff',
+                    fontSize: 9
                 },
                 x: 0,
                 y: 0
@@ -142,15 +143,15 @@
                     label: {
                         show: true,
                         position: 'inside',
-                        fontSize: 6,
+                        fontSize: 8,
                         fontFamily: 'CustomFont, sans-serif',
-                        color: '#ffffff'
+                        color: '#e8d5ff'
                     },
                     data: nodes,
                     links: links,
                     lineStyle: {
-                        color: '#ffffff',
-                        opacity: 0.3,
+                        color: '#c39bd3',
+                        opacity: 1,
                         width: 1,
                         curveness: 0.3
                     }
