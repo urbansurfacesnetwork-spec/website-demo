@@ -16,7 +16,7 @@
             font-size: 21px;
             margin: 0;
             padding: 20px;
-            background-color: #1a0033;
+            background-color: #191919;
             color: #e8d5ff;
             box-sizing: border-box;
         }
@@ -71,7 +71,7 @@
             const categoryNodes = data.categories.map((category, index) => ({
                 name: category.name,
                 symbol: 'rect',
-                symbolSize: [52.5, 52.5],
+                symbolSize: [60, 60],
                 itemStyle: {
                     color: hexToRgba(categoryColors[index], 1),
                     borderWidth: 0
@@ -87,7 +87,7 @@
             const centralNode = {
                 name: CENTER_NODE,
                 symbol: 'rect',
-                symbolSize: 45,
+                symbolSize: 52,
                 itemStyle: {
                     color: 'transparent',
                     borderColor: 'transparent',
