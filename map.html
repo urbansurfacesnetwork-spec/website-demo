@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USRN Map Preview</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://tinyworldmap.com/dist/v3/tiny-world-all-10000.js"></script>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fractul.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            color-scheme: dark;
+            --bg: #191919;
+            --panel: rgba(25, 25, 25, 0.92);
+            --border: rgba(255, 255, 255, 0.14);
+            --text: #e0e0e0;
+            --muted: #b6b6b6;
+            --accent: #72ddf7;
+            --actual: #acf2c9;
+            --placeholder: #fdc5f5;
+        }
+
+        html, body {
+            margin: 0;
+            height: 100%;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'CustomFont', sans-serif;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .panel {
+            position: absolute;
+            z-index: 1000;
+            left: 16px;
+            top: 16px;
+            width: min(360px, calc(100vw - 32px));
+            padding: 16px 18px;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+
+        p {
+            margin: 0 0 12px;
+            color: var(--muted);
+            line-height: 1.45;
+            font-size: 0.95rem;
+        }
+
+        .legend,
+        .stats,
+        .locations {
+            display: grid;
+            gap: 8px;
+        }
+
+        .legend {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin: 14px 0;
+        }
+
+        .legend-item,
+        .stat,
+        .location-item {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 12px;
+        }
+
+        .swatch {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            margin-right: 8px;
+        }
+
+        .stat strong,
+        .location-item strong {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: normal;
+        }
+
+        .locations {
+            max-height: 240px;
+            overflow: auto;
+            margin-top: 14px;
+        }
+
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+            background: #202020;
+            color: var(--text);
+        }
+
+        .leaflet-container a {
+            color: var(--accent);
+        }
+
+        .marker-label {
+            color: var(--bg);
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 720px) {
+            .panel {
+                right: 16px;
+                width: auto;
+            }
+
+            .legend {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h1>City map preview</h1>
+        <p>This page uses Tiny World Map with Leaflet and is ready for future coordinates from <code>data.json</code>. Current markers combine known locations from your data with a few preview placeholders so you can see the intended layout.</p>
+        <div class="legend">
+            <div class="legend-item"><span class="swatch" style="background: var(--actual);"></span>Mapped from data.json</div>
+            <div class="legend-item"><span class="swatch" style="background: var(--placeholder);"></span>Preview placeholder</div>
+        </div>
+        <div class="stats" id="stats"></div>
+        <div class="locations" id="locations"></div>
+    </div>
+    <div id="map" aria-label="World map showing city markers"></div>
+
+    <script>
+        const map = L.map('map', {
+            center: [24, 10],
+            zoom: 2,
+            minZoom: 2,
+            attributionControl: false,
+            zoomControl: true,
+            preferCanvas: true,
+            worldCopyJump: true
+        });
+
+        new L.GridLayer.TinyWorld({ maxZoom: 18 }).addTo(map);
+
+        const cityCoordinates = {
+            Melbourne: [-37.8136, 144.9631],
+            Manchester: [53.4808, -2.2426],
+            Vienna: [48.2082, 16.3738],
+            London: [51.5072, -0.1276],
+            'New York': [40.7128, -74.0060],
+            'São Paulo': [-23.5505, -46.6333],
+            Tokyo: [35.6762, 139.6503]
+        };
+
+        const placeholderPeople = [
+            { name: 'Preview member — London', location: 'London', coordinates: cityCoordinates.London, placeholder: true },
+            { name: 'Preview member — New York', location: 'New York', coordinates: cityCoordinates['New York'], placeholder: true },
+            { name: 'Preview member — São Paulo', location: 'São Paulo', coordinates: cityCoordinates['São Paulo'], placeholder: true },
+            { name: 'Preview member — Tokyo', location: 'Tokyo', coordinates: cityCoordinates.Tokyo, placeholder: true }
+        ];
+
+        const markerLayer = L.layerGroup().addTo(map);
+        const statsEl = document.getElementById('stats');
+        const locationsEl = document.getElementById('locations');
+
+        function normalizeCoordinates(value) {
+            if (!value) return null;
+
+            if (Array.isArray(value) && value.length >= 2) {
+                const lat = Number(value[0]);
+                const lng = Number(value[1]);
+                return Number.isFinite(lat) && Number.isFinite(lng) ? [lat, lng] : null;
+            }
+
+            if (typeof value === 'object') {
+                const lat = Number(value.lat ?? value.latitude);
+                const lng = Number(value.lng ?? value.lon ?? value.longitude);
+                return Number.isFinite(lat) && Number.isFinite(lng) ? [lat, lng] : null;
+            }
+
+            return null;
+        }
+
+        function resolveCoordinates(person) {
+            return normalizeCoordinates(person.coordinates)
+                || normalizeCoordinates(person.coordinate)
+                || normalizeCoordinates([person.lat ?? person.latitude, person.lng ?? person.lon ?? person.longitude])
+                || cityCoordinates[person.location]
+                || null;
+        }
+
+        function makePopup(person) {
+            const typeLabel = person.placeholder ? 'Preview placeholder' : 'Mapped from data.json';
+            const extra = person.definition ? `<br><br>${person.definition}` : '';
+            return `<strong>${person.name}</strong><br>${person.location || 'Unknown location'}<br>${typeLabel}${extra}`;
+        }
+
+        function drawMarkers(people, unresolvedCount) {
+            markerLayer.clearLayers();
+            locationsEl.innerHTML = '';
+            const bounds = [];
+
+            people.forEach(person => {
+                const color = person.placeholder ? getComputedStyle(document.documentElement).getPropertyValue('--placeholder').trim() : getComputedStyle(document.documentElement).getPropertyValue('--actual').trim();
+                const marker = L.circleMarker(person.coordinates, {
+                    radius: person.placeholder ? 7 : 8,
+                    color,
+                    weight: 2,
+                    fillColor: color,
+                    fillOpacity: person.placeholder ? 0.55 : 0.8
+                }).bindPopup(makePopup(person));
+
+                marker.addTo(markerLayer);
+                bounds.push(person.coordinates);
+
+                const item = document.createElement('div');
+                item.className = 'location-item';
+                item.innerHTML = `<strong>${person.name}</strong>${person.location}<br>${person.placeholder ? 'Preview placeholder' : 'Mapped from data.json'}`;
+                locationsEl.appendChild(item);
+            });
+
+            statsEl.innerHTML = `
+                <div class="stat"><strong>${people.filter(person => !person.placeholder).length}</strong> live markers from data.json</div>
+                <div class="stat"><strong>${people.filter(person => person.placeholder).length}</strong> placeholder markers for layout preview</div>
+                <div class="stat"><strong>${unresolvedCount}</strong> people still need coordinates or a city-to-coordinate entry</div>
+            `;
+
+            if (bounds.length) {
+                map.fitBounds(bounds, { padding: [50, 50] });
+            }
+        }
+
+        async function loadPeople() {
+            let nodes = [];
+
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data.json: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                nodes = Array.isArray(data.nodes) ? data.nodes : [];
+            } catch (error) {
+                console.error(error);
+            }
+
+            const mappedPeople = nodes
+                .map(node => ({
+                    ...node,
+                    coordinates: resolveCoordinates(node),
+                    placeholder: false
+                }))
+                .filter(node => Array.isArray(node.coordinates));
+
+            const unresolvedCount = Math.max(nodes.length - mappedPeople.length, 0);
+            const combined = [...mappedPeople, ...placeholderPeople];
+            drawMarkers(combined, unresolvedCount);
+        }
+
+        L.control.attribution({ prefix: false }).addTo(map);
+        map.attributionControl.addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="https://www.tinyworldmap.com">tinyworldmap</a>');
+
+        loadPeople();
+    </script>
+</body>
+</html>
