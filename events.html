@@ -50,206 +50,122 @@
 <div id="main"></div>
 
 <script>
-    let myChart = null;
-
     const EVENT_COLOR = '#fdc5f5';
     const PERSON_COLOR = '#acf2c9';
-    const SCALE_FACTOR = 8 / 3;
 
     async function init() {
         try {
             const response = await fetch('data.json');
-            if (!response.ok) {
-                throw new Error(`Failed to fetch data.json: ${response.statusText}`);
-            }
+            if (!response.ok) throw new Error(`Failed to fetch data.json: ${response.statusText}`);
             const data = await response.json();
+            if (!Array.isArray(data.nodes)) throw new Error('Invalid data structure: missing nodes');
 
-            if (!Array.isArray(data.nodes)) {
-                throw new Error('Invalid data structure: missing nodes');
-            }
+            // Build event → participants map
+            const eventPeopleMap = {};
+            data.nodes.forEach(node => {
+                (node.events || []).forEach(ev => {
+                    if (!eventPeopleMap[ev]) eventPeopleMap[ev] = [];
+                    eventPeopleMap[ev].push(node.name);
+                });
+            });
 
-            initChart(data);
+            const eventNames = Object.keys(eventPeopleMap).sort();
+            const numEvents = eventNames.length;
+            const cx = 0, cy = 0, radius = 350;
+
+            // Event nodes — fixed around a circle
+            const eventNodes = eventNames.map((name, i) => {
+                const angle = (2 * Math.PI * i) / numEvents - Math.PI / 2;
+                return {
+                    id: `event::${name}`,
+                    name,
+                    isEvent: true,
+                    x: cx + radius * Math.cos(angle),
+                    y: cy + radius * Math.sin(angle),
+                    fixed: true,
+                    symbol: 'circle',
+                    symbolSize: 22,
+                    itemStyle: { color: EVENT_COLOR, borderColor: '#fff', borderWidth: 2 },
+                    label: {
+                        show: true,
+                        position: 'outside',
+                        fontSize: 11,
+                        fontFamily: 'CustomFont, sans-serif',
+                        color: '#e0e0e0'
+                    }
+                };
+            });
+
+            // Person nodes — free-floating, placed by force layout
+            const involvedPeople = new Set(Object.values(eventPeopleMap).flat());
+            const personNodes = data.nodes
+                .filter(node => involvedPeople.has(node.name))
+                .map(node => ({
+                    id: `person::${node.name}`,
+                    name: node.name,
+                    isPerson: true,
+                    personData: node,
+                    symbol: 'rect',
+                    symbolSize: 12,
+                    itemStyle: { color: PERSON_COLOR, borderColor: '#888', borderWidth: 1 },
+                    label: {
+                        show: true,
+                        position: 'right',
+                        fontSize: 11,
+                        fontFamily: 'CustomFont, sans-serif',
+                        color: '#e0e0e0'
+                    }
+                }));
+
+            // Edges: event → person
+            const links = eventNames.flatMap(ev =>
+                eventPeopleMap[ev].map(person => ({
+                    source: `event::${ev}`,
+                    target: `person::${person}`,
+                    lineStyle: { color: EVENT_COLOR, width: 2, opacity: 0.6 }
+                }))
+            );
+
+            const chartDom = document.getElementById('main');
+            const myChart = echarts.init(chartDom);
+
+            myChart.setOption({
+                backgroundColor: 'transparent',
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params) {
+                        if (params.dataType !== 'node') return '';
+                        if (params.data.isEvent) {
+                            const people = eventPeopleMap[params.data.name] || [];
+                            return `<b>${params.data.name}</b><br/>Participants (${people.length}):<br/>${people.join('<br/>')}`;
+                        }
+                        if (params.data.isPerson) {
+                            const n = params.data.personData;
+                            const evList = (n.events || []).join('<br/>') || 'None';
+                            return `<b>${n.name}</b><br/>Location: ${n.location || 'Unknown'}<br/>Events:<br/>${evList}`;
+                        }
+                        return '';
+                    }
+                },
+                series: [{
+                    type: 'graph',
+                    layout: 'force',
+                    roam: false,
+                    force: { repulsion: 120, edgeLength: [40, 160], gravity: 0.05 },
+                    data: [...eventNodes, ...personNodes],
+                    links,
+                    lineStyle: { curveness: 0.1, opacity: 0.7 },
+                    emphasis: { focus: 'adjacency', lineStyle: { width: 3 } }
+                }]
+            });
+
+            new ResizeObserver(() => myChart.resize()).observe(chartDom);
         } catch (err) {
             console.error('Initialization failed:', err);
             const mainDiv = document.getElementById('main');
             mainDiv.innerHTML = `<div class="error"><strong>Error:</strong> ${err.message}</div>`;
             mainDiv.style.height = 'auto';
         }
-    }
-
-    function initChart(data) {
-        // Collect all unique events and map each event to the people involved
-        const eventPeopleMap = {};
-        data.nodes.forEach(node => {
-            (node.events || []).forEach(eventName => {
-                if (!eventPeopleMap[eventName]) {
-                    eventPeopleMap[eventName] = [];
-                }
-                eventPeopleMap[eventName].push(node.name);
-            });
-        });
-
-        const eventNames = Object.keys(eventPeopleMap).sort();
-        const numEvents = eventNames.length;
-
-        // Position event nodes evenly around a circle
-        const cx = 700 * SCALE_FACTOR - 100, cy = 100, radius = 175 * SCALE_FACTOR;
-        const eventNodes = eventNames.map((name, i) => {
-            const angle = (2 * Math.PI * i) / numEvents - Math.PI / 2;
-            return {
-                id: `event::${name}`,
-                name: name,
-                isEvent: true,
-                x: cx + radius * Math.cos(angle),
-                y: cy + radius * Math.sin(angle),
-                symbolSize: 14 * SCALE_FACTOR,
-                symbol: 'circle',
-                itemStyle: {
-                    color: EVENT_COLOR,
-                    borderColor: '#fff',
-                    borderWidth: 1.5 * SCALE_FACTOR
-                },
-                label: {
-                    show: true,
-                    position: 'outside',
-                    fontSize: 5 * SCALE_FACTOR,
-                    fontFamily: 'CustomFont, sans-serif',
-                    color: '#e0e0e0',
-                    formatter: function (params) {
-                        // Wrap long event names
-                        const words = params.data.name.split(' ');
-                        const lines = [];
-                        let line = '';
-                        words.forEach(w => {
-                            if ((line + ' ' + w).trim().length > 22) {
-                                lines.push(line.trim());
-                                line = w;
-                            } else {
-                                line = (line + ' ' + w).trim();
-                            }
-                        });
-                        if (line) lines.push(line);
-                        return lines.join('\n');
-                    }
-                },
-                fixed: true
-            };
-        });
-
-        // Collect all people involved in at least one event
-        const involvedPeople = new Set();
-        eventNames.forEach(ev => {
-            eventPeopleMap[ev].forEach(p => involvedPeople.add(p));
-        });
-
-        // Build person nodes — placed by force layout (not fixed)
-        const personNodeMap = {};
-        data.nodes.forEach(node => {
-            if (involvedPeople.has(node.name)) {
-                personNodeMap[node.name] = {
-                    id: `person::${node.name}`,
-                    name: node.name,
-                    isPerson: true,
-                    personData: node,
-                    symbolSize: 7 * SCALE_FACTOR,
-                    symbol: 'rect',
-                    itemStyle: {
-                        color: PERSON_COLOR,
-                        borderColor: '#888',
-                        borderWidth: SCALE_FACTOR
-                    },
-                    label: {
-                        show: true,
-                        position: 'right',
-                        fontSize: 5 * SCALE_FACTOR,
-                        fontFamily: 'CustomFont, sans-serif',
-                        color: '#e0e0e0'
-                    }
-                };
-            }
-        });
-
-        const personNodes = Object.values(personNodeMap);
-        const allNodes = [...eventNodes, ...personNodes];
-
-        // Build edges: event → person for each participation
-        const links = [];
-        eventNames.forEach(eventName => {
-            eventPeopleMap[eventName].forEach(personName => {
-                links.push({
-                    source: `event::${eventName}`,
-                    target: `person::${personName}`,
-                    lineStyle: {
-                        color: EVENT_COLOR,
-                        width: 1.2 * SCALE_FACTOR,
-                        opacity: 0.6
-                    }
-                });
-            });
-        });
-
-        const chartDom = document.getElementById('main');
-        myChart = echarts.init(chartDom, null, {
-            width: chartDom.clientWidth,
-            height: chartDom.clientHeight
-        });
-
-        const option = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'item',
-                formatter: function (params) {
-                    if (params.dataType === 'node') {
-                        if (params.data.isEvent) {
-                            const people = eventPeopleMap[params.data.name] || [];
-                            return `<b>${params.data.name}</b><br/>Participants (${people.length}):<br/>` +
-                                people.join('<br/>');
-                        }
-                        if (params.data.isPerson) {
-                            const node = params.data.personData;
-                            const evList = (node.events || []).join('<br/>') || 'None';
-                            return `<b>${node.name}</b><br/>Location: ${node.location || 'Unknown'}<br/>Events:<br/>${evList}`;
-                        }
-                    } else if (params.dataType === 'edge') {
-                        return `${params.data.source.replace('event::', '').replace('person::', '')} ↔ ${params.data.target.replace('event::', '').replace('person::', '')}`;
-                    }
-                    return '';
-                }
-            },
-            series: [{
-                type: 'graph',
-                layout: 'force',
-                roam: false,
-                coordinateSystem: undefined,
-                force: {
-                    repulsion: 60 * SCALE_FACTOR,
-                    edgeLength: [30 * SCALE_FACTOR, 80 * SCALE_FACTOR],
-                    gravity: 0.05
-                },
-                label: {
-                    show: true
-                },
-                data: allNodes,
-                links: links,
-                lineStyle: {
-                    curveness: 0.1,
-                    opacity: 0.7
-                },
-                emphasis: {
-                    focus: 'adjacency',
-                    lineStyle: {
-                        width: 3 * SCALE_FACTOR
-                    }
-                }
-            }]
-        };
-
-        myChart.setOption(option);
-
-        const resizeObserver = new ResizeObserver(() => {
-            if (myChart) myChart.resize();
-        });
-        resizeObserver.observe(chartDom);
     }
 
     init();
