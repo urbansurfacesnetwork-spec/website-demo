@@ -159,6 +159,9 @@
         <span class="color-swatch" data-color="#8b00ff" style="background:#8b00ff;" title="Violet"></span>
     </span>
 
+    <button class="tool-btn" id="btnRedo" disabled>Redo</button>
+
+    <button class="tool-btn" id="btnClear">Clear</button>
 </div>
 
 <div id="canvas-wrapper">
@@ -257,9 +260,8 @@
         const colorSwatches = document.getElementById('colorSwatches');
         const isBuff = (t === 'brownbuff' || t === 'greybuff');
         const isStamp = (t === 'pasteup' || t === 'advertise');
-        const isSticker = (t === 'sticker');
 
-        colorSwatches.style.display = (isBuff || isStamp || isSticker) ? 'none' : '';
+        colorSwatches.style.display = (isBuff || isStamp) ? 'none' : '';
         sizeButtons.style.display = isStamp ? 'none' : '';
 
         const cursorMap = { sticker: 'copy', pasteup: 'copy', advertise: 'copy' };
@@ -272,6 +274,21 @@
     document.getElementById('btnSticker').addEventListener('click', () => switchTool('sticker'));
     document.getElementById('btnPasteUp').addEventListener('click', () => switchTool('pasteup'));
     document.getElementById('btnAdvertise').addEventListener('click', () => switchTool('advertise'));
+
+    // Redo
+    document.getElementById('btnRedo').addEventListener('click', function () {
+        if (historyIndex < history.length - 1) {
+            historyIndex++;
+            ctx.putImageData(history[historyIndex], 0, 0);
+            updateHistoryButtons();
+        }
+    });
+
+    // Clear
+    document.getElementById('btnClear').addEventListener('click', function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        saveSnapshot();
+    });
 
     // Drawing
     function getPos(e) {
@@ -286,11 +303,10 @@
     }
 
     function stampImage(img, x, y) {
-        const w = img.naturalWidth || img.width;
-        const h = img.naturalHeight || img.height;
+        const size = brushSize * 6;
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(img, x - w / 2, y - h / 2, w, h);
+        ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
         ctx.restore();
     }
 
@@ -354,22 +370,16 @@
         } else if (tool === 'greybuff') {
             drawBuff(pos.x, pos.y, '#888888');
         } else {
-            // Dense spray effect
-            const radius = brushSize * 1.2;
-            const dots = 120;
             ctx.save();
+            ctx.lineWidth = brushSize;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
             ctx.globalCompositeOperation = 'source-over';
-            ctx.fillStyle = color;
-            for (let i = 0; i < dots; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const r = Math.random() * radius;
-                const px = pos.x + r * Math.cos(angle);
-                const py = pos.y + r * Math.sin(angle);
-                ctx.globalAlpha = Math.random() * 0.4 + 0.5;
-                ctx.beginPath();
-                ctx.arc(px, py, Math.random() * 1 + 0.3, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            ctx.strokeStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
             ctx.restore();
         }
 
@@ -393,6 +403,13 @@
     canvas.addEventListener('touchstart', startDraw, { passive: false });
     canvas.addEventListener('touchmove', draw, { passive: false });
     canvas.addEventListener('touchend', stopDraw);
+
+    // Keyboard shortcut for redo
+    document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && ((e.shiftKey && e.key === 'z') || e.key === 'y')) {
+            document.getElementById('btnRedo').click();
+        }
+    });
 }());
 </script>
 
