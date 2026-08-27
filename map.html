@@ -160,7 +160,13 @@
             worldCopyJump: true
         });
 
-        new L.GridLayer.TinyWorld({ maxZoom: 18 }).addTo(map);
+        if (L?.GridLayer?.TinyWorld) {
+            new L.GridLayer.TinyWorld({ maxZoom: 18 }).addTo(map);
+        } else {
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19
+            }).addTo(map);
+        }
 
         const cityCoordinates = {
             Melbourne: [-37.8136, 144.9631],
@@ -278,8 +284,8 @@
             drawMarkers(combined, unresolvedCount);
         }
 
-        L.control.attribution({ prefix: false }).addTo(map);
-        map.attributionControl.addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="https://www.tinyworldmap.com">tinyworldmap</a>');
+        const attributionControl = L.control.attribution({ prefix: false }).addTo(map);
+        attributionControl.addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="https://www.tinyworldmap.com">tinyworldmap</a>');
 
         loadPeople();
     </script>
