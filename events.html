@@ -129,6 +129,10 @@
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
 
+            function getCenter() {
+                return [chartDom.clientWidth / 2 + 250, chartDom.clientHeight / 2 + 250];
+            }
+
             myChart.setOption({
                 backgroundColor: 'transparent',
                 tooltip: {
@@ -150,6 +154,7 @@
                 series: [{
                     type: 'graph',
                     layout: 'force',
+                    center: getCenter(),
                     roam: false,
                     force: { repulsion: 120, edgeLength: [40, 160], gravity: 0.05 },
                     data: [...eventNodes, ...personNodes],
@@ -159,7 +164,10 @@
                 }]
             });
 
-            new ResizeObserver(() => myChart.resize()).observe(chartDom);
+            new ResizeObserver(() => {
+                myChart.resize();
+                myChart.setOption({ series: [{ center: getCenter() }] });
+            }).observe(chartDom);
         } catch (err) {
             console.error('Initialization failed:', err);
             const mainDiv = document.getElementById('main');
