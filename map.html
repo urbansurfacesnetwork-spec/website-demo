@@ -43,6 +43,17 @@
         .leaflet-container a {
             color: var(--accent);
         }
+
+        .square-node {
+            width: 12px;
+            height: 12px;
+            margin-left: -6px;
+            margin-top: -6px;
+            border: 1.5px solid #000000;
+            background: #000000;
+            opacity: 0.9;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -130,6 +141,7 @@
             { name: 'Placeholder — Riyadh', location: 'Riyadh', coordinates: [24.7136, 46.6753], placeholder: true },
         ];
 
+        const edgeLayer = L.layerGroup().addTo(map);
         const markerLayer = L.layerGroup().addTo(map);
 
         function makePopup(person) {
@@ -137,16 +149,26 @@
         }
 
         function drawMarkers(people) {
+            edgeLayer.clearLayers();
             markerLayer.clearLayers();
             const bounds = [];
 
+            for (let i = 0; i < people.length; i += 1) {
+                for (let j = i + 1; j < people.length; j += 1) {
+                    L.polyline([people[i].coordinates, people[j].coordinates], {
+                        color: '#000000',
+                        weight: 1,
+                        opacity: 0.25
+                    }).addTo(edgeLayer);
+                }
+            }
+
             people.forEach(person => {
-                const marker = L.circleMarker(person.coordinates, {
-                    radius: 7,
-                    color: '#000000',
-                    weight: 1.5,
-                    fillColor: '#000000',
-                    fillOpacity: 0.85
+                const marker = L.marker(person.coordinates, {
+                    icon: L.divIcon({
+                        className: 'square-node',
+                        iconSize: [12, 12]
+                    })
                 }).bindPopup(makePopup(person));
 
                 marker.addTo(markerLayer);
