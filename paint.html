@@ -344,8 +344,7 @@
         ctx.restore();
     }
 
-    function drawBuff(x, y, buffColor) {
-        const density = 80;
+    function drawBuff(x, y, buffColor, density = 80) {
         const radius = brushSize * 1.5;
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
@@ -384,7 +383,7 @@
         } else if (tool === 'advertise') {
             stampAdvert(pos.x, pos.y);
         } else if (tool === 'brownbuff') {
-            drawBuff(pos.x, pos.y, '#6b4b3e');
+            drawBuff(pos.x, pos.y, '#6b4b3e', 120);
         } else if (tool === 'greybuff') {
             drawBuff(pos.x, pos.y, '#888888');
         } else if (tool === 'eraser') {
