@@ -17,13 +17,8 @@
         :root {
             color-scheme: dark;
             --bg: #191919;
-            --panel: rgba(25, 25, 25, 0.92);
-            --border: rgba(255, 255, 255, 0.14);
             --text: #e0e0e0;
-            --muted: #b6b6b6;
             --accent: #72ddf7;
-            --actual: #acf2c9;
-            --placeholder: #fdc5f5;
         }
 
         html, body {
@@ -39,73 +34,6 @@
             height: 100%;
         }
 
-        .panel {
-            position: absolute;
-            z-index: 1000;
-            left: 16px;
-            top: 16px;
-            width: min(360px, calc(100vw - 32px));
-            padding: 16px 18px;
-            border: 1px solid var(--border);
-            background: var(--panel);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
-        }
-
-        h1 {
-            margin: 0 0 8px;
-            font-size: 1.5rem;
-            font-weight: normal;
-        }
-
-        p {
-            margin: 0 0 12px;
-            color: var(--muted);
-            line-height: 1.45;
-            font-size: 0.95rem;
-        }
-
-        .legend,
-        .stats,
-        .locations {
-            display: grid;
-            gap: 8px;
-        }
-
-        .legend {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            margin: 14px 0;
-        }
-
-        .legend-item,
-        .stat,
-        .location-item {
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.03);
-            padding: 10px 12px;
-        }
-
-        .swatch {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 999px;
-            margin-right: 8px;
-        }
-
-        .stat strong,
-        .location-item strong {
-            display: block;
-            margin-bottom: 4px;
-            font-weight: normal;
-        }
-
-        .locations {
-            max-height: 240px;
-            overflow: auto;
-            margin-top: 14px;
-        }
-
         .leaflet-popup-content-wrapper,
         .leaflet-popup-tip {
             background: #202020;
@@ -115,37 +43,9 @@
         .leaflet-container a {
             color: var(--accent);
         }
-
-        .marker-label {
-            color: var(--bg);
-            font-family: Arial, sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        @media (max-width: 720px) {
-            .panel {
-                right: 16px;
-                width: auto;
-            }
-
-            .legend {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="panel">
-        <h1>City map preview</h1>
-        <p>This page uses OpenStreetMap with Leaflet and is ready for future coordinates from <code>data.json</code>. Current markers combine known locations from your data with a few preview placeholders so you can see the intended layout.</p>
-        <div class="legend">
-            <div class="legend-item"><span class="swatch" style="background: var(--actual);"></span>Mapped from data.json</div>
-            <div class="legend-item"><span class="swatch" style="background: var(--placeholder);"></span>Preview placeholder</div>
-        </div>
-        <div class="stats" id="stats"></div>
-        <div class="locations" id="locations"></div>
-    </div>
     <div id="map" aria-label="World map showing city markers"></div>
 
     <script>
@@ -159,8 +59,9 @@
             worldCopyJump: true
         });
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            subdomains: 'abcd'
         }).addTo(map);
 
         const cityCoordinates = {
@@ -174,77 +75,84 @@
         };
 
         const placeholderPeople = [
-            { name: 'Preview member — London', location: 'London', coordinates: cityCoordinates.London, placeholder: true },
-            { name: 'Preview member — New York', location: 'New York', coordinates: cityCoordinates['New York'], placeholder: true },
-            { name: 'Preview member — São Paulo', location: 'São Paulo', coordinates: cityCoordinates['São Paulo'], placeholder: true },
-            { name: 'Preview member — Tokyo', location: 'Tokyo', coordinates: cityCoordinates.Tokyo, placeholder: true }
+            { name: 'Placeholder — London', location: 'London', coordinates: [51.5072, -0.1276], placeholder: true },
+            { name: 'Placeholder — New York', location: 'New York', coordinates: [40.7128, -74.0060], placeholder: true },
+            { name: 'Placeholder — São Paulo', location: 'São Paulo', coordinates: [-23.5505, -46.6333], placeholder: true },
+            { name: 'Placeholder — Tokyo', location: 'Tokyo', coordinates: [35.6762, 139.6503], placeholder: true },
+            { name: 'Placeholder — Paris', location: 'Paris', coordinates: [48.8566, 2.3522], placeholder: true },
+            { name: 'Placeholder — Berlin', location: 'Berlin', coordinates: [52.5200, 13.4050], placeholder: true },
+            { name: 'Placeholder — Sydney', location: 'Sydney', coordinates: [-33.8688, 151.2093], placeholder: true },
+            { name: 'Placeholder — Los Angeles', location: 'Los Angeles', coordinates: [34.0522, -118.2437], placeholder: true },
+            { name: 'Placeholder — Chicago', location: 'Chicago', coordinates: [41.8781, -87.6298], placeholder: true },
+            { name: 'Placeholder — Toronto', location: 'Toronto', coordinates: [43.6532, -79.3832], placeholder: true },
+            { name: 'Placeholder — Amsterdam', location: 'Amsterdam', coordinates: [52.3676, 4.9041], placeholder: true },
+            { name: 'Placeholder — Barcelona', location: 'Barcelona', coordinates: [41.3851, 2.1734], placeholder: true },
+            { name: 'Placeholder — Seoul', location: 'Seoul', coordinates: [37.5665, 126.9780], placeholder: true },
+            { name: 'Placeholder — Singapore', location: 'Singapore', coordinates: [1.3521, 103.8198], placeholder: true },
+            { name: 'Placeholder — Dubai', location: 'Dubai', coordinates: [25.2048, 55.2708], placeholder: true },
+            { name: 'Placeholder — Mumbai', location: 'Mumbai', coordinates: [19.0760, 72.8777], placeholder: true },
+            { name: 'Placeholder — Cairo', location: 'Cairo', coordinates: [30.0444, 31.2357], placeholder: true },
+            { name: 'Placeholder — Nairobi', location: 'Nairobi', coordinates: [-1.2921, 36.8219], placeholder: true },
+            { name: 'Placeholder — Lagos', location: 'Lagos', coordinates: [6.5244, 3.3792], placeholder: true },
+            { name: 'Placeholder — Johannesburg', location: 'Johannesburg', coordinates: [-26.2041, 28.0473], placeholder: true },
+            { name: 'Placeholder — Cape Town', location: 'Cape Town', coordinates: [-33.9249, 18.4241], placeholder: true },
+            { name: 'Placeholder — Buenos Aires', location: 'Buenos Aires', coordinates: [-34.6037, -58.3816], placeholder: true },
+            { name: 'Placeholder — Mexico City', location: 'Mexico City', coordinates: [19.4326, -99.1332], placeholder: true },
+            { name: 'Placeholder — Bogotá', location: 'Bogotá', coordinates: [4.7110, -74.0721], placeholder: true },
+            { name: 'Placeholder — Lima', location: 'Lima', coordinates: [-12.0464, -77.0428], placeholder: true },
+            { name: 'Placeholder — Santiago', location: 'Santiago', coordinates: [-33.4489, -70.6693], placeholder: true },
+            { name: 'Placeholder — Istanbul', location: 'Istanbul', coordinates: [41.0082, 28.9784], placeholder: true },
+            { name: 'Placeholder — Moscow', location: 'Moscow', coordinates: [55.7558, 37.6173], placeholder: true },
+            { name: 'Placeholder — Warsaw', location: 'Warsaw', coordinates: [52.2297, 21.0122], placeholder: true },
+            { name: 'Placeholder — Stockholm', location: 'Stockholm', coordinates: [59.3293, 18.0686], placeholder: true },
+            { name: 'Placeholder — Oslo', location: 'Oslo', coordinates: [59.9139, 10.7522], placeholder: true },
+            { name: 'Placeholder — Helsinki', location: 'Helsinki', coordinates: [60.1699, 24.9384], placeholder: true },
+            { name: 'Placeholder — Copenhagen', location: 'Copenhagen', coordinates: [55.6761, 12.5683], placeholder: true },
+            { name: 'Placeholder — Lisbon', location: 'Lisbon', coordinates: [38.7169, -9.1399], placeholder: true },
+            { name: 'Placeholder — Athens', location: 'Athens', coordinates: [37.9838, 23.7275], placeholder: true },
+            { name: 'Placeholder — Rome', location: 'Rome', coordinates: [41.9028, 12.4964], placeholder: true },
+            { name: 'Placeholder — Milan', location: 'Milan', coordinates: [45.4642, 9.1900], placeholder: true },
+            { name: 'Placeholder — Brussels', location: 'Brussels', coordinates: [50.8503, 4.3517], placeholder: true },
+            { name: 'Placeholder — Zurich', location: 'Zurich', coordinates: [47.3769, 8.5417], placeholder: true },
+            { name: 'Placeholder — Prague', location: 'Prague', coordinates: [50.0755, 14.4378], placeholder: true },
+            { name: 'Placeholder — Budapest', location: 'Budapest', coordinates: [47.4979, 19.0402], placeholder: true },
+            { name: 'Placeholder — Bucharest', location: 'Bucharest', coordinates: [44.4268, 26.1025], placeholder: true },
+            { name: 'Placeholder — Kyiv', location: 'Kyiv', coordinates: [50.4501, 30.5234], placeholder: true },
+            { name: 'Placeholder — Beijing', location: 'Beijing', coordinates: [39.9042, 116.4074], placeholder: true },
+            { name: 'Placeholder — Shanghai', location: 'Shanghai', coordinates: [31.2304, 121.4737], placeholder: true },
+            { name: 'Placeholder — Hong Kong', location: 'Hong Kong', coordinates: [22.3193, 114.1694], placeholder: true },
+            { name: 'Placeholder — Jakarta', location: 'Jakarta', coordinates: [-6.2088, 106.8456], placeholder: true },
+            { name: 'Placeholder — Bangkok', location: 'Bangkok', coordinates: [13.7563, 100.5018], placeholder: true },
+            { name: 'Placeholder — Kuala Lumpur', location: 'Kuala Lumpur', coordinates: [3.1390, 101.6869], placeholder: true },
+            { name: 'Placeholder — Manila', location: 'Manila', coordinates: [14.5995, 120.9842], placeholder: true },
+            { name: 'Placeholder — Karachi', location: 'Karachi', coordinates: [24.8607, 67.0011], placeholder: true },
+            { name: 'Placeholder — Dhaka', location: 'Dhaka', coordinates: [23.8103, 90.4125], placeholder: true },
+            { name: 'Placeholder — Tehran', location: 'Tehran', coordinates: [35.6892, 51.3890], placeholder: true },
+            { name: 'Placeholder — Riyadh', location: 'Riyadh', coordinates: [24.7136, 46.6753], placeholder: true },
         ];
 
         const markerLayer = L.layerGroup().addTo(map);
-        const statsEl = document.getElementById('stats');
-        const locationsEl = document.getElementById('locations');
-
-        function normalizeCoordinates(value) {
-            if (!value) return null;
-
-            if (Array.isArray(value) && value.length >= 2) {
-                const lat = Number(value[0]);
-                const lng = Number(value[1]);
-                return Number.isFinite(lat) && Number.isFinite(lng) ? [lat, lng] : null;
-            }
-
-            if (typeof value === 'object') {
-                const lat = Number(value.lat ?? value.latitude);
-                const lng = Number(value.lng ?? value.lon ?? value.longitude);
-                return Number.isFinite(lat) && Number.isFinite(lng) ? [lat, lng] : null;
-            }
-
-            return null;
-        }
-
-        function resolveCoordinates(person) {
-            return normalizeCoordinates(person.coordinates)
-                || normalizeCoordinates(person.coordinate)
-                || normalizeCoordinates([person.lat ?? person.latitude, person.lng ?? person.lon ?? person.longitude])
-                || cityCoordinates[person.location]
-                || null;
-        }
 
         function makePopup(person) {
-            const typeLabel = person.placeholder ? 'Preview placeholder' : 'Mapped from data.json';
-            const extra = person.definition ? `<br><br>${person.definition}` : '';
-            return `<strong>${person.name}</strong><br>${person.location || 'Unknown location'}<br>${typeLabel}${extra}`;
+            return `<strong>${person.name}</strong><br>${person.location || 'Unknown location'}`;
         }
 
-        function drawMarkers(people, unresolvedCount) {
+        function drawMarkers(people) {
             markerLayer.clearLayers();
-            locationsEl.innerHTML = '';
             const bounds = [];
 
             people.forEach(person => {
-                const color = person.placeholder ? getComputedStyle(document.documentElement).getPropertyValue('--placeholder').trim() : getComputedStyle(document.documentElement).getPropertyValue('--actual').trim();
                 const marker = L.circleMarker(person.coordinates, {
-                    radius: person.placeholder ? 7 : 8,
-                    color,
-                    weight: 2,
-                    fillColor: color,
-                    fillOpacity: person.placeholder ? 0.55 : 0.8
+                    radius: 7,
+                    color: '#000000',
+                    weight: 1.5,
+                    fillColor: '#000000',
+                    fillOpacity: 0.85
                 }).bindPopup(makePopup(person));
 
                 marker.addTo(markerLayer);
                 bounds.push(person.coordinates);
-
-                const item = document.createElement('div');
-                item.className = 'location-item';
-                item.innerHTML = `<strong>${person.name}</strong>${person.location}<br>${person.placeholder ? 'Preview placeholder' : 'Mapped from data.json'}`;
-                locationsEl.appendChild(item);
             });
-
-            statsEl.innerHTML = `
-                <div class="stat"><strong>${people.filter(person => !person.placeholder).length}</strong> live markers from data.json</div>
-                <div class="stat"><strong>${people.filter(person => person.placeholder).length}</strong> placeholder markers for layout preview</div>
-                <div class="stat"><strong>${unresolvedCount}</strong> people still need coordinates or a city-to-coordinate entry</div>
-            `;
 
             if (bounds.length) {
                 map.fitBounds(bounds, { padding: [50, 50] });
@@ -256,10 +164,7 @@
 
             try {
                 const response = await fetch('data.json');
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch data.json: ${response.statusText}`);
-                }
-
+                if (!response.ok) throw new Error(`Failed to fetch data.json: ${response.statusText}`);
                 const data = await response.json();
                 nodes = Array.isArray(data.nodes) ? data.nodes : [];
             } catch (error) {
@@ -267,20 +172,15 @@
             }
 
             const mappedPeople = nodes
-                .map(node => ({
-                    ...node,
-                    coordinates: resolveCoordinates(node),
-                    placeholder: false
-                }))
+                .map(node => ({ ...node, coordinates: cityCoordinates[node.location] || null, placeholder: false }))
                 .filter(node => Array.isArray(node.coordinates));
 
-            const unresolvedCount = Math.max(nodes.length - mappedPeople.length, 0);
             const combined = [...mappedPeople, ...placeholderPeople];
-            drawMarkers(combined, unresolvedCount);
+            drawMarkers(combined);
         }
 
         const attributionControl = L.control.attribution({ prefix: false }).addTo(map);
-        attributionControl.addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>');
+        attributionControl.addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>');
 
         loadPeople();
     </script>
