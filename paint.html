@@ -319,10 +319,12 @@
     }
 
     function stampImage(img, x, y) {
-        const size = brushSize * 6;
+        const width = img.naturalWidth || img.width;
+        const height = img.naturalHeight || img.height;
+        if (!width || !height) return;
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
+        ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
         ctx.restore();
     }
 
