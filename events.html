@@ -160,7 +160,7 @@
                     type: 'graph',
                     layout: 'force',
                     center: getCenter(),
-                    roam: false,
+                    roam: 'scale',
                     force: { repulsion: 60, edgeLength: [20, 80], gravity: 0.05 },
                     data: [...eventNodes, ...personNodes],
                     links,
