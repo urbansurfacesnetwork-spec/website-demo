@@ -51,6 +51,7 @@
 
 <script>
     const EVENT_COLOR = '#fdc5f5';
+    const URBAN_VISUAL_DIALOGUES_COLOR = '#cfe8ff';
     const PERSON_COLOR = '#acf2c9';
 
     async function init() {
@@ -85,7 +86,11 @@
                     fixed: true,
                     symbol: 'circle',
                     symbolSize: 22,
-                    itemStyle: { color: EVENT_COLOR, borderColor: '#fff', borderWidth: 2 },
+                    itemStyle: {
+                        color: name.startsWith('Urban Visual Dialogues') ? URBAN_VISUAL_DIALOGUES_COLOR : EVENT_COLOR,
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    },
                     label: {
                         show: true,
                         position: 'outside',
