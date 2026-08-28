@@ -6,7 +6,6 @@
     <title>USRN Map Preview</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://tinyworldmap.com/dist/v3/tiny-world-all-10000.js"></script>
     <style>
         @font-face {
             font-family: 'CustomFont';
@@ -139,7 +138,7 @@
 <body>
     <div class="panel">
         <h1>City map preview</h1>
-        <p>This page uses Tiny World Map with Leaflet and is ready for future coordinates from <code>data.json</code>. Current markers combine known locations from your data with a few preview placeholders so you can see the intended layout.</p>
+        <p>This page uses OpenStreetMap with Leaflet and is ready for future coordinates from <code>data.json</code>. Current markers combine known locations from your data with a few preview placeholders so you can see the intended layout.</p>
         <div class="legend">
             <div class="legend-item"><span class="swatch" style="background: var(--actual);"></span>Mapped from data.json</div>
             <div class="legend-item"><span class="swatch" style="background: var(--placeholder);"></span>Preview placeholder</div>
@@ -160,13 +159,9 @@
             worldCopyJump: true
         });
 
-        if (L?.GridLayer?.TinyWorld) {
-            new L.GridLayer.TinyWorld({ maxZoom: 18 }).addTo(map);
-        } else {
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19
-            }).addTo(map);
-        }
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
 
         const cityCoordinates = {
             Melbourne: [-37.8136, 144.9631],
@@ -285,7 +280,7 @@
         }
 
         const attributionControl = L.control.attribution({ prefix: false }).addTo(map);
-        attributionControl.addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="https://www.tinyworldmap.com">tinyworldmap</a>');
+        attributionControl.addAttribution('&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>');
 
         loadPeople();
     </script>
