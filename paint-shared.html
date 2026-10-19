@@ -143,22 +143,19 @@
     <button class="tool-btn" id="btnPasteUp">Paste-Up</button>
     <button class="tool-btn" id="btnAdvertise">Advertise</button>
 
-    <span id="sizeButtons">
-        <button class="size-btn active-size" data-size="4">S</button>
-        <button class="size-btn" data-size="10">M</button>
-        <button class="size-btn" data-size="22">L</button>
-    </span>
-
     <span id="colorSwatches">
         <span class="color-swatch active-swatch" data-color="#000000" style="background:#000000;" title="Black"></span>
-        <span class="color-swatch" data-color="#ffffff" style="background:#ffffff;" title="White"></span>
         <span class="color-swatch" data-color="#ff0000" style="background:#ff0000;" title="Red"></span>
-        <span class="color-swatch" data-color="#ff7700" style="background:#ff7700;" title="Orange"></span>
         <span class="color-swatch" data-color="#ffff00" style="background:#ffff00;" title="Yellow"></span>
         <span class="color-swatch" data-color="#00aa00" style="background:#00aa00;" title="Green"></span>
-        <span class="color-swatch" data-color="#0000ff" style="background:#0000ff;" title="Blue"></span>
-        <span class="color-swatch" data-color="#4b0082" style="background:#4b0082;" title="Indigo"></span>
-        <span class="color-swatch" data-color="#8b00ff" style="background:#8b00ff;" title="Violet"></span>
+        <span class="color-swatch" data-color="#8b00ff" style="background:#8b00ff;" title="Purple"></span>
+    </span>
+
+    <span id="inkMeter" style="font-size:13px;">
+        <span id="inkLabel">Ink</span>
+        <span style="display:inline-block;width:100px;height:10px;border:1px solid #333;vertical-align:middle;background:#eee;">
+            <span id="inkBar" style="display:block;height:100%;width:100%;background:#997dec;"></span>
+        </span>
     </span>
 
     <button class="tool-btn" id="btnUndo" style="opacity:0;pointer-events:none;">Undo</button>
@@ -193,6 +190,36 @@
     let painting = false;
     let lastX = 0, lastY = 0;
     let brushSize = 4;
+
+    // Fixed tool sizes
+    const MARKER_SIZE = 4;   // Small
+    const BUFF_SIZE = 10;    // Medium
+
+    // Custom cursors (70x70 png files in cursors/); hotspot at the centre
+    const CURSOR_HOTSPOT = '35 35';
+    const cursorFiles = {
+        brush: 'cursors/marker.png',
+        brownbuff: 'cursors/buff.png',
+        greybuff: 'cursors/buff.png',
+        sticker: 'cursors/sticker.png',
+        pasteup: 'cursors/pasteup.png',
+        advertise: 'cursors/advertise.png',
+        scraper: 'cursors/scraper.png'
+    };
+    const fallbackCursor = { brush: 'crosshair', brownbuff: 'crosshair', greybuff: 'crosshair',
+        sticker: 'copy', pasteup: 'copy', advertise: 'copy', eraser: 'cell', scraper: 'cell' };
+
+    // Limits (scraper is unlimited)
+    const MAX_COLOURS = 3;
+    const MARKER_INK = 1500;   // pixels of line per colour
+    const BUFF_PAINT = 500;    // brush dabs per buff
+    const LIMITS = { pasteup: 20, advertise: 20, sticker: 30 };
+    const usedColours = [];            // up to 3 colours the user has started using
+    const inkLeft = {};                // per marker colour
+    const paintLeft = { brownbuff: BUFF_PAINT, greybuff: BUFF_PAINT };
+    const stampsLeft = Object.assign({}, LIMITS);
+    const outOfMsg = { brush: 'ink', brownbuff: 'paint', greybuff: 'paint',
+        sticker: 'stickers', pasteup: 'posters', advertise: 'adverts' };
     let color = '#000000';
 
     // Sticker images
@@ -234,6 +261,50 @@
     const statusEl = document.getElementById('status');
     function setStatus(msg) { statusEl.textContent = msg; }
 
+    function updateMeter() {
+        const meter = document.getElementById('inkMeter');
+        let frac = null, label = '';
+        if (tool === 'brush') {
+            label = 'Ink'; frac = (color in inkLeft ? inkLeft[color] : MARKER_INK) / MARKER_INK;
+            if (!(color in inkLeft) && usedColours.length >= MAX_COLOURS) frac = 0;
+        } else if (tool === 'brownbuff' || tool === 'greybuff') {
+            label = 'Paint'; frac = paintLeft[tool] / BUFF_PAINT;
+        } else if (stampsLeft[tool] !== undefined) {
+            label = outOfMsg[tool].charAt(0).toUpperCase() + outOfMsg[tool].slice(1) + ' left: ' + stampsLeft[tool];
+            frac = stampsLeft[tool] / LIMITS[tool];
+        }
+        meter.style.display = frac === null ? 'none' : '';
+        if (frac !== null) {
+            document.getElementById('inkLabel').textContent = label;
+            document.getElementById('inkBar').style.width = Math.max(0, Math.min(1, frac)) * 100 + '%';
+        }
+    }
+
+    // Returns true if the current tool may paint (marker colour is claimed here)
+    function canPaint() {
+        if (tool === 'brush') {
+            if (!(color in inkLeft)) {
+                if (usedColours.length >= MAX_COLOURS) {
+                    setStatus('You have run out of ink!');
+                    return false;
+                }
+                usedColours.push(color);
+                inkLeft[color] = MARKER_INK;
+            }
+            if (inkLeft[color] <= 0) { setStatus('You have run out of ink!'); return false; }
+            return true;
+        }
+        if (tool === 'brownbuff' || tool === 'greybuff') {
+            if (paintLeft[tool] <= 0) { setStatus('You have run out of paint!'); return false; }
+            return true;
+        }
+        if (stampsLeft[tool] !== undefined && stampsLeft[tool] <= 0) {
+            setStatus('You have run out of ' + outOfMsg[tool] + '!');
+            return false;
+        }
+        return true;
+    }
+
     function loadArtwork() {
         fetch(ARTWORK_URL, { cache: 'no-store' })
             .then(r => r.ok ? r.blob() : null)
@@ -269,21 +340,14 @@
         }, 'image/png');
     });
 
-    // Size buttons
-    document.querySelectorAll('.size-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            brushSize = parseInt(this.dataset.size, 10);
-            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active-size'));
-            this.classList.add('active-size');
-        });
-    });
-
     // Color swatches
     document.querySelectorAll('.color-swatch').forEach(swatch => {
         swatch.addEventListener('click', function () {
             color = this.dataset.color;
             document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active-swatch'));
             this.classList.add('active-swatch');
+            setStatus('');
+            updateMeter();
         });
     });
 
@@ -312,17 +376,21 @@
             );
         }
 
-        // Show/hide size and colour controls
-        const sizeButtons = document.getElementById('sizeButtons');
+        brushSize = (t === 'brownbuff' || t === 'greybuff') ? BUFF_SIZE : MARKER_SIZE;
+        setStatus('');
+
+        // Show/hide colour controls
         const colorSwatches = document.getElementById('colorSwatches');
         const isBuff = (t === 'brownbuff' || t === 'greybuff');
         const isStamp = (t === 'pasteup' || t === 'advertise');
 
         colorSwatches.style.display = (isBuff || isStamp) ? 'none' : '';
-        sizeButtons.style.display = (isStamp || t === 'scraper') ? 'none' : '';
 
-        const cursorMap = { sticker: 'copy', pasteup: 'copy', advertise: 'copy', eraser: 'cell', scraper: 'cell' };
-        canvas.style.cursor = cursorMap[t] || 'crosshair';
+        const file = cursorFiles[t];
+        canvas.style.cursor = file
+            ? "url('" + file + "') " + CURSOR_HOTSPOT + ", " + (fallbackCursor[t] || 'crosshair')
+            : (fallbackCursor[t] || 'crosshair');
+        updateMeter();
     }
 
     document.getElementById('btnBrush').addEventListener('click', () => switchTool('brush'));
@@ -416,6 +484,7 @@
 
     function startDraw(e) {
         e.preventDefault();
+        if (!canPaint()) return;
         painting = true;
         const pos = getPos(e);
         lastX = pos.x;
@@ -423,21 +492,37 @@
         draw(e);
     }
 
+    // Spend one stamp; returns false (and stops) once the supply is gone
+    function useStamp() {
+        stampsLeft[tool]--;
+        updateMeter();
+        if (stampsLeft[tool] <= 0) {
+            setStatus('You have run out of ' + outOfMsg[tool] + '!');
+            painting = false;
+            saveSnapshot();
+        }
+    }
+
     function draw(e) {
         if (!painting) return;
         e.preventDefault();
         const pos = getPos(e);
 
-        if (tool === 'sticker') {
-            stampImage(stickerImg, pos.x, pos.y);
-        } else if (tool === 'pasteup') {
-            stampPasteUp(pos.x, pos.y);
-        } else if (tool === 'advertise') {
-            stampAdvert(pos.x, pos.y);
-        } else if (tool === 'brownbuff') {
-            drawBuff(pos.x, pos.y, '#6b4b3e', 120);
-        } else if (tool === 'greybuff') {
-            drawBuff(pos.x, pos.y, '#888888');
+        if (tool === 'sticker' || tool === 'pasteup' || tool === 'advertise') {
+            // One stamp per click (not per mouse move)
+            if (e.type === 'mousemove' || e.type === 'touchmove') return;
+            if (tool === 'sticker') stampImage(stickerImg, pos.x, pos.y);
+            else if (tool === 'pasteup') stampPasteUp(pos.x, pos.y);
+            else stampAdvert(pos.x, pos.y);
+            useStamp();
+            return;
+        } else if (tool === 'brownbuff' || tool === 'greybuff') {
+            if (paintLeft[tool] <= 0) { setStatus('You have run out of paint!'); painting = false; saveSnapshot(); return; }
+            if (tool === 'brownbuff') drawBuff(pos.x, pos.y, '#6b4b3e', 120);
+            else drawBuff(pos.x, pos.y, '#888888');
+            paintLeft[tool]--;
+            updateMeter();
+            if (paintLeft[tool] <= 0) setStatus('You have run out of paint!');
         } else if (tool === 'scraper') {
             // Fixed-size comb, stamped only at pointer positions (no interpolation)
             ctx.save();
@@ -459,6 +544,10 @@
             ctx.stroke();
             ctx.restore();
         } else {
+            if (inkLeft[color] <= 0) { setStatus('You have run out of ink!'); painting = false; saveSnapshot(); return; }
+            inkLeft[color] -= Math.max(1, Math.hypot(pos.x - lastX, pos.y - lastY));
+            updateMeter();
+            if (inkLeft[color] <= 0) setStatus('You have run out of ink!');
             ctx.save();
             ctx.lineWidth = brushSize;
             ctx.lineCap = 'round';
@@ -492,6 +581,8 @@
     canvas.addEventListener('touchstart', startDraw, { passive: false });
     canvas.addEventListener('touchmove', draw, { passive: false });
     canvas.addEventListener('touchend', stopDraw);
+
+    switchTool('brush');
 
     // Keyboard shortcut for redo
     document.addEventListener('keydown', function (e) {
