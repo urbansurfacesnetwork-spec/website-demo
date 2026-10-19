@@ -43,6 +43,8 @@
 <script>
     let chartInstance = null;
     let resizeHandler = null;
+    let selectedPairId = null;
+    let selectedPairIndices = [];
 
     function escapeHtml(value) {
         return String(value)
@@ -82,6 +84,8 @@
             chartInstance.dispose();
             chartInstance = null;
         }
+        selectedPairId = null;
+        selectedPairIndices = [];
 
         let chart = null;
         try {
@@ -100,13 +104,15 @@
                 name: '',
                 symbolSize: 0,
                 label: { show: false },
-                children: peopleWithDefinitions.map((person) => ({
+                children: peopleWithDefinitions.map((person, pairId) => ({
                     name: person.name,
+                    pairId,
                     labelType: 'person',
                     children: [
                         {
                             name: wrapText(person.definition, 56),
                             fullDefinition: person.definition,
+                            pairId,
                             labelType: 'definition'
                         }
                     ]
@@ -135,7 +141,8 @@
                         initialTreeDepth: -1,
                         lineStyle: {
                             color: '#4a4a4a',
-                            width: 1
+                            width: 1,
+                            opacity: 0
                         },
                         roam: true,
                         label: {
@@ -158,17 +165,53 @@
                             }
                         },
                         emphasis: {
-                            focus: 'descendant',
+                            focus: 'relative',
                             label: {
                                 fontSize: 14,
                                 lineHeight: 18
-                            }
+                            },
+                            lineStyle: { opacity: 0 }
                         }
                     }
                 ]
             };
 
             chart.setOption(option);
+            chart.on('click', (params) => {
+                if (params.seriesType !== 'tree' || params.data?.pairId === undefined) return;
+
+                if (selectedPairId === params.data.pairId) {
+                    chart.dispatchAction({
+                        type: 'downplay',
+                        seriesIndex: 0,
+                        dataIndex: selectedPairIndices
+                    });
+                    selectedPairId = null;
+                    selectedPairIndices = [];
+                    return;
+                }
+
+                if (selectedPairIndices.length) {
+                    chart.dispatchAction({
+                        type: 'downplay',
+                        seriesIndex: 0,
+                        dataIndex: selectedPairIndices
+                    });
+                }
+                selectedPairIndices = (params.treePathInfo || [])
+                    .slice(1)
+                    .map((node) => node.dataIndex)
+                    .filter(Number.isInteger);
+                if (!selectedPairIndices.includes(params.dataIndex)) {
+                    selectedPairIndices.push(params.dataIndex);
+                }
+                selectedPairId = params.data.pairId;
+                chart.dispatchAction({
+                    type: 'highlight',
+                    seriesIndex: 0,
+                    dataIndex: selectedPairIndices
+                });
+            });
             resizeHandler = () => chart.resize();
             window.addEventListener('resize', resizeHandler);
         } catch (error) {
