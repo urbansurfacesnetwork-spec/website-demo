@@ -130,6 +130,8 @@
                 700,
                 96 + definitionRows.reduce((height, row) => height + row.rowHeight + 16, 0)
             );
+            const mainDiv = document.getElementById('main');
+            const chartWidth = Math.max(1100, mainDiv.clientWidth);
             let definitionY = 48;
             definitionRows.forEach((row) => {
                 row.y = definitionY + row.rowHeight / 2;
@@ -138,15 +140,15 @@
 
             const diagram = document.createElement('div');
             diagram.id = 'diagram';
-            diagram.style.width = `${Math.max(1100, document.getElementById('main').clientWidth)}px`;
+            diagram.style.width = `${chartWidth}px`;
             diagram.style.height = `${diagramHeight}px`;
-            document.getElementById('main').replaceChildren(diagram);
+            mainDiv.replaceChildren(diagram);
 
             const definitionNodes = definitionRows.map((row) => ({
                 id: `definition-${row.pairId}`,
                 name: row.wrappedDefinition,
                 pairId: row.pairId,
-                x: Math.max(1100, document.getElementById('main').clientWidth) - 520,
+                x: chartWidth - 520,
                 y: row.y,
                 symbolSize: 1,
                 label: {
@@ -161,7 +163,6 @@
                     fontFamily: 'CustomFont, sans-serif'
                 }
             }));
-            const chartWidth = Math.max(1100, document.getElementById('main').clientWidth);
             const personNodes = peopleWithDefinitions.map((person, pairId) => ({
                 id: `person-${pairId}`,
                 name: person.name,
@@ -180,9 +181,6 @@
                     fontFamily: 'CustomFont, sans-serif'
                 }
             }));
-            definitionNodes.forEach((node) => {
-                node.x = chartWidth - 520;
-            });
             const graphNodes = [...personNodes, ...definitionNodes];
             const links = peopleWithDefinitions.map((person, pairId) => ({
                 source: `person-${pairId}`,
