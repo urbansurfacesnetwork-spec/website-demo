@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint (shared) - USRN</title>
+    <style>
+        @font-face {
+            font-family: 'Fractul';
+            src: url('fractul.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fractul', Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        #toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+            background: transparent;
+            padding: 8px 12px;
+            border: none;
+        }
+
+        #toolbar label {
+            font-size: 13px;
+            font-family: 'Fractul', Arial, sans-serif;
+        }
+
+        .color-swatch {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #aaa;
+            border-radius: 0;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: middle;
+            transition: border-color 0.15s;
+        }
+
+        .color-swatch.active-swatch {
+            border-color: #333;
+            border-width: 3px;
+            outline: 2px solid #fff;
+            outline-offset: -4px;
+        }
+
+        .size-btn {
+            padding: 3px 10px;
+            font-family: 'Fractul', Arial, sans-serif;
+            font-size: 13px;
+            border: 1px solid #aaa;
+            border-radius: 0;
+            background: #997dec;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .size-btn:hover { background: #7d5ecc; }
+
+        .size-btn.active-size {
+            background: #997dec;
+            color: #fff;
+            border-color: #997dec;
+        }
+
+        .tool-btn {
+            padding: 5px 12px;
+            font-family: 'Fractul', Arial, sans-serif;
+            font-size: 13px;
+            border: 1px solid #aaa;
+            border-radius: 0;
+            background: #997dec;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .tool-btn:hover {
+            background: #7d5ecc;
+        }
+
+        .tool-btn.active {
+            background: #997dec;
+            color: #fff;
+            border-color: #997dec;
+        }
+
+        .tool-btn.active-buff {
+            background: #997dec;
+            color: #fff;
+            border-color: #997dec;
+        }
+
+        .tool-btn:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+
+        #canvas-wrapper {
+            position: relative;
+            display: inline-block;
+            border: none;
+            border-radius: 0;
+            background-image: url('canvas-background.png');
+            background-size: 100% 100%;
+            background-color: transparent;
+            width: 1280px;
+            height: 2072px;
+        }
+
+        #drawCanvas {
+            display: block;
+            cursor: crosshair;
+            background: transparent;
+            width: 1280px;
+            height: 2072px;
+            border-radius: 0;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toolbar">
+    <button class="tool-btn active" id="btnBrush">Marker</button>
+    <button class="tool-btn" id="btnBrownBuff">Brown Buff</button>
+    <button class="tool-btn" id="btnGreyBuff">Grey Buff</button>
+    <button class="tool-btn" id="btnSticker">Sticker</button>
+    <button class="tool-btn" id="btnPasteUp">Paste-Up</button>
+    <button class="tool-btn" id="btnAdvertise">Advertise</button>
+
+    <span id="sizeButtons">
+        <button class="size-btn active-size" data-size="4">S</button>
+        <button class="size-btn" data-size="10">M</button>
+        <button class="size-btn" data-size="22">L</button>
+    </span>
+
+    <span id="colorSwatches">
+        <span class="color-swatch active-swatch" data-color="#000000" style="background:#000000;" title="Black"></span>
+        <span class="color-swatch" data-color="#ffffff" style="background:#ffffff;" title="White"></span>
+        <span class="color-swatch" data-color="#ff0000" style="background:#ff0000;" title="Red"></span>
+        <span class="color-swatch" data-color="#ff7700" style="background:#ff7700;" title="Orange"></span>
+        <span class="color-swatch" data-color="#ffff00" style="background:#ffff00;" title="Yellow"></span>
+        <span class="color-swatch" data-color="#00aa00" style="background:#00aa00;" title="Green"></span>
+        <span class="color-swatch" data-color="#0000ff" style="background:#0000ff;" title="Blue"></span>
+        <span class="color-swatch" data-color="#4b0082" style="background:#4b0082;" title="Indigo"></span>
+        <span class="color-swatch" data-color="#8b00ff" style="background:#8b00ff;" title="Violet"></span>
+    </span>
+
+    <button class="tool-btn" id="btnUndo" style="opacity:0;pointer-events:none;">Undo</button>
+    <button class="tool-btn" id="btnRedo" disabled style="opacity:0;pointer-events:none;">Redo</button>
+
+    <button class="tool-btn" id="btnEraser" style="opacity:0;pointer-events:none;">Eraser</button>
+    <button class="tool-btn" id="btnClear" style="opacity:0;pointer-events:none;">Clear</button>
+    <button class="tool-btn" id="btnScraper">Scraper</button>
+    <button class="tool-btn" id="btnPutUp">Put it up</button>
+    <span id="status" style="font-size:13px;"></span>
+</div>
+
+<div id="canvas-wrapper">
+    <canvas id="drawCanvas" width="1280" height="2072"></canvas>
+</div>
+
+<script>
+(function () {
+    const canvas = document.getElementById('drawCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // URL of the Cloudflare Worker endpoint. Use '/artwork' if the Worker is routed
+    // on the same domain as this page, otherwise the full workers.dev URL, e.g.
+    // 'https://usrn-artwork.YOURNAME.workers.dev/artwork'
+    const ARTWORK_URL = '/artwork';
+
+    // Scraper: 30px wide, 1px high comb with gaps (1px tooth every 3px)
+    const SCRAPER_W = 30, SCRAPER_GAP = 3;
+
+    // Tools
+    let tool = 'brush';
+    let painting = false;
+    let lastX = 0, lastY = 0;
+    let brushSize = 4;
+    let color = '#000000';
+
+    // Sticker images
+    const stickerImg = new Image();
+    stickerImg.src = 'sticker.png';
+    const pasteUpImg = new Image();
+    pasteUpImg.src = 'pasteup.png';
+
+    // Advert images (135×181 each)
+    const ADVERT_W = 135, ADVERT_H = 181;
+    const advertImgs = ['advert-02.png', 'advert-03.png', 'advert-04.png'].map(src => {
+        const img = new Image(); img.src = src; return img;
+    });
+    let advertIndex = 0;
+
+    // History for redo
+    const MAX_HISTORY = 40;
+    let history = [];
+    let historyIndex = -1;
+
+    function saveSnapshot() {
+        history = history.slice(0, historyIndex + 1);
+        history.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        if (history.length > MAX_HISTORY) {
+            history.shift();
+        }
+        historyIndex = history.length - 1;
+        updateHistoryButtons();
+    }
+
+    function updateHistoryButtons() {
+        document.getElementById('btnRedo').disabled = historyIndex >= history.length - 1;
+        document.getElementById('btnUndo').disabled = historyIndex <= 0;
+    }
+
+    saveSnapshot();
+
+    // Shared artwork: load, save
+    const statusEl = document.getElementById('status');
+    function setStatus(msg) { statusEl.textContent = msg; }
+
+    function loadArtwork() {
+        fetch(ARTWORK_URL, { cache: 'no-store' })
+            .then(r => r.ok ? r.blob() : null)
+            .then(blob => {
+                if (!blob) return null;
+                const url = URL.createObjectURL(blob);
+                const img = new Image();
+                img.onload = function () {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    URL.revokeObjectURL(url);
+                    history = [];
+                    historyIndex = -1;
+                    saveSnapshot();
+                };
+                img.onerror = function () { URL.revokeObjectURL(url); };
+                img.src = url;
+            })
+            .catch(() => { /* no artwork yet or Worker unavailable: start blank */ });
+    }
+    loadArtwork();
+
+    document.getElementById('btnPutUp').addEventListener('click', function () {
+        const btn = this;
+        btn.disabled = true;
+        setStatus('Putting it up...');
+        canvas.toBlob(function (blob) {
+            if (!blob) { setStatus('Could not read canvas.'); btn.disabled = false; return; }
+            fetch(ARTWORK_URL, { method: 'POST', headers: { 'Content-Type': 'image/png' }, body: blob })
+                .then(r => { if (!r.ok) throw new Error(r.status); setStatus('It is up!'); })
+                .catch(() => setStatus('Sorry, could not put it up.'))
+                .finally(() => { btn.disabled = false; });
+        }, 'image/png');
+    });
+
+    // Size buttons
+    document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            brushSize = parseInt(this.dataset.size, 10);
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active-size'));
+            this.classList.add('active-size');
+        });
+    });
+
+    // Color swatches
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+        swatch.addEventListener('click', function () {
+            color = this.dataset.color;
+            document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active-swatch'));
+            this.classList.add('active-swatch');
+        });
+    });
+
+    // All tool button ids
+    const toolBtns = ['btnBrush', 'btnBrownBuff', 'btnGreyBuff', 'btnSticker', 'btnPasteUp', 'btnAdvertise', 'btnEraser', 'btnScraper'];
+
+    function switchTool(t) {
+        tool = t;
+        toolBtns.forEach(id => {
+            const btn = document.getElementById(id);
+            btn.classList.remove('active', 'active-buff');
+        });
+        const activeId = {
+            brush: 'btnBrush',
+            brownbuff: 'btnBrownBuff',
+            greybuff: 'btnGreyBuff',
+            sticker: 'btnSticker',
+            pasteup: 'btnPasteUp',
+            advertise: 'btnAdvertise',
+            eraser: 'btnEraser',
+            scraper: 'btnScraper'
+        }[t];
+        if (activeId) {
+            document.getElementById(activeId).classList.add(
+                (t === 'brownbuff' || t === 'greybuff') ? 'active-buff' : 'active'
+            );
+        }
+
+        // Show/hide size and colour controls
+        const sizeButtons = document.getElementById('sizeButtons');
+        const colorSwatches = document.getElementById('colorSwatches');
+        const isBuff = (t === 'brownbuff' || t === 'greybuff');
+        const isStamp = (t === 'pasteup' || t === 'advertise');
+
+        colorSwatches.style.display = (isBuff || isStamp) ? 'none' : '';
+        sizeButtons.style.display = (isStamp || t === 'scraper') ? 'none' : '';
+
+        const cursorMap = { sticker: 'copy', pasteup: 'copy', advertise: 'copy', eraser: 'cell', scraper: 'cell' };
+        canvas.style.cursor = cursorMap[t] || 'crosshair';
+    }
+
+    document.getElementById('btnBrush').addEventListener('click', () => switchTool('brush'));
+    document.getElementById('btnBrownBuff').addEventListener('click', () => switchTool('brownbuff'));
+    document.getElementById('btnGreyBuff').addEventListener('click', () => switchTool('greybuff'));
+    document.getElementById('btnSticker').addEventListener('click', () => switchTool('sticker'));
+    document.getElementById('btnPasteUp').addEventListener('click', () => switchTool('pasteup'));
+    document.getElementById('btnAdvertise').addEventListener('click', () => switchTool('advertise'));
+    document.getElementById('btnEraser').addEventListener('click', () => switchTool('eraser'));
+    document.getElementById('btnScraper').addEventListener('click', () => switchTool('scraper'));
+
+    // Undo
+    document.getElementById('btnUndo').addEventListener('click', function () {
+        if (historyIndex > 0) {
+            historyIndex--;
+            ctx.putImageData(history[historyIndex], 0, 0);
+            updateHistoryButtons();
+        }
+    });
+
+    // Redo
+    document.getElementById('btnRedo').addEventListener('click', function () {
+        if (historyIndex < history.length - 1) {
+            historyIndex++;
+            ctx.putImageData(history[historyIndex], 0, 0);
+            updateHistoryButtons();
+        }
+    });
+
+    // Clear
+    document.getElementById('btnClear').addEventListener('click', function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        saveSnapshot();
+    });
+
+    // Drawing
+    function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const src = e.touches ? e.touches[0] : e;
+        return {
+            x: (src.clientX - rect.left) * scaleX,
+            y: (src.clientY - rect.top) * scaleY
+        };
+    }
+
+    function stampImage(img, x, y) {
+        const width = img.naturalWidth || img.width;
+        const height = img.naturalHeight || img.height;
+        if (!width || !height) return;
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
+        ctx.restore();
+    }
+
+    function stampPasteUp(x, y) {
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(pasteUpImg, x - ADVERT_W / 2, y - ADVERT_H / 2, ADVERT_W, ADVERT_H);
+        ctx.restore();
+    }
+
+    function stampAdvert(x, y) {
+        const img = advertImgs[advertIndex % advertImgs.length];
+        advertIndex++;
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.drawImage(img, x - ADVERT_W / 2, y - ADVERT_H / 2, ADVERT_W, ADVERT_H);
+        ctx.restore();
+    }
+
+    function drawBuff(x, y, buffColor, density = 80) {
+        const radius = brushSize * 1.5;
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.fillStyle = buffColor;
+        for (let i = 0; i < density; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const r = Math.random() * radius;
+            const px = x + r * Math.cos(angle);
+            const py = y + r * Math.sin(angle);
+            ctx.globalAlpha = Math.random() * 0.5 + 0.2;
+            ctx.beginPath();
+            ctx.arc(px, py, Math.random() * 2 + 0.5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.restore();
+    }
+
+    function startDraw(e) {
+        e.preventDefault();
+        painting = true;
+        const pos = getPos(e);
+        lastX = pos.x;
+        lastY = pos.y;
+        draw(e);
+    }
+
+    function draw(e) {
+        if (!painting) return;
+        e.preventDefault();
+        const pos = getPos(e);
+
+        if (tool === 'sticker') {
+            stampImage(stickerImg, pos.x, pos.y);
+        } else if (tool === 'pasteup') {
+            stampPasteUp(pos.x, pos.y);
+        } else if (tool === 'advertise') {
+            stampAdvert(pos.x, pos.y);
+        } else if (tool === 'brownbuff') {
+            drawBuff(pos.x, pos.y, '#6b4b3e', 120);
+        } else if (tool === 'greybuff') {
+            drawBuff(pos.x, pos.y, '#888888');
+        } else if (tool === 'scraper') {
+            // Fixed-size comb, stamped only at pointer positions (no interpolation)
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-out';
+            const sx = Math.round(pos.x - SCRAPER_W / 2), sy = Math.round(pos.y);
+            for (let i = 0; i < SCRAPER_W; i += SCRAPER_GAP) {
+                ctx.fillRect(sx + i, sy, 1, 1);
+            }
+            ctx.restore();
+        } else if (tool === 'eraser') {
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.lineWidth = brushSize * 3;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            ctx.restore();
+        } else {
+            ctx.save();
+            ctx.lineWidth = brushSize;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.strokeStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        lastX = pos.x;
+        lastY = pos.y;
+    }
+
+    function stopDraw(e) {
+        if (!painting) return;
+        painting = false;
+        saveSnapshot();
+    }
+
+    // Mouse
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDraw);
+    canvas.addEventListener('mouseleave', stopDraw);
+
+    // Touch
+    canvas.addEventListener('touchstart', startDraw, { passive: false });
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', stopDraw);
+
+    // Keyboard shortcut for redo
+    document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && ((e.shiftKey && e.key === 'z') || e.key === 'y')) {
+            document.getElementById('btnRedo').click();
+        }
+    });
+}());
+</script>
+
+</body>
+</html>
