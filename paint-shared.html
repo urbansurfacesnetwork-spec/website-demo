@@ -512,6 +512,8 @@
         }
     }
 
+    let scraperPattern = null;
+
     function draw(e) {
         if (!painting) return;
         e.preventDefault();
@@ -536,12 +538,17 @@
             // Fixed-size comb, stamped only at pointer positions (no interpolation)
             ctx.save();
             ctx.globalCompositeOperation = 'destination-out';
-            const w = SCRAPER_W + Math.round((Math.random() - 0.5) * 8);
-            const sx = Math.round(pos.x - w / 2), sy = Math.round(pos.y);
-            for (let i = 0; i < w; i += SCRAPER_GAP + Math.round(Math.random() * 2 - 0.5)) {
-                if (Math.random() < 0.15) continue;
-                ctx.fillRect(sx + i, sy + Math.round(Math.random() * 2 - 1), 1, Math.random() < 0.3 ? 2 : 1);
+            if (!scraperPattern || e.type === 'mousedown' || e.type === 'touchstart') {
+                const w = SCRAPER_W + Math.round((Math.random() - 0.5) * 8);
+                const teeth = [];
+                for (let i = 0; i < w; i += SCRAPER_GAP + Math.round(Math.random() * 2 - 0.5)) {
+                    if (Math.random() < 0.15) continue;
+                    teeth.push({ x: i, dy: Math.round(Math.random() * 2 - 1), h: Math.random() < 0.3 ? 2 : 1 });
+                }
+                scraperPattern = { w, teeth };
             }
+            const sx = Math.round(pos.x - scraperPattern.w / 2), sy = Math.round(pos.y);
+            for (const t of scraperPattern.teeth) ctx.fillRect(sx + t.x, sy + t.dy, 1, t.h);
             ctx.restore();
         } else if (tool === 'eraser') {
             ctx.save();
