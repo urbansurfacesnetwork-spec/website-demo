@@ -541,9 +541,17 @@
             if (!scraperPattern || e.type === 'mousedown' || e.type === 'touchstart') {
                 const w = SCRAPER_W + Math.round((Math.random() - 0.5) * 8);
                 const teeth = [];
-                for (let i = 0; i < w; i += SCRAPER_GAP + Math.round(Math.random() * 2 - 0.5)) {
-                    if (Math.random() < 0.15) continue;
-                    teeth.push({ x: i, dy: Math.round(Math.random() * 2 - 1), h: Math.random() < 0.3 ? 2 : 1 });
+                // Short irregular runs of grouped pixels
+                for (let i = 0; i < w; ) {
+                    const run = 2 + Math.floor(Math.random() * 5);
+                    if (Math.random() < 0.7) {
+                        const dy = Math.round(Math.random() * 2 - 1);
+                        for (let k = 0; k < run && i + k < w; k++) {
+                            if (Math.random() < 0.12) continue;
+                            teeth.push({ x: i + k, dy: dy + (Math.random() < 0.2 ? 1 : 0), h: 1 });
+                        }
+                    }
+                    i += run + 1 + Math.floor(Math.random() * 3);
                 }
                 scraperPattern = { w, teeth };
             }
