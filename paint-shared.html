@@ -144,11 +144,9 @@
     <button class="tool-btn" id="btnAdvertise">Advertise</button>
 
     <span id="colorSwatches">
-        <span class="color-swatch active-swatch" data-color="#000000" style="background:#000000;" title="Black"></span>
-        <span class="color-swatch" data-color="#ff0000" style="background:#ff0000;" title="Red"></span>
-        <span class="color-swatch" data-color="#ffff00" style="background:#ffff00;" title="Yellow"></span>
-        <span class="color-swatch" data-color="#00aa00" style="background:#00aa00;" title="Green"></span>
-        <span class="color-swatch" data-color="#8b00ff" style="background:#8b00ff;" title="Purple"></span>
+        <span class="color-swatch active-swatch" data-color="#4a4a4a" style="background:#4a4a4a;" title="Charcoal"></span>
+        <span class="color-swatch" data-color="#c77979" style="background:#c77979;" title="Muted red"></span>
+        <span class="color-swatch" data-color="#7eaa86" style="background:#7eaa86;" title="Muted green"></span>
     </span>
 
     <span id="inkMeter" style="font-size:13px;">
@@ -220,7 +218,7 @@
     const stampsLeft = Object.assign({}, LIMITS);
     const outOfMsg = { brush: 'ink', brownbuff: 'paint', greybuff: 'paint',
         sticker: 'stickers', pasteup: 'posters', advertise: 'adverts' };
-    let color = '#000000';
+    let color = '#4a4a4a';
 
     // Sticker images
     const stickerImg = new Image();
@@ -381,10 +379,7 @@
 
         // Show/hide colour controls
         const colorSwatches = document.getElementById('colorSwatches');
-        const isBuff = (t === 'brownbuff' || t === 'greybuff');
-        const isStamp = (t === 'pasteup' || t === 'advertise');
-
-        colorSwatches.style.display = (isBuff || isStamp) ? 'none' : '';
+        colorSwatches.style.display = t === 'brush' ? '' : 'none';
 
         const file = cursorFiles[t];
         canvas.style.cursor = file
