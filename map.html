@@ -45,16 +45,6 @@
             color: var(--accent);
         }
 
-        .square-node {
-            width: 12px;
-            height: 12px;
-            margin-left: -6px;
-            margin-top: -6px;
-            border: 1.5px solid #000000;
-            background: #000000;
-            opacity: 0.9;
-            box-sizing: border-box;
-        }
     </style>
 </head>
 <body>
@@ -164,100 +154,148 @@
             Wenzhou: [27.9938, 120.6994]
         };
 
-        const placeholderPeople = [
-            { name: 'Placeholder — London', location: 'London', coordinates: [51.5072, -0.1276], placeholder: true },
-            { name: 'Placeholder — New York', location: 'New York', coordinates: [40.7128, -74.0060], placeholder: true },
-            { name: 'Placeholder — São Paulo', location: 'São Paulo', coordinates: [-23.5505, -46.6333], placeholder: true },
-            { name: 'Placeholder — Tokyo', location: 'Tokyo', coordinates: [35.6762, 139.6503], placeholder: true },
-            { name: 'Placeholder — Paris', location: 'Paris', coordinates: [48.8566, 2.3522], placeholder: true },
-            { name: 'Placeholder — Berlin', location: 'Berlin', coordinates: [52.5200, 13.4050], placeholder: true },
-            { name: 'Placeholder — Sydney', location: 'Sydney', coordinates: [-33.8688, 151.2093], placeholder: true },
-            { name: 'Placeholder — Los Angeles', location: 'Los Angeles', coordinates: [34.0522, -118.2437], placeholder: true },
-            { name: 'Placeholder — Chicago', location: 'Chicago', coordinates: [41.8781, -87.6298], placeholder: true },
-            { name: 'Placeholder — Toronto', location: 'Toronto', coordinates: [43.6532, -79.3832], placeholder: true },
-            { name: 'Placeholder — Amsterdam', location: 'Amsterdam', coordinates: [52.3676, 4.9041], placeholder: true },
-            { name: 'Placeholder — Barcelona', location: 'Barcelona', coordinates: [41.3851, 2.1734], placeholder: true },
-            { name: 'Placeholder — Seoul', location: 'Seoul', coordinates: [37.5665, 126.9780], placeholder: true },
-            { name: 'Placeholder — Singapore', location: 'Singapore', coordinates: [1.3521, 103.8198], placeholder: true },
-            { name: 'Placeholder — Dubai', location: 'Dubai', coordinates: [25.2048, 55.2708], placeholder: true },
-            { name: 'Placeholder — Mumbai', location: 'Mumbai', coordinates: [19.0760, 72.8777], placeholder: true },
-            { name: 'Placeholder — Cairo', location: 'Cairo', coordinates: [30.0444, 31.2357], placeholder: true },
-            { name: 'Placeholder — Nairobi', location: 'Nairobi', coordinates: [-1.2921, 36.8219], placeholder: true },
-            { name: 'Placeholder — Lagos', location: 'Lagos', coordinates: [6.5244, 3.3792], placeholder: true },
-            { name: 'Placeholder — Johannesburg', location: 'Johannesburg', coordinates: [-26.2041, 28.0473], placeholder: true },
-            { name: 'Placeholder — Cape Town', location: 'Cape Town', coordinates: [-33.9249, 18.4241], placeholder: true },
-            { name: 'Placeholder — Buenos Aires', location: 'Buenos Aires', coordinates: [-34.6037, -58.3816], placeholder: true },
-            { name: 'Placeholder — Mexico City', location: 'Mexico City', coordinates: [19.4326, -99.1332], placeholder: true },
-            { name: 'Placeholder — Bogotá', location: 'Bogotá', coordinates: [4.7110, -74.0721], placeholder: true },
-            { name: 'Placeholder — Lima', location: 'Lima', coordinates: [-12.0464, -77.0428], placeholder: true },
-            { name: 'Placeholder — Santiago', location: 'Santiago', coordinates: [-33.4489, -70.6693], placeholder: true },
-            { name: 'Placeholder — Istanbul', location: 'Istanbul', coordinates: [41.0082, 28.9784], placeholder: true },
-            { name: 'Placeholder — Moscow', location: 'Moscow', coordinates: [55.7558, 37.6173], placeholder: true },
-            { name: 'Placeholder — Warsaw', location: 'Warsaw', coordinates: [52.2297, 21.0122], placeholder: true },
-            { name: 'Placeholder — Stockholm', location: 'Stockholm', coordinates: [59.3293, 18.0686], placeholder: true },
-            { name: 'Placeholder — Oslo', location: 'Oslo', coordinates: [59.9139, 10.7522], placeholder: true },
-            { name: 'Placeholder — Helsinki', location: 'Helsinki', coordinates: [60.1699, 24.9384], placeholder: true },
-            { name: 'Placeholder — Copenhagen', location: 'Copenhagen', coordinates: [55.6761, 12.5683], placeholder: true },
-            { name: 'Placeholder — Lisbon', location: 'Lisbon', coordinates: [38.7169, -9.1399], placeholder: true },
-            { name: 'Placeholder — Athens', location: 'Athens', coordinates: [37.9838, 23.7275], placeholder: true },
-            { name: 'Placeholder — Rome', location: 'Rome', coordinates: [41.9028, 12.4964], placeholder: true },
-            { name: 'Placeholder — Milan', location: 'Milan', coordinates: [45.4642, 9.1900], placeholder: true },
-            { name: 'Placeholder — Brussels', location: 'Brussels', coordinates: [50.8503, 4.3517], placeholder: true },
-            { name: 'Placeholder — Zurich', location: 'Zurich', coordinates: [47.3769, 8.5417], placeholder: true },
-            { name: 'Placeholder — Prague', location: 'Prague', coordinates: [50.0755, 14.4378], placeholder: true },
-            { name: 'Placeholder — Budapest', location: 'Budapest', coordinates: [47.4979, 19.0402], placeholder: true },
-            { name: 'Placeholder — Bucharest', location: 'Bucharest', coordinates: [44.4268, 26.1025], placeholder: true },
-            { name: 'Placeholder — Kyiv', location: 'Kyiv', coordinates: [50.4501, 30.5234], placeholder: true },
-            { name: 'Placeholder — Beijing', location: 'Beijing', coordinates: [39.9042, 116.4074], placeholder: true },
-            { name: 'Placeholder — Shanghai', location: 'Shanghai', coordinates: [31.2304, 121.4737], placeholder: true },
-            { name: 'Placeholder — Hong Kong', location: 'Hong Kong', coordinates: [22.3193, 114.1694], placeholder: true },
-            { name: 'Placeholder — Jakarta', location: 'Jakarta', coordinates: [-6.2088, 106.8456], placeholder: true },
-            { name: 'Placeholder — Bangkok', location: 'Bangkok', coordinates: [13.7563, 100.5018], placeholder: true },
-            { name: 'Placeholder — Kuala Lumpur', location: 'Kuala Lumpur', coordinates: [3.1390, 101.6869], placeholder: true },
-            { name: 'Placeholder — Manila', location: 'Manila', coordinates: [14.5995, 120.9842], placeholder: true },
-            { name: 'Placeholder — Karachi', location: 'Karachi', coordinates: [24.8607, 67.0011], placeholder: true },
-            { name: 'Placeholder — Dhaka', location: 'Dhaka', coordinates: [23.8103, 90.4125], placeholder: true },
-            { name: 'Placeholder — Tehran', location: 'Tehran', coordinates: [35.6892, 51.3890], placeholder: true },
-            { name: 'Placeholder — Riyadh', location: 'Riyadh', coordinates: [24.7136, 46.6753], placeholder: true },
-        ];
+        const extraPlaces = {
+            'Cambridge, MA': [42.3736, -71.1097],
+            Reno: [39.5296, -119.8138],
+            Australia: [-25.2744, 133.7751],
+            USA: [39.8283, -98.5795],
+            Netherlands: [52.1326, 5.2913],
+            'New Zealand': [-40.9006, 174.886],
+            Portugal: [39.3999, -8.2245],
+            Italy: [41.8719, 12.5674],
+            Ireland: [53.4129, -8.2439],
+            Ghana: [7.9465, -1.0232],
+            Sweden: [60.1282, 18.6435],
+            UK: [54.0, -2.0],
+            Austria: [47.5162, 14.5501],
+            Belgium: [50.5039, 4.4699],
+            Brazil: [-14.235, -51.9253],
+            Canada: [56.1304, -106.3468],
+            Chile: [-35.6751, -71.543],
+            China: [35.8617, 104.1954],
+            Colombia: [4.5709, -74.2973],
+            Denmark: [56.2639, 9.5018],
+            Egypt: [26.8206, 30.8025],
+            Finland: [61.9241, 25.7482],
+            France: [46.2276, 2.2137],
+            Germany: [51.1657, 10.4515],
+            Greece: [39.0742, 21.8243],
+            Hungary: [47.1625, 19.5033],
+            India: [20.5937, 78.9629],
+            Indonesia: [-0.7893, 113.9213],
+            Israel: [31.0461, 34.8516],
+            Jamaica: [18.1096, -77.2975],
+            Japan: [36.2048, 138.2529],
+            Jordan: [30.5852, 36.2384],
+            Lebanon: [33.8547, 35.8623],
+            Moldova: [47.4116, 28.3699],
+            Morocco: [31.7917, -7.0926],
+            Norway: [60.472, 8.4689],
+            Palestine: [31.9522, 35.2332],
+            Philippines: [12.8797, 121.774],
+            Romania: [45.9432, 24.9668],
+            'South Africa': [-30.5595, 22.9375],
+            'South Korea': [35.9078, 127.7669],
+            Taiwan: [23.6978, 120.9605],
+            'Timor Leste': [-8.8742, 125.7275],
+            'Türkiye': [38.9637, 35.2433],
+            Uganda: [1.3733, 32.2903],
+            Americas: [15, -80],
+            Europe: [50, 10],
+            'Balkan states': [43.0, 21.0],
+            'Basque Country': [43.0, -2.5]
+        };
+
+        const multiLocations = {
+            'Bengaluru, India; Australia': ['Bengaluru', 'Australia'],
+            'Bogota; Reno, Colombia; USA': ['Bogota', 'Reno'],
+            'Bucharest; London, Romania; UK': ['Bucharest', 'London'],
+            'Cambridge, MA, USA; Netherlands': ['Cambridge, MA', 'Netherlands'],
+            'Edinburgh, UK; USA': ['Edinburgh', 'USA'],
+            'Jerusalem, Israel; Portugal': ['Jerusalem', 'Portugal'],
+            'London, UK; Italy': ['London', 'Italy'],
+            'London; Stockholm, UK; Sweden': ['London', 'Stockholm'],
+            'Madrid, Spain; Ghana': ['Madrid', 'Ghana'],
+            'Oxford, UK; Ireland': ['Oxford', 'Ireland']
+        };
+
+        const PURPLE = '#A42EFF';
+        const WHITE = '#ffffff';
 
         const edgeLayer = L.layerGroup().addTo(map);
         const markerLayer = L.layerGroup().addTo(map);
 
-        function cityOf(location) {
-            if (!location) return null;
-            return String(location).split(/[;,]/)[0].trim() || null;
+        function lookup(name) {
+            return cityCoordinates[name] || extraPlaces[name] || null;
         }
 
-        function makePopup(person) {
-            return `<strong>${person.name}</strong><br>${person.location || 'Unknown location'}`;
+        function placesFor(location) {
+            if (!location) return [];
+            const names = multiLocations[location] || [String(location).split(/[;,]/)[0].trim()];
+            return names
+                .map(name => ({ name, coordinates: lookup(name) }))
+                .filter(place => place.coordinates);
         }
 
-        function drawMarkers(people) {
+        function focusPlaces(node) {
+            return (node['geographical focus'] || [])
+                .map(name => ({ name, coordinates: lookup(name) }))
+                .filter(place => place.coordinates);
+        }
+
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        function makeTooltip(person) {
+            const themes = (person.themes || []).join(', ');
+            const locations = person.locations.map(p => p.name).join(', ');
+            return `<strong>${escapeHtml(person.name)}</strong>` +
+                `<br>Focus: ${escapeHtml(person['relevant focus'] || '—')}` +
+                `<br>Themes: ${escapeHtml(themes || '—')}` +
+                `<br>Locations: ${escapeHtml(locations || '—')}`;
+        }
+
+        function drawPeople(people) {
             edgeLayer.clearLayers();
             markerLayer.clearLayers();
             const bounds = [];
-
-            for (let i = 0; i < people.length; i += 1) {
-                for (let j = i + 1; j < people.length; j += 1) {
-                    L.polyline([people[i].coordinates, people[j].coordinates], {
-                        color: '#000000',
-                        weight: 1,
-                        opacity: 0.25
-                    }).addTo(edgeLayer);
-                }
-            }
+            const tooltipOptions = { sticky: true, direction: 'top', opacity: 1 };
 
             people.forEach(person => {
-                const marker = L.marker(person.coordinates, {
-                    icon: L.divIcon({
-                        className: 'square-node',
-                        iconSize: [12, 12]
-                    })
-                }).bindPopup(makePopup(person));
+                const html = makeTooltip(person);
 
-                marker.addTo(markerLayer);
-                bounds.push(person.coordinates);
+                person.locations.forEach(loc => {
+                    person.focuses.forEach(focus => {
+                        L.polyline([loc.coordinates, focus.coordinates], {
+                            color: PURPLE,
+                            weight: 1,
+                            opacity: 0.35
+                        }).bindTooltip(html, tooltipOptions).addTo(edgeLayer);
+                    });
+                });
+
+                person.focuses.forEach(focus => {
+                    L.circleMarker(focus.coordinates, {
+                        radius: 4,
+                        color: '#000000',
+                        weight: 1,
+                        fillColor: WHITE,
+                        fillOpacity: 1
+                    }).bindTooltip(html, tooltipOptions).addTo(markerLayer);
+                    bounds.push(focus.coordinates);
+                });
+
+                person.locations.forEach(loc => {
+                    L.circleMarker(loc.coordinates, {
+                        radius: 5,
+                        color: '#000000',
+                        weight: 1,
+                        fillColor: PURPLE,
+                        fillOpacity: 1
+                    }).bindTooltip(html, tooltipOptions).addTo(markerLayer);
+                    bounds.push(loc.coordinates);
+                });
             });
 
             if (bounds.length) {
@@ -277,12 +315,11 @@
                 console.error(error);
             }
 
-            const mappedPeople = nodes
-                .map(node => ({ ...node, coordinates: cityCoordinates[cityOf(node.location)] || null, placeholder: false }))
-                .filter(node => Array.isArray(node.coordinates));
+            const people = nodes
+                .map(node => ({ ...node, locations: placesFor(node.location), focuses: focusPlaces(node) }))
+                .filter(node => node.locations.length || node.focuses.length);
 
-            const combined = [...mappedPeople, ...placeholderPeople];
-            drawMarkers(combined);
+            drawPeople(people);
         }
 
         const attributionControl = L.control.attribution({ prefix: false }).addTo(map);
