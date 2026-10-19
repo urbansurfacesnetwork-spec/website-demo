@@ -5,7 +5,7 @@ compatibility_date = "2024-01-01"
 # Create with: npx wrangler kv namespace create ARTWORK  -> paste the id below
 [[kv_namespaces]]
 binding = "ARTWORK"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "f76a4ee45bd0478eb729c6ad5dbdc832"
 
 [triggers]
 crons = ["0 0 * * 1"]   # every Monday 00:00 UTC
