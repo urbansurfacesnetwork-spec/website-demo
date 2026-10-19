@@ -211,14 +211,26 @@
     const MAX_COLOURS = 3;
     const MARKER_INK = 1500;   // pixels of line per colour
     const BUFF_PAINT = 500;    // brush dabs per buff
-    const LIMITS = { pasteup: 20, advertise: 20, sticker: 30 };
+    const LIMITS = { pasteup: 10, advertise: 10, sticker: 20 };
     const usedColours = [];            // up to 3 colours the user has started using
     const inkLeft = {};                // per marker colour
     const paintLeft = { brownbuff: BUFF_PAINT, greybuff: BUFF_PAINT };
     const stampsLeft = Object.assign({}, LIMITS);
     const outOfMsg = { brush: 'ink', brownbuff: 'paint', greybuff: 'paint',
         sticker: 'stickers', pasteup: 'posters', advertise: 'adverts' };
-    let color = '#4a4a4a';
+    // Randomised faded swatch colours per page load
+    const swatchEls = document.querySelectorAll('.color-swatch');
+    const baseHue = Math.random() * 360;
+    swatchEls.forEach((el, i) => {
+        const h = Math.round((baseHue + i * 120 + (Math.random() - 0.5) * 40) % 360);
+        const c = `hsl(${h}, ${25 + Math.round(Math.random() * 10)}%, ${48 + Math.round(Math.random() * 10)}%)`;
+        el.dataset.color = c;
+        el.style.background = c;
+        el.title = 'Colour ' + (i + 1);
+    });
+    let color = swatchEls[0].dataset.color;
+
+    const STICKER_ANGLES = [-30, -15, 0, 15, 30];
 
     // Sticker images
     const stickerImg = new Image();
@@ -439,7 +451,9 @@
         if (!width || !height) return;
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(img, x - width / 2, y - height / 2, width, height);
+        ctx.translate(x, y);
+        ctx.rotate(STICKER_ANGLES[Math.floor(Math.random() * STICKER_ANGLES.length)] * Math.PI / 180);
+        ctx.drawImage(img, -width / 2, -height / 2, width, height);
         ctx.restore();
     }
 
@@ -522,9 +536,11 @@
             // Fixed-size comb, stamped only at pointer positions (no interpolation)
             ctx.save();
             ctx.globalCompositeOperation = 'destination-out';
-            const sx = Math.round(pos.x - SCRAPER_W / 2), sy = Math.round(pos.y);
-            for (let i = 0; i < SCRAPER_W; i += SCRAPER_GAP) {
-                ctx.fillRect(sx + i, sy, 1, 1);
+            const w = SCRAPER_W + Math.round((Math.random() - 0.5) * 8);
+            const sx = Math.round(pos.x - w / 2), sy = Math.round(pos.y);
+            for (let i = 0; i < w; i += SCRAPER_GAP + Math.round(Math.random() * 2 - 0.5)) {
+                if (Math.random() < 0.15) continue;
+                ctx.fillRect(sx + i, sy + Math.round(Math.random() * 2 - 1), 1, Math.random() < 0.3 ? 2 : 1);
             }
             ctx.restore();
         } else if (tool === 'eraser') {
