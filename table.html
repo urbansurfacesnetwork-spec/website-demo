@@ -162,7 +162,7 @@
             background-color: rgba(255, 255, 255, 0.08);
         }
 
-        .theme-badge {
+        .category-badge {
             display: inline-block;
             padding: 4px 8px;
             border-radius: 4px;
@@ -173,7 +173,7 @@
             margin-bottom: 3px;
         }
 
-        .participation-cell {
+        .events-cell {
             font-size: 12px;
             color: #aaa;
         }
@@ -298,7 +298,7 @@
                 padding-top: 2px;
             }
 
-            .theme-badge {
+            .category-badge {
                 font-size: 11px;
                 padding: 3px 6px;
             }
@@ -325,21 +325,33 @@
         </div>
 
         <div class="control-group">
-            <select id="participationFilter">
-                <option value="">All Participation</option>
-                <option value="__none__">No Participation</option>
+            <select id="bookletFilter">
+                <option value="">All Booklets</option>
+                <option value="Vol. 1">Vol. 1</option>
+                <option value="Vol. 2">Vol. 2</option>
+                <option value="Vol. 3">Vol. 3</option>
+                <option value="Vol. 4">Vol. 4</option>
+                <option value="Vol. 5">Vol. 5</option>
+                <option value="Vol. 6">Vol. 6</option>
+                <option value="null">No Booklet (Events Only)</option>
             </select>
         </div>
 
         <div class="control-group">
-            <select id="themeFilter">
-                <option value="">All Themes</option>
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="0">Materiality</option>
+                <option value="1">Economy</option>
+                <option value="2">Governance</option>
+                <option value="3">Communication</option>
+                <option value="4">Labour</option>
+                <option value="5">Ecology</option>
             </select>
         </div>
 
         <div class="control-group">
             <select id="locationFilter">
-                <option value="">All Locations</option>
+                <option value="">All Regions</option>
             </select>
         </div>
 
@@ -357,16 +369,14 @@
             <thead>
                 <tr>
                     <th class="sortable">Name</th>
-                    <th>Relevant Focus</th>
-                    <th>Themes</th>
+                    <th>Categories</th>
+                    <th>Booklet</th>
                     <th class="sortable">Location</th>
-                    <th>Geographical Focus</th>
-                    <th>Participation</th>
-                    <th>Definition</th>
+                    <th>Events</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
-                <tr><td colspan="7" class="no-results">Loading data...</td></tr>
+                <tr><td colspan="5" class="no-results">Loading data...</td></tr>
             </tbody>
         </table>
     </div>
@@ -380,21 +390,22 @@
     let currentPage = 1;
     const rowsPerPage = 5;
 
-    // Theme name -> badge colour (themes are listed in data.json under "themes")
-    const themeColors = {
-        Materiality: '#f5e6ba',
-        Economy: '#acf2c9',
-        Governance: '#fdc5f5',
-        Communication: '#8093f1',
-        Labour: '#72ddf7',
-        Ecology: '#00695c'
+    const categoryNames = {
+        0: 'Materiality',
+        1: 'Economy',
+        2: 'Governance',
+        3: 'Communication',
+        4: 'Labour',
+        5: 'Ecology'
     };
-    const DEFAULT_THEME_COLOR = '#888';
-
-    const asArray = value => Array.isArray(value) ? value : [];
-    const escapeHtml = value => String(value).replace(/[&<>"']/g, ch => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[ch]));
+    const categoryColors = {
+        0: '#f5e6ba',
+        1: '#acf2c9',
+        2: '#fdc5f5',
+        3: '#8093f1',
+        4: '#72ddf7',
+        5: '#00695c'
+    };
 
     async function init() {
         try {
@@ -411,8 +422,6 @@
             allData = data.nodes;
             filteredData = [...allData];
 
-            populateThemeFilter(asArray(data.themes));
-            populateParticipationFilter();
             populateLocationFilter();
             renderTable();
             setupEventListeners();
@@ -420,33 +429,8 @@
         } catch (err) {
             console.error('Initialization failed:', err);
             document.getElementById('tableBody').innerHTML =
-                `<tr><td colspan="7" class="no-results"><strong>Error:</strong> ${err.message}</td></tr>`;
+                `<tr><td colspan="5" class="no-results"><strong>Error:</strong> ${err.message}</td></tr>`;
         }
-    }
-
-    function populateThemeFilter(themes) {
-        const themeFilter = document.getElementById('themeFilter');
-        const names = themes.length > 0
-            ? themes.map(t => t.name)
-            : Array.from(new Set(allData.flatMap(p => asArray(p.themes)))).sort();
-        names.forEach(name => {
-            const option = document.createElement('option');
-            option.value = name;
-            option.textContent = name;
-            themeFilter.appendChild(option);
-        });
-    }
-
-    function populateParticipationFilter() {
-        const participationFilter = document.getElementById('participationFilter');
-        Array.from(new Set(allData.flatMap(p => asArray(p.participation))))
-            .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-            .forEach(name => {
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                participationFilter.appendChild(option);
-            });
     }
 
     function populateLocationFilter() {
@@ -469,8 +453,8 @@
 
     function setupEventListeners() {
         document.getElementById('searchInput').addEventListener('input', applyFilters);
-        document.getElementById('participationFilter').addEventListener('change', applyFilters);
-        document.getElementById('themeFilter').addEventListener('change', applyFilters);
+        document.getElementById('bookletFilter').addEventListener('change', applyFilters);
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
         document.getElementById('locationFilter').addEventListener('change', applyFilters);
         document.getElementById('resetBtn').addEventListener('click', resetFilters);
 
@@ -484,24 +468,25 @@
     function applyFilters() {
         currentPage = 1;
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        const participationFilter = document.getElementById('participationFilter').value;
-        const themeFilter = document.getElementById('themeFilter').value;
+        const bookletFilter = document.getElementById('bookletFilter').value;
+        const categoryFilter = document.getElementById('categoryFilter').value;
         const locationFilter = document.getElementById('locationFilter').value;
 
         filteredData = allData.filter(person => {
             const matchesSearch = person.name.toLowerCase().includes(searchTerm);
 
-            const participation = asArray(person.participation);
-            const matchesParticipation = !participationFilter ||
-                (participationFilter === '__none__' ? participation.length === 0 :
-                 participation.includes(participationFilter));
+            const matchesBooklet = !bookletFilter ||
+                (bookletFilter === 'null' ? person.booklet === null :
+                 person.booklet && person.booklet.includes(bookletFilter));
 
-            const matchesTheme = !themeFilter || asArray(person.themes).includes(themeFilter);
+            const matchesCategory = !categoryFilter ||
+                person.category.toString() === categoryFilter ||
+                person.category2.toString() === categoryFilter;
 
             const personRegion = (person.location || 'Unknown').toString().trim();
             const matchesRegion = !locationFilter || personRegion === locationFilter;
 
-            return matchesSearch && matchesParticipation && matchesTheme && matchesRegion;
+            return matchesSearch && matchesBooklet && matchesCategory && matchesRegion;
         });
 
         renderTable();
@@ -528,7 +513,7 @@
         const pageData = filteredData.slice(start, end);
 
         if (pageData.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" class="no-results">No results found. Try adjusting your filters.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="5" class="no-results">No results found. Try adjusting your filters.</td></tr>';
             document.getElementById('resultCount').textContent = '0 results';
             document.getElementById('pagination').innerHTML = '';
             return;
@@ -536,15 +521,18 @@
 
         tbody.innerHTML = pageData.map(person => `
             <tr>
-                <td data-label="Name"><strong>${escapeHtml(person.name)}</strong></td>
-                <td data-label="Relevant Focus">${person['relevant focus'] ? escapeHtml(person['relevant focus']) : '—'}</td>
-                <td data-label="Themes">
-                    ${asArray(person.themes).length > 0 ? asArray(person.themes).map(theme => `<span class="theme-badge" style="background-color: ${themeColors[theme] || DEFAULT_THEME_COLOR}">${escapeHtml(theme)}</span>`).join('') : '—'}
+                <td data-label="Name"><strong>${person.name}</strong></td>
+                <td data-label="Categories">
+                    <span class="category-badge" style="background-color: ${categoryColors[person.category]}">
+                        ${categoryNames[person.category]}
+                    </span>
+                    <span class="category-badge" style="background-color: ${categoryColors[person.category2]}">
+                        ${categoryNames[person.category2]}
+                    </span>
                 </td>
-                <td data-label="Location">${person.location ? escapeHtml(person.location) : 'Unknown'}</td>
-                <td data-label="Geographical Focus">${asArray(person['geographical focus']).length > 0 ? escapeHtml(asArray(person['geographical focus']).join(', ')) : '—'}</td>
-                <td data-label="Participation" class="participation-cell">${asArray(person.participation).length > 0 ? escapeHtml(asArray(person.participation).join(', ')) : '—'}</td>
-                <td data-label="Definition">${person.definition ? escapeHtml(person.definition) : '—'}</td>
+                <td data-label="Booklet">${person.booklet || '—'}</td>
+                <td data-label="Location">${person.location || 'Unknown'}</td>
+                <td data-label="Events" class="events-cell">${person.events && person.events.length > 0 ? person.events.length + ' event(s)' : '—'}</td>
             </tr>
         `).join('');
 
@@ -576,8 +564,8 @@
 
     function resetFilters() {
         document.getElementById('searchInput').value = '';
-        document.getElementById('participationFilter').value = '';
-        document.getElementById('themeFilter').value = '';
+        document.getElementById('bookletFilter').value = '';
+        document.getElementById('categoryFilter').value = '';
         document.getElementById('locationFilter').value = '';
         currentPage = 1;
         filteredData = [...allData];

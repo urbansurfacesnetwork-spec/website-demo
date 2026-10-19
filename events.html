@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Participation Network USRN</title>
+    <title>Events Network USRN</title>
     <style>
         @font-face {
             font-family: 'CustomFont';
@@ -61,22 +61,22 @@
             const data = await response.json();
             if (!Array.isArray(data.nodes)) throw new Error('Invalid data structure: missing nodes');
 
-            // Build participation → participants map
-            const participationPeopleMap = {};
+            // Build event → participants map
+            const eventPeopleMap = {};
             data.nodes.forEach(node => {
-                (Array.isArray(node.participation) ? node.participation : []).forEach(ev => {
-                    if (!participationPeopleMap[ev]) participationPeopleMap[ev] = [];
-                    participationPeopleMap[ev].push(node.name);
+                (node.events || []).forEach(ev => {
+                    if (!eventPeopleMap[ev]) eventPeopleMap[ev] = [];
+                    eventPeopleMap[ev].push(node.name);
                 });
             });
 
-            const participationNames = Object.keys(participationPeopleMap).sort();
-            const numParticipation = participationNames.length;
+            const eventNames = Object.keys(eventPeopleMap).sort();
+            const numEvents = eventNames.length;
             const cx = 0, cy = 0, radius = 175;
 
-            // Participation nodes — fixed around a circle
-            const eventNodes = participationNames.map((name, i) => {
-                const angle = (2 * Math.PI * i) / numParticipation - Math.PI / 2;
+            // Event nodes — fixed around a circle
+            const eventNodes = eventNames.map((name, i) => {
+                const angle = (2 * Math.PI * i) / numEvents - Math.PI / 2;
                 return {
                     id: `event::${name}`,
                     name,
@@ -87,7 +87,7 @@
                     symbol: 'circle',
                     symbolSize: 22,
                     itemStyle: {
-                        color: name.startsWith('Vol') ? URBAN_VISUAL_DIALOGUES_COLOR : EVENT_COLOR,
+                        color: name.startsWith('Urban Visual Dialogues') ? URBAN_VISUAL_DIALOGUES_COLOR : EVENT_COLOR,
                         borderColor: '#fff',
                         borderWidth: 2
                     },
@@ -102,7 +102,7 @@
             });
 
             // Person nodes — free-floating, placed by force layout
-            const involvedPeople = new Set(Object.values(participationPeopleMap).flat());
+            const involvedPeople = new Set(Object.values(eventPeopleMap).flat());
             const personNodes = data.nodes
                 .filter(node => involvedPeople.has(node.name))
                 .map(node => ({
@@ -122,9 +122,9 @@
                     }
                 }));
 
-            // Edges: participation → person
-            const links = participationNames.flatMap(ev =>
-                participationPeopleMap[ev].map(person => ({
+            // Edges: event → person
+            const links = eventNames.flatMap(ev =>
+                eventPeopleMap[ev].map(person => ({
                     source: `event::${ev}`,
                     target: `person::${person}`,
                     lineStyle: { color: EVENT_COLOR, width: 2, opacity: 0.6 }
@@ -145,13 +145,13 @@
                     formatter: function (params) {
                         if (params.dataType !== 'node') return '';
                         if (params.data.isEvent) {
-                            const people = participationPeopleMap[params.data.name] || [];
+                            const people = eventPeopleMap[params.data.name] || [];
                             return `<b>${params.data.name}</b><br/>Participants (${people.length}):<br/>${people.join('<br/>')}`;
                         }
                         if (params.data.isPerson) {
                             const n = params.data.personData;
-                            const evList = (n.participation || []).join('<br/>') || 'None';
-                            return `<b>${n.name}</b><br/>Location: ${n.location || 'Unknown'}<br/>Participation:<br/>${evList}`;
+                            const evList = (n.events || []).join('<br/>') || 'None';
+                            return `<b>${n.name}</b><br/>Location: ${n.location || 'Unknown'}<br/>Events:<br/>${evList}`;
                         }
                         return '';
                     }

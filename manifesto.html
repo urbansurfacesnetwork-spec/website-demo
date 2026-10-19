@@ -40,7 +40,7 @@
 <div id="main"></div>
 
 <script>
-    const themeColors = {
+    const categoryColors = {
         0: '#9b59b6',
         1: '#7d3c98',
         2: '#a569bd',
@@ -63,18 +63,17 @@
             const response = await fetch('data.json');
             if (!response.ok) throw new Error(`Failed to fetch data.json: ${response.statusText}`);
             const data = await response.json();
-            if (!Array.isArray(data.themes)) throw new Error('Invalid data structure: missing themes');
 
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
 
             const CENTER_NODE = 'Urban Surfaces';
-            const themeNodes = data.themes.map((theme, index) => ({
-                name: theme.name,
+            const categoryNodes = data.categories.map((category, index) => ({
+                name: category.name,
                 symbol: 'rect',
                 symbolSize: [60, 60],
                 itemStyle: {
-                    color: hexToRgba(themeColors[index], 1),
+                    color: hexToRgba(categoryColors[index], 1),
                     borderWidth: 0
                 },
                 label: {
@@ -105,20 +104,20 @@
                 y: 0
             };
 
-            const nodes = [...themeNodes, centralNode];
+            const nodes = [...categoryNodes, centralNode];
 
-            // Connect all theme nodes to the central node
-            const links = data.themes.map(theme => ({
-                source: theme.name,
+            // Connect all six category nodes to the central node
+            const links = data.categories.map(category => ({
+                source: category.name,
                 target: CENTER_NODE
             }));
 
-            // Connect each theme to every other theme
-            for (let i = 0; i < data.themes.length; i++) {
-                for (let j = i + 1; j < data.themes.length; j++) {
+            // Connect each category to every other category
+            for (let i = 0; i < data.categories.length; i++) {
+                for (let j = i + 1; j < data.categories.length; j++) {
                     links.push({
-                        source: data.themes[i].name,
-                        target: data.themes[j].name
+                        source: data.categories[i].name,
+                        target: data.categories[j].name
                     });
                 }
             }

@@ -1,5 +1,5 @@
 {
-    "themes": [
+    "categories": [
         {
             "id": 0,
             "name": "Materiality",
@@ -39,2334 +39,1402 @@
     ],
     "nodes": [
         {
-            "name": "Abigail Karas",
-            "relevant focus": "Inter-imperial legacies and national identity",
-            "themes": [
-                "Governance",
-                "Materiality"
-            ],
-            "location": "St Andrews, UK",
-            "geographical focus": [
-                "Moldova"
-            ],
-            "participation": [
-                "USF SE"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Adam Hudec",
-            "relevant focus": "Epidermitecture and the organic matter of surface biopatina",
-            "themes": [
-                "Materiality",
-                "Ecology"
-            ],
-            "location": "Vienna, Austria",
-            "geographical focus": [
-                "Austria",
-                "Japan"
-            ],
-            "participation": [
-                "Vol 3",
-                "USF CY"
-            ],
-            "definition": "Epidermitecture is concerned with the naturally occurring stains on urban surfaces and is exploring the aesthetic, ecological and functional potential of Urban surfaces within the context of Epidermitecture are defined as living, breathing entities that interact with their environments."
-        },
-        {
-            "name": "Adrian Burnham",
-            "relevant focus": "Oral histories of flyposting in the UK",
-            "themes": [
-                "Labour",
-                "Economy"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "A viable surface to an unauthorised commercial fly-poster would be: (i) prominent, visible to passing traffic; (ii) wooden hoardings, shop windows, rendered walls, brickwork; (iii) unlikely to be defaced or torn down; and (iv) not heavily policed."
-        },
-        {
-            "name": "Adrian Tanner",
-            "relevant focus": "Creative graffiti removal practices",
-            "themes": [
-                "Labour",
-                "Governance"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Adrienne Cacatian",
-            "relevant focus": "Ethnography on propaganda, the aesthetics of authority, and sensory governance",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "Marikina City, Philippines",
-            "geographical focus": [
-                "Philippines"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Alex Hale",
-            "relevant focus": "Contemporary and historic graffiti and archival surfaces research",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Edinburgh, Scotland",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "Contemporary urban surfaces are archaeological sites to be considered as feral things. They are rural landscapes tamed by concrete, bricks and mortar. The graffiti are artefacts, previously associated with writing, but now wild; a feraling of sorts. Held within these artefacts are performances of tentacular knowledge networks. Their extent reaches beyond the urban and into a landscape's stratigraphy. As archives they perform a role that disrupts our philosophies, institutions and systems of knowledge-making. As such they are active combinations of archaeological, archival and artefacts."
-        },
-        {
-            "name": "Alice Mazzilli",
-            "relevant focus": "Writing systems, calligraphy, street writing, stylewriting, philosophy of writing",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "London, UK; Italy",
-            "geographical focus": [
-                "UK",
-                "Italy"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Alison Barnes",
-            "relevant focus": "Urban graphic heritage",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Australia",
-                "UK"
-            ],
-            "participation": [
-                "Vol 6",
-                "USF AU"
-            ],
-            "definition": "I consider an urban surface as a communicative interface, one that is often inscribed with 'graphic heritage'. Graphic heritage functions as a meaning making system that uses type, colour, symbols and materials."
-        },
-        {
-            "name": "Andrea Mubi Brighenti",
-            "relevant focus": "Publicness, territorology, visibility, sociology of walls",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Trento, Italy",
-            "geographical focus": [
-                "Italy"
-            ],
-            "participation": [
-                "Vol 1"
-            ],
-            "definition": "I like to think of surfaces as convergence space: it's a place where stuff – both material and semiotic – comes and meets from multiple directions. It is a meeting of styles, a clash often. And it surfaces to the extent that it happens in the visible."
-        },
-        {
-            "name": "Angela (Ange) Glindemann",
-            "relevant focus": "Ambient and creative writing",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Anne Cronin",
-            "relevant focus": "Outdoor advertising, surfaces as calculative spaces, secrecy",
-            "themes": [
-                "Communication",
-                "Economy"
-            ],
-            "location": "Lancaster, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 1"
-            ],
-            "definition": "Surfaces are interfaces between processes, practices, institutions and ideas."
-        },
-        {
-            "name": "Anneke Coppoolse",
-            "relevant focus": "Visual communication and everyday aesthetics",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Seoul, South Korea",
-            "geographical focus": [
-                "Hong Kong"
-            ],
-            "participation": [
-                "Vol 2"
-            ],
-            "definition": "Urban surfaces are canvases that reflect current (but also past) conditions (socio-economic, cultural, political) of a place. Though generally vertical and seemingly flat, they are textured, layered, spatial, serving as sites of contestation, scenes of celebration, stages of (and for) interaction, etc."
-        },
-        {
-            "name": "Anuradha Chatterjee",
-            "relevant focus": "Critical architectural theories of the surface as substance",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Bengaluru, India; Australia",
-            "geographical focus": [
-                "Australia",
-                "India",
-                "UK",
-                "Japan",
-                "China"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Asees Prab",
-            "relevant focus": "Heritage and architectural labour",
-            "themes": [
-                "Labour",
-                "Governance"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Ato Jackson",
-            "relevant focus": "Surfaces as educators, images as screens of everyday life",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Accra, Ghana",
-            "geographical focus": [
-                "Ghana"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Ayisha Saniya Ambalavan",
-            "relevant focus": "Boundary walls and contested heritage",
-            "themes": [
-                "Governance",
-                "Labour"
-            ],
-            "location": "Leicester, UK",
-            "geographical focus": [
-                "Palestine"
-            ],
-            "participation": [
-                "RGS 26"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Billy Potts",
-            "relevant focus": "Ghost signs and urban calligraphy",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Hong Kong, Hong Kong",
-            "geographical focus": [
-                "Hong Kong"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Caroline Kyi",
-            "relevant focus": "Critical conservation of outdoor murals",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Caroline Millar",
-            "relevant focus": "Walking, writing and paying radical attention to the run-off of the streets",
-            "themes": [
-                "Communication",
-                "Ecology"
-            ],
-            "location": "Canterbury, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "USF SE"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Caroline Newton",
-            "relevant focus": "Urban democratisation and surface contestation",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Delft, Netherlands",
-            "geographical focus": [
-                "Netherlands"
-            ],
-            "participation": [
-                "RGS 24"
-            ],
-            "definition": null
-        },
-        {
-            "name": "CC Williams",
-            "relevant focus": "Commercial signage and shopfronts",
-            "themes": [
-                "Communication",
-                "Economy"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Germany",
-                "Australia",
-                "Japan"
-            ],
-            "participation": [
-                "USF CY",
-                "SAH 25",
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Cecilia Brazioli",
-            "relevant focus": "Urban space value, surface evaluation, inscription evaluation",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Milan, Italy",
-            "geographical focus": [
-                "Italy",
-                "Morocco"
-            ],
-            "participation": [
-                "Vol 3",
-                "USF AU",
-                "USF SE"
-            ],
-            "definition": "Within my framework, I deal with Urban Surfaces both as canvases for the expression of conflicting instances, and as penetrable boundaries that allow for the visibilisation of ongoing negotiations on the aesthetic and visual order of contemporary cities."
-        },
-        {
-            "name": "Cheng Chen",
-            "relevant focus": "LED urbanism and nighttime surface displays",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Charlottesville, USA",
-            "geographical focus": [
-                "China"
-            ],
-            "participation": [
-                "SAH 25"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Chris Boyko",
-            "relevant focus": "Pavement surfaces and stayability",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Leicester, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "Urban surfaces, in the form of pavements (or sidewalks, footpaths etc.), refer to any publicly negotiated horizontal planes, from carriageway edge to other thresholds (e.g., buildings, green spaces), on which legal rights, social meanings and economic values are inscribed and may be contested."
-        },
-        {
-            "name": "Chris Parkinson",
-            "relevant focus": "Collective art practices and street posters",
-            "themes": [
-                "Communication",
-                "Labour"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia",
-                "Timor Leste",
-                "Indonesia"
-            ],
-            "participation": [
-                "Vol 3",
-                "USF AU"
-            ],
-            "definition": "Urban surfaces are a portal into sinewy networks of rhythmic, relational and nonrepresentational concepts of urban space."
-        },
-        {
-            "name": "Christoph Lueder",
-            "relevant focus": "Material transformation, architectural divides between public/ private",
-            "themes": [
-                "Materiality",
-                "Labour"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 4"
-            ],
-            "definition": "Urban surfaces are interfaces between a material condition and transformative forces. Urban surfaces result from claims to space and often have an invisible interior counterpart. As urban laboratories such surfaces record entangled processes between urban and interior milieus and constitute living archives of material-social processes and individuation."
-        },
-        {
-            "name": "Cristian Simonetti",
-            "relevant focus": "Anthropology of surfaces, gestures, and time",
-            "themes": [
-                "Materiality",
-                "Labour"
-            ],
-            "location": "Santiago, Chile",
-            "geographical focus": [
-                "Chile"
-            ],
-            "participation": [
-                "Vol 2"
-            ],
-            "definition": "Surfaces are where action and history entangle and endure."
-        },
-        {
-            "name": "Dan Johnston",
-            "relevant focus": "Skateboarding and skatepark surface traces",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "In my research, urban surfaces encompass all skatepark elements—concrete, steel, timber structures, signage, boundary zones, and surrounding trees. These surfaces serve dual functions: providing physical skating terrain and operating as canvases where users inscribe cultural traces."
-        },
-        {
-            "name": "David Littlefield",
-            "relevant focus": "Urban legibility and reading of surfaces",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
-        },
-        {
-            "name": "David Pontille",
-            "relevant focus": "Surface maintenance and orderings, graffiti removal, urban inscriptions",
-            "themes": [
-                "Materiality",
-                "Labour"
-            ],
-            "location": "Paris, France",
-            "geographical focus": [
-                "France"
-            ],
-            "participation": [
-                "Vol 1",
-                "USF SE"
-            ],
-            "definition": "Urban surfaces are both sites of material politics and unruly, fragile entities."
-        },
-        {
-            "name": "Diana-Raisa Lolici",
-            "relevant focus": "Street art culture",
-            "themes": [
-                "Labour",
-                "Communication"
-            ],
-            "location": "Cluj-Napoca, Romania",
-            "geographical focus": [
-                "Romania"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "I conceptualise urban surfaces as both material supports and socio-political interfaces that mediate artistic expression, control, and public engagement. Far from neutral, urban surfaces embody layered histories and meanings, functioning as contested sites where authority and resistance converge."
-        },
-        {
-            "name": "Diandra Saginatari",
-            "relevant focus": "Architectural porosity and surface ecology of heritage façades",
-            "themes": [
-                "Ecology",
-                "Materiality"
-            ],
-            "location": "Southampton, UK",
-            "geographical focus": [
-                "Indonesia"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Dina Yunis",
-            "relevant focus": "Surfaces as political palimpsests; graffiti and dissent in conflict cities",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Beirut, Lebanon",
-            "geographical focus": [
-                "Lebanon"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "In conflict cities like Beirut, the publicly visible urban surface is a politically charged interface and a contested palimpsest. Its functions are threefold: as a chronicle of dissent, a nexus of power reclaiming space, and a site of contested memory archiving alternative histories."
-        },
-        {
-            "name": "Doron Altaratz",
-            "relevant focus": "Computational imaging of heritage surfaces as embodied interfaces",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Jerusalem, Israel; Portugal",
-            "geographical focus": [
-                "Israel"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Eduardo de la Fuente",
-            "relevant focus": "Texturology and the skin of the city",
-            "themes": [
-                "Materiality",
-                "Economy"
-            ],
-            "location": "Adelaide, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 1"
-            ],
-            "definition": "Urban surfaces are the plethora of built and natural things that provide cities, regions, and places with distinctive surficial qualities, and I am very interested in the kinds of metaphors that also get generated to talk about surfaces. I'm authoring something in Spanish at the moment called La piel de la ciudad, The skin of the city. There are interesting feminist writings about buildings and cities being clothed, or dressed, faces and interfaces."
-        },
-        {
-            "name": "Efrîn Özyetiş",
-            "relevant focus": "Facades and digital renditions",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Ankara, Türkiye",
-            "geographical focus": [
-                "Türkiye"
-            ],
-            "participation": [
-                "SAH 25"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Elijah Agwaru Anomet",
-            "relevant focus": "Graffiti art for community and the environment",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Kampala, Uganda",
-            "geographical focus": [
-                "Uganda"
-            ],
-            "participation": [
-                "Vol 4"
-            ],
-            "definition": "Urban Surfaces are constantly evolving interfaces that intersect the material environment and culture, encompassing, but not limited to, rhythms, structures, textures, and spaces, that serve as canvases for community perspectives."
-        },
-        {
-            "name": "Eliza Demian Patrascu",
-            "relevant focus": "Dereliction, decay, and surface textures",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Bucharest; London, Romania; UK",
-            "geographical focus": [
-                "Romania"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Emina Zejnilović",
-            "relevant focus": "Architectural surfaces and walking methods",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Lusail, Qatar",
-            "geographical focus": [
-                "Balkan states"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "Urban surfaces are not passive backdrops, they are the city's quiet witnesses, recording its transformations in cracks, textures, and layers of paint and mortar. They are the visual soundtracks of political shifts, social currents, and cultural memory."
-        },
-        {
-            "name": "Emma McRae",
-            "relevant focus": "Urban imaginaries and digital representation",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Enzo Lara-Hamilton",
-            "relevant focus": "Urban mythology through street-art",
-            "themes": [
-                "Communication",
-                "Economy"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU",
-                "USF SE"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Erna Husukic",
-            "relevant focus": "Architectural surfaces and walking methods",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Riyadh, Saudi Arabia",
-            "geographical focus": [
-                "Balkan states"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "Urban surfaces are not passive backdrops, they are the city's quiet witnesses, recording its transformations in cracks, textures, and layers of paint and mortar. They are the visual soundtracks of political shifts, social currents, and cultural memory."
-        },
-        {
-            "name": "Esther Kiruba Jebakumar Clifford",
-            "relevant focus": "Murals as community assets",
-            "themes": [
-                "Governance",
-                "Economy"
-            ],
-            "location": "Auckland, New Zealand",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Eynat Mendelson-Shwartz",
-            "relevant focus": "Mural and street art policies",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "Haifa, Israel",
-            "geographical focus": [
-                "Israel",
-                "USA"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Francesca Bragaglia",
-            "relevant focus": "Graffiti slogans and urban power",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "Turin, Italy",
-            "geographical focus": [
-                "Italy"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Frederico Câmara",
-            "relevant focus": "Documentation of hand painted commercial signage",
-            "themes": [
-                "Communication",
-                "Labour"
-            ],
-            "location": "Dallas, USA",
-            "geographical focus": [
-                "USA"
-            ],
-            "participation": [
-                "RGS 24"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Friederike Landau-Donnelly",
-            "relevant focus": "Political difference of public art via administrative 'politics' and self-inscribed mo(ve)ments of 'the political'",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Berlin, Germany",
-            "geographical focus": [
-                "Canada",
-                "Germany",
-                "India",
-                "Austria"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "As an interdisciplinary spatial theorist and cultural geographer, I approach urban surfaces as contested socio-spatial arrangements. Surfaces are mediated by human and more-than-human actors as material-symbolical matter, materialising in different constellations of property, power and place... Surfaces are palimpsests."
-        },
-        {
-            "name": "Gabriel Araújo Velasco",
-            "relevant focus": "Pichação and historiographies of inscriptions",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "São Paulo, Brazil",
-            "geographical focus": [
-                "Brazil"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Gerda Wielander",
-            "relevant focus": "Visual communication, cultural history",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "China"
-            ],
-            "participation": [
-                "Vol 2",
-                "USF SE"
-            ],
-            "definition": "Walls are remnant traces of traditional and socialist urban structures that serve as loci of memory and as medium to host ever new traces in the form of writing, painting, spraying, and printing by a variety of actors, including the state. They are documents forming a fragile archive providing insights into how society works and feels."
-        },
-        {
-            "name": "Greg Ireland",
-            "relevant focus": "Graffiti removal chemicals and training",
-            "themes": [
-                "Governance",
-                "Economy"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Hans Leo Maes",
-            "relevant focus": "Buff photography and surface traces",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Antwerp, Belgium",
-            "geographical focus": [
-                "Hong Kong"
-            ],
-            "participation": [
-                "RGS 26"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Heather Shirey",
-            "relevant focus": "Race and identity in murals and street art",
-            "themes": [
-                "Communication",
-                "Labour"
-            ],
-            "location": "Minneapolis-St Paul, USA",
-            "geographical focus": [
-                "USA"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Holly Carton",
-            "relevant focus": "Surfaces of conflict, memorialisation and the Belfast Peace Walls",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Oxford, UK; Ireland",
-            "geographical focus": [
-                "UK",
-                "Ireland"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Iain White",
-            "relevant focus": "Mural festival commissioning and curation",
-            "themes": [
-                "Governance",
-                "Labour"
-            ],
-            "location": "Hamilton, New Zealand",
-            "geographical focus": [
-                "New Zealand"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "I see a surface as a small part of a wider urban story. Surfaces provide visual cues into the condition of a city and its inhabitants, from the movements of capital, to its politics or population diversity, to its relationship with nature or risk."
-        },
-        {
-            "name": "Ingrid Halland",
-            "relevant focus": "Surfaces in art and architecture; history of titanium white and whiteness in modernism",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Bergen, Norway",
-            "geographical focus": [
-                "Norway"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "Urban surfaces serve as aesthetic contact zones between man-made materials, individual experiences, and global meaning-making, including politics, ethics, and cultural values."
-        },
-        {
-            "name": "Jack Wu",
-            "relevant focus": "Human-centred design and public space activation",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Auckland, New Zealand",
-            "geographical focus": [
-                "New Zealand"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Jacob Kimvall",
-            "relevant focus": "Graffiti as text and surfaces as intertextual spaces",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Stockholm, Sweden",
-            "geographical focus": [
-                "Sweden"
-            ],
-            "participation": [
-                "Vol 2"
-            ],
-            "definition": "Urban surfaces are texts, and graffiti is thus text upon text."
-        },
-        {
-            "name": "Jane Elizabeth Bennett",
-            "relevant focus": "Pavement surfaces as perceived by autistic women",
-            "themes": [
-                "Materiality",
-                "Ecology"
-            ],
-            "location": "Reading, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 6",
-                "USF CY"
-            ],
-            "definition": "I am defining the urban floorscape as a locomotable surface; a dynamic interface between body and environment that supports walking and mobility-aid use. Carrying traces of history and everyday rhythms, it entangles movement with embodied knowledge."
-        },
-        {
-            "name": "Jazoo Yang",
-            "relevant focus": "Murals and creative practices of urban memory",
-            "themes": [
-                "Communication",
-                "Ecology"
-            ],
-            "location": "Busan, South Korea",
-            "geographical focus": [
-                "South Korea"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "In my practice, urban surfaces function as tactile archives where materials, memory, and human contact converge. They record traces of lived experience and transformation."
-        },
-        {
-            "name": "JC Viloria",
-            "relevant focus": "Aesthetic strategies of urban governance and regulation",
-            "themes": [
-                "Governance",
-                "Economy"
-            ],
-            "location": "Budapest, Hungary",
-            "geographical focus": [
-                "Hungary",
-                "Philippines"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Jenny Papasotiriou",
-            "relevant focus": "Heritage education and decolonial spatial justice",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Dublin, Ireland",
-            "geographical focus": [
-                "Ireland",
-                "Greece"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Jessica Amarteifio",
-            "relevant focus": "Indigenous knowledges in urban surface governance",
-            "themes": [
-                "Ecology",
-                "Governance"
-            ],
-            "location": "Madrid, Spain; Ghana",
-            "geographical focus": [
-                "Ghana"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Joanne Choueiri",
-            "relevant focus": "Construction hoardings and wish images",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "Brisbane, Australia",
-            "geographical focus": [
-                "Lebanon",
-                "Australia"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "In my work, urban surfaces are exemplified by the construction fence: a surface that hides a demolition, a construction, or a stalled reconstruction while displaying Walter Benjamin's idea of 'wish images'. These curated visuals project developer, state, and civic futures, making the fence an active political interface rather than a neutral barrier."
-        },
-        {
-            "name": "Joumana Ibrahim",
-            "relevant focus": "Vernacular visuals and urban marks in post-conflict cities",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "Lebanon",
-                "Europe"
-            ],
-            "participation": [
-                "Vol 4",
-                "RGS 26"
-            ],
-            "definition": "In conflict and post-conflict cities, a surface is never neutral. It becomes a canvas, a pattern, a banner. It is a call for action, a gesture of resilience, a cry for help, and a threat that marks territory. It can be an invitation, a sacred space, or a battlefield of meaning. In cities caught in conflicts and their aftermath, surfaces speak for both the oppressed and the oppressors."
-        },
-        {
-            "name": "Juan Carlos Guerrero-Hernandez",
-            "relevant focus": "Surfaces as cultural interfaces and sites of memory",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Bogota; Reno, Colombia; USA",
-            "geographical focus": [
-                "Americas"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Julia Tulke",
-            "relevant focus": "Aesthetics of crisis and longitudinal documentation of surfaces",
-            "themes": [
-                "Communication",
-                "Labour"
-            ],
-            "location": "Atlanta, USA",
-            "geographical focus": [
-                "Greece",
-                "USA"
-            ],
-            "participation": [
-                "Vol 2"
-            ],
-            "definition": "Surfaces are historically accumulated materialities that can be activated or deactivated by performative intervention or the strategic prevention thereof, often in counterintuitive ways."
-        },
-        {
-            "name": "Kathryn Ewing",
-            "relevant focus": "Surfaces as social (co-)infrastructures of memory and community",
-            "themes": [
-                "Governance",
-                "Labour"
-            ],
-            "location": "Cape Town, South Africa",
-            "geographical focus": [
-                "South Africa"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Katya Assaf Zakharov",
-            "relevant focus": "Legal reimaginings of public walls",
-            "themes": [
-                "Governance",
-                "Economy"
-            ],
-            "location": "Jerusalem, Israel",
-            "geographical focus": [
-                "Israel",
-                "Germany"
-            ],
-            "participation": [
-                "Vol 1"
-            ],
-            "definition": "For us, urban surfaces are sites of semiotic control and resistance. Urban surfaces tell us stories of wealth and poverty, of power and weakness, of social acceptance and rejection, of winners and losers. For instance, billboards indoctrinate the hegemony of consumer culture in our society; whitewashed graffiti signifies that personal messages are a suppressed dissent in the semiotics of public space."
-        },
-        {
-            "name": "Kel Glaister",
-            "relevant focus": "Parkour and the visibility of playability",
-            "themes": [
-                "Labour",
-                "Governance"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Kevin Muldoon-Smith",
-            "relevant focus": "Pavement surfaces and stayability",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Newcastle upon Tyne, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "Urban surfaces, in the form of pavements (or sidewalks, footpaths etc.), refer to any publicly negotiated horizontal planes, from carriageway edge to other thresholds (e.g., buildings, green spaces), on which legal rights, social meanings and economic values are inscribed and may be contested."
-        },
-        {
-            "name": "Konstantinos Avramidis",
-            "relevant focus": "Drawing, tracing and mapping traces of inhabitation; graffiti writing and removal",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Nicosia, Cyprus",
-            "geographical focus": [
-                "Greece",
-                "Cyprus"
-            ],
-            "participation": [
-                "Vol 1",
-                "USF AU",
-                "USF CY",
-                "USF SE"
-            ],
-            "definition": "Urban Surfaces are material graphic archives where inhabitation—and, therefore, contestation—is inscribed. Surfaces are multivocal, multitemporal structures where, often opposing, agents meet to express opinions, exercise rights and negotiate power."
-        },
-        {
-            "name": "Krystal Kehoe",
-            "relevant focus": "Social media use by graffiti writers",
-            "themes": [
-                "Communication",
-                "Labour"
-            ],
-            "location": "British Columbia, Canada",
-            "geographical focus": [
-                "Canada"
-            ],
-            "participation": [
-                "USF SE"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Kurt Iveson",
-            "relevant focus": "Spatial justice, public space",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 1",
-                "USF AU"
-            ],
-            "definition": "Surfaces are contested street media, which dramatise an inescapable tension between authorisation and appropriation in public spaces, in capitalist cities."
-        },
-        {
-            "name": "Kyle Magee",
-            "relevant focus": "Democratisation of advertising and media sites",
-            "themes": [
-                "Governance",
-                "Economy"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Laura Szyman",
-            "relevant focus": "Illustration-led approaces to market-driven housing",
-            "themes": [
-                "Economy",
-                "Communication"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Lesley Pleasant",
-            "relevant focus": "Filmic representations of city surfaces, library surfaces",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Evansville, USA",
-            "geographical focus": [
-                "Germany"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Linda Matthews",
-            "relevant focus": "Visualisation technologies and urban surveillance",
-            "themes": [
-                "Governance",
-                "Economy"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Liz Oakley-Brown",
-            "relevant focus": "Transhistorical textual study of surfaces",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Lancaster, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "In 2017, Rebecca Coleman and I argued that 'The surface is …potentially manifold and politically contingent' (2017: 6). By taking up and developing our earlier point, I define urban surfaces as parts of the physical environment dependent on scale, semiotics and social justice i.e. what's visible, what's communicable, and who matters?"
-        },
-        {
-            "name": "Lorenzo \"SERRAGLIA” Servi",
-            "relevant focus": "Accidental monuments, urban photography",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Helsinki, Finland",
-            "geographical focus": [
-                "Finland"
-            ],
-            "participation": [
-                "Vol 4"
-            ],
-            "definition": "For me, urban surfaces are like diaries, or even ancient tablets. They record both voluntary and involuntary actions: scratches, stains, repairs, graffiti, weather. In my practice, I treat them as signs to be translated into a visual language, so their hidden meanings become visible to everyone."
-        },
-        {
-            "name": "Lucy Finchett-Maddock",
-            "relevant focus": "Graffiti, property, the commons, theories of art/law",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "Urban surfaces are legal etchings upon which the cityscape writes. They are rich tapestries of spatial code. They are the edge of law. And they are law."
-        },
-        {
-            "name": "Lucy Irvine",
-            "relevant focus": "Textiles as design, urban public sculpture",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Canberra, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 6",
-                "USF AU"
-            ],
-            "definition": "I consider an urban surface as a boundary or an interface. My expanded textile practice involves generating new urban surfaces that intervene in public space. By weaving unpredictable emergent forms from materials that usually play a utilitarian homogenising role in the urban fabric, I seek to confuse boundaries and open new interfaces."
-        },
-        {
-            "name": "Maggie Kusenbach",
-            "relevant focus": "Graffiti and street art festivals, urban development, ethnography",
-            "themes": [
-                "Governance",
-                "Ecology"
-            ],
-            "location": "Tampa, USA",
-            "geographical focus": [
-                "USA",
-                "UK",
-                "Austria",
-                "Australia"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "From my viewpoint as an urban sociologist, urban surfaces are places in the public realm, a social territory dominated by strangers and governed by implicit rules for interaction and relationships... material and symbolic props citizens can use to express and manage identities."
-        },
-        {
-            "name": "Marguerite Coetzee",
-            "relevant focus": "Ethnographies of spatial futures, foregrounding various states of matter",
-            "themes": [
-                "Ecology",
-                "Economy"
-            ],
-            "location": "Bristol, UK",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF SE"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Maria Chatzidakis",
-            "relevant focus": "materials, restoration, street art heritage",
-            "themes": [
-                "Materiality",
-                "Ecology"
-            ],
-            "location": "Athens, Greece",
-            "geographical focus": [
-                "Greece"
-            ],
-            "participation": [
-                "Vol 1"
-            ],
-            "definition": "From a conservator's perspective, urban surfaces can be seen as the physical structures, the skin, the outer layer of the urban environment, the interface of the city as a living monument. It is a palimpsest of layered history, that forms the intricate fabric of a city, both visible and hidden."
-        },
-        {
-            "name": "Megan Hicks",
-            "relevant focus": "Pavement surfaces, the urban horizontal",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 4"
-            ],
-            "definition": "In my work I concentrate on horizontal urban surfaces, or pavements. By 'pavements' I mean paved public spaces, including roadways, footpaths, sidewalks and public squares. I approach this subject in two ways... I have found that the pavement is more than a passive platform for feet and wheels. Rather, it is both a canvas for written expression and a presence in its own right, contributing to the conscious and subconscious cultural life of a city."
-        },
-        {
-            "name": "Melissa Smith",
-            "relevant focus": "Boundary walls, territories",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Ahmedabad, India",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "SAH 25"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Meng Hsuan-Lee",
-            "relevant focus": "Façades, screens, signage",
-            "themes": [
-                "Communication",
-                "Economy"
-            ],
-            "location": "Columbia, USA",
-            "geographical focus": [
-                "Taiwan"
-            ],
-            "participation": [
-                "SAH 25"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Mia Gaia Trentin",
-            "relevant focus": "Historic graffiti, documentation",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Cyprus, Cyprus",
-            "geographical focus": [
-                "Cyprus"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "The surface is an interactive space that collects a wide variety of anthropic marks of interaction, performed with different intentions for different reasons through different media. In this sense, the surface becomes a repository of collective memory, meanings, and values for the communities experiencing the place."
-        },
-        {
-            "name": "Michael Stonham",
-            "relevant focus": "The fifth elevation in 3D design, graffiti in/and interior architecture",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Mirame Elsayed",
-            "relevant focus": "Psychologies of the urban surface",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Cairo, Egypt",
-            "geographical focus": [
-                "Egypt"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Miti Kinaawola",
-            "relevant focus": "Everyday life of urban surfaces, urban tours, informal writing practices",
-            "themes": [
-                "Communication",
-                "Labour"
-            ],
-            "location": "Kampala, Uganda",
-            "geographical focus": [
-                "Uganda"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "Through my practice as a tour guide at Tembea Kampala Walking Tours, urban surfaces are the visible and tangible layers through which the city's social, cultural, and political life is recorded and made legible... In my work, urban surfaces are texts to be read and stories to be experienced."
-        },
-        {
-            "name": "Moral Masuoka",
-            "relevant focus": "Socially-engaged mural production, socially-sustainable mural production",
-            "themes": [
-                "Communication",
-                "Economy"
-            ],
-            "location": "Edinburgh, UK; USA",
-            "geographical focus": [
-                "USA",
-                "UK"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "Within my work producing murals, I define an urban surface as a solid structure, typically a wall, to which paint can be applied, that provides visual experiences within the environment."
-        },
-        {
-            "name": "Myrto Tsilimpounidi",
-            "relevant focus": "Photography, feminist and queer approaches to street politics",
-            "themes": [
-                "Communication",
-                "Labour"
-            ],
-            "location": "Athens, Greece",
-            "geographical focus": [
-                "Greece"
-            ],
-            "participation": [
-                "Vol 2"
-            ],
-            "definition": "I have always been interested in the surfacing concerns and political tensions on the urban surfaces as evident below."
-        },
-        {
-            "name": "Natalie Bauer",
-            "relevant focus": "Stickers as an artistic and communicative device",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Europe",
-                "Australia"
-            ],
-            "participation": [
-                "Vol 4"
-            ],
-            "definition": "Urban surfaces consist of street furniture, like walls or lampposts, that make public space a room. In combination with Henri Lefebvre's reflections on the visual expression of power dynamics in cities, furniture decorated with street art makes the room a home for its inhabitants. Consequently, urban surfaces constitute the canvas upon which the public can express their ideas and engage with each other."
-        },
-        {
-            "name": "Nataly Arevalo",
-            "relevant focus": "Municipal perspectives on surface management",
-            "themes": [
-                "Governance",
-                "Economy"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Nazanin",
-            "relevant focus": "Feminist approaches, representation and protest in murals",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "USF AU",
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Nian Paul",
-            "relevant focus": "Feminist approaches to urban visual governance and spatial justice",
-            "themes": [
-                "Governance",
-                "Materiality"
-            ],
-            "location": "Delhi, India",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "Vol 4",
-                "RGS 24"
-            ],
-            "definition": "Urban surfaces are material configurations of socio-spatial relations, political expressions, contestations, resilience and future imaginaries. I position public art as not just an adornment on urban surfaces, but an urban surface itself."
-        },
-        {
-            "name": "Nina O’Reilly",
-            "relevant focus": "Resistance to neoliberal urban regeneration and development",
-            "themes": [
-                "Economy",
-                "Governance"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Panos Leventis",
-            "relevant focus": "Street art in/and narratives of the urban",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Springfield, USA",
-            "geographical focus": [
-                "Greece",
-                "Cyprus",
-                "USA"
-            ],
-            "participation": [
-                "Vol 2",
-                "USF CY"
-            ],
-            "definition": "Urban surfaces are immersive sites of experience, from where two-dimensional space expands, fusing built fabric with creative forces and active publics, retelling the city to the city."
-        },
-        {
-            "name": "Pati Starzykowski",
-            "relevant focus": "Political agency of abjectified urban ecologies as knowledge producers",
-            "themes": [
-                "Ecology",
-                "Materiality"
-            ],
-            "location": "London; Stockholm, UK; Sweden",
-            "geographical focus": [
-                "UK",
-                "Sweden",
-                "Basque Country"
-            ],
-            "participation": [
-                "USF SE"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Peta Carlin",
-            "relevant focus": "Movements between surfaces, including architectural, textile & photographic",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Wenzhou, China",
-            "geographical focus": [
-                "Global"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "In my photographic series, Urban Fabric, the commonplace textile metaphor was engaged... The significance of the image as a surface, for my practice, is its capacity to mediate and establish dialogues between different places, cultures and disciplines."
-        },
-        {
-            "name": "Peter Bengtsen",
-            "relevant focus": "(Unsanctioned) expressions and the publicness of public space; street art and democracy",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "Lund, Sweden",
-            "geographical focus": [
-                "Sweden",
-                "Denmark"
-            ],
-            "participation": [
-                "Vol 1",
-                "USF SE"
-            ],
-            "definition": "I do not believe it is necessary, or possible, to come up with a single definition of the urban surface. However, for me, urban surfaces often function as waymarkers. Along a particular path, or street, remembering street names is much less helpful for navigating the urban environment than recognising urban surfaces."
-        },
-        {
-            "name": "Petr Vašát",
-            "relevant focus": "Macromurals",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Pilsen, Czechia",
-            "geographical focus": [
-                "Colombia"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "Drawing on the case of macromurals, urban surfaces are a heterogeneous, uneven ensemble of material planes—walls, façades, roofs—and other built or natural textures that become temporarily homogenised through painting, maintenance, or infrastructural intervention into cohesive visual patterns visible from a great distance."
-        },
-        {
-            "name": "Phoebe Whitman",
-            "relevant focus": "Interiority and materiality of surfaces, practices of surface care",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Pierre-Edourad Weill",
-            "relevant focus": "Governance of graffiti, advertising and the attention economy",
-            "themes": [
-                "Economy",
-                "Governance"
-            ],
-            "location": "Brest, France",
-            "geographical focus": [
-                "France"
-            ],
-            "participation": [
-                "Vol 4",
-                "USF CY"
-            ],
-            "definition": "Through my sociological research, I conceptualise urban surfaces as public or private supports for graffiti and street art. I analyse their legal framing, exploring how penalisation intersects with artistic legitimation via court cases, specialised policing, and digital surveillance, while examining how symbolic capital circulates and converts into economic value."
-        },
-        {
-            "name": "Preeti Mudliar",
-            "relevant focus": "Autorickshaw screens as mobile archives of film fandom in traffic",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Rafael Schacter",
-            "relevant focus": "Public art, graffiti, and urban visual cultures",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "UK",
-                "USA",
-                "Philippines"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "Urban seems easy enough define - something of or related to the city - whilst surfaces presents us with both a physical and conceptual idea of a boundary point (often between inside and out, above and below). In this context, however, and in today's increasingly surveilled, securitised, and privatised megalopolises, 'urban surfaces' are critical spaces of conflict and contestation revealing the messy complexity of the city today."
-        },
-        {
-            "name": "Rainier Leloup",
-            "relevant focus": "Graffiti",
-            "themes": [
-                "Communication"
-            ],
-            "location": "Brussels, Belgium",
-            "geographical focus": [
-                "Belgium"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Richard Müller",
-            "relevant focus": "Compound walls in India and Taiwan",
-            "themes": [
-                "Governance",
-                "Materiality"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "India",
-                "Taiwan"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "Any attempt to produce a definition of an urban surface must anticipate its role in the shaping, configuration, and mediation of social dynamics within the city it is situated. Urban surfaces exceed their status as palimpsests by possessing the capacity to intervene in the socio-urban spaces of cities."
-        },
-        {
-            "name": "Robert Harland",
-            "relevant focus": "Urban graphic heritage",
-            "themes": [
-                "Communication",
-                "Economy"
-            ],
-            "location": "Loughborough, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 4"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Ronald Kramer",
-            "relevant focus": "Street art, graffiti, state intervention in public space",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Auckland, New Zealand",
-            "geographical focus": [
-                "New Zealand",
-                "USA"
-            ],
-            "participation": [
-                "Vol 6"
-            ],
-            "definition": "I find it incredibly difficult to provide a definition of urban surfaces... an urban surface is a feature of the urban environment that people have some meaningful, democratic claim to; those parts of the city that the people build and support."
-        },
-        {
-            "name": "Ruth Dalton",
-            "relevant focus": "Pavement surfaces and stayability",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Newcastle upon Tyne, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "Urban surfaces, in the form of pavements (or sidewalks, footpaths etc.), refer to any publicly negotiated horizontal planes, from carriageway edge to other thresholds (e.g., buildings, green spaces), on which legal rights, social meanings and economic values are inscribed and may be contested."
-        },
-        {
+            "id": 1,
             "name": "Sabina Andron",
-            "relevant focus": "Urban visual governance, graffiti removal and public images",
-            "themes": [
-                "Materiality",
-                "Labour"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia",
-                "Uganda",
-                "UK"
-            ],
-            "participation": [
-                "Vol 1",
-                "RGS 24",
-                "RGS 26",
-                "SAH 25",
-                "USF AU",
-                "USF CY",
-                "USF SE"
-            ],
-            "definition": "Urban surfaces are contested semiotic territories of spatial co-production and public address. I am interested in how surfaces create meaning and how signage positions this meaning, as well as how surfaces are regulated."
+            "category": 0,
+            "category2": 1,
+            "location": "Melbourne",
+            "booklet": "Vol. 1",
+            "definition": "Urban surfaces are contested semiotic territories of spatial co-production and public address. I am interested in how surfaces create meaning and how signage positions this meaning, as well as how surfaces are regulated.",
+            "events": [
+                "Urban Visual Dialogues 1 (3 March 2025)",
+                "Urban Visual Dialogues 2 (18 Nov 2025)",
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
         },
         {
-            "name": "Samuel Holleran",
-            "relevant focus": "Community input and management of memorials, urban parks, and public spaces",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Melbourne, Australia",
-            "geographical focus": [
-                "Australia",
-                "USA",
-                "Germany"
-            ],
-            "participation": [
-                "USF SE"
-            ],
-            "definition": null
+            "id": 2,
+            "name": "Katya Assaf-Zakharov",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "For us, urban surfaces are sites of semiotic control and resistance. Urban surfaces tell us stories of wealth and poverty, of power and weakness, of social acceptance and rejection, of winners and losers. For instance, billboards indoctrinate the hegemony of consumer culture in our society; whitewashed graffiti signifies that personal messages are a suppressed dissent in the semiotics of public space.",
+            "events": []
         },
         {
-            "name": "Selma Piukovici",
-            "relevant focus": "Surfaces as infrastructures of publicness",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Amsterdam, Netherlands",
-            "geographical focus": [
-                "Netherlands",
-                "Japan"
-            ],
-            "participation": [
-                "RGS 24"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Serhat Ay",
-            "relevant focus": "Surfaces as public infrastructures under authoritarian urbanism",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Istanbul, Türkiye",
-            "geographical focus": [
-                "Türkiye"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Shruti Mehta",
-            "relevant focus": "Public art as regenerative strategy",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Delhi, India",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Simon Marvin",
-            "relevant focus": "Surfaces as climate technologies and infrastructures",
-            "themes": [
-                "Ecology",
-                "Economy"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "Urban surfaces - building walls and roofs, ground space including hard landscaping, water features and green nature - are being actively reconfigured as climate technologies to strategically modulate energy, thermal, liquid and chemical flows at the interface of atmospheric and terrestrial milieus."
-        },
-        {
-            "name": "Siri Haavimb",
-            "relevant focus": "Ambiguities of disorder",
-            "themes": [
-                "Governance",
-                "Ecology"
-            ],
-            "location": "Stockholm, Sweden",
-            "geographical focus": [
-                "Sweden"
-            ],
-            "participation": [
-                "USF SE"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Sneha Annavarapu",
-            "relevant focus": "Road surfaces, potholes and driving in India",
-            "themes": [
-                "Governance",
-                "Materiality"
-            ],
-            "location": "Singapore, Singapore",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "Vol 2"
-            ],
-            "definition": "Surfaces are the skin of the roads that motorists drive on. I approach the surface not as an object but as the sensation felt by motoring bodies as they move on roads."
-        },
-        {
-            "name": "Soufiane Chinig",
-            "relevant focus": "An ethnography of graffiti writing, festival-based mural painting and cultural\ndiplomacy.",
-            "themes": [
-                "Governance",
-                "Materiality"
-            ],
-            "location": "Berlin, Germany",
-            "geographical focus": [
-                "Morocco",
-                "Jordan"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Sprya Sharma",
-            "relevant focus": "Socio-political semiotics of walls",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Patna, India",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "Urban surfaces act as display boards where the needs of the governed and the interests of government intersect, offering insights into societal structures and issues. The surfaces not only reflect the society they also sustain the society."
-        },
-        {
-            "name": "Susan Hansen",
-            "relevant focus": "Documentation and reception of graffiti and street art",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "I document walls over time as urban social surfaces, in order to make available for analysis the ongoing collective dialogue on city walls, taking into account not just monumental murals and subcultural graffiti but the entire spectrum of quotidian urban inscriptions."
-        },
-        {
-            "name": "Susanna Newbury",
-            "relevant focus": "Art and architecture in real estate and economics",
-            "themes": [
-                "Economy",
-                "Governance"
-            ],
-            "location": "Las Vegas, USA",
-            "geographical focus": [
-                "USA"
-            ],
-            "participation": [
-                "Vol 2"
-            ],
-            "definition": "Surfaces are long-standing symptoms of the consequences of past intervention."
-        },
-        {
-            "name": "Svetlana Feokistova",
-            "relevant focus": "Documentation of buffing and urban walls",
-            "themes": [
-                "Materiality",
-                "Governance"
-            ],
-            "location": "Russia, Russia",
-            "geographical focus": [
-                "Russia"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Tara Di Cassio",
-            "relevant focus": "Material cultural worlds on walls across fragmented geographies",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Chapel Hill, USA",
-            "geographical focus": [
-                "Jordan",
-                "Palestine"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
-        },
-        {
-            "name": "Taylor Coyne",
-            "relevant focus": "Urban water ecologies and hydrosurfaces",
-            "themes": [
-                "Ecology",
-                "Materiality"
-            ],
-            "location": "Sydney, Australia",
-            "geographical focus": [
-                "Australia"
-            ],
-            "participation": [
-                "Vol 4"
-            ],
-            "definition": "In my work as a historical and political urban geographer of stormwater infrastructures, I define urban surfaces through the lens of infrastructure, drains, and urban swamps. They are porous, layered skins through which water, memory, and power move. A surface is not a boundary but a threshold: archive, ecology, and territory."
-        },
-        {
-            "name": "Tim Ingold",
-            "relevant focus": "Anthropology of lines, surfaces, materiality",
-            "themes": [
-                "Materiality",
-                "Ecology"
-            ],
-            "location": "Aberdeen, UK",
-            "geographical focus": [
-                "Global"
-            ],
-            "participation": [
-                "Vol 3"
-            ],
-            "definition": "By the urban surface, I refer to the ground of what is commonly called the 'built environment'. It is distinguished by being paved."
-        },
-        {
+            "id": 3,
             "name": "Tim Schnetgöke",
-            "relevant focus": "Billboards and public walls",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Berlin, Germany",
-            "geographical focus": [
-                "Germany"
-            ],
-            "participation": [
-                "Vol 1"
-            ],
-            "definition": "For us, urban surfaces are sites of semiotic control and resistance. Urban surfaces tell us stories of wealth and poverty, of power and weakness, of social acceptance and rejection, of winners and losers. For instance, billboards indoctrinate the hegemony of consumer culture in our society; whitewashed graffiti signifies that personal messages are a suppressed dissent in the semiotics of public space."
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "For us, urban surfaces are sites of semiotic control and resistance. Urban surfaces tell us stories of wealth and poverty, of power and weakness, of social acceptance and rejection, of winners and losers. For instance, billboards indoctrinate the hegemony of consumer culture in our society; whitewashed graffiti signifies that personal messages are a suppressed dissent in the semiotics of public space.",
+            "events": []
         },
         {
-            "name": "Tom Critchley",
-            "relevant focus": "E-transport infrastructure, skateboarding, graffiti",
-            "themes": [
-                "Governance",
-                "Communication"
-            ],
-            "location": "London, UK",
-            "geographical focus": [
-                "UK",
-                "Jamaica"
-            ],
-            "participation": [
-                "Vol 4"
-            ],
-            "definition": "An urban surface is where city materialities and social practices interact, overlap, and are (re)configured. As a designer, I do not see them as passive backdrops, but active canvases to express and understand identity, culture, and socialities of the city, alongside a space to intervene and reconfigure these relationships. In the context of my research on micromobility, urban surfaces are the public facing representations of transport infrastructure: pavements, curbs, cycle lanes, docking zones, and e-bikes/e-scooters themselves."
+            "id": 4,
+            "name": "Konstantinos Avramidis",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "Urban Surfaces are material graphic archives where inhabitation—and, therefore, contestation—is inscribed. Surfaces are multivocal, multitemporal structures where, often opposing, agents meet to express opinions, exercise rights and negotiate power.",
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
         },
         {
+            "id": 5,
+            "name": "Peter Bengtsen",
+            "category": 0,
+            "category2": 1,
+            "location": "Manchester",
+            "booklet": "Vol. 1",
+            "definition": "I do not believe it is necessary, or possible, to come up with a single definition of the urban surface. However, for me, urban surfaces often function as waymarkers. Along a particular path, or street, remembering street names is much less helpful for navigating the urban environment than recognising urban surfaces.",
+            "events": []
+        },
+        {
+            "id": 6,
+            "name": "Andrea Brighenti",
+            "category": 0,
+            "category2": 1,
+            "location": "Vienna",
+            "booklet": "Vol. 1",
+            "definition": "I like to think of surfaces as convergence space: it's a place where stuff – both material and semiotic – comes and meets from multiple directions. It is a meeting of styles, a clash often. And it surfaces to the extent that it happens in the visible.",
+            "events": []
+        },
+        {
+            "id": 7,
+            "name": "Maria Chatzidakis",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "From a conservator's perspective, urban surfaces can be seen as the physical structures, the skin, the outer layer of the urban environment, the interface of the city as a living monument. It is a palimpsest of layered history, that forms the intricate fabric of a city, both visible and hidden.",
+            "events": []
+        },
+        {
+            "id": 8,
+            "name": "Anne Cronin",
+            "category": 2,
+            "category2": 4,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "Surfaces are interfaces between processes, practices, institutions and ideas.",
+            "events": []
+        },
+        {
+            "id": 9,
+            "name": "Eduardo de la Fuente",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "Urban surfaces are the plethora of built and natural things that provide cities, regions, and places with distinctive surficial qualities, and I am very interested in the kinds of metaphors that also get generated to talk about surfaces. I'm authoring something in Spanish at the moment called La piel de la ciudad, The skin of the city. There are interesting feminist writings about buildings and cities being clothed, or dressed, faces and interfaces.",
+            "events": []
+        },
+        {
+            "id": 10,
+            "name": "Kurt Iveson",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "Surfaces are contested street media, which dramatise an inescapable tension between authorisation and appropriation in public spaces, in capitalist cities.",
+            "events": [
+                "Urban Visual Dialogues 3 (4 December 2025)",
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 11,
+            "name": "David Pontille",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "Urban surfaces are both sites of material politics and unruly, fragile entities.",
+            "events": []
+        },
+        {
+            "id": 12,
             "name": "Tom Ward",
-            "relevant focus": "Hand-painted advertising, mural labour, surface commodification",
-            "themes": [
-                "Labour",
-                "Economy"
-            ],
-            "location": "Uppsala, Sweden",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "Vol 1",
-                "USF AU",
-                "USF CY",
-                "USF SE"
-            ],
-            "definition": "Urban surfaces are the nexus at which vertical space and public space intersect; they are where material infrastructures gain agency by being activated as public, as visible, as sites of contestation."
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 1",
+            "definition": "Urban surfaces are the nexus at which vertical space and public space intersect; they are where material infrastructures gain agency by being activated as public, as visible, as sites of contestation.",
+            "events": [
+                "Urban Visual Dialogues 2 (18 Nov 2025)",
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
         },
         {
-            "name": "Tuba Doğu",
-            "relevant focus": "Urban cracks at various scales",
-            "themes": [
-                "Ecology",
-                "Governance"
-            ],
-            "location": "Izmir, Türkiye",
-            "geographical focus": [
-                "Türkiye"
-            ],
-            "participation": [
-                "Vol 8"
-            ],
-            "definition": null
+            "id": 13,
+            "name": "Sneha Annavarapu",
+            "category": 4,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "Surfaces are the skin of the roads that motorists drive on. I approach the surface not as an object but as the sensation felt by motoring bodies as they move on roads.",
+            "events": []
         },
         {
-            "name": "Twenty-Three",
-            "relevant focus": "Street artist",
-            "themes": [
-                "Communication",
-                "Materiality"
-            ],
-            "location": "Nicosia, Cyprus",
-            "geographical focus": [
-                "Cyprus"
-            ],
-            "participation": [
-                "USF CY"
-            ],
-            "definition": null
+            "id": 14,
+            "name": "Anneke Coppoolse",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "Urban surfaces are canvases that reflect current (but also past) conditions (socio-economic, cultural, political) of a place. Though generally vertical and seemingly flat, they are textured, layered, spatial, serving as sites of contestation, scenes of celebration, stages of (and for) interaction, etc.",
+            "events": []
         },
         {
-            "name": "Tyler Barron",
-            "relevant focus": "Participation and play on public footpaths",
-            "themes": [
-                "Ecology",
-                "Materiality"
-            ],
-            "location": "Cambridge, MA, USA; Netherlands",
-            "geographical focus": [
-                "USA",
-                "Netherlands"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
+            "id": 15,
+            "name": "Jacob Kimvall",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "Urban surfaces are texts, and graffiti is thus text upon text.",
+            "events": []
         },
         {
-            "name": "Vishavjeet Dhanda",
-            "relevant focus": "Foopath informalities and encroachment",
-            "themes": [
-                "Governance",
-                "Economy"
-            ],
-            "location": "Delhi, India",
-            "geographical focus": [
-                "India"
-            ],
-            "participation": [
-                "Vol 9"
-            ],
-            "definition": null
+            "id": 16,
+            "name": "Panos Leventis",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "Urban surfaces are immersive sites of experience, from where two-dimensional space expands, fusing built fabric with creative forces and active publics, retelling the city to the city.",
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
         },
         {
-            "name": "Yesim Desticioglu",
-            "relevant focus": "Material cultures, housing, and urban economies",
-            "themes": [
-                "Communication",
-                "Economy"
-            ],
-            "location": "Oxford, UK",
-            "geographical focus": [
-                "UK",
-                "Türkiye"
-            ],
-            "participation": [
-                "Vol 7"
-            ],
-            "definition": null
+            "id": 17,
+            "name": "Susanna Newbury",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "Surfaces are long-standing symptoms of the consequences of past intervention.",
+            "events": []
         },
         {
-            "name": "Yongdong (Matt) Ma",
-            "relevant focus": "Informal urban practices (graffiti), urbanism, urban democracy",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "Cardiff, UK",
-            "geographical focus": [
-                "UK"
-            ],
-            "participation": [
-                "USF SE"
-            ],
-            "definition": null
+            "id": 18,
+            "name": "Cristián Simonetti",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "Surfaces are where action and history entangle and endure.",
+            "events": []
         },
         {
-            "name": "Young-Tack Oh",
-            "relevant focus": "Everyday urbanism, marginal spaces, and repair",
-            "themes": [
-                "Materiality",
-                "Communication"
-            ],
-            "location": "Vancouver, Canada",
-            "geographical focus": [
-                "Canada",
-                "USA"
-            ],
-            "participation": [
-                "USF AU"
-            ],
-            "definition": null
+            "id": 19,
+            "name": "Myrto Tsilimpounidi",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "I have always been interested in the surfacing concerns and political tensions on the urban surfaces as evident below.",
+            "events": []
         },
         {
+            "id": 20,
+            "name": "Julia Tulke",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "Surfaces are historically accumulated materialities that can be activated or deactivated by performative intervention or the strategic prevention thereof, often in counterintuitive ways.",
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 21,
+            "name": "Gerda Wielander",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2",
+            "definition": "Walls are remnant traces of traditional and socialist urban structures that serve as loci of memory and as medium to host ever new traces in the form of writing, painting, spraying, and printing by a variety of actors, including the state. They are documents forming a fragile archive providing insights into how society works and feels.",
+            "events": []
+        },
+        {
+            "id": 22,
+            "name": "Laima Nomeikaite",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": []
+        },
+        {
+            "id": 23,
+            "name": "Liz Oakley-Brown",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 2, Vol. 3",
+            "definition": "In 2017, Rebecca Coleman and I argued that 'The surface is …potentially manifold and politically contingent' (2017: 6). By taking up and developing our earlier point, I define urban surfaces as parts of the physical environment dependent on scale, semiotics and social justice i.e. what's visible, what's communicable, and who matters?",
+            "events": []
+        },
+        {
+            "id": 24,
+            "name": "Cecilia Brazioli",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Within my framework, I deal with Urban Surfaces both as canvases for the expression of conflicting instances, and as penetrable boundaries that allow for the visibilisation of ongoing negotiations on the aesthetic and visual order of contemporary cities.",
+            "events": [
+                "Urban Visual Dialogues 2 (18 Nov 2025)",
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 25,
+            "name": "Lucy Finchett Maddock",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Urban surfaces are legal etchings upon which the cityscape writes. They are rich tapestries of spatial code. They are the edge of law. And they are law.",
+            "events": []
+        },
+        {
+            "id": 26,
+            "name": "Mia Gaia Trentin",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "The surface is an interactive space that collects a wide variety of anthropic marks of interaction, performed with different intentions for different reasons through different media. In this sense, the surface becomes a repository of collective memory, meanings, and values for the communities experiencing the place.",
+            "events": []
+        },
+        {
+            "id": 27,
+            "name": "Alex Hale",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Contemporary urban surfaces are archaeological sites to be considered as feral things. They are rural landscapes tamed by concrete, bricks and mortar. The graffiti are artefacts, previously associated with writing, but now wild; a feraling of sorts. Held within these artefacts are performances of tentacular knowledge networks. Their extent reaches beyond the urban and into a landscape's stratigraphy. As archives they perform a role that disrupts our philosophies, institutions and systems of knowledge-making. As such they are active combinations of archaeological, archival and artefacts.",
+            "events": []
+        },
+        {
+            "id": 28,
+            "name": "Ingrid Halland",
+            "category": 2,
+            "category2": 3,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Urban surfaces serve as aesthetic contact zones between man-made materials, individual experiences, and global meaning-making, including politics, ethics, and cultural values.",
+            "events": []
+        },
+        {
+            "id": 29,
+            "name": "Adam Hudec",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Epidermitecture is concerned with the naturally occurring stains on urban surfaces and is exploring the aesthetic, ecological and functional potential of Urban surfaces within the context of Epidermitecture are defined as living, breathing entities that interact with their environments.",
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 30,
+            "name": "Tim Ingold",
+            "category": 3,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "By the urban surface, I refer to the ground of what is commonly called the 'built environment'. It is distinguished by being paved.",
+            "events": []
+        },
+        {
+            "id": 31,
+            "name": "Simon Marvin",
+            "category": 2,
+            "category2": 2,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Urban surfaces - building walls and roofs, ground space including hard landscaping, water features and green nature - are being actively reconfigured as climate technologies to strategically modulate energy, thermal, liquid and chemical flows at the interface of atmospheric and terrestrial milieus.",
+            "events": []
+        },
+        {
+            "id": 32,
+            "name": "Chris Parkinson",
+            "category": 1,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Urban surfaces are a portal into sinewy networks of rhythmic, relational and nonrepresentational concepts of urban space.",
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 33,
+            "name": "Rafael Schacter",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Urban seems easy enough define - something of or related to the city - whilst surfaces presents us with both a physical and conceptual idea of a boundary point (often between inside and out, above and below). In this context, however, and in today's increasingly surveilled, securitised, and privatised megalopolises, 'urban surfaces' are critical spaces of conflict and contestation revealing the messy complexity of the city today.",
+            "events": []
+        },
+        {
+            "id": 34,
+            "name": "Sprya Sharma",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 3",
+            "definition": "Urban surfaces act as display boards where the needs of the governed and the interests of government intersect, offering insights into societal structures and issues. The surfaces not only reflect the society they also sustain the society.",
+            "events": []
+        },
+        {
+            "id": 35,
+            "name": "Elijah Agwaru Anomet",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "Urban Surfaces are constantly evolving interfaces that intersect the material environment and culture, encompassing, but not limited to, rhythms, structures, textures, and spaces, that serve as canvases for community perspectives.",
+            "events": []
+        },
+        {
+            "id": 36,
+            "name": "Natalie Bauer",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "Urban surfaces consist of street furniture, like walls or lampposts, that make public space a room. In combination with Henri Lefebvre's reflections on the visual expression of power dynamics in cities, furniture decorated with street art makes the room a home for its inhabitants. Consequently, urban surfaces constitute the canvas upon which the public can express their ideas and engage with each other.",
+            "events": []
+        },
+        {
+            "id": 37,
+            "name": "Taylor Coyne",
+            "category": 4,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "In my work as a historical and political urban geographer of stormwater infrastructures, I define urban surfaces through the lens of infrastructure, drains, and urban swamps. They are porous, layered skins through which water, memory, and power move. A surface is not a boundary but a threshold: archive, ecology, and territory.",
+            "events": []
+        },
+        {
+            "id": 38,
+            "name": "Tom Critchley",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "An urban surface is where city materialities and social practices interact, overlap, and are (re)configured. As a designer, I do not see them as passive backdrops, but active canvases to express and understand identity, culture, and socialities of the city, alongside a space to intervene and reconfigure these relationships. In the context of my research on micromobility, urban surfaces are the public facing representations of transport infrastructure: pavements, curbs, cycle lanes, docking zones, and e-bikes/e-scooters themselves.",
+            "events": []
+        },
+        {
+            "id": 39,
+            "name": "Megan Hicks",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "In my work I concentrate on horizontal urban surfaces, or pavements. By 'pavements' I mean paved public spaces, including roadways, footpaths, sidewalks and public squares. I approach this subject in two ways... I have found that the pavement is more than a passive platform for feet and wheels. Rather, it is both a canvas for written expression and a presence in its own right, contributing to the conscious and subconscious cultural life of a city.",
+            "events": []
+        },
+        {
+            "id": 40,
+            "name": "Joumana Ibrahim",
+            "category": 0,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "In conflict and post-conflict cities, a surface is never neutral. It becomes a canvas, a pattern, a banner. It is a call for action, a gesture of resilience, a cry for help, and a threat that marks territory. It can be an invitation, a sacred space, or a battlefield of meaning. In cities caught in conflicts and their aftermath, surfaces speak for both the oppressed and the oppressors.",
+            "events": []
+        },
+        {
+            "id": 41,
+            "name": "Christoph Lueder",
+            "category": 1,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "Urban surfaces are interfaces between a material condition and transformative forces. Urban surfaces result from claims to space and often have an invisible interior counterpart. As urban laboratories such surfaces record entangled processes between urban and interior milieus and constitute living archives of material-social processes and individuation.",
+            "events": []
+        },
+        {
+            "id": 42,
+            "name": "Nian Paul",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "Urban surfaces are material configurations of socio-spatial relations, political expressions, contestations, resilience and future imaginaries. I position public art as not just an adornment on urban surfaces, but an urban surface itself.",
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 43,
+            "name": "Lorenzo 'SERRAGLIA' Servi",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "For me, urban surfaces are like diaries, or even ancient tablets. They record both voluntary and involuntary actions: scratches, stains, repairs, graffiti, weather. In my practice, I treat them as signs to be translated into a visual language, so their hidden meanings become visible to everyone.",
+            "events": []
+        },
+        {
+            "id": 44,
+            "name": "Pierre-Édouard Weill",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 4",
+            "definition": "Through my sociological research, I conceptualise urban surfaces as public or private supports for graffiti and street art. I analyse their legal framing, exploring how penalisation intersects with artistic legitimation via court cases, specialised policing, and digital surveillance, while examining how symbolic capital circulates and converts into economic value.",
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 45,
+            "name": "Chris Boyko",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "Urban surfaces, in the form of pavements (or sidewalks, footpaths etc.), refer to any publicly negotiated horizontal planes, from carriageway edge to other thresholds (e.g., buildings, green spaces), on which legal rights, social meanings and economic values are inscribed and may be contested.",
+            "events": []
+        },
+        {
+            "id": 46,
+            "name": "Ruth Dalton",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "Urban surfaces, in the form of pavements (or sidewalks, footpaths etc.), refer to any publicly negotiated horizontal planes, from carriageway edge to other thresholds (e.g., buildings, green spaces), on which legal rights, social meanings and economic values are inscribed and may be contested.",
+            "events": []
+        },
+        {
+            "id": 47,
+            "name": "Kevin Muldoon-Smith",
+            "category": 1,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "Urban surfaces, in the form of pavements (or sidewalks, footpaths etc.), refer to any publicly negotiated horizontal planes, from carriageway edge to other thresholds (e.g., buildings, green spaces), on which legal rights, social meanings and economic values are inscribed and may be contested.",
+            "events": []
+        },
+        {
+            "id": 48,
+            "name": "Adrian Burnham",
+            "category": 4,
+            "category2": 3,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "A viable surface to an unauthorised commercial fly-poster would be: (i) prominent, visible to passing traffic; (ii) wooden hoardings, shop windows, rendered walls, brickwork; (iii) unlikely to be defaced or torn down; and (iv) not heavily policed.",
+            "events": []
+        },
+        {
+            "id": 49,
+            "name": "Susan Hansen",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "I document walls over time as urban social surfaces, in order to make available for analysis the ongoing collective dialogue on city walls, taking into account not just monumental murals and subcultural graffiti but the entire spectrum of quotidian urban inscriptions.",
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 50,
+            "name": "Dan Johnston",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "In my research, urban surfaces encompass all skatepark elements—concrete, steel, timber structures, signage, boundary zones, and surrounding trees. These surfaces serve dual functions: providing physical skating terrain and operating as canvases where users inscribe cultural traces.",
+            "events": []
+        },
+        {
+            "id": 51,
+            "name": "Miti Kinaawola",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "Through my practice as a tour guide at Tembea Kampala Walking Tours, urban surfaces are the visible and tangible layers through which the city's social, cultural, and political life is recorded and made legible... In my work, urban surfaces are texts to be read and stories to be experienced.",
+            "events": []
+        },
+        {
+            "id": 52,
+            "name": "Friederike Landau-Donnelly",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "As an interdisciplinary spatial theorist and cultural geographer, I approach urban surfaces as contested socio-spatial arrangements. Surfaces are mediated by human and more-than-human actors as material-symbolical matter, materialising in different constellations of property, power and place... Surfaces are palimpsests.",
+            "events": []
+        },
+        {
+            "id": 53,
+            "name": "Diana-Raisa Lolici",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "I conceptualise urban surfaces as both material supports and socio-political interfaces that mediate artistic expression, control, and public engagement. Far from neutral, urban surfaces embody layered histories and meanings, functioning as contested sites where authority and resistance converge.",
+            "events": []
+        },
+        {
+            "id": 54,
+            "name": "Richard Müller",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "Any attempt to produce a definition of an urban surface must anticipate its role in the shaping, configuration, and mediation of social dynamics within the city it is situated. Urban surfaces exceed their status as palimpsests by possessing the capacity to intervene in the socio-urban spaces of cities.",
+            "events": []
+        },
+        {
+            "id": 55,
+            "name": "Jazoo Yang",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "In my practice, urban surfaces function as tactile archives where materials, memory, and human contact converge. They record traces of lived experience and transformation.",
+            "events": []
+        },
+        {
+            "id": 56,
+            "name": "Dina Yunis",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "In conflict cities like Beirut, the publicly visible urban surface is a politically charged interface and a contested palimpsest. Its functions are threefold: as a chronicle of dissent, a nexus of power reclaiming space, and a site of contested memory archiving alternative histories.",
+            "events": []
+        },
+        {
+            "id": 57,
             "name": "Yufeng Zhao",
-            "relevant focus": "Mapping textscapes through digital technologies",
-            "themes": [
-                "Communication",
-                "Governance"
-            ],
-            "location": "New York City, USA",
-            "geographical focus": [
-                "USA"
-            ],
-            "participation": [
-                "Vol 5"
-            ],
-            "definition": "Archived urban imageries are also urban surfaces. Every storefront, advertisement and graffiti exists not only as a physical surface on walls but as explorable data within Google Street View's archive, a digital twin of cities for the past 18 years."
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 5",
+            "definition": "Archived urban imageries are also urban surfaces. Every storefront, advertisement and graffiti exists not only as a physical surface on walls but as explorable data within Google Street View's archive, a digital twin of cities for the past 18 years.",
+            "events": []
         },
         {
-            "name": "USF = Urban Studies Foundation (AU / CY / SE)",
-            "relevant focus": null,
-            "themes": [],
-            "location": null,
-            "geographical focus": [],
-            "participation": [],
-            "definition": null
+            "id": 58,
+            "name": "Alison Barnes",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "I consider an urban surface as a communicative interface, one that is often inscribed with 'graphic heritage'. Graphic heritage functions as a meaning making system that uses type, colour, symbols and materials.",
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
         },
         {
-            "name": "SAH = Society of Architectural Historians",
-            "relevant focus": null,
-            "themes": [],
-            "location": null,
-            "geographical focus": [],
-            "participation": [],
-            "definition": null
+            "id": 59,
+            "name": "Jane Elizabeth Bennett",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "I am defining the urban floorscape as a locomotable surface; a dynamic interface between body and environment that supports walking and mobility-aid use. Carrying traces of history and everyday rhythms, it entangles movement with embodied knowledge.",
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
         },
         {
-            "name": "RGS = Royal Geographical Society",
-            "relevant focus": null,
-            "themes": [],
-            "location": null,
-            "geographical focus": [],
-            "participation": [],
-            "definition": null
+            "id": 60,
+            "name": "Peta Carlin",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "In my photographic series, Urban Fabric, the commonplace textile metaphor was engaged... The significance of the image as a surface, for my practice, is its capacity to mediate and establish dialogues between different places, cultures and disciplines.",
+            "events": []
+        },
+        {
+            "id": 61,
+            "name": "Joanne Choueiri",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "In my work, urban surfaces are exemplified by the construction fence: a surface that hides a demolition, a construction, or a stalled reconstruction while displaying Walter Benjamin's idea of 'wish images'. These curated visuals project developer, state, and civic futures, making the fence an active political interface rather than a neutral barrier.",
+            "events": []
+        },
+        {
+            "id": 62,
+            "name": "Lucy Irvine",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "I consider an urban surface as a boundary or an interface. My expanded textile practice involves generating new urban surfaces that intervene in public space. By weaving unpredictable emergent forms from materials that usually play a utilitarian homogenising role in the urban fabric, I seek to confuse boundaries and open new interfaces.",
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 63,
+            "name": "Ronald Kramer",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "I find it incredibly difficult to provide a definition of urban surfaces... an urban surface is a feature of the urban environment that people have some meaningful, democratic claim to; those parts of the city that the people build and support.",
+            "events": []
+        },
+        {
+            "id": 64,
+            "name": "Margarethe Kusenbach",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "From my viewpoint as an urban sociologist, urban surfaces are places in the public realm, a social territory dominated by strangers and governed by implicit rules for interaction and relationships... material and symbolic props citizens can use to express and manage identities.",
+            "events": []
+        },
+        {
+            "id": 65,
+            "name": "Moral Masuoka",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "Within my work producing murals, I define an urban surface as a solid structure, typically a wall, to which paint can be applied, that provides visual experiences within the environment.",
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 66,
+            "name": "Petr Vašát",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "Drawing on the case of macromurals, urban surfaces are a heterogeneous, uneven ensemble of material planes—walls, façades, roofs—and other built or natural textures that become temporarily homogenised through painting, maintenance, or infrastructural intervention into cohesive visual patterns visible from a great distance.",
+            "events": []
+        },
+        {
+            "id": 67,
+            "name": "Iain White",
+            "category": 3,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "I see a surface as a small part of a wider urban story. Surfaces provide visual cues into the condition of a city and its inhabitants, from the movements of capital, to its politics or population diversity, to its relationship with nature or risk.",
+            "events": []
+        },
+        {
+            "id": 68,
+            "name": "Erna Husukic",
+            "category": 0,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "Urban surfaces are not passive backdrops, they are the city's quiet witnesses, recording its transformations in cracks, textures, and layers of paint and mortar. They are the visual soundtracks of political shifts, social currents, and cultural memory.",
+            "events": []
+        },
+        {
+            "id": 69,
+            "name": "Emina Zejnilović",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": "Vol. 6",
+            "definition": "Urban surfaces are not passive backdrops, they are the city's quiet witnesses, recording its transformations in cracks, textures, and layers of paint and mortar. They are the visual soundtracks of political shifts, social currents, and cultural memory.",
+            "events": []
+        },
+        {
+            "id": 70,
+            "name": "Emma Arnold",
+            "category": 2,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": []
+        },
+        {
+            "id": 71,
+            "name": "Jens Besser",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Urban Visual Dialogues 1 (3 March 2025)"
+            ]
+        },
+        {
+            "id": 72,
+            "name": "Adrian Tanner",
+            "category": 1,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Urban Visual Dialogues 1 (3 March 2025)",
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 73,
+            "name": "Harald Hinz",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Urban Visual Dialogues 1 (3 March 2025)"
+            ]
+        },
+        {
+            "id": 74,
+            "name": "Meng-Hsuan Lee",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Architectural Historians Session (2 May 2025)"
+            ]
+        },
+        {
+            "id": 75,
+            "name": "Melissa Smith",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Architectural Historians Session (2 May 2025)"
+            ]
+        },
+        {
+            "id": 76,
+            "name": "Efrîn Özyetiş",
+            "category": 0,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Architectural Historians Session (2 May 2025)"
+            ]
+        },
+        {
+            "id": 77,
+            "name": "Lynnette Widder",
+            "category": 1,
+            "category2": 4,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Architectural Historians Session (2 May 2025)"
+            ]
+        },
+        {
+            "id": 78,
+            "name": "Christian Williams",
+            "category": 1,
+            "category2": 2,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Architectural Historians Session (2 May 2025)"
+            ]
+        },
+        {
+            "id": 79,
+            "name": "Cheng Chen",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Architectural Historians Session (2 May 2025)"
+            ]
+        },
+        {
+            "id": 80,
+            "name": "Kyle Magee",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Urban Visual Dialogues 3 (4 December 2025)"
+            ]
+        },
+        {
+            "id": 81,
+            "name": "Greg Ireland",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Urban Visual Dialogues 3 (4 December 2025)"
+            ]
+        },
+        {
+            "id": 82,
+            "name": "Jo Mair",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Urban Visual Dialogues 3 (4 December 2025)"
+            ]
+        },
+        {
+            "id": 83,
+            "name": "Manda Lane",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Urban Visual Dialogues 3 (4 December 2025)"
+            ]
+        },
+        {
+            "id": 84,
+            "name": "Asees Prab",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 85,
+            "name": "Caroline Kyi",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 86,
+            "name": "Enzo Lara Hamilton",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 87,
+            "name": "Laura Szyman",
+            "category": 4,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 88,
+            "name": "Maria Noriega",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 89,
+            "name": "Michael Stonham",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 90,
+            "name": "Myra Abubakar",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 91,
+            "name": "Nataly Arevalo",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 92,
+            "name": "Nazanin Moghaddam",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 93,
+            "name": "Young-Tack Oh",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Graffiti Research Workshop (3-4 Dec 2025)"
+            ]
+        },
+        {
+            "id": 94,
+            "name": "Jessica Amarteifio",
+            "category": 5,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 95,
+            "name": "Holly Carton",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 96,
+            "name": "Soufiane Chinig",
+            "category": 2,
+            "category2": 5,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 97,
+            "name": "Tara Lauren di Cassio",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 98,
+            "name": "Viloria James Clifford",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 99,
+            "name": "Alice Mazzilli",
+            "category": 1,
+            "category2": 2,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 100,
+            "name": "Nina O'Reilly",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 101,
+            "name": "Jenny Papasotiriou",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 102,
+            "name": "Diandra Saginatari",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 103,
+            "name": "Twenty-Three",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 104,
+            "name": "CC Williams",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 105,
+            "name": "Yeti",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Nicosia Workshop (26-27 May 2026)"
+            ]
+        },
+        {
+            "id": 106,
+            "name": "Agampodi Nirwadya Nirikshani Mendis Gunasekara",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 107,
+            "name": "David Littlefield",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 108,
+            "name": "Mirame Elsayed",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 109,
+            "name": "Gabriel Araújo Velasco",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 110,
+            "name": "Juan Carlos Guerrero-Hernandez",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 111,
+            "name": "Francesca Bragaglia",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 112,
+            "name": "Yeşim Desticioğlu",
+            "category": 5,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 113,
+            "name": "Shruti Mehta",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 114,
+            "name": "Eliza Demian Patrascu",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 115,
+            "name": "Doron Altaratz",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 116,
+            "name": "Zlatan Krajina",
+            "category": 0,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 117,
+            "name": "Inês Valle",
+            "category": 3,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 118,
+            "name": "Andrew Esiebo",
+            "category": 3,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "USRN Workshop 7 (21 April 2026)"
+            ]
+        },
+        {
+            "id": 119,
+            "name": "Frederico Câmara",
+            "category": 3,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 120,
+            "name": "Meriky Lo Alexander",
+            "category": 4,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 121,
+            "name": "Selma Piukovici",
+            "category": 1,
+            "category2": 2,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 122,
+            "name": "Danae Santibáñez",
+            "category": 2,
+            "category2": 3,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 123,
+            "name": "Giulia Riva",
+            "category": 4,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 124,
+            "name": "Stuart Holdsworth",
+            "category": 4,
+            "category2": 4,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
+        },
+        {
+            "id": 125,
+            "name": "Caroline Newton",
+            "category": 3,
+            "category2": 1,
+            "location": "Unknown",
+            "booklet": null,
+            "definition": null,
+            "events": [
+                "Royal Geographical Society / Global Street Art Event (30 August 2024)"
+            ]
         }
     ],
     "links": [
@@ -2381,6 +1449,14 @@
         {
             "source": "Tom Ward",
             "target": "Konstantinos Avramidis"
+        },
+        {
+            "source": "Katya Assaf-Zakharov",
+            "target": "Tim Schnetgöke"
+        },
+        {
+            "source": "Peter Bengtsen",
+            "target": "Andrea Brighenti"
         },
         {
             "source": "Maria Chatzidakis",
@@ -2403,8 +1479,16 @@
             "target": "Susanna Newbury"
         },
         {
+            "source": "Cristián Simonetti",
+            "target": "Myrto Tsilimpounidi"
+        },
+        {
             "source": "Julia Tulke",
             "target": "Gerda Wielander"
+        },
+        {
+            "source": "Cecilia Brazioli",
+            "target": "Lucy Finchett Maddock"
         },
         {
             "source": "Mia Gaia Trentin",
@@ -2437,6 +1521,14 @@
         {
             "source": "Joumana Ibrahim",
             "target": "Christoph Lueder"
+        },
+        {
+            "source": "Nian Paul",
+            "target": "Lorenzo 'SERRAGLIA' Servi"
+        },
+        {
+            "source": "Pierre-Édouard Weill",
+            "target": "Chris Boyko"
         },
         {
             "source": "Ruth Dalton",
@@ -2475,6 +1567,10 @@
             "target": "Ronald Kramer"
         },
         {
+            "source": "Margarethe Kusenbach",
+            "target": "Moral Masuoka"
+        },
+        {
             "source": "Petr Vašát",
             "target": "Iain White"
         },
@@ -2483,7 +1579,7 @@
             "target": "Emina Zejnilović"
         }
     ],
-    "theme_phrases": [
+    "themes": [
         {
             "id": "t1",
             "phrase": "Sites of Political Contestation"
@@ -2501,7 +1597,7 @@
             "phrase": "Material Inscription"
         }
     ],
-    "theme_phrase_links": [
+    "theme_links": [
         {
             "researcher": "Anneke Coppoolse",
             "theme": "Sites of Political Contestation"
