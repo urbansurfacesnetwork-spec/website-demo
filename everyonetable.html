@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USRN Everyone</title>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fractul.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'CustomFont', sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #191919;
+            color: #e0e0e0;
+        }
+
+        .table-section {
+            margin-top: 20px;
+            padding: 16px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+            background-color: transparent;
+        }
+
+        thead {
+            background-color: #9775FD;
+            color: white;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid #0d47a1;
+        }
+
+        th.toggle-head {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        th.toggle-head:hover {
+            background-color: #7c5ce0;
+        }
+
+        #toggleBtn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-family: inherit;
+            cursor: pointer;
+            float: right;
+            padding: 0 4px;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+
+        #toggleBtn[aria-expanded="true"] {
+            transform: rotate(180deg);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #333;
+        }
+
+        tbody tr {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        tbody.hidden {
+            display: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+<div class="table-section">
+    <div class="table-container">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th class="toggle-head" id="toggleHead">Name
+                        <button id="toggleBtn" type="button" aria-expanded="false" aria-controls="tableBody" aria-label="Show or hide everyone">&#9660;</button>
+                    </th>
+                    <th>Relevant Focus</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody" class="hidden"></tbody>
+        </table>
+    </div>
+</div>
+<script>
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, ch => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[ch]));
+
+    const tbody = document.getElementById('tableBody');
+    const btn = document.getElementById('toggleBtn');
+
+    function toggle() {
+        const hidden = tbody.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!hidden));
+    }
+
+    document.getElementById('toggleHead').addEventListener('click', e => {
+        if (e.target !== btn) toggle();
+    });
+    btn.addEventListener('click', toggle);
+
+    async function init() {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) throw new Error(`Failed to fetch data.json: ${response.statusText}`);
+            const data = await response.json();
+            if (!Array.isArray(data.nodes)) throw new Error('Invalid data structure: missing nodes');
+            tbody.innerHTML = data.nodes.map(person => `
+                <tr>
+                    <td><strong>${escapeHtml(person.name)}</strong></td>
+                    <td>${person['relevant focus'] ? escapeHtml(person['relevant focus']) : '—'}</td>
+                </tr>
+            `).join('');
+        } catch (err) {
+            console.error('Initialization failed:', err);
+            tbody.innerHTML = `<tr><td colspan="2" class="no-results"><strong>Error:</strong> ${escapeHtml(err.message)}</td></tr>`;
+        }
+    }
+    init();
+</script>
+</body>
+</html>
