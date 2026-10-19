@@ -28,19 +28,16 @@
             box-shadow: none;
         }
 
-        .table-section h2 {
-            margin-top: 0;
-            color: #e0e0e0;
-            border-bottom: 3px solid #9775FD;
-            padding-bottom: 6px;
-        }
-
         .controls-container {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             margin-bottom: 20px;
             align-items: flex-end;
+        }
+
+        .search-control {
+            flex-basis: 100%;
         }
 
         .control-group {
@@ -201,13 +198,13 @@
         }
 
         .pagination button.active {
-            background-color: #1f77b4;
+            background-color: #9775FD;
             color: white;
-            border-color: #0d47a1;
+            border-color: #9775FD;
         }
 
         .pagination button:hover {
-            background-color: #1f77b4;
+            background-color: #9775FD;
             color: white;
         }
 
@@ -231,10 +228,6 @@
 
             .table-section {
                 padding: 10px;
-            }
-
-            .table-section h2 {
-                font-size: 16px;
             }
 
             .controls-container {
@@ -317,10 +310,8 @@
 <body>
 
 <div class="table-section">
-    <h2>Search the Urban Surfaces Research Network!</h2>
-
     <div class="controls-container">
-        <div class="control-group">
+        <div class="control-group search-control">
             <input type="text" id="searchInput" placeholder="e.g., Sabina Andron">
         </div>
 
