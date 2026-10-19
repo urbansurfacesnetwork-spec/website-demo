@@ -1,4 +1,4 @@
-Good on you urban surfacer, you've found the secret message !
+Good on you urban surfacer, you've found the secret message, you typed all that out!? Amazing!
 
 For your reward visit: 
 https://urbansurfacesresearchnetwork.com/easter-egg
