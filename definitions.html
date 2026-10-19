@@ -27,6 +27,11 @@
             width: 100%;
             height: 100vh;
             background: #191919;
+            overflow: auto;
+        }
+
+        #diagram {
+            min-width: 1100px;
         }
 
         .error {
@@ -100,26 +105,89 @@
                 .filter((node) => node && typeof node.name === 'string' && node.definition && String(node.definition).trim())
                 .sort((a, b) => lastName(a.name).localeCompare(lastName(b.name)) || a.name.localeCompare(b.name));
 
-            const treeData = {
-                name: '',
-                symbolSize: 0,
-                label: { show: false },
-                children: peopleWithDefinitions.map((person, pairId) => ({
-                    name: person.name,
-                    pairId,
-                    labelType: 'person',
-                    children: [
-                        {
-                            name: wrapText(person.definition, 56),
-                            fullDefinition: person.definition,
-                            pairId,
-                            labelType: 'definition'
-                        }
-                    ]
-                }))
-            };
+            const shuffledDefinitions = peopleWithDefinitions.map((person, pairId) => ({
+                person,
+                pairId
+            }));
+            for (let index = shuffledDefinitions.length - 1; index > 0; index -= 1) {
+                const swapIndex = Math.floor(Math.random() * (index + 1));
+                [shuffledDefinitions[index], shuffledDefinitions[swapIndex]] =
+                    [shuffledDefinitions[swapIndex], shuffledDefinitions[index]];
+            }
+            if (
+                shuffledDefinitions.length > 1 &&
+                shuffledDefinitions.every((entry, index) => entry.pairId === index)
+            ) {
+                shuffledDefinitions.push(shuffledDefinitions.shift());
+            }
 
-            chart = echarts.init(document.getElementById('main'));
+            const definitionRows = shuffledDefinitions.map((entry) => {
+                const wrappedDefinition = wrapText(entry.person.definition, 56);
+                const rowHeight = wrappedDefinition.split('\n').length * 13 + 12;
+                return { ...entry, wrappedDefinition, rowHeight };
+            });
+            const diagramHeight = Math.max(
+                700,
+                96 + definitionRows.reduce((height, row) => height + row.rowHeight + 16, 0)
+            );
+            const mainDiv = document.getElementById('main');
+            const chartWidth = Math.max(1100, mainDiv.clientWidth);
+            let definitionY = 48;
+            definitionRows.forEach((row) => {
+                row.y = definitionY + row.rowHeight / 2;
+                definitionY += row.rowHeight + 16;
+            });
+
+            const diagram = document.createElement('div');
+            diagram.id = 'diagram';
+            diagram.style.width = `${chartWidth}px`;
+            diagram.style.height = `${diagramHeight}px`;
+            mainDiv.replaceChildren(diagram);
+
+            const definitionNodes = definitionRows.map((row) => ({
+                id: `definition-${row.pairId}`,
+                name: row.wrappedDefinition,
+                pairId: row.pairId,
+                x: chartWidth - 520,
+                y: row.y,
+                symbolSize: 1,
+                label: {
+                    show: true,
+                    position: 'right',
+                    align: 'left',
+                    width: 500,
+                    overflow: 'break',
+                    fontSize: 10,
+                    lineHeight: 13,
+                    color: '#bdbdbd',
+                    fontFamily: 'CustomFont, sans-serif'
+                }
+            }));
+            const personNodes = peopleWithDefinitions.map((person, pairId) => ({
+                id: `person-${pairId}`,
+                name: person.name,
+                pairId,
+                x: 250,
+                y: peopleWithDefinitions.length === 1
+                    ? diagramHeight / 2
+                    : 48 + pairId * (diagramHeight - 96) / (peopleWithDefinitions.length - 1),
+                symbolSize: 1,
+                label: {
+                    show: true,
+                    position: 'left',
+                    align: 'right',
+                    fontSize: 12,
+                    color: '#d7d7d7',
+                    fontFamily: 'CustomFont, sans-serif'
+                }
+            }));
+            const graphNodes = [...personNodes, ...definitionNodes];
+            const links = peopleWithDefinitions.map((person, pairId) => ({
+                source: `person-${pairId}`,
+                target: `definition-${pairId}`
+            }));
+
+            chart = echarts.init(diagram);
             chartInstance = chart;
             const option = {
                 backgroundColor: '#191919',
@@ -128,49 +196,29 @@
                 },
                 series: [
                     {
-                        type: 'tree',
-                        data: [treeData],
-                        top: '4%',
-                        left: '5%',
-                        bottom: '4%',
-                        right: '36%',
-                        orient: 'LR',
-                        symbol: 'roundRect',
-                        symbolSize: [10, 10],
-                        expandAndCollapse: false,
-                        initialTreeDepth: -1,
+                        type: 'graph',
+                        layout: 'none',
+                        data: graphNodes,
+                        links,
+                        left: 0,
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        roam: false,
+                        edgeSymbol: ['none', 'none'],
                         lineStyle: {
-                            color: '#4a4a4a',
+                            color: '#666666',
                             width: 1,
-                            opacity: 0
-                        },
-                        roam: true,
-                        label: {
-                            position: 'right',
-                            verticalAlign: 'middle',
-                            align: 'left',
-                            fontSize: 10,
-                            color: '#d7d7d7',
-                            fontFamily: 'CustomFont, sans-serif'
-                        },
-                        leaves: {
-                            label: {
-                                position: 'right',
-                                verticalAlign: 'middle',
-                                align: 'left',
-                                fontSize: 9,
-                                lineHeight: 12,
-                                color: '#bdbdbd',
-                                fontFamily: 'CustomFont, sans-serif'
-                            }
+                            opacity: 0.65,
+                            curveness: 0.35
                         },
                         emphasis: {
-                            focus: 'relative',
+                            focus: 'adjacency',
                             label: {
                                 fontSize: 14,
                                 lineHeight: 18
                             },
-                            lineStyle: { opacity: 0 }
+                            lineStyle: { opacity: 1, width: 2 }
                         }
                     }
                 ]
@@ -178,12 +226,13 @@
 
             chart.setOption(option);
             chart.on('click', (params) => {
-                if (params.seriesType !== 'tree' || params.data?.pairId === undefined) return;
+                if (params.seriesType !== 'graph' || params.dataType !== 'node' || params.data?.pairId === undefined) return;
 
                 if (selectedPairId === params.data.pairId) {
                     chart.dispatchAction({
                         type: 'downplay',
                         seriesIndex: 0,
+                        dataType: 'node',
                         dataIndex: selectedPairIndices
                     });
                     selectedPairId = null;
@@ -195,24 +244,22 @@
                     chart.dispatchAction({
                         type: 'downplay',
                         seriesIndex: 0,
+                        dataType: 'node',
                         dataIndex: selectedPairIndices
                     });
                 }
-                selectedPairIndices = (params.treePathInfo || [])
-                    .slice(1)
-                    .map((node) => node.dataIndex)
-                    .filter(Number.isInteger);
-                if (!selectedPairIndices.includes(params.dataIndex)) {
-                    selectedPairIndices.push(params.dataIndex);
-                }
+                selectedPairIndices = [params.data.pairId, peopleWithDefinitions.length + params.data.pairId];
                 selectedPairId = params.data.pairId;
                 chart.dispatchAction({
                     type: 'highlight',
                     seriesIndex: 0,
+                    dataType: 'node',
                     dataIndex: selectedPairIndices
                 });
             });
-            resizeHandler = () => chart.resize();
+            resizeHandler = () => {
+                chart.resize();
+            };
             window.addEventListener('resize', resizeHandler);
         } catch (error) {
             if (chart && !chart.isDisposed()) {
