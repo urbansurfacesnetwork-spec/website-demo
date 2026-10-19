@@ -258,7 +258,6 @@
                 });
             });
             resizeHandler = () => {
-                diagram.style.width = `${Math.max(1100, document.getElementById('main').clientWidth)}px`;
                 chart.resize();
             };
             window.addEventListener('resize', resizeHandler);
