@@ -44,7 +44,7 @@
 
 <script>
     let myChart = null;
-    const categoryColors = {
+    const themeColors = {
         0: '#f5e6ba',
         1: '#acf2c9',
         2: '#fdc5f5',
@@ -64,8 +64,8 @@
             }
             const data = await response.json();
 
-            if (!Array.isArray(data.categories) || !Array.isArray(data.nodes) || !Array.isArray(data.links)) {
-                throw new Error('Invalid data structure: missing categories, nodes, or links');
+            if (!Array.isArray(data.themes) || !Array.isArray(data.nodes)) {
+                throw new Error('Invalid data structure: missing themes or nodes');
             }
 
             // Initialize chart
@@ -81,28 +81,35 @@
 
     // ===== Initialize ECharts =====
     function initChart(data) {
-        // Process categories
-        const categories = data.categories.map((category, index) => ({
-            name: category.name,
-            itemStyle: { color: categoryColors[index] }
+        // Process themes (ECharts calls these "categories" internally)
+        const themes = data.themes.map((theme, index) => ({
+            name: theme.name,
+            itemStyle: { color: themeColors[index] }
         }));
+        const themeIndex = {};
+        data.themes.forEach((theme, index) => { themeIndex[theme.name] = index; });
 
         // Process nodes
         const nodes = data.nodes.map(node => {
-            const color1 = categoryColors[node.category];
-            const color2 = categoryColors[node.category2];
+            const nodeThemes = Array.isArray(node.themes) ? node.themes : [];
+            const theme1 = themeIndex[nodeThemes[0]];
+            const theme2 = nodeThemes.length > 1 ? themeIndex[nodeThemes[1]] : theme1;
+            const color1 = themeColors[theme1] || DEFAULT_EDGE_COLOR;
+            const color2 = themeColors[theme2] || color1;
 
             return {
                 name: node.name,
-                category: node.category,
-                category2: node.category2,
+                category: theme1,
+                category2: theme2,
                 symbol: 'rect',
                 symbolSize: 15,
                 value: 15,
+                relevantFocus: node['relevant focus'],
+                nodeThemes: nodeThemes,
                 location: node.location,
-                booklet: node.booklet,
+                geographicalFocus: node['geographical focus'],
+                participation: node.participation,
                 definition: node.definition,
-                events: node.events,
                 color1: color1,
                 color2: color2,
                 itemStyle: {
@@ -113,17 +120,17 @@
             };
         });
 
-        // Add category hub nodes
-        const categoryHubNodes = data.categories.map((category, index) => ({
-            name: `Category: ${category.name}`,
+        // Add theme hub nodes
+        const themeHubNodes = data.themes.map((theme, index) => ({
+            name: `Theme: ${theme.name}`,
             category: index,
             category2: index,
             symbol: 'circle',
             symbolSize: 36,
             value: 36,
-            isCategoryHub: true,
+            isThemeHub: true,
             itemStyle: {
-                color: categoryColors[index],
+                color: themeColors[index],
                 borderColor: '#fff',
                 borderWidth: 0
             },
@@ -133,7 +140,7 @@
             }
         }));
 
-        const graphNodes = [...nodes, ...categoryHubNodes];
+        const graphNodes = [...nodes, ...themeHubNodes];
 
         // Create node map
         const nodeMap = {};
@@ -142,7 +149,7 @@
         });
 
         // Filter links
-        const links = data.links.filter(link => {
+        const links = (data.links || []).filter(link => {
             const sourceNode = nodeMap[link.source];
             const targetNode = nodeMap[link.target];
             
@@ -161,32 +168,19 @@
             };
         });
 
-        // Add person-to-category links
-        const categoryLinks = nodes.flatMap(node => {
-            const links = [{
+        // Add person-to-theme links
+        const themeLinks = nodes.flatMap(node => node.nodeThemes
+            .filter(themeName => themeIndex[themeName] !== undefined)
+            .map(themeName => ({
                 source: node.name,
-                target: `Category: ${categories[node.category].name}`,
+                target: `Theme: ${themeName}`,
                 lineStyle: {
-                    color: categoryColors[node.category],
+                    color: themeColors[themeIndex[themeName]],
                     width: 1.5
                 }
-            }];
+            })));
 
-            if (node.category2 !== node.category) {
-                links.push({
-                    source: node.name,
-                    target: `Category: ${categories[node.category2].name}`,
-                    lineStyle: {
-                        color: categoryColors[node.category2],
-                        width: 1.5
-                    }
-                });
-            }
-
-            return links;
-        });
-
-        const allLinks = [...links, ...categoryLinks];
+        const allLinks = [...links, ...themeLinks];
 
         // Initialize chart
         const chartDom = document.getElementById('main');
@@ -199,23 +193,31 @@
                 extraCssText: 'max-width: 300px; white-space: normal; word-wrap: break-word;',
                 formatter: function (params) {
                     if (params.dataType === 'node') {
-                        if (params.data.isCategoryHub) {
-                            return `<b>${params.data.name.replace('Category: ', '')}</b><br/>Category hub`;
+                        if (params.data.isThemeHub) {
+                            return `<b>${params.data.name.replace('Theme: ', '')}</b><br/>Theme hub`;
                         }
-                        const categoryName1 = categories[params.data.category]?.name || 'Unknown';
-                        const categoryName2 = categories[params.data.category2]?.name || 'Unknown';
-                        const location = params.data.location || 'Unknown';
-                        const booklet = params.data.booklet || 'N/A';
-                        const eventsText = params.data.events && params.data.events.length > 0 
-                            ? params.data.events.join(', ') 
+                        const themesText = params.data.nodeThemes.length > 0
+                            ? params.data.nodeThemes.join(' & ')
                             : 'None';
-                        
+                        const location = params.data.location || 'Unknown';
+                        const relevantFocus = params.data.relevantFocus || 'N/A';
+                        const geoFocus = params.data.geographicalFocus && params.data.geographicalFocus.length > 0
+                            ? params.data.geographicalFocus.join(', ')
+                            : 'N/A';
+                        const participationText = params.data.participation && params.data.participation.length > 0
+                            ? params.data.participation.join(', ')
+                            : 'None';
+
                         let tooltip = `<b>${params.data.name}</b><br/>`;
-                        tooltip += `Categories: ${categoryName1} & ${categoryName2}<br/>`;
+                        tooltip += `Relevant focus: ${relevantFocus}<br/>`;
+                        tooltip += `Themes: ${themesText}<br/>`;
                         tooltip += `Location: ${location}<br/>`;
-                        tooltip += `Booklet: ${booklet}<br/>`;
-                        tooltip += `Events: ${eventsText}`;
-                        
+                        tooltip += `Geographical focus: ${geoFocus}<br/>`;
+                        tooltip += `Participation: ${participationText}`;
+                        if (params.data.definition) {
+                            tooltip += `<br/>Definition: ${params.data.definition}`;
+                        }
+
                         return tooltip;
                     } else if (params.dataType === 'edge') {
                         return `Link: ${params.data.source} → ${params.data.target}`;
@@ -224,7 +226,7 @@
                 }
             },
             legend: [{
-                data: categories.map(c => c.name),
+                data: themes.map(t => t.name),
                 textStyle: { color: '#e0e0e0', fontFamily: 'CustomFont, sans-serif' }
             }],
             series: [{
@@ -244,7 +246,7 @@
                 },
                 data: graphNodes,
                 links: allLinks,
-                categories: categories,
+                categories: themes,
                 lineStyle: {
                     curveness: 0,
                     opacity: 0.85

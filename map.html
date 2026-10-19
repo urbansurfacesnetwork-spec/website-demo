@@ -76,13 +76,92 @@
         }).addTo(map);
 
         const cityCoordinates = {
-            Melbourne: [-37.8136, 144.9631],
-            Manchester: [53.4808, -2.2426],
-            Vienna: [48.2082, 16.3738],
+            Aberdeen: [57.1497, -2.0943],
+            Accra: [5.6037, -0.187],
+            Adelaide: [-34.9285, 138.6007],
+            Ahmedabad: [23.0225, 72.5714],
+            Amsterdam: [52.3676, 4.9041],
+            Ankara: [39.9334, 32.8597],
+            Antwerp: [51.2194, 4.4025],
+            Athens: [37.9838, 23.7275],
+            Atlanta: [33.749, -84.388],
+            Auckland: [-36.8485, 174.7633],
+            Beirut: [33.8938, 35.5018],
+            Bengaluru: [12.9716, 77.5946],
+            Bergen: [60.3913, 5.3221],
+            Berlin: [52.52, 13.405],
+            Bogota: [4.711, -74.0721],
+            Brest: [48.3904, -4.4861],
+            Brisbane: [-27.4698, 153.0251],
+            Bristol: [51.4545, -2.5879],
+            'British Columbia': [53.7267, -127.6476],
+            Brussels: [50.8503, 4.3517],
+            Bucharest: [44.4268, 26.1025],
+            Budapest: [47.4979, 19.0402],
+            Busan: [35.1796, 129.0756],
+            Cairo: [30.0444, 31.2357],
+            Cambridge: [52.2053, 0.1218],
+            Canberra: [-35.2809, 149.13],
+            Canterbury: [51.2802, 1.0789],
+            'Cape Town': [-33.9249, 18.4241],
+            Cardiff: [51.4816, -3.1791],
+            'Chapel Hill': [35.9132, -79.0558],
+            Charlottesville: [38.0293, -78.4767],
+            'Cluj-Napoca': [46.7712, 23.6236],
+            Columbia: [38.9517, -92.3341],
+            Cyprus: [35.1264, 33.4299],
+            Dallas: [32.7767, -96.797],
+            Delft: [52.0116, 4.3571],
+            Delhi: [28.6139, 77.209],
+            Dublin: [53.3498, -6.2603],
+            Edinburgh: [55.9533, -3.1883],
+            Evansville: [37.9716, -87.5711],
+            Haifa: [32.794, 34.9896],
+            Hamilton: [-37.787, 175.2793],
+            Helsinki: [60.1699, 24.9384],
+            'Hong Kong': [22.3193, 114.1694],
+            Istanbul: [41.0082, 28.9784],
+            Izmir: [38.4237, 27.1428],
+            Jerusalem: [31.7683, 35.2137],
+            Kampala: [0.3476, 32.5825],
+            Lancaster: [54.047, -2.801],
+            'Las Vegas': [36.1699, -115.1398],
+            Leicester: [52.6369, -1.1398],
             London: [51.5072, -0.1276],
-            'New York': [40.7128, -74.0060],
+            Loughborough: [52.7721, -1.2062],
+            Lund: [55.7047, 13.191],
+            Lusail: [25.4285, 51.4904],
+            Madrid: [40.4168, -3.7038],
+            'Marikina City': [14.6507, 121.1029],
+            Melbourne: [-37.8136, 144.9631],
+            Milan: [45.4642, 9.19],
+            'Minneapolis-St Paul': [44.9778, -93.265],
+            'New York City': [40.7128, -74.006],
+            'Newcastle upon Tyne': [54.9783, -1.6178],
+            Nicosia: [35.1856, 33.3823],
+            Oxford: [51.752, -1.2577],
+            Paris: [48.8566, 2.3522],
+            Patna: [25.5941, 85.1376],
+            Pilsen: [49.7384, 13.3736],
+            Reading: [51.4543, -0.9781],
+            Riyadh: [24.7136, 46.6753],
+            Russia: [61.524, 105.3188],
+            Santiago: [-33.4489, -70.6693],
+            Seoul: [37.5665, 126.978],
+            Singapore: [1.3521, 103.8198],
+            Southampton: [50.9097, -1.4044],
+            Springfield: [39.7817, -89.6501],
+            'St Andrews': [56.3398, -2.7967],
+            Stockholm: [59.3293, 18.0686],
+            Sydney: [-33.8688, 151.2093],
             'São Paulo': [-23.5505, -46.6333],
-            Tokyo: [35.6762, 139.6503]
+            Tampa: [27.9506, -82.4572],
+            Trento: [46.0748, 11.1217],
+            Turin: [45.0703, 7.6869],
+            Uppsala: [59.8586, 17.6389],
+            Vancouver: [49.2827, -123.1207],
+            Vienna: [48.2082, 16.3738],
+            Wenzhou: [27.9938, 120.6994]
         };
 
         const placeholderPeople = [
@@ -145,6 +224,11 @@
         const edgeLayer = L.layerGroup().addTo(map);
         const markerLayer = L.layerGroup().addTo(map);
 
+        function cityOf(location) {
+            if (!location) return null;
+            return String(location).split(/[;,]/)[0].trim() || null;
+        }
+
         function makePopup(person) {
             return `<strong>${person.name}</strong><br>${person.location || 'Unknown location'}`;
         }
@@ -194,7 +278,7 @@
             }
 
             const mappedPeople = nodes
-                .map(node => ({ ...node, coordinates: cityCoordinates[node.location] || null, placeholder: false }))
+                .map(node => ({ ...node, coordinates: cityCoordinates[cityOf(node.location)] || null, placeholder: false }))
                 .filter(node => Array.isArray(node.coordinates));
 
             const combined = [...mappedPeople, ...placeholderPeople];
