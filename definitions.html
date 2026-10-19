@@ -91,12 +91,15 @@
             }
 
             const data = await response.json();
+            const lastName = (name) => name.trim().split(/\s+/).pop() || '';
             const peopleWithDefinitions = (data.nodes || [])
                 .filter((node) => node && typeof node.name === 'string' && node.definition && String(node.definition).trim())
-                .sort((a, b) => a.name.localeCompare(b.name));
+                .sort((a, b) => lastName(a.name).localeCompare(lastName(b.name)) || a.name.localeCompare(b.name));
 
             const treeData = {
-                name: 'Definitions of Urban Surfaces',
+                name: '',
+                symbolSize: 0,
+                label: { show: false },
                 children: peopleWithDefinitions.map((person) => ({
                     name: person.name,
                     labelType: 'person',
@@ -155,7 +158,11 @@
                             }
                         },
                         emphasis: {
-                            focus: 'descendant'
+                            focus: 'descendant',
+                            label: {
+                                fontSize: 14,
+                                lineHeight: 18
+                            }
                         }
                     }
                 ]
