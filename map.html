@@ -301,13 +301,16 @@
             return String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
         }
 
-        function makeTooltip(person) {
+        function makeTooltip(person, based) {
             const themes = (person.themes || []).join(', ');
             const locations = person.locations.map(p => p.name).join(', ');
+            const geographicalFocus = (person['geographical focus'] || []).join(', ');
+            const locationLabel = based ? 'Locations' : 'Geographical focus';
+            const locationValue = based ? locations : geographicalFocus;
             return `<strong>${escapeHtml(person.name)}</strong>` +
                 `<br>Focus: ${escapeHtml(person['relevant focus'] || '—')}` +
                 `<br>Themes: ${escapeHtml(themes || '—')}` +
-                `<br>Locations: ${escapeHtml(locations || '—')}`;
+                `<br>${locationLabel}: ${escapeHtml(locationValue || '—')}`;
         }
 
         function makeCluster(colorClass) {
@@ -332,7 +335,7 @@
             const bounds = [];
 
             allPeople.forEach(person => {
-                const html = makeTooltip(person);
+                const html = makeTooltip(person, based);
                 const places = based ? person.locations : person.focuses;
                 places.forEach(place => {
                     L.circleMarker(place.coordinates, {
