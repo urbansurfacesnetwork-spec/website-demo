@@ -137,6 +137,10 @@
 
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
+            const graphCenter = () => [
+                chartDom.clientWidth / 2 + 500,
+                chartDom.clientHeight / 2 + 500
+            ];
 
             myChart.setOption({
                 backgroundColor: 'transparent',
@@ -159,7 +163,7 @@
                 series: [{
                     type: 'graph',
                     layout: 'force',
-                    center: ['50%', '50%'],
+                    center: graphCenter(),
                     roam: true,
                     force: { repulsion: 60, edgeLength: [20, 80], gravity: 0.05 },
                     data: [...eventNodes, ...personNodes],
@@ -171,6 +175,7 @@
 
             new ResizeObserver(() => {
                 myChart.resize();
+                myChart.setOption({ series: [{ center: graphCenter() }] });
             }).observe(chartDom);
         } catch (err) {
             console.error('Initialization failed:', err);
