@@ -301,6 +301,27 @@
                 `<br>${locationLabel}: ${escapeHtml(locationValue || '—')}`;
         }
 
+        let clusterGroups = [];
+        function layoutClusters() {
+            const gap = 15;
+            clusterGroups.forEach(group => {
+                const center = map.latLngToLayerPoint(group[0].origin);
+                let ring = 0, index = 0, capacity = 1;
+                group.forEach(item => {
+                    if (index >= capacity) {
+                        ring++;
+                        index = 0;
+                        capacity = Math.max(1, Math.floor(2 * Math.PI * ring * gap / gap));
+                    }
+                    const angle = (2 * Math.PI * index) / capacity;
+                    const point = L.point(center.x + Math.cos(angle) * ring * gap, center.y + Math.sin(angle) * ring * gap);
+                    item.marker.setLatLng(map.layerPointToLatLng(point));
+                    index++;
+                });
+            });
+        }
+        map.on('zoomend', layoutClusters);
+
         function draw(mode) {
             if (markerLayer) map.removeLayer(markerLayer);
             const based = mode === 'based';
@@ -308,21 +329,27 @@
             markerLayer = L.layerGroup();
             const tooltipOptions = { direction: 'top', opacity: 1 };
             const bounds = [];
+            const groups = {};
 
             allPeople.forEach(person => {
                 const html = makeTooltip(person, based);
                 const places = based ? person.locations : person.focuses;
                 places.forEach(place => {
-                    L.circleMarker(place.coordinates, {
+                    const marker = L.circleMarker(place.coordinates, {
                         radius: 6,
                         color: '#000000',
                         weight: 1,
                         fillColor: fill,
                         fillOpacity: 1
                     }).bindTooltip(html, tooltipOptions).addTo(markerLayer);
+                    (groups[place.coordinates.join(',')] ||= []).push({ marker, origin: place.coordinates });
                     bounds.push(place.coordinates);
                 });
             });
+
+            // Spread markers sharing a location into rings (fixed pixel spacing) so none overlap
+            clusterGroups = Object.values(groups).filter(g => g.length > 1);
+            layoutClusters();
 
             map.addLayer(markerLayer);
             if (bounds.length) {
