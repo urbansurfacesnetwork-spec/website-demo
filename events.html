@@ -52,6 +52,8 @@
 <script>
     const EVENT_COLOR = '#fdc5f5';
     const URBAN_VISUAL_DIALOGUES_COLOR = '#cfe8ff';
+    const USF_COLOR = '#ffd166';
+    const SAH_COLOR = '#a78bfa';
     const PERSON_COLOR = '#acf2c9';
 
     async function init() {
@@ -87,7 +89,9 @@
                     symbol: 'circle',
                     symbolSize: 22,
                     itemStyle: {
-                        color: name.startsWith('Vol') ? URBAN_VISUAL_DIALOGUES_COLOR : EVENT_COLOR,
+                        color: name.startsWith('USF') ? USF_COLOR
+                            : name.startsWith('SAH') ? SAH_COLOR
+                                : name.startsWith('Vol') ? URBAN_VISUAL_DIALOGUES_COLOR : EVENT_COLOR,
                         borderColor: '#fff',
                         borderWidth: 2
                     },
@@ -134,10 +138,6 @@
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
 
-            function getCenter() {
-                return [chartDom.clientWidth / 2 - 400, chartDom.clientHeight / 2 - 400];
-            }
-
             myChart.setOption({
                 backgroundColor: 'transparent',
                 tooltip: {
@@ -159,8 +159,8 @@
                 series: [{
                     type: 'graph',
                     layout: 'force',
-                    center: getCenter(),
-                    roam: false,
+                    center: ['50%', '50%'],
+                    roam: true,
                     force: { repulsion: 60, edgeLength: [20, 80], gravity: 0.05 },
                     data: [...eventNodes, ...personNodes],
                     links,
@@ -171,7 +171,6 @@
 
             new ResizeObserver(() => {
                 myChart.resize();
-                myChart.setOption({ series: [{ center: getCenter() }] });
             }).observe(chartDom);
         } catch (err) {
             console.error('Initialization failed:', err);
