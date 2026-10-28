@@ -88,12 +88,12 @@
         }
 
         #resetBtn {
-            background-color: #9775FD;
+            background-color: #666666;
             color: white;
         }
 
         #resetBtn:hover {
-            background-color: #7c5ce0;
+            background-color: #555555;
         }
 
         .results-info {
@@ -117,7 +117,7 @@
         }
 
         thead {
-            background-color: #9775FD;
+            background-color: #666666;
             color: white;
             position: sticky;
             top: 0;
@@ -133,7 +133,7 @@
         }
 
         th:hover {
-            background-color: #7c5ce0;
+            background-color: #555555;
         }
 
         th.sortable::after {
@@ -163,7 +163,7 @@
             display: inline-block;
             padding: 4px 8px;
             border-radius: 4px;
-            color: white;
+            color: black;
             font-size: 12px;
             font-weight: bold;
             margin-right: 5px;
@@ -183,6 +183,11 @@
         }
 
         .pagination {
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+            background-color: #191919;
+            padding: 10px 0;
             margin-top: 20px;
             display: flex;
             justify-content: center;
@@ -198,13 +203,13 @@
         }
 
         .pagination button.active {
-            background-color: #9775FD;
+            background-color: #666666;
             color: white;
-            border-color: #9775FD;
+            border-color: #666666;
         }
 
         .pagination button:hover {
-            background-color: #9775FD;
+            background-color: #666666;
             color: white;
         }
 
@@ -283,7 +288,7 @@
             td::before {
                 content: attr(data-label);
                 font-weight: bold;
-                color: #9775FD;
+                color: #666666;
                 min-width: 80px;
                 flex-shrink: 0;
                 font-size: 11px;
