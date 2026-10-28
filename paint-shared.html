@@ -226,7 +226,7 @@
     const MAX_COLOURS = 3;
     const MARKER_INK = 1500;   // pixels of line per colour
     const BUFF_PAINT = 500;    // brush dabs per buff
-    const LIMITS = { pasteup: 10, advertise: 10, sticker: 20 };
+    const LIMITS = { pasteup: 3, advertise: 3, sticker: 3 };
     const usedColours = [];            // up to 3 colours the user has started using
     const inkLeft = {};                // per marker colour
     const paintLeft = { brownbuff: BUFF_PAINT, greybuff: BUFF_PAINT };
@@ -250,8 +250,12 @@
     // Sticker images
     const stickerImg = new Image();
     stickerImg.src = 'sticker.png';
-    const pasteUpImg = new Image();
-    pasteUpImg.src = 'pasteup.png';
+    const pasteUpImgs = ['Pasteup1.png', 'Pasteup2.png', 'Pasteup3.png'].map(src => {
+        const i = new Image();
+        i.src = src;
+        return i;
+    });
+    let pasteUpIndex = 0;
 
     // Advert images (135×181 each)
     const ADVERT_W = 135, ADVERT_H = 181;
@@ -475,7 +479,9 @@
     function stampPasteUp(x, y) {
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(pasteUpImg, x - ADVERT_W / 2, y - ADVERT_H / 2, ADVERT_W, ADVERT_H);
+        const img = pasteUpImgs[pasteUpIndex % pasteUpImgs.length];
+        pasteUpIndex++;
+        ctx.drawImage(img, x - ADVERT_W / 2, y - ADVERT_H / 2, ADVERT_W, ADVERT_H);
         ctx.restore();
     }
 
@@ -484,7 +490,8 @@
         advertIndex++;
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
-        ctx.drawImage(img, x - ADVERT_W / 2, y - ADVERT_H / 2, ADVERT_W, ADVERT_H);
+        const w = ADVERT_W / 2, h = ADVERT_H / 2;
+        ctx.drawImage(img, x - w / 2, y - h / 2, w, h);
         ctx.restore();
     }
 
