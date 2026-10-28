@@ -52,7 +52,7 @@
 <script>
     const EVENT_COLOR = '#fdc5f5';
     const URBAN_VISUAL_DIALOGUES_COLOR = '#cfe8ff';
-    const USF_COLOR = '#ffd166';
+    const USF_COLOR = '#7f9b72';
     const SAH_COLOR = '#a78bfa';
     const PERSON_COLOR = '#acf2c9';
 
@@ -138,8 +138,8 @@
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
             const graphCenter = () => [
-                chartDom.clientWidth / 2 - 1000,
-                chartDom.clientHeight / 2 - 1000 + 250
+                chartDom.clientWidth / 2 - 1000 + 250,
+                chartDom.clientHeight / 2 - 1000 + 250 + 250
             ];
 
             myChart.setOption({
