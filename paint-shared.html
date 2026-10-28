@@ -193,7 +193,7 @@
     // URL of the Cloudflare Worker endpoint. Use '/artwork' if the Worker is routed
     // on the same domain as this page, otherwise the full workers.dev URL, e.g.
     // 'https://usrn-artwork.YOURNAME.workers.dev/artwork'
-    const ARTWORK_URL = '/artwork';
+    const ARTWORK_URL = 'https://artwork-share-worker.urbansurfacesnetwork.workers.dev/';
 
     // Scraper: 30px wide, 1px high comb with gaps (1px tooth every 3px)
     const SCRAPER_W = 30, SCRAPER_GAP = 3;
@@ -356,17 +356,31 @@
     }
     loadArtwork();
 
-    document.getElementById('btnPutUp').addEventListener('click', function () {
-        const btn = this;
-        btn.disabled = true;
-        setStatus('Putting it up...');
-        canvas.toBlob(function (blob) {
-            if (!blob) { setStatus('Could not read canvas.'); btn.disabled = false; return; }
-            fetch(ARTWORK_URL, { method: 'POST', headers: { 'Content-Type': 'image/png' }, body: blob })
-                .then(r => { if (!r.ok) throw new Error(r.status); setStatus('It is up!'); })
-                .catch(() => setStatus('Sorry, could not put it up.'))
-                .finally(() => { btn.disabled = false; });
-        }, 'image/png');
+    const putItUpBtn = document.getElementById('btnPutUp');
+    putItUpBtn.addEventListener("click", async () => {
+        putItUpBtn.disabled = true;
+
+        try {
+            const dataUrl = canvas.toDataURL("image/png");
+            const blob = await (await fetch(dataUrl)).blob();
+
+            const response = await fetch(ARTWORK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "image/png" },
+                body: blob,
+            });
+
+            if (response.ok) {
+                location.reload();
+            } else {
+                const err = await response.json().catch(() => ({}));
+                alert("Could not put it up: " + (err.error || response.statusText));
+                putItUpBtn.disabled = false;
+            }
+        } catch (e) {
+            alert("Network error: " + e.message);
+            putItUpBtn.disabled = false;
+        }
     });
 
     // Color swatches
