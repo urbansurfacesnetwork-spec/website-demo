@@ -138,8 +138,8 @@
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
             const graphCenter = () => [
-                chartDom.clientWidth / 2 + 500,
-                chartDom.clientHeight / 2 + 500
+                chartDom.clientWidth / 2 - 1000,
+                chartDom.clientHeight / 2 - 1000
             ];
 
             myChart.setOption({
