@@ -6,9 +6,6 @@
     <title>USRN Map Preview</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-    <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     <style>
         @font-face {
             font-family: 'CustomFont';
@@ -50,17 +47,17 @@
             font-family: inherit;
             font-size: 15px;
             color: var(--text);
-            background: #202020;
-            border: 1px solid #444;
+            background: #333;
+            border: 1px solid #666;
             border-radius: 6px;
             padding: 0 16px;
             cursor: pointer;
         }
 
         .tab.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #000;
+            background: #666;
+            border-color: #888;
+            color: #fff;
         }
 
         .leaflet-container, .leaflet-tooltip, .leaflet-popup-content {
@@ -73,15 +70,6 @@
             bottom: 0;
             left: 0;
             right: 0;
-            filter: grayscale(100%);
-        }
-
-        .marker-cluster-purple { background: rgba(164, 46, 255, 0.35); }
-        .marker-cluster-purple div { background: rgba(164, 46, 255, 0.85); color: #fff; }
-        .marker-cluster-white { background: rgba(255, 255, 255, 0.35); }
-        .marker-cluster-white div { background: rgba(255, 255, 255, 0.9); color: #000; }
-        .marker-cluster div { font-family: 'CustomFont', sans-serif; }
-
             filter: grayscale(100%);
         }
 
@@ -276,7 +264,7 @@
         const PURPLE = '#A42EFF';
         const WHITE = '#ffffff';
 
-        let clusterLayer = null;
+        let markerLayer = null;
         let allPeople = [];
 
         function lookup(name) {
@@ -313,24 +301,11 @@
                 `<br>${locationLabel}: ${escapeHtml(locationValue || '—')}`;
         }
 
-        function makeCluster(colorClass) {
-            return L.markerClusterGroup({
-                showCoverageOnHover: false,
-                spiderfyOnMaxZoom: true,
-                maxClusterRadius: 40,
-                iconCreateFunction: cluster => L.divIcon({
-                    html: `<div><span>${cluster.getChildCount()}</span></div>`,
-                    className: `marker-cluster marker-cluster-${colorClass}`,
-                    iconSize: L.point(40, 40)
-                })
-            });
-        }
-
         function draw(mode) {
-            if (clusterLayer) map.removeLayer(clusterLayer);
+            if (markerLayer) map.removeLayer(markerLayer);
             const based = mode === 'based';
             const fill = based ? PURPLE : WHITE;
-            clusterLayer = makeCluster(based ? 'purple' : 'white');
+            markerLayer = L.layerGroup();
             const tooltipOptions = { direction: 'top', opacity: 1 };
             const bounds = [];
 
@@ -344,12 +319,12 @@
                         weight: 1,
                         fillColor: fill,
                         fillOpacity: 1
-                    }).bindTooltip(html, tooltipOptions).addTo(clusterLayer);
+                    }).bindTooltip(html, tooltipOptions).addTo(markerLayer);
                     bounds.push(place.coordinates);
                 });
             });
 
-            map.addLayer(clusterLayer);
+            map.addLayer(markerLayer);
             if (bounds.length) {
                 map.fitBounds(bounds, { padding: [50, 50] });
             }
