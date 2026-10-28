@@ -142,14 +142,14 @@
                         lineStyle: {
                             color: '#4a4a4a',
                             width: 1,
-                            opacity: 0
+                            opacity: 0.65
                         },
-                        roam: true,
+                        roam: 'move',
                         label: {
                             position: 'right',
                             verticalAlign: 'middle',
                             align: 'left',
-                            fontSize: 10,
+                            fontSize: 8,
                             color: '#d7d7d7',
                             fontFamily: 'CustomFont, sans-serif'
                         },
@@ -158,7 +158,7 @@
                                 position: 'right',
                                 verticalAlign: 'middle',
                                 align: 'left',
-                                fontSize: 9,
+                                fontSize: 7,
                                 lineHeight: 12,
                                 color: '#bdbdbd',
                                 fontFamily: 'CustomFont, sans-serif'
@@ -170,13 +170,25 @@
                                 fontSize: 14,
                                 lineHeight: 18
                             },
-                            lineStyle: { opacity: 0 }
+                            lineStyle: { opacity: 0.85 }
                         }
                     }
                 ]
             };
 
             chart.setOption(option);
+            document.getElementById('main').addEventListener('wheel', (event) => {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                const bounds = event.currentTarget.getBoundingClientRect();
+                chart.dispatchAction({
+                    type: 'treeRoam',
+                    seriesIndex: 0,
+                    zoom: Math.exp(-event.deltaY * 0.0004),
+                    originX: event.clientX - bounds.left,
+                    originY: event.clientY - bounds.top
+                });
+            }, { capture: true, passive: false });
             chart.on('click', (params) => {
                 if (params.seriesType !== 'tree' || params.data?.pairId === undefined) return;
 
