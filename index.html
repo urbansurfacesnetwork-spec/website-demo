@@ -90,35 +90,38 @@
         data.themes.forEach((theme, index) => { themeIndex[theme.name] = index; });
 
         // Process nodes
-        const nodes = data.nodes.map(node => {
-            const nodeThemes = Array.isArray(node.themes) ? node.themes : [];
-            const theme1 = themeIndex[nodeThemes[0]];
-            const theme2 = nodeThemes.length > 1 ? themeIndex[nodeThemes[1]] : theme1;
-            const color1 = themeColors[theme1] || DEFAULT_EDGE_COLOR;
-            const color2 = themeColors[theme2] || color1;
+        const hiddenNodePrefixes = ['USF', 'RGS', 'SAH'];
+        const nodes = data.nodes
+            .filter(node => !hiddenNodePrefixes.some(prefix => node.name.startsWith(prefix)))
+            .map(node => {
+                const nodeThemes = Array.isArray(node.themes) ? node.themes : [];
+                const theme1 = themeIndex[nodeThemes[0]];
+                const theme2 = nodeThemes.length > 1 ? themeIndex[nodeThemes[1]] : theme1;
+                const color1 = themeColors[theme1] || DEFAULT_EDGE_COLOR;
+                const color2 = themeColors[theme2] || color1;
 
-            return {
-                name: node.name,
-                category: theme1,
-                category2: theme2,
-                symbol: 'rect',
-                symbolSize: 15,
-                value: 15,
-                relevantFocus: node['relevant focus'],
-                nodeThemes: nodeThemes,
-                location: node.location,
-                geographicalFocus: node['geographical focus'],
-                participation: node.participation,
-                definition: node.definition,
-                color1: color1,
-                color2: color2,
-                itemStyle: {
-                    color: color1,
-                    borderColor: color2,
-                    borderWidth: 2
-                }
-            };
-        });
+                return {
+                    name: node.name,
+                    category: theme1,
+                    category2: theme2,
+                    symbol: 'rect',
+                    symbolSize: 15,
+                    value: 15,
+                    relevantFocus: node['relevant focus'],
+                    nodeThemes: nodeThemes,
+                    location: node.location,
+                    geographicalFocus: node['geographical focus'],
+                    participation: node.participation,
+                    definition: node.definition,
+                    color1: color1,
+                    color2: color2,
+                    itemStyle: {
+                        color: color1,
+                        borderColor: color2,
+                        borderWidth: 2
+                    }
+                };
+            });
 
         // Add theme hub nodes
         const themeHubNodes = data.themes.map((theme, index) => ({
