@@ -182,7 +182,7 @@
                 event.stopImmediatePropagation();
                 const bounds = event.currentTarget.getBoundingClientRect();
                 chart.dispatchAction({
-                    type: 'graphRoam',
+                    type: 'treeRoam',
                     seriesIndex: 0,
                     zoom: Math.exp(-event.deltaY * 0.0004),
                     originX: event.clientX - bounds.left,
