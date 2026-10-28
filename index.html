@@ -191,6 +191,14 @@
             tooltip: {
                 trigger: 'item',
                 extraCssText: 'white-space: nowrap;',
+                position: function (point, params, dom, rect, size) {
+                    const size0 = params && params.data && params.data.symbolSize;
+                    const r = (Array.isArray(size0) ? size0[0] : size0 || 20) / 2;
+                    const x = Math.max(0, Math.min(point[0] - size.contentSize[0] / 2, size.viewSize[0] - size.contentSize[0]));
+                    let y = point[1] + r + 12;
+                    if (y + size.contentSize[1] > size.viewSize[1]) y = Math.max(0, point[1] - r - 12 - size.contentSize[1]);
+                    return [x, y];
+                },
                 textStyle: { fontFamily: 'CustomFont, sans-serif' },
                 formatter: function (params) {
                     if (params.dataType === 'node') {
