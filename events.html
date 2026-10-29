@@ -132,7 +132,7 @@
             const chartDom = document.getElementById('main');
             const myChart = echarts.init(chartDom);
             const graphCenter = () => [
-                chartDom.clientWidth / 2 - 1000 + 250 + 100 + 150 + 100,
+                chartDom.clientWidth / 2 - 1000 + 250 + 100 + 150 + 200,
                 chartDom.clientHeight / 2 - 1000 + 250 + 250 + 100
             ];
 
@@ -140,6 +140,7 @@
                 backgroundColor: 'transparent',
                 tooltip: {
                     trigger: 'item',
+                    textStyle: { fontFamily: 'CustomFont, sans-serif', fontSize: 12 },
                     formatter: function (params) {
                         if (params.dataType !== 'node') return '';
                         if (params.data.isEvent) {
