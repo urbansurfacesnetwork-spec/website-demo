@@ -60,13 +60,31 @@
             color: #fff;
         }
 
+        @media (max-width: 600px) {
+            .tabs {
+                height: auto;
+                padding: 6px 8px;
+                gap: 6px;
+            }
+
+            .tab {
+                flex: 1 1 0;
+                min-width: 0;
+                font-size: 13px;
+                padding: 8px;
+                line-height: 1.25;
+                white-space: normal;
+                overflow-wrap: anywhere;
+            }
+        }
+
         .leaflet-container, .leaflet-tooltip, .leaflet-popup-content {
             font-family: 'CustomFont', sans-serif;
         }
 
         #map {
             position: absolute;
-            top: 48px;
+            top: var(--tabs-h, 48px);
             bottom: 0;
             left: 0;
             right: 0;
@@ -356,6 +374,14 @@
                 map.fitBounds(bounds, { padding: [50, 50] });
             }
         }
+
+        function fitMapToTabs() {
+            const h = document.querySelector('.tabs').offsetHeight;
+            document.documentElement.style.setProperty('--tabs-h', h + 'px');
+            if (typeof map !== 'undefined' && map.invalidateSize) map.invalidateSize();
+        }
+        window.addEventListener('resize', fitMapToTabs);
+        fitMapToTabs();
 
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
