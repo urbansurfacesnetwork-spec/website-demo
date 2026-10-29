@@ -107,16 +107,16 @@
                 .sort((a, b) => lastName(a.name).localeCompare(lastName(b.name)) || a.name.localeCompare(b.name));
 
             const treeData = {
-                name: '',
+                name: 'Definitions of urban surfaces (based on discipline and research)',
                 symbolSize: 0,
-                label: { show: false },
+                label: { show: true },
                 children: peopleWithDefinitions.map((person, pairId) => ({
                     name: person.name,
                     pairId,
                     labelType: 'person',
                     children: [
                         {
-                            name: wrapText(person.definition, 48),
+                            name: wrapText(person.definition, 40),
                             fullDefinition: person.definition,
                             pairId,
                             labelType: 'definition'
@@ -187,6 +187,12 @@
             };
 
             chart.setOption(option);
+            chart.dispatchAction({
+                type: 'treeRoam',
+                seriesIndex: 0,
+                dx: -40,
+                dy: 0
+            });
             document.getElementById('main').addEventListener('wheel', (event) => {
                 event.preventDefault();
                 event.stopImmediatePropagation();
