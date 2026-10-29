@@ -27,7 +27,7 @@
             width: 100%;
             height: 100vh;
             background: #191919;
-            transform: translateX(-100px);
+            transform: translateX(-70px);
         }
 
         .error {
@@ -56,7 +56,7 @@
             .replace(/'/g, '&#39;');
     }
 
-    function wrapText(text, maxCharsPerLine = 56) {
+    function wrapText(text, maxCharsPerLine = 48) {
         if (!text) return '';
         const words = text.trim().split(/\s+/);
         const lines = [];
@@ -111,7 +111,7 @@
                     labelType: 'person',
                     children: [
                         {
-                            name: wrapText(person.definition, 56),
+                            name: wrapText(person.definition, 48),
                             fullDefinition: person.definition,
                             pairId,
                             labelType: 'definition'
@@ -138,6 +138,10 @@
                         orient: 'LR',
                         symbol: 'roundRect',
                         symbolSize: [10, 10],
+                        itemStyle: {
+                            color: '#808080',
+                            borderColor: '#808080'
+                        },
                         expandAndCollapse: false,
                         initialTreeDepth: -1,
                         lineStyle: {
